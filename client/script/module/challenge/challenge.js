@@ -5,7 +5,7 @@ sets up challenge controller
 
 */
 
-angular.module('App.challenge', ['ngRoute'])
+angular.module('App.challenge', [])
 
 .controller('challengeCtrl', [function() {
 
