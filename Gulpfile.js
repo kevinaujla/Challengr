@@ -1,11 +1,11 @@
-var gulp = require("gulp");
-var jshint = require("gulp-jshint");
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
-var jsScripts = ["All javascript files that have to be concated"];
+var jsScripts = ['All javascript files that have to be concated'];
 
 // the paths to our app files
 var paths = {
@@ -16,7 +16,7 @@ var paths = {
   images: ['client/images/*']
 };
 
-gulp.task("jshint", function() {
+gulp.task('jshint', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
