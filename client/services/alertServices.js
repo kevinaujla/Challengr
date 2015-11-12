@@ -5,16 +5,14 @@ file to share alert services between controllers
 
 */
 
-angular.module('App.loadingService', [])
+angular.module('App.alertService', [])
 
 .factory("success", function(message) {
-
-  '<div class="alert"><a class="close" data-dismiss="alert">×</a><span>' + message + '</span></div>')
-
+  // Console Log
+  console.log('success alert : ', message);
 })
 
 .factory("failure", function(message) {
-
-  '<div class="alert"><a class="close" data-dismiss="alert">×</a><span>' + message + '</span></div>')
-
-})
+  // Console Log
+  console.log('failure alert : ', message);
+});

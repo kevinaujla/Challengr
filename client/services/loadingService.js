@@ -5,12 +5,14 @@ file to share loading alert services between controllers
 
 */
 
-angular.module('App.alertService', [])
+angular.module('App.loadingService', [])
 
-.factory("open", function(message) {
-
+.factory('start', function(message) {
+  // Console Log
+  console.log('start spinner');
 })
 
-.factory("close", function(message) {
-
-})
+.factory('stop', function(message) {
+  // Console Log
+  console.log('stop spinner');
+});
