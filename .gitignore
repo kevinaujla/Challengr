@@ -1,5 +1,9 @@
 # Node
 node_modules
 
+# mergetool backup files
+*.orig
+
 # Bower Components
 client/bower_components
+
