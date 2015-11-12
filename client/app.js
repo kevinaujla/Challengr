@@ -7,6 +7,8 @@ module dependency injections and route configurations
 
 angular.module('App', [
     'ngRoute',
+    'App.auth',
+    'App.profile',
     'App.newsFeed',
     'App.charity',
     'App.challenge',
@@ -18,19 +20,28 @@ angular.module('App', [
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/signin', {
-        templateUrl: 'user/signin.html',
+        templateUrl: 'script/module/user/auth/signin.html',
         controller: 'authCtrl',
-        controllerAs: 'authCtrl'
+        controllerAs: 'authCtrl',
+        data: {
+          authenticate: false
+        }
       })
       .when('/signup', {
-        templateUrl: 'user/signup.html',
+        templateUrl: 'script/module/user/auth/signup.html',
         controller: 'authCtrl',
-        controllerAs: 'authCtrl'
+        controllerAs: 'authCtrl',
+        data: {
+          authenticate: false
+        }
       })
       .when('/profile', {
-        templateUrl: 'user/profile.html',
-        controller: 'authCtrl',
-        controllerAs: 'authCtrl'
+        templateUrl: 'script/module/user/auth/profile.html',
+        controller: 'profileCtrl',
+        controllerAs: 'profileCtrl',
+        data: {
+          authenticate: true
+        }
       })
       .when('/newsFeed', {
         templateUrl: 'script/module/newsFeed/newsFeed.html',
