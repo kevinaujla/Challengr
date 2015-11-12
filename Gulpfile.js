@@ -10,7 +10,7 @@ var jsScripts = ["All javascript files that have to be concated"];
 // the paths to our app files
 var paths = {
   // all our client app js files, not including 3rd party js files
-  scripts: ['client/src/**/*.js'],
+  scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js'],
   html: ['client/src/**/*.html'],
   styles: ['client/styles/*.css'],
   test: ['specs/**/*.js'],
@@ -18,7 +18,7 @@ var paths = {
 };
 
 gulp.task("jshint", function() {
-  return gulp.src("jsfile.js")
+  return gulp.src(paths.scripts)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter("fail"));
