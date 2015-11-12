@@ -9,9 +9,8 @@ var jsScripts = ["All javascript files that have to be concated"];
 
 // the paths to our app files
 var paths = {
-  // all our client app js files, not including 3rd party js files
   scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js'],
-  html: ['client/src/**/*.html'],
+  html: ['client/**/*.html'],
   styles: ['client/styles/*.css'],
   test: ['specs/**/*.js'],
   images: ['client/images/*']
@@ -64,6 +63,6 @@ gulp.task('copy-html', function() {
 });
 
 gulp.task("watch", function() {
-  gulp.watch("filename", ["task", "jshint"]);
-  gulp.watch("stylesFileName", ["styles"]);
+  gulp.watch(paths.scripts, ["jshint"]);
+  //gulp.watch("stylesFileName", ["styles"]);
 });
