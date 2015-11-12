@@ -1,0 +1,26 @@
+{
+  "name": "thesis",
+  "description": "",
+  "main": "server/server.js",
+  "authors": [
+    "arthur.mathies@googlemail.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jordanwink201/Challengr",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "modernizr": "~3.1.0",
+    "angular-mocks": "~1.4.7"
+  }
+}

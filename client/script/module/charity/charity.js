@@ -5,7 +5,7 @@ sets up charity controller
 
 */
 
-angular.module('App.charity', ['ngRoute'])
+angular.module('App.charity', [])
 
 .controller('charityCtrl', [function() {
 

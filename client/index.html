@@ -1,42 +1,56 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="App" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="App" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="App" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" ng-app="App" class="no-js">
-<!--<![endif]-->
-
+<html lang="en" ng-app="App">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Challenger App</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- Bower Component Styles -->
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+  <!-- User Styles -->
+
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#/home">Challenger App</a>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/signup">Login/Signup</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <div ng-view></div>
-  </div>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="newsFeed/newsFeed.js"></script>
-  <script src="charity/charity.js"></script>
-  <script src="challenge/challenge.js"></script>
-</body>
+    
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
 
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/">Challenger App</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/challenge">New Challenge</a></li>
+        <li><a href="#/charity">Charity</a></li>
+        <li><a href="#/newsFeed">News Feed</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/signup">Login/Signup</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- Inject Views -->
+  <div class="container" ng-view></div>
+
+  <!-- Bower Component Scripts -->
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <!-- User Scripts -->
+  <script src="app.js"></script>
+  <!-- Modules -->
+  <script src="script/module/newsFeed/newsFeed.js"></script>
+  <script src="script/module/charity/charity.js"></script>
+  <script src="script/module/challenge/challenge.js"></script>
+  <!-- Services -->
+  <script src="script/service/alertService.js"></script>
+  <script src="script/service/loadingService.js"></script>
+  <!-- Factories -->
+
+  <!-- Directives -->
+  <script src="script/directive/alertDirective.js"></script>
+
+</body>
 </html>
 

@@ -5,5 +5,4 @@ node_modules
 *.orig
 
 # Bower Components
-client/bower_components
-
+client/lib

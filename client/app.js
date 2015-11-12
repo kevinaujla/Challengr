@@ -11,23 +11,36 @@ angular.module('App', [
     'App.charity',
     'App.challenge',
     'App.alertService',
-    'App.loadingService'
+    'App.loadingService',
+    'App.alertDirective',
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/newsFeed', {
-        templateUrl: 'newsFeed/newsFeed.html',
-        controller: 'newsFeedCtrl'
+        templateUrl: 'script/module/newsFeed/newsFeed.html',
+        controller: 'newsFeedCtrl',
+        controllerAs: 'newsFeedCtrl',
+        data : {
+          authenticate : true
+        }
       })
       .when('/charity', {
-        templateUrl: 'charity/charity.html',
-        controller: 'charityCtrl'
+        templateUrl: 'script/module/charity/charity.html',
+        controller: 'charityCtrl',
+        controllerAs: 'charityCtrl',
+        data : {
+          authenticate : true
+        }
       })
       .when('/challenge', {
-        templateUrl: 'challenge/challenge.html',
-        controller: 'challengeCtrl'
+        templateUrl: 'script/module/challenge/challenge.html',
+        controller: 'challengeCtrl',
+        controllerAs: 'challengeCtrl',
+        data : {
+          authenticate : true
+        }
       })
       .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
       });
   }]);
