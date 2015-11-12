@@ -6,3 +6,6 @@ node_modules
 
 # Bower Components
 client/lib
+
+# Concatenated Scripts
+client/scripts.js
