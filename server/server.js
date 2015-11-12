@@ -50,6 +50,7 @@ app.use(express.static(__dirname + '/../client'));
 app.post('/api/user/signup', function (req, res) {
   // console.log
   console.log('/api/user/signup is being called with body: ' + req.body);
+  // pull out username and password
   var username = req.body.username;
   var password = req.body.password;
 
@@ -63,7 +64,7 @@ app.post('/api/user/signup', function (req, res) {
       // console.log
       console.log('user with username: ' + username + ' exists: ' + !!user);
       if (user) {
-        // let the user know that the username is already taken
+        // respond to client
         res.json({
           success: false,
           message: 'Username ' + username + ' is already taken'
@@ -74,6 +75,7 @@ app.post('/api/user/signup', function (req, res) {
         // hash password and save user to the database
         hashing(password, null, null)
           .then(function (hash) {
+            // create user in db
             User.create({
                 username: username,
                 password: hash
@@ -81,10 +83,12 @@ app.post('/api/user/signup', function (req, res) {
               .then(function (user) {
                 // console.log
                 console.log('user with username: ' + username + 'got created: ' + !!user);
+                // create token
                 var token = jwt.sign(user, process.env.TOKEN_SECRET, {
                   expiresInMinutes: 60
                 });
 
+                // respond to client
                 res.json({
                   success: true,
                   message: 'Successfully signed up as ' + username,
@@ -103,6 +107,7 @@ app.post('/api/user/signup', function (req, res) {
 app.post('/api/user/signin', function (req, res) {
   // console.log
   console.log('/api/user/signin is being called with body: ' + req.body);
+  // pull out username and password
   var username = req.body.username;
   var password = req.body.password;
 
@@ -115,7 +120,7 @@ app.post('/api/user/signin', function (req, res) {
     .then(function (user) {
       console.log('user with username: ' + username + ' exists: ' + !!user);
       if (!user) {
-        // notify user
+        // respond to client
         res.json({
           success: false,
           message: 'Wrong username or password'
@@ -130,6 +135,7 @@ app.post('/api/user/signin', function (req, res) {
           if (!success) {
             // console.log
             console.log('Wrong password supplied for username: ' + username);
+            // respond to client
             res.json({
               success: false,
               message: 'Wrong username or password'
@@ -137,10 +143,12 @@ app.post('/api/user/signin', function (req, res) {
           } else {
             // console.log
             console.log('User with username: ' + username + ' supplied correct credentials');
+            // create token
             var token = jwt.sign(user, process.env.TOKEN_SECRET, {
               expiresInMinutes: 60
             });
 
+            // respond to client
             res.json({
               success: true,
               message: 'Successfully signed in as ' + username,
