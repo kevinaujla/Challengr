@@ -6,7 +6,7 @@
   "latedef": true,
   "newcap": true,
   "noempty": true,
-  "quotmark": "double",
+  "quotmark": "single",
   "unused": true,
   "eqnull": true,
   "browser": true,
