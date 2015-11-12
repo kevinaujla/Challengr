@@ -7,12 +7,12 @@ file to share loading alert services between controllers
 
 angular.module('App.loadingService', [])
 
-.factory('start', function(message) {
+.factory('start', function() {
   // Console Log
   console.log('start spinner');
 })
 
-.factory('stop', function(message) {
+.factory('stop', function() {
   // Console Log
   console.log('stop spinner');
 });
