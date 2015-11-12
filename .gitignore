@@ -1,7 +1,7 @@
 # Node
 node_modules
 
-# git mergetool
+# mergetool backup files
 *.orig
 
 # Bower Components
