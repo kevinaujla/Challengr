@@ -9,3 +9,7 @@ client/lib
 
 # private variables
 .env
+
+# Concatenated Scripts
+client/scripts.js
+
