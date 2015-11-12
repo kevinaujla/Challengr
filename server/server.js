@@ -5,7 +5,13 @@ express/node server
 
 */
 
+// load environment variables from .env file
+require('dotenv').load();
+
+// create express app
 var express = require('express');
+var app = express();
+
 // logging requests to the server
 var morgan = require('morgan');
 // convenience method for making http requests
@@ -14,31 +20,72 @@ var request = require('request');
 var path = require('path');
 // promise library to avoid callback hell
 var Promise = require('bluebird');
+// module for securely hashing passwords
+var bcrypt = require('bcrypt-nodejs');
+// parsing HTTP request bodys
+var bodyParser = require('body-parser');
+// module implementing authO jwt's
+var jwt = require('jsonwebtoken');
 
-// create express app
-var app = express();
 // choose process port if applicable
 var port = process.env.PORT || 3000;
-
 // use dev settings for morgan
 app.use(morgan('dev'));
+// parses application/x-www-form-urlencoded from forms
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json());
 
 // serving static files from client folder
-app.use(express.static(__dirname + "/../client"));
-
+app.use(express.static(__dirname + '/../client'));
 
 // API endpoint for signup requests
-app.post("/api/signup", function(req, res) {
+app.post('/api/user/signup', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
-  // check if the user exists in the database
-  // if yes let the user know that the username already exists
-  // else hash the password store the user to the database and return a token 
+  User.findOne({
+    where: {
+      username: username
+    }
+  }).then(function(user) {
+    if (user) {
+      // let the user know that the username is already taken
+      res.json({
+        success: false,
+        message: 'Username ' + username + ' is already taken'
+      });
+    } else {
+      var hashing = Promise.promisify(bcrypt.hash);
+
+      // hash password and save user to the database
+      hashing(password, null, null).
+      then(function(hash) {
+        User.create({
+          username: username,
+          password: hash
+        }).then(function(user) {
+          var token = jwt.sign(user, process.env.TOKEN_SECRET, {
+            expiresInMinutes: 60
+          });
+
+          res.json({
+            success: true,
+            message: 'Successfully signed up as ' + username,
+            token: token,
+            user: {
+              username: username
+            }
+          });
+        });
+      });
+    }
+  });
 });
 
 // API endpoint for signin requests
-app.post("/api/signin", function(req, res) {
+app.post('/api/user/signin', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
