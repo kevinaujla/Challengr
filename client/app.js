@@ -17,17 +17,29 @@ angular.module('App', [
     $routeProvider
       .when('/newsFeed', {
         templateUrl: 'newsFeed/newsFeed.html',
-        controller: 'newsFeedCtrl'
+        controller: 'newsFeedCtrl',
+        controllerAs: 'newsFeedCtrl',
+        data : {
+          authenticate : true
+        }
       })
       .when('/charity', {
         templateUrl: 'charity/charity.html',
-        controller: 'charityCtrl'
+        controller: 'charityCtrl',
+        controllerAs: 'charityCtrl',
+        data : {
+          authenticate : true
+        }
       })
       .when('/challenge', {
         templateUrl: 'challenge/challenge.html',
-        controller: 'challengeCtrl'
+        controller: 'challengeCtrl',
+        controllerAs: 'challengeCtrl',
+        data : {
+          authenticate : true
+        }
       })
       .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
       });
   }]);
