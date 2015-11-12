@@ -1,11 +1,11 @@
-var gulp = require("gulp");
-var jshint = require("gulp-jshint");
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
-var jsScripts = ["All javascript files that have to be concated"];
+var jsScripts = ['All javascript files that have to be concated'];
 
 // the paths to our app files
 var paths = {
@@ -16,11 +16,11 @@ var paths = {
   images: ['client/images/*']
 };
 
-gulp.task("jshint", function() {
+gulp.task('jshint', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter("fail"));
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('styles', function() {
@@ -32,9 +32,7 @@ gulp.task('styles', function() {
 gulp.task('build-js', function() {
   //specifc order
   return gulp.src(jsScripts)
-    .pipe(concat('ourfile.min.js', {
-      newLine: '\n'
-    }))
+    .pipe(concat('ourfile.min.js', { newLine: '\n' }))
     .pipe(uglify())
     .pipe(gulp.dest('build/'))
     .pipe(filesize())
@@ -42,9 +40,7 @@ gulp.task('build-js', function() {
 });
 
 gulp.task('copy-css', function() {
-  gulp.src(paths.styles, {
-      base: './client/styles'
-    })
+  gulp.src(paths.styles, { base : './client/styles' })
     .pipe(gulp.dest('./build/styles'));
 });
 
@@ -56,13 +52,21 @@ gulp.task('copy-images', function() {
 });
 
 gulp.task('copy-html', function() {
-  gulp.src(paths.html, {
-      base: './client/'
-    })
+  gulp.src(paths.html, { base: './client/' })
     .pipe(gulp.dest('./build/'));
 });
 
-gulp.task("watch", function() {
-  gulp.watch(paths.scripts, ["jshint"]);
-  //gulp.watch("stylesFileName", ["styles"]);
+// Concat All Client Script Files
+gulp.task('scripts', function() {
+  gulp.src(['./client/app.js', './client/script/**/*.js'])
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest('./client/'));
+});
+
+// Always be running in Dev Mode
+gulp.task('watcher', function(){
+  var watcher = gulp.watch('./client/script/**/*.js', ['jshint','scripts']);
+  watcher.on('change', function(event) {
+    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+  });
 });

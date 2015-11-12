@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="App">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,11 @@
   <!-- Bower Component Styles -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- User Styles -->
-
 </head>
 
 <body>
-    
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-
       <div class="navbar-header">
         <a class="navbar-brand" href="#/">Challenger App</a>
       </div>
@@ -26,31 +24,16 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/signup">Login/Signup</a></li>
       </ul>
-
     </div>
   </nav>
-
   <!-- Inject Views -->
   <div class="container" ng-view></div>
-
   <!-- Bower Component Scripts -->
   <script src="lib/jquery/dist/jquery.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
-  <!-- User Scripts -->
-  <script src="app.js"></script>
-  <!-- Modules -->
-  <script src="script/module/newsFeed/newsFeed.js"></script>
-  <script src="script/module/charity/charity.js"></script>
-  <script src="script/module/challenge/challenge.js"></script>
-  <!-- Services -->
-  <script src="script/service/alertService.js"></script>
-  <script src="script/service/loadingService.js"></script>
-  <!-- Factories -->
-
-  <!-- Directives -->
-  <script src="script/directive/alertDirective.js"></script>
-
+  <!-- Concatenated Scripts -->
+  <script src="scripts.js"></script>
 </body>
-</html>
 
+</html>
