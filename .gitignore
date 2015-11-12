@@ -6,3 +6,7 @@ node_modules
 
 # Bower Components
 client/lib
+
+# private variables
+.env
+
