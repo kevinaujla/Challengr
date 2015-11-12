@@ -17,6 +17,21 @@ angular.module('App', [
   ])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
+      .when('/signin', {
+        templateUrl: 'user/signin.html',
+        controller: 'authCtrl',
+        controllerAs: 'authCtrl'
+      })
+      .when('/signup', {
+        templateUrl: 'user/signup.html',
+        controller: 'authCtrl',
+        controllerAs: 'authCtrl'
+      })
+      .when('/profile', {
+        templateUrl: 'user/profile.html',
+        controller: 'authCtrl',
+        controllerAs: 'authCtrl'
+      })
       .when('/newsFeed', {
         templateUrl: 'script/module/newsFeed/newsFeed.html',
         controller: 'newsFeedCtrl',
