@@ -48,16 +48,19 @@ app.use(express.static(__dirname + '/../client'));
 
 // API endpoint for signup requests
 app.post('/api/user/signup', function (req, res) {
+  // console.log
   console.log('/api/user/signup is being called with body: ' + req.body);
   var username = req.body.username;
   var password = req.body.password;
 
+  // query for user
   User.findOne({
       where: {
         username: username
       }
     })
     .then(function (user) {
+      // console.log
       console.log('user with username: ' + username + ' exists: ' + !!user);
       if (user) {
         // let the user know that the username is already taken
@@ -76,6 +79,7 @@ app.post('/api/user/signup', function (req, res) {
                 password: hash
               })
               .then(function (user) {
+                // console.log
                 console.log('user with username: ' + username + 'got created: ' + !!user);
                 var token = jwt.sign(user, process.env.TOKEN_SECRET, {
                   expiresInMinutes: 60
@@ -97,13 +101,58 @@ app.post('/api/user/signup', function (req, res) {
 
 // API endpoint for signin requests
 app.post('/api/user/signin', function (req, res) {
+  // console.log
   console.log('/api/user/signin is being called with body: ' + req.body);
   var username = req.body.username;
   var password = req.body.password;
 
-  // check if the user exists in the database
-  // if yes log the user in and return a token
-  // else let the user know that he probably put in a wrong password or username
+  // query for user
+  User.findOne({
+      where: {
+        username: username
+      }
+    })
+    .then(function (user) {
+      console.log('user with username: ' + username + ' exists: ' + !!user);
+      if (!user) {
+        // notify user
+        res.json({
+          success: false,
+          message: 'Wrong username or password'
+        });
+      } else {
+        // compare supplied password and password from database
+        bcrypt.compare(password, user.password, function (err, success) {
+          if (err) {
+            // console.log
+            return console.log('Error ocurred while comparing password: ', err);
+          }
+          if (!success) {
+            // console.log
+            console.log('Wrong password supplied for username: ' + username);
+            res.json({
+              success: false,
+              message: 'Wrong username or password'
+            })
+          } else {
+            // console.log
+            console.log('User with username: ' + username + ' supplied correct credentials');
+            var token = jwt.sign(user, process.env.TOKEN_SECRET, {
+              expiresInMinutes: 60
+            });
+
+            res.json({
+              success: true,
+              message: 'Successfully signed in as ' + username,
+              token: token,
+              user: {
+                username: username
+              }
+            });
+          }
+        });
+      }
+    });
 });
 
 // start server to listen on localhost:port
