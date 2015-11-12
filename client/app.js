@@ -8,7 +8,8 @@ module dependency injections and route configurations
 angular.module('App', [
   'ngRoute',
   'App.newsFeed',
-  'App.charity'
+  'App.charity',
+  'App.challenge'
   ])
 .config(['$routeProvider', function($routeProvider) {
  $routeProvider
@@ -16,9 +17,13 @@ angular.module('App', [
     templateUrl: 'newsFeed/newsFeed.html',
     controller: 'newsFeedCtrl'
   })
-   .when('/charity', {
+  .when('/charity', {
     templateUrl: 'charity/charity.html',
     controller: 'charityCtrl'
+  })
+  .when('/challenge', {
+    templateUrl: 'challenge/challenge.html',
+    controller: 'challengeCtrl'
   })
   .otherwise({redirectTo: '/home'});
 }]);
