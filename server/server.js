@@ -10,25 +10,22 @@ var express = require('express');
 var morgan = require('morgan');
 // convenience method for making http requests
 var request = require('request');
-
 // module for transforming filepaths
 var path = require('path');
-
 // promise library to avoid callback hell
 var Promise = require('bluebird');
+
 // create express app
 var app = express();
+// choose process port if applicable
 var port = process.env.PORT || 3000;
 
+// use dev settings for morgan
 app.use(morgan('dev'));
 
 // serving static files from client folder
 app.use(express.static(__dirname + "/../client"));
 
-
-// start server to listen on localhost:port
-app.listen(port);
-console.log('Challengr is listening on port ', port);
 
 // API endpoint for signup requests
 app.post("/api/signup", function(req, res) {
@@ -49,3 +46,7 @@ app.post("/api/signin", function(req, res) {
   // if yes log the user in and return a token
   // else let the user know that he probably put in a wrong password or username
 });
+
+// start server to listen on localhost:port
+app.listen(port);
+console.log('Challengr is listening on port ', port);
