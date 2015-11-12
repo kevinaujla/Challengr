@@ -9,7 +9,7 @@ var jsScripts = ['All javascript files that have to be concated'];
 
 // the paths to our app files
 var paths = {
-  scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js'],
+  scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js', '!client/lib/**/*.js'],
   html: ['client/**/*.html'],
   styles: ['client/styles/*.css'],
   test: ['specs/**/*.js'],
