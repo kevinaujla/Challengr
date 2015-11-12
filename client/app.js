@@ -13,31 +13,40 @@ angular.module('App', [
     'App.alertService',
     'App.loadingService',
     'App.alertDirective',
+    'App.launch'
   ])
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/newsFeed', {
         templateUrl: 'script/module/newsFeed/newsFeed.html',
         controller: 'newsFeedCtrl',
         controllerAs: 'newsFeedCtrl',
-        data : {
-          authenticate : true
+        data: {
+          authenticate: true
         }
       })
       .when('/charity', {
         templateUrl: 'script/module/charity/charity.html',
         controller: 'charityCtrl',
         controllerAs: 'charityCtrl',
-        data : {
-          authenticate : true
+        data: {
+          authenticate: true
         }
       })
       .when('/challenge', {
         templateUrl: 'script/module/challenge/challenge.html',
         controller: 'challengeCtrl',
         controllerAs: 'challengeCtrl',
-        data : {
-          authenticate : true
+        data: {
+          authenticate: true
+        }
+      })
+      .when('/launch', {
+        templateUrl: 'script/module/challenge/launch.html',
+        controller: 'launchCtrl',
+        controllerAs: 'launchCtrl',
+        data: {
+          authenticate: true
         }
       })
       .otherwise({
