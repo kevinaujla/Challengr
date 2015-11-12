@@ -2,7 +2,7 @@
   "name": "thesis",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
     "gulp-sass": "^2.1.0",
     "gulp-uglify": "^1.4.2",
     "jshint-stylish": "^2.0.1"
+  },
+  "dependencies": {
+    "bluebird": "^3.0.5",
+    "path": "^0.12.7"
   }
 }
