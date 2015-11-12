@@ -40,7 +40,7 @@ gulp.task('build-js', function() {
 });
 
 gulp.task('copy-css', function() {
-  gulp.src(paths.styles, { base: './client/styles' })
+  gulp.src(paths.styles, { base : './client/styles' })
     .pipe(gulp.dest('./build/styles'));
 });
 
