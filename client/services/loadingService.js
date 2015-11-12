@@ -5,7 +5,7 @@ file to share loading alert services between controllers
 
 */
 
-angular.module('App.alertServices', [])
+angular.module('App.alertService', [])
 
 .factory("open", function(message) {
 

@@ -10,8 +10,8 @@ angular.module('App', [
     'App.newsFeed',
     'App.charity',
     'App.challenge',
-    'App.alertServices',
-    'App.loadingServices'
+    'App.alertService',
+    'App.loadingService'
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
