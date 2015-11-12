@@ -8,7 +8,6 @@ express/node server
 var express = require('express');
 var morgan = require('morgan');
 var request = require('request');
-var session = require('express-session');
 
 var path = require('path');
 
