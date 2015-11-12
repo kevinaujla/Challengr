@@ -41,51 +41,57 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
 // API endpoint for signup requests
-app.post('/api/user/signup', function(req, res) {
+app.post('/api/user/signup', function (req, res) {
+  console.log('/api/user/signup is being called with body: ' + req.body);
   var username = req.body.username;
   var password = req.body.password;
 
   User.findOne({
-    where: {
-      username: username
-    }
-  }).then(function(user) {
-    if (user) {
-      // let the user know that the username is already taken
-      res.json({
-        success: false,
-        message: 'Username ' + username + ' is already taken'
-      });
-    } else {
-      var hashing = Promise.promisify(bcrypt.hash);
-
-      // hash password and save user to the database
-      hashing(password, null, null).
-      then(function(hash) {
-        User.create({
-          username: username,
-          password: hash
-        }).then(function(user) {
-          var token = jwt.sign(user, process.env.TOKEN_SECRET, {
-            expiresInMinutes: 60
-          });
-
-          res.json({
-            success: true,
-            message: 'Successfully signed up as ' + username,
-            token: token,
-            user: {
-              username: username
-            }
-          });
+      where: {
+        username: username
+      }
+    })
+    .then(function (user) {
+      console.log('user with username: ' + username + ' exists: ' + !!user);
+      if (user) {
+        // let the user know that the username is already taken
+        res.json({
+          success: false,
+          message: 'Username ' + username + ' is already taken'
         });
-      });
-    }
-  });
+      } else {
+        var hashing = Promise.promisify(bcrypt.hash);
+
+        // hash password and save user to the database
+        hashing(password, null, null)
+          .then(function (hash) {
+            User.create({
+                username: username,
+                password: hash
+              })
+              .then(function (user) {
+                console.log('user with username: ' + username + 'got created: ' + !!user);
+                var token = jwt.sign(user, process.env.TOKEN_SECRET, {
+                  expiresInMinutes: 60
+                });
+
+                res.json({
+                  success: true,
+                  message: 'Successfully signed up as ' + username,
+                  token: token,
+                  user: {
+                    username: username
+                  }
+                });
+              });
+          });
+      }
+    });
 });
 
 // API endpoint for signin requests
-app.post('/api/user/signin', function(req, res) {
+app.post('/api/user/signin', function (req, res) {
+  console.log('/api/user/signin is being called with body: ' + req.body);
   var username = req.body.username;
   var password = req.body.password;
 
