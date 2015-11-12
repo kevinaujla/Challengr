@@ -20,7 +20,7 @@ var Promise = require('bluebird');
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.use(morgan('dev')); 
+app.use(morgan('dev'));
 
 // serving static files from client folder
 app.use(express.static(__dirname + "/../client"));
