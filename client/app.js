@@ -18,12 +18,7 @@ angular.module('App', [
   'App.launch'
   ])
 
-.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-  
-  $urlRouterProvider
-    .otherwise({
-      redirectTo: '/'
-    });
+.config(['$stateProvider', function ($stateProvider) {
 
   $stateProvider
     .state('/signin', {
@@ -81,6 +76,9 @@ angular.module('App', [
       data: {
         authenticate: true
       }
+    })
+    .state('otherwise', {
+      url : '/'
     });
 
 }]);
