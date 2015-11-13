@@ -12,7 +12,7 @@ var jsScripts = ['All javascript files that have to be concated in specific orde
 var paths = {
   scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js', '!client/lib/**/*.js'],
   html: ['client/script/*.html'],
-  styles: ['client/styles/main.css'],
+  // styles: ['client/styles/main.css'],
   test: ['specs/**/*.js'],
   images: ['client/images/*']
 };
@@ -25,7 +25,7 @@ gulp.task('build-js', function() {
     .pipe(gulp.dest('build/'))
     .pipe(filesize())
     .on('error', gutil.log);
-}
+});
 
 // gulp.task('copy-css', function() {
 //   gulp.src(paths.styles, { base : './client/styles' })
@@ -49,8 +49,7 @@ gulp.task('build-js', function() {
 gulp.task('jshint', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint())
-    .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'));
+    .pipe(jshint.reporter(stylish));
 });
 
 // Concat All Client Script Files
@@ -78,20 +77,19 @@ gulp.task('connect', function () {
 // Sass
 gulp.task('sass', function() {
   gulp.src('client/styles/main.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('client/styles/main.css'));
+    .pipe(sass()).on('error', sass.logError)
+    .pipe(gulp.dest('client/styles/'))
+    .pipe(connect.reload());
 });
 
-gulp.task('styles', function() {
-  return gulp.src('client/styles/main.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('client/styles/main.css'));
-});
-
+// Watcher
 gulp.task('watcher', function() {
-  gulp.watch('client/styles/**/*.scss', ['sass']);
+  gulp.watch('./client/styles/**/*.scss', ['sass']);
+  gulp.watch('./client/script/**/*.html', ['html']);
+  gulp.watch('./client/index.html', ['html']);
   gulp.watch('./client/script/**/*.js', ['jshint', 'scripts']);
+  gulp.watch('./client/app.js', ['jshint', 'scripts']);
 });
 
-// 
+// Run this command while developing
 gulp.task('default', ['connect', 'watcher']);

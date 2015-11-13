@@ -16,7 +16,6 @@ angular.module('App', [
   'App.loadingService',
   'App.alertDirective',
   'App.launch'
-  ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   
@@ -215,11 +214,9 @@ sets up authorization controller
 
 */
 
-angular.module('App.auth', [])
+angular.module('App.profile', [])
 
-.controller('authCtrl', [function() {
-
-  var self = this;
+.controller('profileCtrl', [function() {
 
 }]);
 /*
@@ -229,8 +226,10 @@ sets up authorization controller
 
 */
 
-angular.module('App.profile', [])
+angular.module('App.auth', [])
 
-.controller('profileCtrl', [function() {
+.controller('authCtrl', [function() {
+
+  var self = this;
 
 }]);
