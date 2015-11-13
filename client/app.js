@@ -18,29 +18,29 @@ angular.module('App', [
   'App.launch'
   ])
 
-.config(['$stateProvider','$urlRouterProvider' function ($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise({
     redirectTo: '/'
-  });
+    });
 
   $stateProvider
-  .state('/signin', {
+   .state('/signin', {
     templateUrl: 'script/module/user/auth/signin.html',
     controller: 'authCtrl',
     controllerAs: 'authCtrl',
     data: {
       authenticate: false
     }
-  })
-  .state('/signup', {
+    })
+   .state('/signup', {
     templateUrl: 'script/module/user/auth/signup.html',
     controller: 'authCtrl',
     controllerAs: 'authCtrl',
     data: {
       authenticate: false
     }
-  })
-  .state('/profile', {
+    })
+    .state('/profile', {
     templateUrl: 'script/module/user/auth/profile.html',
     controller: 'profileCtrl',
     controllerAs: 'profileCtrl',
