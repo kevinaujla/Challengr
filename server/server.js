@@ -14,27 +14,11 @@ var app = express();
 
 // logging requests to the server
 var morgan = require('morgan');
-// convenience method for making http requests
-var request = require('request');
-// module for transforming filepaths
-var path = require('path');
-// promise library to avoid callback hell
-var Promise = require('bluebird');
-// module for securely hashing passwords
-var bcrypt = require('bcrypt-nodejs');
 // parsing HTTP request bodys
 var bodyParser = require('body-parser');
-// module implementing authO jwt's
-var jwt = require('jsonwebtoken');
-
-// imports instance of database from database.js
-var db = require('../database/database.js');
 
 // choose process port if applicable
 var port = process.env.PORT || 3000;
-
-var User = db.import(path.join(__dirname, '../database/model/user.js'));
-var Challenge = db.import(path.join(__dirname, '../database/model/challenge.js'));
 
 app.use(morgan('dev'));
 // parses application/x-www-form-urlencoded from forms
@@ -46,65 +30,14 @@ app.use(bodyParser.json());
 // serving static files from client folder
 app.use(express.static(__dirname + '/../client'));
 
-// API endpoint for signup requests
-app.post('/api/user/signup', function (req, res) {
-  console.log('/api/user/signup is being called with body: ' + req.body);
-  var username = req.body.username;
-  var password = req.body.password;
+// creating router for all requests to '/api/auth'
+var authRouter = express.Router();
 
-  User.findOne({
-      where: {
-        username: username
-      }
-    })
-    .then(function (user) {
-      console.log('user with username: ' + username + ' exists: ' + !!user);
-      if (user) {
-        // let the user know that the username is already taken
-        res.json({
-          success: false,
-          message: 'Username ' + username + ' is already taken'
-        });
-      } else {
-        var hashing = Promise.promisify(bcrypt.hash);
+// configuring router to server all requests to 'api/auth'
+app.use('/api/auth', authRouter);
 
-        // hash password and save user to the database
-        hashing(password, null, null)
-          .then(function (hash) {
-            User.create({
-                username: username,
-                password: hash
-              })
-              .then(function (user) {
-                console.log('user with username: ' + username + 'got created: ' + !!user);
-                var token = jwt.sign(user, process.env.TOKEN_SECRET, {
-                  expiresInMinutes: 60
-                });
-
-                res.json({
-                  success: true,
-                  message: 'Successfully signed up as ' + username,
-                  token: token,
-                  user: {
-                    username: username
-                  }
-                });
-              });
-          });
-      }
-    });
-});
-
-// API endpoint for signin requests
-app.post('/api/user/signin', function (req, res) {
-  console.log('/api/user/signin is being called with body: ' + req.body);
-  var username = req.body.username;
-  var password = req.body.password;
-
-  // check if the user exists in the database
-  // if yes log the user in and return a token
-  // else let the user know that he probably put in a wrong password or username
-});
+// injecting authRouter for setup of routes
+require(__dirname + '/auth/authRouter.js')(authRouter);
 
 // start server to listen on localhost:port
 app.listen(port);

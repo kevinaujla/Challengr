@@ -12,3 +12,7 @@ client/lib
 
 # Concatenated Scripts
 client/scripts.js
+
+# database sqlite files
+database/data/db.sqlite
+
