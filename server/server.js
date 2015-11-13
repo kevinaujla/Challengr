@@ -27,9 +27,15 @@ var bodyParser = require('body-parser');
 // module implementing authO jwt's
 var jwt = require('jsonwebtoken');
 
+// imports instance of database from database.js
+var db = require('../database/database.js');
+
 // choose process port if applicable
 var port = process.env.PORT || 3000;
-// use dev settings for morgan
+
+var User = db.import(path.join(__dirname, '../database/model/user.js'));
+var Challenge = db.import(path.join(__dirname, '../database/model/challenge.js'));
+
 app.use(morgan('dev'));
 // parses application/x-www-form-urlencoded from forms
 app.use(bodyParser.urlencoded({
