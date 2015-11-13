@@ -1,0 +1,103 @@
+/***
+
+  Compile All SCSS Files to Serve
+
+***/
+/*** bootstrap ***/
+/*** foundation ***/
+/*** Custom Bootstrap ***/
+/***
+
+  Concat all styles from folder
+
+***/
+/***
+
+  Base Sass Variables and Mixins that almost .scss every file will need to import
+
+  Base: defaults, single element selectors
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/
+/***
+
+SCSS Variables
+
+***/
+/*** Colors ***/
+/***
+
+  HTML Element Mixins
+
+***/
+/***
+
+SCSS Variables
+
+***/
+/*** Colors ***/
+/***
+
+SCSS Variables
+
+***/
+/*** Colors ***/
+/***
+
+  HTML Element Mixins
+
+***/
+/***
+
+SCSS Variables
+
+***/
+/*** Colors ***/
+/***
+
+  Concat all styles from folder
+
+  Layout: divide the page into sections, layouts hold one or more modules together
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/
+/***
+
+  Concat all styles from folder
+
+  Module: reusable, modular parts of our design
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/
+/***
+
+  Concat all styles from folder
+
+  State: how our modules and layouts will look when in a particular state, ex: hidden or expanded. Different screen-sizes, how a module may look in different views.
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/

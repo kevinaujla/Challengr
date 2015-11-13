@@ -81,6 +81,6 @@ angular.module('App', [
       data: {
         authenticate: true
       }
-    })
+    });
 
   }]);
