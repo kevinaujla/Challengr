@@ -20,33 +20,34 @@ angular.module('App', [
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise({
-    redirectTo: '/'
+      redirectTo: '/'
     });
 
   $stateProvider
-   .state('/signin', {
-    templateUrl: 'script/module/user/auth/signin.html',
-    controller: 'authCtrl',
-    controllerAs: 'authCtrl',
-    data: {
-      authenticate: false
-    }
+    .state('/signin', {
+      templateUrl: 'script/module/user/auth/signin.html',
+      controller: 'authCtrl',
+      controllerAs: 'authCtrl',
+      data: {
+        authenticate: false
+      }
     })
-   .state('/signup', {
-    templateUrl: 'script/module/user/auth/signup.html',
-    controller: 'authCtrl',
-    controllerAs: 'authCtrl',
-    data: {
-      authenticate: false
-    }
+    .state('/signup', {
+      templateUrl: 'script/module/user/auth/signup.html',
+      controller: 'authCtrl',
+      controllerAs: 'authCtrl',
+      data: {
+        authenticate: false
+      }
     })
     .state('/profile', {
-    templateUrl: 'script/module/user/auth/profile.html',
-    controller: 'profileCtrl',
-    controllerAs: 'profileCtrl',
-    data: {
-      authenticate: true
-    }
+      templateUrl: 'script/module/user/auth/profile.html',
+      controller: 'profileCtrl',
+      controllerAs: 'profileCtrl',
+      data: {
+        authenticate: true
+      }
+    }) 
     .state('/newsFeed', {
       templateUrl: 'script/module/newsFeed/newsFeed.html',
       controller: 'newsFeedCtrl',
