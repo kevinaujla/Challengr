@@ -83,8 +83,7 @@ angular.module('App', [
       }
     });
 
-  }]);
-
+}]);
 /*
 
 alertDirective.js
