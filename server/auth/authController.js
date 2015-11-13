@@ -5,12 +5,21 @@ configuring routes for authRouter
 
  */
 
+// module for transforming filepaths
+var path = require('path');
 // promise library to avoid callback hell
 var Promise = require('bluebird');
 // module for securely hashing passwords
 var bcrypt = require('bcrypt-nodejs');
 // module implementing authO jwt's
 var jwt = require('jsonwebtoken');
+
+// imports instance of database from database.js
+var db = require(__dirname + '/../../database/database.js');
+
+// import database models
+var User = db.import(path.join(__dirname, '/../../database/model/user.js'));
+var Challenge = db.import(path.join(__dirname, '/../../database/model/challenge.js'));
 
 module.exports = {
   signup: function (req, res) {

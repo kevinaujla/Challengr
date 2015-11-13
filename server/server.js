@@ -17,14 +17,8 @@ var morgan = require('morgan');
 // parsing HTTP request bodys
 var bodyParser = require('body-parser');
 
-// imports instance of database from database.js
-var db = require('../database/database.js');
-
 // choose process port if applicable
 var port = process.env.PORT || 3000;
-
-var User = db.import(path.join(__dirname, '../database/model/user.js'));
-var Challenge = db.import(path.join(__dirname, '../database/model/challenge.js'));
 
 app.use(morgan('dev'));
 // parses application/x-www-form-urlencoded from forms
