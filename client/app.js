@@ -19,14 +19,13 @@ angular.module('App', [
   ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-  
+
   $urlRouterProvider
-    .otherwise({
-      redirectTo: '/'
-    });
+    .otherwise('/');
 
   $stateProvider
-    .state('/signin', {
+    .state('signin', {
+      url : '/signin',
       templateUrl: 'script/module/user/auth/signin.html',
       controller: 'authCtrl',
       controllerAs: 'authCtrl',
@@ -34,7 +33,8 @@ angular.module('App', [
         authenticate: false
       }
     })
-    .state('/signup', {
+    .state('signup', {
+      url : '/signup',
       templateUrl: 'script/module/user/auth/signup.html',
       controller: 'authCtrl',
       controllerAs: 'authCtrl',
@@ -42,7 +42,8 @@ angular.module('App', [
         authenticate: false
       }
     })
-    .state('/profile', {
+    .state('profile', {
+      url : '/profile',
       templateUrl: 'script/module/user/auth/profile.html',
       controller: 'profileCtrl',
       controllerAs: 'profileCtrl',
@@ -50,7 +51,8 @@ angular.module('App', [
         authenticate: true
       }
     }) 
-    .state('/newsFeed', {
+    .state('newsFeed', {
+      url : '/newsFeed',
       templateUrl: 'script/module/newsFeed/newsFeed.html',
       controller: 'newsFeedCtrl',
       controllerAs: 'newsFeedCtrl',
@@ -58,7 +60,8 @@ angular.module('App', [
         authenticate: true
       }
     })
-    .state('/charity', {
+    .state('charity', {
+      url : '/charity',
       templateUrl: 'script/module/charity/charity.html',
       controller: 'charityCtrl',
       controllerAs: 'charityCtrl',
@@ -66,7 +69,8 @@ angular.module('App', [
         authenticate: true
       }
     })
-    .state('/challenge', {
+    .state('challenge', {
+      url : '/challenge',
       templateUrl: 'script/module/challenge/challenge.html',
       controller: 'challengeCtrl',
       controllerAs: 'challengeCtrl',
@@ -74,13 +78,14 @@ angular.module('App', [
         authenticate: true
       }
     })
-    .state('/launch', {
-      templateUrl: 'script/module/challenge/launch.html',
+    .state('launch', {
+      url : '/',
+      templateUrl: 'script/module/launch/launch.html',
       controller: 'launchCtrl',
       controllerAs: 'launchCtrl',
       data: {
         authenticate: true
       }
-    })
+    });
 
-  }]);
+}]);

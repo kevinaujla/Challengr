@@ -7,7 +7,7 @@
   <!-- Bower Component Styles -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- User Styles -->
-
+  <link rel="stylesheet" href="./styles/main.css" />
 </head>
 
 <body>
@@ -16,15 +16,16 @@
     <div class="container-fluid">
 
       <div class="navbar-header">
-        <a class="navbar-brand" href="#/">Challenger App</a>
+        <a class="navbar-brand" ui-sref="launch">Challenger App</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/challenge">New Challenge</a></li>
-        <li><a href="#/charity">Charity</a></li>
-        <li><a href="#/newsFeed">News Feed</a></li>
+        <li><a ui-sref="challenge">New Challenge</a></li>
+        <li><a ui-sref="charity">Charity</a></li>
+        <li><a ui-sref="newsFeed">News Feed</a></li>
+        <li><a ui-sref="launch">Launch</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/signup">Login/Signup</a></li>
+        <li><a ui-sref="signin">Login/Signup</a></li>
       </ul>
     </div>
   </nav>
@@ -35,6 +36,8 @@
   <script src="lib/jquery/dist/jquery.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/angular-mocks/angular-mocks.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
   <!-- Concatenated Scripts -->
   <script src="scripts.js"></script>
 </body>
