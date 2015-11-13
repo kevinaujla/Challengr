@@ -23,7 +23,7 @@ var Challenge = db.import(path.join(__dirname, '/../../database/model/challenge.
 
 module.exports = {
   signup: function (req, res) {
-    // console.log
+    // Console Log
     console.log('/api/user/signup is being called with body: ' + req.body);
     // pull out username and password
     var username = req.body.username;
@@ -36,7 +36,7 @@ module.exports = {
         }
       })
       .then(function (user) {
-        // console.log
+        // Console Log
         console.log('user with username: ' + username + ' exists: ' + !!user);
         if (user) {
           // respond to client
@@ -56,7 +56,7 @@ module.exports = {
                   password: hash
                 })
                 .then(function (user) {
-                  // console.log
+                  // Console Log
                   console.log('user with username: ' + username + 'got created: ' + !!user);
                   // create token
                   var token = jwt.sign(user, process.env.TOKEN_SECRET, {
@@ -79,7 +79,7 @@ module.exports = {
   },
 
   signin: function (req, res) {
-    // console.log
+    // Console Log
     console.log('/api/user/signin is being called with body: ' + req.body);
     // pull out username and password
     var username = req.body.username;
@@ -103,11 +103,11 @@ module.exports = {
           // compare supplied password and password from database
           bcrypt.compare(password, user.password, function (err, success) {
             if (err) {
-              // console.log
+              // Console Log
               return console.log('Error ocurred while comparing password: ', err);
             }
             if (!success) {
-              // console.log
+              // Console Log
               console.log('Wrong password supplied for username: ' + username);
               // respond to client
               res.json({
@@ -115,7 +115,7 @@ module.exports = {
                 message: 'Wrong username or password'
               });
             } else {
-              // console.log
+              // Console Log
               console.log('User with username: ' + username + ' supplied correct credentials');
               // create token
               var token = jwt.sign(user, process.env.TOKEN_SECRET, {
@@ -135,5 +135,41 @@ module.exports = {
           });
         }
       });
+  },
+
+  authenticate: function (req, res, next) {
+    // Console Log
+    console.log('authenticating user with body: ' + req.body);
+
+    // pull out token
+    var token = req.body.token;
+
+    // token exists in request body
+    if (token) {
+      // Console Log
+      console.log('Token exists: ' + !!token);
+
+      // decode and verify token
+      jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
+        if (err) {
+          // respond to client
+          res.json({
+            success: false,
+            message: 'Failed decoding token'
+          });
+        } else {
+          // Console Log
+          console.log('Successfully authenticated token, access granted');
+          // move on to next middleware
+          next();
+        }
+      });
+    } else {
+      // respond to client
+      res.status(403).send({
+        success: false,
+        message: 'No token provided'
+      });
+    }
   }
 };

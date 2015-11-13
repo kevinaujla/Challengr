@@ -5,13 +5,13 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
-var jsScripts = ['All javascript files that have to be concated'];
+var jsScripts = ['All javascript files that have to be concated in specific order'];
 
 // the paths to our app files
 var paths = {
   scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js', '!client/lib/**/*.js'],
-  html: ['client/**/*.html'],
-  styles: ['client/styles/*.css'],
+  html: ['client/script/*.html'],
+  styles: ['client/styles/main.css'],
   test: ['specs/**/*.js'],
   images: ['client/images/*']
 };
@@ -24,15 +24,15 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('sass/**/*.scss')
+  return gulp.src('client/styles/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./styles/styles.css'));
+    .pipe(gulp.dest('client/styles/main.css'));
 });
 
 gulp.task('build-js', function() {
   //specifc order
   return gulp.src(jsScripts)
-    .pipe(concat('ourfile.min.js', { newLine: '\n' }))
+    .pipe(concat('scripts.min.js', { newLine: '\n' }))
     .pipe(uglify())
     .pipe(gulp.dest('build/'))
     .pipe(filesize())
@@ -54,6 +54,10 @@ gulp.task('copy-images', function() {
 gulp.task('copy-html', function() {
   gulp.src(paths.html, { base: './client/' })
     .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('build', function() {
+
 });
 
 // Concat All Client Script Files
