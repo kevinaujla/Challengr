@@ -18,7 +18,10 @@ angular.module('App', [
   'App.launch'
   ])
 
-.config(['$stateProvider', function ($stateProvider) {
+.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+  
+  $urlRouterProvider
+    .otherwise('/');
 
   $stateProvider
     .state('/signin', {
@@ -76,9 +79,6 @@ angular.module('App', [
       data: {
         authenticate: true
       }
-    })
-    .state('otherwise', {
-      url : '/'
     });
 
 }]);
