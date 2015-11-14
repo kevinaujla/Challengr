@@ -7,6 +7,7 @@ module dependency injections and route configurations
 
 angular.module('App', [
   'ui.router',
+  'ui.bootstrap',
   'App.auth',
   'App.profile',
   'App.newsFeed',
@@ -17,6 +18,7 @@ angular.module('App', [
   'App.alertDirective',
   'App.launch',
   'App.authFactory'
+
   ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

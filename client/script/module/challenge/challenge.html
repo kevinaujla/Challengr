@@ -3,5 +3,54 @@
 challenge.html 
 
 -->
+<div class="col-md-8 col-md-offset-2" ng-controller="challengeCtrl">
+    <uib-tabset>
 
-<h1>Challenge Will Go Here</h1>
+        <uib-tab heading="Create Challenge">
+            <div class="col-md-5">
+             <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Challenge</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Enter Challenger..">
+    </div>
+                <ul class="list-group">
+  <li class="list-group-item">Kevin Aujla</li>
+  <li class="list-group-item">Jordan Winkelman</li>
+  <li class="list-group-item">Faisal Al Qasimi</li>
+  <li class="list-group-item">Bobby Velasco</li>
+  <li class="list-group-item">Arthur Mathies</li>
+</ul>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+     
+          Challenge Types
+          </div>
+        </uib-tab>
+
+        <uib-tab heading="Pick Charity">
+        <div class="col-md-3">
+        RedCross
+        </div>
+        <div class="col-md-3 col-md-offset-1">
+        Salvation Army
+        </div>
+        <div class="col-md-3 col-md-offset-1">
+        Kevin Aujla Foundation
+        </div>
+
+
+        </uib-tab>
+
+        <uib-tab heading="Submit">
+            <div class="col-md-3">
+                Payment Info
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+                Billing Address
+            </div>
+        </uib-tab>
+
+    </uib-tabset>
+
+</div>
