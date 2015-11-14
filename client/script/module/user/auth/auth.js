@@ -7,8 +7,12 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl', [function() {
+.controller('authCtrl', ['Auth', function(Auth) {
 
   var self = this;
+
+  self.signin = function(){
+    Auth.signIn();
+  };
 
 }]);
