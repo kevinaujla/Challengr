@@ -37,7 +37,7 @@ var authRouter = express.Router();
 app.use('/api/auth', authRouter);
 // everything after here is protected and checks for jot
 
-// order will be important here as the authRouter protects all future routes
+// order will be importantw here as the authRouter protects all future routes
 // injecting authRouter for setup of routes
 require(__dirname + '/auth/authRouter.js')(authRouter);
 

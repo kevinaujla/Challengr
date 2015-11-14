@@ -5,11 +5,9 @@ challenge model/schema
 
 */
 
-// model for challenges table
-module.exports = function(sequelize, Datatypes) {
-  return sequelize.define('Challenge', {
-    challenger: Datatypes.STRING,
-    challengee: Datatypes.STRING,
+// model for challenge table
+module.exports = function (sequelize, Datatypes) {
+  return sequelize.define('challenge', {
     challenge_response: Datatypes.STRING,
     challenge_completion: Datatypes.STRING,
     challenge_title: Datatypes.STRING,
