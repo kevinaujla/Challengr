@@ -16,7 +16,22 @@ var db = new sequelize(
   'password', {
     host: 'localhost',
     dialect: 'sqlite',
+    // the pool size depends on the load the database has to handle
+    // as long as this is sqlite the number can be marginally small
+    pool: {
+      max: 10,
+      min: 2,
+      // milliseconds being idle before released
+      idle: 100000
+    },
     storage: __dirname + '/data/db.sqlite'
+  });
+
+db.sync()
+  .then(function successCallback() {
+    console.log('database is up and running');
+  }, function errorCallback(err) {
+    console.log('failed connecting to database: ' + err);
   });
 
 module.exports = db;
