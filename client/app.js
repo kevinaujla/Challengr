@@ -15,7 +15,8 @@ angular.module('App', [
   'App.alertService',
   'App.loadingService',
   'App.alertDirective',
-  'App.launch'
+  'App.launch',
+  'App.authFactory'
   ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
