@@ -14,6 +14,8 @@ module.exports = function (app) {
   app.post('/signup', authController.signup);
   // API endpoint for signin requests
   app.post('/signin', authController.signin);
+  // API endpoint for authenticating user
+  app.get('/authenticate', authController.checkUser);
   // middleware for all routes after here
   app.use(authController.authenticate);
 };
