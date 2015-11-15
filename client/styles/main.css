@@ -297,6 +297,46 @@ i.icon-budicon-55 {
 
 /***
 
+  Profile
+
+***/
+.charity img {
+  width: 100%; }
+
+/***
+
+  Challenge Types/Categories
+
+***/
+ul.challengeTypes li {
+  display: inline-block; }
+  ul.challengeTypes li span {
+    padding: 15px;
+    border-radius: 50px; }
+  ul.challengeTypes li .badge--active {
+    background-color: #A0CECB; }
+
+/***
+
+  Profile
+
+***/
+ul.friendList li {
+  padding: 15px;
+  border-bottom: 1px solid #EFF0F4; }
+  ul.friendList li img {
+    width: 10%;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid white;
+    box-shadow: 1px 1px 1px #E6E6E6;
+    margin-right: 15px; }
+  ul.friendList li p {
+    display: inline-block;
+    color: #70838D; }
+
+/***
+
   Concat all styles from folder
 
   State: how our modules and layouts will look when in a particular state, ex: hidden or expanded. Different screen-sizes, how a module may look in different views.

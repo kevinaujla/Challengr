@@ -1,0 +1,24 @@
+/***
+
+  Profile
+
+***/
+
+ul.friendList{
+  li{
+    padding: $padding;
+    border-bottom: 1px solid #EFF0F4;
+    img{
+      width: 10%;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid white;
+      box-shadow: 1px 1px 1px #E6E6E6;
+      margin-right: $padding;
+    }
+    p{
+      display: inline-block;
+      color: #70838D;
+    }
+  }
+}
