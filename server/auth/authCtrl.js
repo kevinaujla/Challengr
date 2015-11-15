@@ -1,6 +1,6 @@
 /*
 
-authController.js
+authCtrl.js
 configuring routes for authRouter
 
 */
