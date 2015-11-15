@@ -3,7 +3,7 @@
 authRouter.js
 specifying routes for authRouter
 
- */
+*/
 
 var authController = require(__dirname + '/authController.js');
 
