@@ -1,0 +1,80 @@
+<!-- 
+
+challenge-create.html 
+create a new challenge
+
+-->
+
+Create Challenge
+
+<div class="col-md-10 col-md-offset-1">
+  <uib-tabset>
+
+    <uib-tab heading="Create Challenge">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Enter Challenger..">
+        </div>
+      </div>
+      <div class="col-md-6">
+        Challenge Types
+      </div>
+    </uib-tab>
+
+    <uib-tab heading="Pick Charity">
+      <div class="col-md-4">
+        RedCross
+      </div>
+      <div class="col-md-4">
+        Salvation Army
+      </div>
+      <div class="col-md-4">
+        Kevin Aujla Foundation
+      </div>
+    </uib-tab>
+
+    <uib-tab heading="Submit">
+      <div class="row">
+        <div class="col-md-6">
+          <fieldset>
+            <legend>Payment Info</legend>
+            <div class="control-group">
+              <div class="controls form-group">
+                <input type="text" class="form-control" placeholder="Card Holder Name">
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls form-group">
+                <input type="text" class="form-control" placeholder="Visa">
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Month">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Year">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="CVC/CVV">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="col-md-6">
+          Billing
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </uib-tab>
+
+  </uib-tabset>
+</div>

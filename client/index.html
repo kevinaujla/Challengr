@@ -2,42 +2,62 @@
 <html lang="en" ng-app="App">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Challenger App</title>
   <!-- Bower Component Styles -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- User Styles -->
   <link rel="stylesheet" href="./styles/main.css" />
+  <!-- Font -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <!-- Font Icons -->
+  <link href="https://file.myfontastic.com/YfFMzw2YZywiXrAN4mSf8h/icons.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="row">
 
-      <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="launch">Challenger App</a>
+      <div id="leftBar" class="col-xs-1">
+        <div>
+          <img id="profileImg" src="image/profileImg.jpg">
+          <h5>Jordan</h5>
+        </div>
+        <ul>
+          <li><a ui-sref="home"><i class="icon-home"></i></a></li>
+          <!-- <li><a ui-sref=""><i class="icon-heart-empty"></i></a></li> -->
+          <li><a ui-sref="profile"><i class="icon-budicon-51"></i></a></li>
+        </ul>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="challenge">New Challenge</a></li>
-        <li><a ui-sref="charity">Charity</a></li>
-        <li><a ui-sref="newsFeed">News Feed</a></li>
-        <li><a ui-sref="launch">Launch</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="signin">Login/Signup</a></li>
-      </ul>
+
+      <!-- Inject Views -->
+      <div id="main" class="col-xs-8" ui-view></div>
+
+      <div id="rightBar" class="col-xs-3">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="alert-icon">
+            <i class="icon-budicon-55"></i>
+          </div>
+          <div class="alert-text">
+            <p><strong>Faisal Challenged You!</strong></p>
+            <p>Do something crazy...</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </nav>
-  <!-- Inject Views -->
-  <div class="container" ui-view></div>
+  </div>
+
 
   <!-- Bower Component Scripts -->
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="lib/angular-mocks/angular-mocks.js"></script>
-  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="lib/angular-resource/angular-resource.min.js"></script>
+  <script src="lib/angular-messages/angular-messages.min.js"></script>
   <!-- Concatenated Scripts -->
   <script src="scripts.js"></script>
 </body>

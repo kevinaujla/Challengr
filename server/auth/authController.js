@@ -3,7 +3,7 @@
 authController.js
 configuring routes for authRouter
 
- */
+*/
 
 // promise library to avoid callback hell
 var Promise = require('bluebird');

@@ -17,6 +17,13 @@
 @import 'mixins';
 
 body {
+  // Headers
+  @include headersDark();
 
+  // Lists
+  @include lists();
+
+  // Font
+  font-family: $font;
 }
 

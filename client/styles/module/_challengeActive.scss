@@ -1,0 +1,119 @@
+/***
+
+  Concat all styles from folder
+
+  Module: reusable, modular parts of our design
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/
+
+.challenge{
+
+  width: 100%;
+  // border: 1px solid red;
+  margin: $padding 0;
+
+  .challenge--heading{
+
+    background-color: $blue;
+
+    .challenge--category{
+      display: inline;
+      color: $lightest;
+    }
+    .challenge--time{
+      display: inline;
+      float: right;
+      color: $lighter;
+    }
+  }
+
+  .challenge--img{
+    width: 10%;
+    height: auto;
+    // border:1px solid green;
+    display: inline-block;
+    // padding-left: $padding;
+    .challenge--img--challenger, .challenge--img--challengee{
+      // width: 100%;
+      border-radius: 50%;
+    } 
+    .challenge--img--challenger{
+      position: relative;
+      width: 45px;
+      top: 3px;
+      z-index: 3;
+    }
+    .challenge--img--challengee{
+      position: relative;
+      width: 70px;
+      top: -10px;
+      left: -30px;
+      z-index: 2;
+    }
+  }
+
+  .challenge--info{
+    display: inline-block;
+    width: 75%;
+    // border: 1px solid blue;
+    p:first-child{
+      color: #7D8995;
+    }
+    p{
+      color: $lighter;
+    }
+  }
+
+  .challenge--social{
+    display: inline-block;
+    width: 14%;
+    // border: 1px solid yellow;
+    ul li {
+      display: inline;
+      float: right;
+      padding-left: $padding;
+    }
+  }
+
+}
+
+.challenge-active{
+
+
+}
+
+.challenge--complete, .challenge--incomplete{
+
+  .icon-check-mark-circle{
+    color: #66D3E2;
+  }
+
+  .icon-close-delete{
+    color : #FF7978;
+  }
+
+  .challenge--category, .challenge--info, .challenge--time, .challenge--social{
+    display: inline-block;
+  }
+
+  .challenge--body{
+    // border: 1px solid blue;
+  }
+
+  .challenge--social--active{
+    display: inline-block;
+    ul li {
+      display: inline;
+      float: right;
+      padding-left: $padding;
+    }
+  }
+
+}

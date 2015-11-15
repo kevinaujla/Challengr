@@ -1,13 +1,32 @@
 /*
 
-challenge.js
-sets up challenge controller
+challenges.js
+CRUD for challenges
 
 */
 
-angular.module('App.challenge', ['ui.bootstrap'])
+angular.module('App.challenge', [])
 
-.controller('challengeCtrl', [function() {
+.controller('challengeListCtrl', ['ChallengeFactory', function(ChallengeFactory) {
 
+  var self = this;
+
+}])
+
+.controller('challengeNewCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+
+  var self = this;
+
+}])
+
+.controller('challengeViewCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+
+  var self = this;
+
+}])
+
+.controller('challengeEditCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+
+  var self = this;
 
 }]);
