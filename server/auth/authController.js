@@ -23,24 +23,26 @@ module.exports = {
   signup: function (req, res) {
     // Console Log
     console.log('/api/user/signup is being called with body: ' + req.body);
-    // pull out username and password
-    var username = req.body.username;
+    // pull out user data
+    var email = req.body.email;
+    var first_name = req.body.firstName;
+    var last_name = req.body.lastName;
     var password = req.body.password;
 
-    // query for user
+    // query for user with email(unique)
     User.findOne({
         where: {
-          username: username
+          email: email
         }
       })
       .then(function (user) {
         // Console Log
-        console.log('user with username: ' + username + ' exists: ' + !!user);
+        console.log('user with email: ' + email + ' exists: ' + !!user);
         if (user) {
           // respond to client
           res.json({
             success: false,
-            message: 'Username ' + username + ' is already taken'
+            message: 'email: ' + email + ' is already in use'
           });
         } else {
           var hashing = Promise.promisify(bcrypt.hash);
@@ -50,12 +52,14 @@ module.exports = {
             .then(function (hash) {
               // create user in db
               User.create({
-                  username: username,
+                  email: email,
+                  first_name: first_name,
+                  last_name: last_name,
                   password: hash
                 })
                 .then(function (user) {
                   // Console Log
-                  console.log('user with username: ' + username + 'got created: ' + !!user);
+                  console.log('user with email: ' + email + ' got created: ' + !!user);
                   // create token
                   var token = jwt.sign(user, process.env.TOKEN_SECRET, {
                     expiresIn: '1h'
@@ -64,10 +68,12 @@ module.exports = {
                   // respond to client
                   res.json({
                     success: true,
-                    message: 'Successfully signed up as ' + username,
+                    message: 'Successfully signed up with ' + email,
                     token: token,
                     user: {
-                      username: username
+                      email: email,
+                      firstName: first_name,
+                      lastName: last_name
                     }
                   });
                 });
@@ -79,23 +85,23 @@ module.exports = {
   signin: function (req, res) {
     // Console Log
     console.log('/api/user/signin is being called with body: ' + req.body);
-    // pull out username and password
-    var username = req.body.username;
+    // pull out user data
+    var email = req.body.email;
     var password = req.body.password;
 
-    // query for user
+    // query for user with email(unique)
     User.findOne({
         where: {
-          username: username
+          email: email
         }
       })
       .then(function (user) {
-        console.log('user with username: ' + username + ' exists: ' + !!user);
+        console.log('user with email: ' + email + ' exists: ' + !!user);
         if (!user) {
           // respond to client
           res.json({
             success: false,
-            message: 'Wrong username or password'
+            message: 'Wrong email or password'
           });
         } else {
           // compare supplied password and password from database
@@ -106,27 +112,29 @@ module.exports = {
             }
             if (!success) {
               // Console Log
-              console.log('Wrong password supplied for username: ' + username);
+              console.log('Wrong password supplied for user with email: ' + email);
               // respond to client
               res.json({
                 success: false,
-                message: 'Wrong username or password'
+                message: 'Wrong email or password'
               });
             } else {
               // Console Log
-              console.log('User with username: ' + username + ' supplied correct credentials');
+              console.log('User with email: ' + email + ' supplied correct credentials');
               // create token
               var token = jwt.sign(user, process.env.TOKEN_SECRET, {
-                expiresInMinutes: 60
+                expiresIn: '1h'
               });
 
               // respond to client
               res.json({
                 success: true,
-                message: 'Successfully signed in as ' + username,
+                message: 'Successfully signed in with: ' + email,
                 token: token,
                 user: {
-                  username: username
+                  email: email,
+                  firstName: first_name,
+                  lastName: last_name
                 }
               });
             }

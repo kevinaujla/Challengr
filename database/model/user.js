@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
     // this location data will have to have a 
     // different data type at some point
     location: DataTypes.STRING,
-    phoro_url: DataTypes.STRING
+    photo_url: DataTypes.STRING
   }, {
     // allows for underscore convention for auto generated properties
     underscore: true
