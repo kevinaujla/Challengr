@@ -7,8 +7,9 @@ module dependency injections and route configurations
 
 angular.module('App', [
   'ui.router',
-  'ngResource',
   'ui.bootstrap',
+  'ngResource',
+  'ngMessages',
   'App.auth',
   'App.profile',
   'App.charity',
@@ -16,7 +17,7 @@ angular.module('App', [
   'App.alertService',
   'App.loadingService',
   'App.alertDirective',
-  'App.launch',
+  'App.home',
   'App.authFactory',
   'App.challengeFactory',
   ])
@@ -44,7 +45,7 @@ angular.module('App', [
     })
     .state('profile', {
       url : '/profile',
-      templateUrl: 'script/module/user/auth/profile.html',
+      templateUrl: 'script/module/user/profile/profile.html',
       controller: 'profileCtrl',
       controllerAs: 'profileCtrl',
       data: { authenticate: true }
@@ -90,11 +91,11 @@ angular.module('App', [
     })
 
     // Home Page
-    .state('launch', {
+    .state('home', {
       url : '/',
-      templateUrl: 'script/module/launch/launch.html',
-      controller: 'launchCtrl',
-      controllerAs: 'launchCtrl',
+      templateUrl: 'script/module/home/home.html',
+      controller: 'homeCtrl',
+      controllerAs: 'homeCtrl',
       data: { authenticate: true }
     });
 
