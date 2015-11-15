@@ -127,6 +127,11 @@ SCSS Variables
 /*** Fonts ***/
 /*** Fonts ***/
 /*** Padding ***/
+/***
+
+  Left Bar
+
+***/
 #leftBar {
   height: 100vh;
   background-color: #34495E;
@@ -140,6 +145,8 @@ SCSS Variables
   #leftBar #profileImg {
     width: 100%;
     border-radius: 50%; }
+  #leftBar li a i {
+    font-size: 200%; }
 
 /***
 
@@ -275,16 +282,7 @@ SCSS Variables
 
 /***
 
-  Concat all styles from folder
-
-  Module: reusable, modular parts of our design
-
-  Naming Convention:
-  .moduleName{}
-  .moduleName-subModule{}
-  .moduleName.stateName{}
-  .layout-layoutName{}
-  .layout-layoutName--subLayoutName{}
+  Alert
 
 ***/
 .alert-icon {
