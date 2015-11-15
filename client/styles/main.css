@@ -31,6 +31,7 @@ SCSS Variables
 
 ***/
 /*** Colors ***/
+/*** Fonts ***/
 /***
 
   HTML Element Mixins
@@ -42,12 +43,30 @@ SCSS Variables
 
 ***/
 /*** Colors ***/
+/*** Fonts ***/
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  color: #323133;
+  font-size: 14px;
+  font-weight: bold; }
+
+p {
+  color: #333333;
+  font-size: 13px;
+  font-weight: normal; }
+
+span {
+  color: #808080;
+  font-size: 13px;
+  font-weight: normal; }
+
 /***
 
 SCSS Variables
 
 ***/
 /*** Colors ***/
+/*** Fonts ***/
 /***
 
   HTML Element Mixins
@@ -59,6 +78,7 @@ SCSS Variables
 
 ***/
 /*** Colors ***/
+/*** Fonts ***/
 /***
 
   Concat all styles from folder
