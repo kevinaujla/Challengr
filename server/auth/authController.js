@@ -71,9 +71,9 @@ module.exports = {
                     message: 'Successfully signed up with ' + email,
                     token: token,
                     user: {
-                      email: email,
-                      firstName: first_name,
-                      lastName: last_name
+                      email: user.email,
+                      firstName: user.first_name,
+                      lastName: user.last_name
                     }
                   });
                 });
@@ -132,9 +132,9 @@ module.exports = {
                 message: 'Successfully signed in with: ' + email,
                 token: token,
                 user: {
-                  email: email,
-                  firstName: first_name,
-                  lastName: last_name
+                  email: user.email,
+                  firstName: user.first_name,
+                  lastName: user.last_name
                 }
               });
             }
