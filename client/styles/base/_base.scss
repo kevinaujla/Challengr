@@ -17,28 +17,13 @@
 @import 'mixins';
 
 body {
+  // Headers
+  @include headersDark();
 
-}
+  // Lists
+  @include lists();
 
-// 
-h1, h2, h3, h4, h5, h6 {
-  text-transform: uppercase;
-  color: $dark;
-  font-size: $lgFont;
-  font-weight: bold;
-}
-
-// 
-p {
-  color: $darkV2;
-  font-size: $smFont;
-  font-weight: normal;
-}
-
-// 
-span {
-  color: $light;
-  font-size: $smFont;
-  font-weight: normal;
+  // Font
+  font-family: $font;
 }
 

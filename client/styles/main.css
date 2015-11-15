@@ -30,8 +30,11 @@
 SCSS Variables
 
 ***/
+/*** BG Colors ***/
 /*** Colors ***/
 /*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
 /***
 
   HTML Element Mixins
@@ -42,31 +45,34 @@ SCSS Variables
 SCSS Variables
 
 ***/
+/*** BG Colors ***/
 /*** Colors ***/
 /*** Fonts ***/
-h1, h2, h3, h4, h5, h6 {
-  text-transform: uppercase;
-  color: #323133;
-  font-size: 14px;
-  font-weight: bold; }
-
-p {
-  color: #333333;
-  font-size: 13px;
-  font-weight: normal; }
-
-span {
-  color: #808080;
-  font-size: 13px;
-  font-weight: normal; }
+/*** Fonts ***/
+/*** Padding ***/
+body {
+  font-family: "Lato", sans-serif; }
+  body h1, body h2, body h3, body h4, body h5, body h6 {
+    text-transform: uppercase;
+    color: #323133;
+    font-size: 14px;
+    font-weight: bold; }
+  body ul {
+    padding-left: 0px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    list-style-type: none; }
 
 /***
 
 SCSS Variables
 
 ***/
+/*** BG Colors ***/
 /*** Colors ***/
 /*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
 /***
 
   HTML Element Mixins
@@ -77,8 +83,11 @@ SCSS Variables
 SCSS Variables
 
 ***/
+/*** BG Colors ***/
 /*** Colors ***/
 /*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
 /***
 
   Concat all styles from folder
@@ -95,6 +104,64 @@ SCSS Variables
 ***/
 /***
 
+SCSS Variables
+
+***/
+/*** BG Colors ***/
+/*** Colors ***/
+/*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
+/***
+
+  HTML Element Mixins
+
+***/
+/***
+
+SCSS Variables
+
+***/
+/*** BG Colors ***/
+/*** Colors ***/
+/*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
+#leftBar {
+  height: 100vh;
+  background-color: #34495E;
+  padding: 15px;
+  text-align: center; }
+  #leftBar h1, #leftBar h2, #leftBar h3, #leftBar h4, #leftBar h5, #leftBar h6 {
+    text-transform: uppercase;
+    color: #808080;
+    font-size: 14px;
+    font-weight: bold; }
+  #leftBar #profileImg {
+    width: 100%;
+    border-radius: 50%; }
+
+/***
+
+  Right Bar
+
+***/
+#rightBar {
+  background-color: white;
+  padding: 30px 30px 15px 15px; }
+
+/***
+
+  Main news feed
+
+***/
+#main {
+  background-color: white;
+  padding: 30px 15px 15px 30px;
+  color: blue; }
+
+/***
+
   Concat all styles from folder
 
   Module: reusable, modular parts of our design
@@ -107,6 +174,129 @@ SCSS Variables
   .layout-layoutName--subLayoutName{}
 
 ***/
+/***
+
+SCSS Variables
+
+***/
+/*** BG Colors ***/
+/*** Colors ***/
+/*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
+/***
+
+  HTML Element Mixins
+
+***/
+/***
+
+SCSS Variables
+
+***/
+/*** BG Colors ***/
+/*** Colors ***/
+/*** Fonts ***/
+/*** Fonts ***/
+/*** Padding ***/
+/***
+
+  Concat all styles from folder
+
+  Module: reusable, modular parts of our design
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/
+.challenge {
+  width: 100%;
+  margin: 15px 0; }
+  .challenge .challenge--heading {
+    background-color: #34495E; }
+    .challenge .challenge--heading .challenge--category {
+      display: inline;
+      color: white; }
+    .challenge .challenge--heading .challenge--time {
+      display: inline;
+      float: right;
+      color: #D2D6D9; }
+  .challenge .challenge--img {
+    width: 10%;
+    height: auto;
+    display: inline-block; }
+    .challenge .challenge--img .challenge--img--challenger, .challenge .challenge--img .challenge--img--challengee {
+      border-radius: 50%; }
+    .challenge .challenge--img .challenge--img--challenger {
+      position: relative;
+      width: 45px;
+      top: 3px;
+      z-index: 3; }
+    .challenge .challenge--img .challenge--img--challengee {
+      position: relative;
+      width: 70px;
+      top: -10px;
+      left: -30px;
+      z-index: 2; }
+  .challenge .challenge--info {
+    display: inline-block;
+    width: 75%; }
+    .challenge .challenge--info p:first-child {
+      color: #7D8995; }
+    .challenge .challenge--info p {
+      color: #D2D6D9; }
+  .challenge .challenge--social {
+    display: inline-block;
+    width: 14%; }
+    .challenge .challenge--social ul li {
+      display: inline;
+      float: right;
+      padding-left: 15px; }
+
+.challenge--complete .icon-check-mark-circle, .challenge--incomplete .icon-check-mark-circle {
+  color: #66D3E2; }
+
+.challenge--complete .icon-close-delete, .challenge--incomplete .icon-close-delete {
+  color: #FF7978; }
+
+.challenge--complete .challenge--category, .challenge--complete .challenge--info, .challenge--complete .challenge--time, .challenge--complete .challenge--social, .challenge--incomplete .challenge--category, .challenge--incomplete .challenge--info, .challenge--incomplete .challenge--time, .challenge--incomplete .challenge--social {
+  display: inline-block; }
+
+.challenge--complete .challenge--social--active, .challenge--incomplete .challenge--social--active {
+  display: inline-block; }
+  .challenge--complete .challenge--social--active ul li, .challenge--incomplete .challenge--social--active ul li {
+    display: inline;
+    float: right;
+    padding-left: 15px; }
+
+/***
+
+  Concat all styles from folder
+
+  Module: reusable, modular parts of our design
+
+  Naming Convention:
+  .moduleName{}
+  .moduleName-subModule{}
+  .moduleName.stateName{}
+  .layout-layoutName{}
+  .layout-layoutName--subLayoutName{}
+
+***/
+.alert-icon {
+  display: inline-block;
+  padding-right: 15px; }
+
+.alert-text {
+  display: inline-block; }
+
+i.icon-budicon-55 {
+  font-size: 250%; }
+
 /***
 
   Concat all styles from folder

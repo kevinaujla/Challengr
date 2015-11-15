@@ -12,3 +12,9 @@
   .layout-layoutName--subLayoutName{}
 
 ***/
+
+@import '../base/variables';
+@import '../base/mixins';
+
+@import 'challengeActive';
+@import 'alert';

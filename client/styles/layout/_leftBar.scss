@@ -1,0 +1,14 @@
+
+
+#leftBar{
+  height: 100vh;
+  background-color: $blue;
+  padding: $padding;
+  text-align: center;
+  @include headersLight();
+  #profileImg{
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+}

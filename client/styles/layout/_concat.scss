@@ -12,3 +12,10 @@
   .layout-layoutName--subLayoutName{}
 
 ***/
+
+@import '../base/variables';
+@import '../base/mixins';
+
+@import 'leftBar';
+@import 'rightBar';
+@import 'main';
