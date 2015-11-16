@@ -12,12 +12,8 @@ var bcrypt = require('bcrypt-nodejs');
 // module implementing authO jwt's
 var jwt = require('jsonwebtoken');
 
-// imports instance of database from database.js
-var db = require(__dirname + '/../../database/database.js');
-
 // import database models
 var User = db.import(__dirname + '/../../database/model/user.js');
-// var Challenge = db.import(path.join(__dirname, '/../../database/model/challenge.js'));
 
 module.exports = {
   signup: function (req, res) {
@@ -205,6 +201,8 @@ module.exports = {
         } else {
           // Console Log
           console.log('Successfully authenticated token, access granted');
+          // link user to request for further requests
+          req.user = decoded;
           // move on to next middleware
           next();
         }
