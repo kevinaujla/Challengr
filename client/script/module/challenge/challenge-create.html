@@ -5,76 +5,90 @@ create a new challenge
 
 -->
 
-Create Challenge
+<uib-tabset>
 
-<div class="col-md-10 col-md-offset-1">
-  <uib-tabset>
-
-    <uib-tab heading="Create Challenge">
+  <uib-tab heading="Create Challenge">
+    <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Enter Challenger..">
+          <ul class="friendList">
+            <li>
+              <img src="image/profileImg.jpg">
+              <p>Jordan Winkelman</p>
+            </li>
+            <li>
+              <img src="image/profileImg2.jpg">
+              <p>Users Name</p>
+            </li>
+          </ul>
         </div>
       </div>
+      <div class="col-md-6 challengeTypes">
+        <h1>Challenge Details</h1>
+        <ul class="challengeTypes">
+          <li><span class="badge">Design</span></li>
+          <li><span class="badge">Design</span></li>
+          <li><span class="badge badge--active">Design</span></li>
+          <li><span class="badge">Design</span></li>
+          <li><span class="badge">Design</span></li>
+          <li><span class="badge">Design</span></li>
+        </ul>
+        <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge"></textarea>
+      </div>
+    </div>
+    <div class="row tab--footer">
+      <button class="btn btn-primary">Next</button>
+    </div>
+  </uib-tab>
+
+  <uib-tab heading="Pick Charity">
+    <div class="row">
+      <div class="col-md-4 charity">
+        <h1>Charity Name</h1>
+        <p>Charity description and cause</p>
+        <a href="">redcross.com</a>
+        <img src="image/charity/redCross.png">
+      </div>
+      <div class="col-md-4 charity">
+        <h1>Charity Name</h1>
+        <p>Charity description and cause</p>
+        <a href="">salvationarmy.com</a>
+        <img src="image/charity/salvationArmy.png">
+      </div>
+      <div class="col-md-4 charity">
+        <h1>Charity Name</h1>
+        <p>Charity description and cause</p>
+        <a href="">salvationarmy.com</a>
+        <img src="image/charity/salvationArmy.png">
+      </div>
+    </div>
+    <div class="row tab--footer">
+      <button class="btn btn-default">Previous</button>
+      <button class="btn btn-primary">Next</button>
+    </div>
+  </uib-tab>
+
+  <uib-tab heading="Submit">
+    <div class="row">
+
       <div class="col-md-6">
-        Challenge Types
-      </div>
-    </uib-tab>
+        <h1>Select Payment Info</h1>
 
-    <uib-tab heading="Pick Charity">
-      <div class="col-md-4">
-        RedCross
-      </div>
-      <div class="col-md-4">
-        Salvation Army
-      </div>
-      <div class="col-md-4">
-        Kevin Aujla Foundation
-      </div>
-    </uib-tab>
+        <!-- Braintree Drop-In Payment UI -->
+        <div ng-include="'partial/payment.html'"></div>
 
-    <uib-tab heading="Submit">
-      <div class="row">
-        <div class="col-md-6">
-          <fieldset>
-            <legend>Payment Info</legend>
-            <div class="control-group">
-              <div class="controls form-group">
-                <input type="text" class="form-control" placeholder="Card Holder Name">
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls form-group">
-                <input type="text" class="form-control" placeholder="Visa">
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <div class="row">
-                  <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Month">
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Year">
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="CVC/CVV">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="col-md-6">
-          Billing
-        </div>
       </div>
 
-      <div class="row">
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="col-md-6">
+        <h1>OverView</h1>
       </div>
-    </uib-tab>
+    </div>
 
-  </uib-tabset>
-</div>
+    <div class="row tab--footer">
+      <button class="btn btn-default">Previous</button>
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </uib-tab>
+
+</uib-tabset>

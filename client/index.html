@@ -24,6 +24,7 @@
           <h5>Jordan</h5>
         </div>
         <ul>
+          <li><a ui-sref="newChallenge"><i class="icon-budicon-47"></i></a></li>
           <li><a ui-sref="home"><i class="icon-home"></i></a></li>
           <!-- <li><a ui-sref=""><i class="icon-heart-empty"></i></a></li> -->
           <li><a ui-sref="profile"><i class="icon-budicon-51"></i></a></li>
@@ -35,7 +36,7 @@
 
       <div id="rightBar" class="col-xs-3">
         <div class="alert alert-warning alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           <div class="alert-icon">
             <i class="icon-budicon-55"></i>
           </div>
@@ -49,7 +50,6 @@
     </div>
   </div>
 
-
   <!-- Bower Component Scripts -->
   <script src="lib/jquery/dist/jquery.min.js"></script>
   <script src="lib/angular/angular.min.js"></script>
@@ -58,8 +58,9 @@
   <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="lib/angular-resource/angular-resource.min.js"></script>
   <script src="lib/angular-messages/angular-messages.min.js"></script>
+  <script src="lib/braintree-web/dist/braintree.js"></script>
   <!-- Concatenated Scripts -->
   <script src="scripts.js"></script>
-</body>
 
+</body>
 </html>

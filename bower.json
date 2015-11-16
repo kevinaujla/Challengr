@@ -24,6 +24,7 @@
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "~0.14.3",
     "angular-resource": "~1.4.7",
-    "angular-messages": "~1.4.7"
+    "angular-messages": "~1.4.7",
+    "braintree-web": "~2.15.4"
   }
 }

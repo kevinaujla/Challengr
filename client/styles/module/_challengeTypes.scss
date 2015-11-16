@@ -1,0 +1,19 @@
+/***
+
+  Challenge Types/Categories
+
+***/
+
+ul.challengeTypes{
+  li{
+    display: inline-block;
+    span{
+      padding: $padding;
+      border-radius: 50px;
+    }
+    .badge--active{
+      background-color: #A0CECB;
+    }
+  }
+}
+

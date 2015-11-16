@@ -20,6 +20,7 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.0.5",
     "body-parser": "^1.14.1",
+    "braintree": "^1.30.0",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "gulp-connect": "^2.2.0",
