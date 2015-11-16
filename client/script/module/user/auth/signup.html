@@ -1,60 +1,58 @@
-<!-- 
+<!--
 
-signup.html 
+signup.html
 
 
 -->
-
 <div class="col-md-6 col-md-offset-3">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">SIGN UP</h3>
     </div>
     <div class="panel-body">
+      <a ui-sref="signin">Already a member? Sign In</a>
       <form name="signupForm" ng-submit="authCtrl.signup()">
-        <div class"row">
+        <div class "row">
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" ng-model="authCtrl.userName" class="form-control" placeholder="Name">
+              <input type="text" ng-model="authCtrl.firstName" class="form-control" placeholder="First Name">
             </div>
             <div class="form-group">
-              <input type="text" ng-model="authCtrl.userName" class="form-control" placeholder="Username">
+              <input type="text" ng-model="authCtrl.lastName" class="form-control" placeholder="Last Name">
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <input type="text" ng-model="authCtrl.userName" class="form-control" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <input type="text" ng-model="authCtrl.userName" class="form-control" placeholder="Confirm Password">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-8">
             <div class="checkbox">
               <label>
                 <input type="checkbox">I agree to the <a href="">terms of use</a> and <a href="">privacy policy</a>
               </label>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" ng-model="authCtrl.email" class="form-control" placeholder="E-mail">
+            </div>
+            <div class="form-group">
+              <input type="password" ng-model="authCtrl.password" class="form-control" placeholder="Password">
+            </div>
             <div class="form-group">
               <label for="country" class="control-label">
-                Country
               </label>
-              <div class="controls">
-                <select name="country" id="country">
-                  <option value=""></option>
-                  <option value="AR">Argentina</option>
-                </select>
+              <select name="country" id="country">
+                <option value="US">United States</option>
+              </select>
+              Country
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+            </div>
+            <div class "row">
+              <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-success">CREATE ACCOUNT</button>
               </div>
             </div>
           </div>
+        </div>
       </form>
-      </div>
-      <button type="submit" class="btn btn-default">CREATE ACCOUNT</button>
     </div>
   </div>
-
-  <a ui-sref="signin">Sign In</a>
+</div>

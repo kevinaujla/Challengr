@@ -27,7 +27,7 @@ angular.module('App', [
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider
-    .otherwise('/'); 
+    .otherwise('/');
 
   $stateProvider
     // User
@@ -51,7 +51,7 @@ angular.module('App', [
       controller: 'profileCtrl',
       controllerAs: 'profileCtrl',
       data: { authenticate: true }
-    }) 
+    })
 
     // Charities
     .state('charity', {
