@@ -17,7 +17,25 @@ angular.module('App.challenge', ['ui.bootstrap'])
 
   var self = this;
 
+  self.friends = [
+    {
+      name : 'Jordan Winkelman',
+      img : 'image/profileImg.jpg'
+    },
+    {
+      name : 'Kevin Aujla',
+      img : 'image/profileImg2.jpg'
+    }
+  ];
+
   self.payment = {};
+
+  /*
+    Load all friends for the user to filter and choose from
+  */
+  self.loadFriends = function(){
+    console.log('loading friends...');
+  };
 
   // get token
   self.getToken = function () {

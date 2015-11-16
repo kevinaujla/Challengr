@@ -4,25 +4,16 @@
 
 ***/
 
-// UTILITIES
+/*** UTILITIES ***/
 
-/*** bootstrap ***/
-// @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
-/*** foundation ***/
-// @import "bower_components/foundation/scss/foundation.scss";
-
-/*** Custom Bootstrap ***/
-// @import "bootstrap.scss";
-
-// Base
+/*** Base ***/
 @import "base/concat.scss";
-
-// Layout
+ 
+/*** Layout ***/
 @import "layout/concat.scss";
 
-// Module
+/*** Module ***/
 @import "module/concat.scss";
 
-// State
+/*** State ***/
 @import "state/concat.scss";

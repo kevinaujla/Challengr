@@ -6,7 +6,6 @@
 
 @import 'variables';
 
-// 
 @mixin headersDark(){
   h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
@@ -45,7 +44,7 @@
   ul{
     padding-left: 0px;
     margin-bottom: 0px;
-    text-transform: uppercase; // design specific
+    text-transform: uppercase;
     list-style-type: none;
   }
 }

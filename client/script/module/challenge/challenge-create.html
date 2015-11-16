@@ -4,20 +4,19 @@ challenge-create.html
 create a new challenge
 
 -->
+
 <uib-tabset class="stepNav threeWide">
+
+<uib-tabset class="steps">
   <uib-tab heading="Create Challenge">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Enter Challenger..">
-          <ul class="friendList">
-            <li>
-              <img src="image/profileImg.jpg">
-              <p>Jordan Winkelman</p>
-            </li>
-            <li>
-              <img src="image/profileImg2.jpg">
-              <p>Users Name</p>
+          <ul class="friendList" ng-init="challengeNC.loadFriends()">
+            <li ng-repeat="friend in challengeNC.friends">
+              <img ng-src="{{friend.img}}">
+              <p>{{friend.name}}</p>
             </li>
           </ul>
         </div>

@@ -8,6 +8,7 @@ var nodemon = require('gulp-nodemon');
 var notify = require('gulp-notify');
 var connect = require('gulp-connect');
 var livereload = require('gulp-livereload');
+var autoprefixer = require('gulp-autoprefixer');
 
 var jsScripts = ['All javascript files that have to be concated in specific order'];
 
@@ -85,9 +86,27 @@ gulp.task('sass', function() {
     .pipe(connect.reload());
 });
 
+// Autoprefixer
+gulp.task('autoprefixer', function () {
+  return gulp.src('./client/styles/main.css')
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(gulp.dest('./client/'));
+});
+
+gulp.task('nodemon', function(){
+  nodemon({
+    script: 'server/server.js', 
+    ext: 'js html',
+    env: { 'NODE_ENV': 'development' }
+  });
+});
+
 // Watcher
 gulp.task('watcher', function() {
-  gulp.watch('./client/styles/**/*.scss', ['sass']);
+  gulp.watch('./client/styles/**/*.scss', ['sass', 'autoprefixer']);
   gulp.watch('./client/script/**/*.html', ['html']);
   gulp.watch('./client/index.html', ['html']);
   gulp.watch('./client/script/**/*.js', ['jshint', 'scripts']);
@@ -95,20 +114,4 @@ gulp.task('watcher', function() {
 });
 
 // Run this command while developing
-gulp.task('default', function(){
-  // listen for changes
-  livereload.listen();
-  // configure nodemon
-  nodemon({
-    // the script to run the app
-    script: 'server/server.js',
-    ext: 'js'
-  }).on('restart', function(){
-    // when the app has restarted, run livereload.
-    gulp.src('server/server.js')
-      .pipe(livereload())
-      .pipe(notify('Reloading page, please wait...'));
-  })
-});
-
-gulp.task('front', ['watcher', 'connect'])
+gulp.task('default', ['watcher', 'nodemon']);

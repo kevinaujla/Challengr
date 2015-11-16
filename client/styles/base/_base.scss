@@ -17,16 +17,17 @@
 @import 'mixins';
 
 body {
-  // Headers
+  /*** Headers ***/
   @include headersDark();
 
-  // Lists
+  /*** Lists ***/
   @include lists();
 
-  // Links
+  /*** Links ***/
   @include links(); 
 
-  // Font
+  /*** Font ***/
   font-family: $font;
 }
+
 
