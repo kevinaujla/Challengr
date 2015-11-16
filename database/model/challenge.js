@@ -6,17 +6,41 @@ challenge model/schema
 */
 
 // model for challenge table
-module.exports = function (sequelize, Datatypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('challenge', {
-    challenge_response: Datatypes.STRING,
-    challenge_completion: Datatypes.STRING,
-    challenge_title: Datatypes.STRING,
-    challenge_description: Datatypes.STRING,
-    charity_name: Datatypes.STRING,
-    donation_amount: Datatypes.INTEGER,
-    time_frame: Datatypes.DATE
-  }, {
-    // allows for underscore convention for auto generated properties
-    underscore: true
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: DataTypes.TEXT,
+    charityAmount: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    notCompleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    likes: {
+      type: DataTypes.BIGINT,
+      defaultValue: 0
+    },
+    expiresDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    issuedDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    completedDate: DataTypes.DATE
   });
 };
