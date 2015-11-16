@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl', function($scope, $window, $location, AuthFactory){
+.controller('authCtrl', function ($scope, $window, $location, AuthFactory) {
 
   var self = this;
   self.failedAttempt = false;
@@ -15,30 +15,30 @@ angular.module('App.auth', [])
   self.Loginorout = AuthFactory;
 
 
-  self.signup = function() {
+  self.signup = function () {
     console.log('user object is:', self);
     AuthFactory.signup(self)
-      .then(function(token) {
+      .then(function (token) {
         $window.localStorage.setItem('com.challengr', token);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         self.failedAttempt = true;
         console.log('signup error:', err);
       });
   };
 
-  self.signin = function() {
+  self.signin = function () {
     console.log('user signing in:', self);
-      AuthFactory.signin(self)
-        .then(function(token) {
-          AuthFactory.loginorout = "Logout"
-        })
-        .catch(function(err) {
-          self.failedLogin = true;
-          console.log(err);
-        });
+    AuthFactory.signin(self)
+      .then(function (token) {
+        AuthFactory.loginorout = "Logout"
+        $location.path('/home');
+      })
+      .catch(function (err) {
+        self.failedLogin = true;
+        console.log(err);
+      });
   }
-
 
 
 

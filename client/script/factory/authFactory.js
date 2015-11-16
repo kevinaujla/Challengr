@@ -31,24 +31,24 @@ angular.module('App.authFactory', [])
       });
   };
 
-  var signout = function() {
+  var signout = function () {
     $window.localStorage.removeItem('com.challengr');
     $window.localStorage.removeItem('com.challengr.name');
     $window.localStorage.removeItem('com.challengr.date')
-      $location.path('/signin');
+    $location.path('/signin');
   };
 
-  var isAuth = function() {
-    if(!window.localStorage.getItem('com.challengr')){
+  var isAuth = function () {
+    if (!window.localStorage.getItem('com.challengr')) {
       return false;
     }
     loginorout = "Logout"
-    if(new Date() - Date.parse($window.localStorage.getItem('com.challengr.date'))>1800000){
+    if (new Date() - Date.parse($window.localStorage.getItem('com.challengr.date')) > 1800000) {
       $window.localStorage.removeItem('com.challengr');
       $window.localStorage.removeItem('com.challengr.name');
       $window.localStorage.removeItem('com.challengr.date');
       return false;
-    }else{
+    } else {
       $window.localStorage.setItem('com.challengr.date', new Date());
       return true;
     }
