@@ -92,4 +92,4 @@ gulp.task('watcher', function() {
 });
 
 // Run this command while developing
-gulp.task('default', ['connect', 'watcher']);
+gulp.task('default', ['watcher']);

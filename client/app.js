@@ -20,6 +20,7 @@ angular.module('App', [
   'App.home',
   'App.authFactory',
   'App.challengeFactory',
+  'App.braintreeFactory',
   ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
