@@ -9,23 +9,42 @@ manage payments, signout, manage user information
 
 <uib-tabset>
 
-  <uib-tab heading="Profile">
-    
-
+  <uib-tab heading="Profile" ng-init="profileCtrl.getUser()">
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" placeholder="first name">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" placeholder="last name">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" placeholder="email">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" placeholder="password">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" class="form-control" placeholder="location">
+    </div>
+    <button class="btn btn-warning" ng-click="profileCtrl.updateUser()">Update</button>
   </uib-tab>
 
-  <uib-tab heading="Billing Info">
+  <uib-tab heading="Billing Info" ng-init="profileCtrl.getBilling()">
     <ul class="list-group billings">
       <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
       <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
       <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
-      <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
+      <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundationss</span></li>
     </ul>
   </uib-tab>
 
   <uib-tab heading="Settings">
     <!-- Sign Out -->
-    <button class="btn btn-danger">Sign Out</button>
+    <button class="btn btn-danger" ng-click="profileCtrl.signout()">Sign Out</button>
   </uib-tab>
 
 </uib-tabset>

@@ -13,5 +13,8 @@ module.exports = function (app) {
   app.get('/clientToken', braintreeController.generateToken);
 
   app.post('/checkout', braintreeController.checkout);
+  
+  app.post('/createCustomer', braintreeController.createCustomer);
+  app.post('/updateCustomer', braintreeController.updateCustomer);
 
 };
