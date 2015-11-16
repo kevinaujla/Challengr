@@ -66,7 +66,6 @@ angular.module('App.challenge', ['ui.bootstrap'])
     }
   ];
 
-
   self.challengeDescription = '';
 
   self.payment = {};
@@ -94,7 +93,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
   };
 
   /*
-    Load all friends from server for the user to filter and choose from for who they want to challenge
+    Load all friends for the user to filter and choose from
   */
   self.loadFriends = function(){
     console.log('loading friends...');
