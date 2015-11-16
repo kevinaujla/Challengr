@@ -6,7 +6,9 @@ express/node server
 */
 
 // load environment variables from .env file
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({
+  path: __dirname + '/../.env'
+});
 
 // create express app
 var express = require('express'); 
@@ -30,6 +32,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+var db = require(__dirname + '/../database/database.js');
+
 // serving static files from client folder
 app.use(express.static(__dirname + '/../client'));
 
@@ -46,8 +50,14 @@ var challengeRouter = express.Router();
 app.use('/api/braintree', braintreeRouter);
 app.use('/api/auth', authRouter);
 // everything after here is protected and checks for jot
+// order will be importante here as the authRouter protects all future routes
+// injecting authRouter and database for setup of routes
+require(__dirname + '/auth/authRouter.js')(authRouter, db, app);
+
 // configuring router to serve all requests to 'api/challenge'
-app.use('/api/challenge', challengeRouter)
+app.use('/api/challenge', challengeRouter);
+// injecting challengeRouter and database for setup of routes
+require(__dirname + '/challenge/challengeRouter.js')(challengeRouter, db);
 
 // order will be important here as the authRouter protects all future routes
 // injecting authRouter for setup of routes

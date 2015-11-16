@@ -5,10 +5,10 @@ specifying routes for /api/auth
 
 */
 
-var authCtrl = require(__dirname + '/authCtrl.js');
-
-module.exports = function (app) {
+module.exports = function (app, db, mainApp) {
   // app === userRouter injected from server.js
+  
+  var authCtrl = require(__dirname + '/authCtrl.js')(db);
 
   // API endpoint for signup requests
   app.post('/signup', authCtrl.signup);
@@ -17,5 +17,5 @@ module.exports = function (app) {
   // API endpoint for authenticating user
   app.get('/authenticate', authCtrl.checkUser);
   // middleware for all routes after here
-  app.use(authCtrl.authenticate);
+  mainApp.use(authCtrl.authenticate);
 };

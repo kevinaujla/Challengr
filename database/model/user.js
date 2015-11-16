@@ -9,11 +9,11 @@ user model/schema
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('user', {
     // default size for STRING is 255 bits
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -29,8 +29,5 @@ module.exports = function (sequelize, DataTypes) {
     // different data type at some point
     // location: DataTypes.STRING,
     // photo_url: DataTypes.STRING
-  }, {
-    // allows for underscore convention for auto generated properties
-    underscore: true
   });
 };
