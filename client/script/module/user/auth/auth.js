@@ -10,10 +10,6 @@ angular.module('App.auth', [])
 .controller('authCtrl', function ($scope, $window, $location, AuthFactory) {
 
   var self = this;
-  self.failedAttempt = false;
-  self.failedLogin = false;
-  self.Loginorout = AuthFactory;
-
 
   self.signup = function () {
     console.log('user object is:', self);
@@ -22,7 +18,6 @@ angular.module('App.auth', [])
         $window.localStorage.setItem('com.challengr', token);
       })
       .catch(function (err) {
-        self.failedAttempt = true;
         console.log('signup error:', err);
       });
   };
@@ -31,11 +26,9 @@ angular.module('App.auth', [])
     console.log('user signing in:', self);
     AuthFactory.signin(self)
       .then(function (token) {
-        AuthFactory.loginorout = "Logout"
         $location.path('/home');
       })
       .catch(function (err) {
-        self.failedLogin = true;
         console.log(err);
       });
   }
