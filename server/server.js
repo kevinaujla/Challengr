@@ -22,8 +22,6 @@ var bodyParser = require('body-parser');
 // choose process port if applicable
 var port = process.env.PORT || 3000;
 
-
-
 // Middleware
 app.use(morgan('dev'));
 // parses application/x-www-form-urlencoded from forms
@@ -37,8 +35,6 @@ var db = require(__dirname + '/../database/database.js');
 // serving static files from client folder
 app.use(express.static(__dirname + '/../client'));
 
-
-
 // Routing
 // creating router for all requests to '/api/auth'
 var authRouter = express.Router();
@@ -48,9 +44,9 @@ var challengeRouter = express.Router();
 
 // configuring router to server all requests to 'api/auth'
 app.use('/api/braintree', braintreeRouter);
+require(__dirname + '/braintree/braintreeRouter.js')(braintreeRouter);
 app.use('/api/auth', authRouter);
-// everything after here is protected and checks for jot
-// order will be importante here as the authRouter protects all future routes
+// everything after here is protected and checks for jwt
 // injecting authRouter and database for setup of routes
 require(__dirname + '/auth/authRouter.js')(authRouter, db, app);
 
@@ -58,13 +54,6 @@ require(__dirname + '/auth/authRouter.js')(authRouter, db, app);
 app.use('/api/challenge', challengeRouter);
 // injecting challengeRouter and database for setup of routes
 require(__dirname + '/challenge/challengeRouter.js')(challengeRouter, db);
-
-// order will be important here as the authRouter protects all future routes
-// injecting authRouter for setup of routes
-require(__dirname + '/braintree/braintreeRouter.js')(braintreeRouter);
-require(__dirname + '/auth/authRouter.js')(authRouter);
-// injecting challengeRouter for setup of routes
-require(__dirname + '/challenge/challengeRouter.js')(challengeRouter);
 
 // start server to listen on localhost:port
 app.listen(port);
