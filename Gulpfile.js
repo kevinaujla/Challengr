@@ -4,7 +4,10 @@ var stylish = require('jshint-stylish');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var nodemon = require('gulp-nodemon');
+var notify = require('gulp-notify');
 var connect = require('gulp-connect');
+var livereload = require('gulp-livereload');
 
 var jsScripts = ['All javascript files that have to be concated in specific order'];
 
@@ -92,4 +95,20 @@ gulp.task('watcher', function() {
 });
 
 // Run this command while developing
-gulp.task('default', ['watcher']);
+gulp.task('default', function(){
+  // listen for changes
+  livereload.listen();
+  // configure nodemon
+  nodemon({
+    // the script to run the app
+    script: 'server/server.js',
+    ext: 'js'
+  }).on('restart', function(){
+    // when the app has restarted, run livereload.
+    gulp.src('server/server.js')
+      .pipe(livereload())
+      .pipe(notify('Reloading page, please wait...'));
+  })
+});
+
+gulp.task('front', ['watcher', 'connect'])

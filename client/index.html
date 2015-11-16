@@ -22,19 +22,26 @@
         <div>
           <img id="profileImg" src="image/profileImg.jpg">
           <h5>Jordan</h5>
+          <span class="bar"></span>
         </div>
-        <ul>
-          <li><a ui-sref="newChallenge"><i class="icon-budicon-47"></i></a></li>
-          <li><a ui-sref="home"><i class="icon-home"></i></a></li>
-          <!-- <li><a ui-sref=""><i class="icon-heart-empty"></i></a></li> -->
-          <li><a ui-sref="profile"><i class="icon-budicon-51"></i></a></li>
-        </ul>
+        <div>
+          <a ui-sref="newChallenge">
+            <i class="icon-budicon-47"></i>
+          </a>
+          <a ui-sref="home">
+            <i class="icon-home"></i>
+          </a>
+          <a ui-sref="profile">
+            <i class="icon-budicon-51"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Inject Views -->
       <div id="main" class="col-xs-8" ui-view></div>
 
       <div id="rightBar" class="col-xs-3">
+        
         <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
           <div class="alert-icon">
@@ -45,6 +52,22 @@
             <p>Do something crazy...</p>
           </div>
         </div>
+
+        <!-- Display challenges received -->
+        <ul class="list-group userChallenges">
+          <li class="list-group-item">
+            <img src="image/profileImg.jpg">
+            <div>
+              <h1>Workout</h1>
+              <p>Challenge details here</p>
+            </div>
+          </li>
+          <li class="list-group-item">
+            Dapibus ac facilisis in
+          </li>
+          <li class="list-group-item">Morbi leo risus</li>
+        </ul>
+
       </div>
 
     </div>
