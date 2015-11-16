@@ -6,7 +6,7 @@ express/node server
 */
 
 // load environment variables from .env file
-require('dotenv').config({path : __dirname + '/../.env'});
+require('dotenv').config({path: __dirname + '/../.env'});
 
 // create express app
 var express = require('express'); 
