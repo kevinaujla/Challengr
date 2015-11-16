@@ -17,6 +17,7 @@ angular.module('App', [
   'App.alertService',
   'App.loadingService',
   'App.alertDirective',
+  'App.challengeDirective',
   'App.home',
   'App.authFactory',
   'App.challengeFactory',
