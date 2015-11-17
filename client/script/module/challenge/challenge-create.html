@@ -24,17 +24,7 @@ create a new challenge
       </div>
       <div class="col-md-6 challengeTypes">
         <h1>Challenge Details</h1>
-        <div ng-controller="ButtonsCtrl">
-          <pre>{{radioModel || 'null'}}</pre>
-          <div class="btn-group">
-            <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Basketball'">Basketball</label>
-            <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Education'">Education</label>
-            <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Gym'">Gym</label>
-             <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Drinking'">Drinking</label>
-            <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Trending'">Trending</label>
-            <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Swimming'">Swimming</label>
-          </div>
-        </div>
+       <div ng-include="'partial/challengeTypeRadio.html'"></div>
         <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge"></textarea>
       </div>
     </div>
