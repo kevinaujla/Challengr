@@ -5,7 +5,7 @@ CRUD for challenges
 
 */
 
-angular.module('App.challenge', ['ui.bootstrap'])
+angular.module('App.challenge', [])
 
 .controller('challengeListCtrl', ['challengeFactory', function (challengeFactory) {
 
