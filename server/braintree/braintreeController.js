@@ -5,8 +5,6 @@ configuring routes for authRouter
 
 */
 
-// load environment variables from .env file
-require('dotenv').config({path : __dirname + '/../../.env'});
 // promise library to avoid callback hell
 var Promise = require('bluebird');
 // braintree payment API
