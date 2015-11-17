@@ -11,10 +11,6 @@ module.exports = function (app, express) {
   // parsing HTTP request bodys 
   var bodyParser = require('body-parser');
 
-var passport = require('passport');  // auth via passport
-var FacebookStrategy = require('passport-facebook').Strategy;  // FB auth via passport
-
-
   // set development mode for morgan regarding logging format
   app.use(morgan('dev'));
   // parses application/x-www-form-urlencoded from html forms

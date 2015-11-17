@@ -18,7 +18,7 @@ module.exports = function (app, express, db) {
 
   //handling all fb authentication 
   var fbAuthRouter=express.Router();
-  require(__dirname + '/../fbAuth/fbAuthRouter.js')(authRouter, db, app);
+  require(__dirname + '/../fbAuth/fbAuthRouter.js')(fbAuthRouter, db, app);
   app.use('/auth/facebook',fbAuthRouter);
 
   // handling all braintree payment routes

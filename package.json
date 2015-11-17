@@ -31,6 +31,8 @@
     "gulp-connect": "^2.2.0",
     "jsonwebtoken": "^5.4.1",
     "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
     "protractor": "^2.5.1",
     "sequelize": "^3.13.0",
     "sqlite3": "^3.1.1"
