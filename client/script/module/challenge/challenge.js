@@ -28,7 +28,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
       img : 'image/profileImg2.jpg'
     },
     {
-      name : 'Faisal Alla',
+      name : 'Faisal Aujla',
       img : 'image/profileImg2.jpg'
     },
     {
@@ -40,7 +40,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
       img : 'image/profileImg2.jpg'
     },
     {
-      name : 'Faisal Alla',
+      name : 'Faisal Aujla',
       img : 'image/profileImg2.jpg'
     }
   ];

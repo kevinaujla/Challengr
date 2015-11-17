@@ -7,7 +7,7 @@ shares radio button functionality
 
 angular.module('App.radio', [])
 
-.controller('ButtonsCtrl', ['$scope', function ($scope) {
+.controller('buttonsCtrl', ['$scope', function ($scope) {
 
   $scope.radioModel = null;
 
