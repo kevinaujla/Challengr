@@ -115,7 +115,7 @@ angular.module('App.challenge', [])
   };
 
   /*
-    Add challenge description, challenge category
+    Add information to service object
   */
   self.save = function(){
     // console log
@@ -161,6 +161,8 @@ angular.module('App.challenge', [])
 
   var self = this;
 
+  self.charity = null;
+
   self.charities = [
     {
       name : 'Charity Name',
@@ -183,16 +185,23 @@ angular.module('App.challenge', [])
   ];
 
   /*
-    
+    Choose Charity to donate to
   */
-  self.saveChallengeInfo = function(){
-    // console log
-    console.log('add challenge information...');
-
+  self.chooseCharity = function(charity){
+    console.log('pick charity...');
+    self.charity = charity;
   };
 
-  self.doSomething = function(){
-    console.log('doing something...');
+  /*
+    Add information to service object
+  */
+  self.info = function(){
+    // console log
+    console.log('add challenge information...');
+    if (self.charity === null) {
+      console.log('charity not selected...');
+    }
+    createChallengeService.charity = self.charity;
   };
 
 }])
@@ -206,7 +215,7 @@ angular.module('App.challenge', [])
   /*
     
   */
-  self.saveChallengeInfo = function(){
+  self.info = function(){
     // console log
     console.log('add challenge information...');
 

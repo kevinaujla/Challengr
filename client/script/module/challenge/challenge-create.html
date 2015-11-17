@@ -37,7 +37,7 @@ Parent Controller : challengeNC
 
   <uib-tab heading="Pick Charity" active="challengeNC.tabs[1]">
     <div class="row" ng-controller="challengeStep2Ctrl as step2">
-      <div class="col-md-4 charity" ng-repeat="charity in step2.charities">
+      <div class="col-md-4 charity" ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(self)">
         <h1>{{charity.name}}</h1>
         <p>{{charity.description}}</p>
         <a href="{{charity.website}}">{{charity.website}}</a>
