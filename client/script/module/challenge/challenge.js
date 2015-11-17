@@ -5,7 +5,7 @@ CRUD for challenges
 
 */
 
-angular.module('App.challenge', ['ui.bootstrap'])
+angular.module('App.challenge', [])
 
 .controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function(createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
 
@@ -69,11 +69,11 @@ angular.module('App.challenge', ['ui.bootstrap'])
 }])
 
 
-.controller('challengeStep1Ctrl', ['createChallengeService', function(createChallengeService){
+.controller('challengeStep1Ctrl', ['createChallengeService', 'radioButtonService', function(createChallengeService, radioButtonService){
 
   var self = this;
 
-  self.challengeDescription = '';
+  self.description = '';
 
   // This is dummy data and needs to be removed once server function works
   self.friends = [
@@ -125,9 +125,10 @@ angular.module('App.challenge', ['ui.bootstrap'])
   /*
     Add challenge description, challenge category
   */
-  self.saveChallengeInfo = function(){
+  self.save = function(){
     // console log
     console.log('add challenge information...');
+    console.log('buttonsCtrl : ', radioButtonService.radio);
     // 
     // createChallengeService.challenge.description = self.challengeDescription;
   };

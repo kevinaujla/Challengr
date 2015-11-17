@@ -18,7 +18,7 @@ Parent Controller : challengeNC
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Enter Challenger.." ng-model="friendSearch">
           <ul class="friendList" ng-init="step1.loadFriends()">
-            <li ng-repeat="friend in step1.friends | filter : friendSearch | limitTo : 3" ng-click="step1.addFriend(friend)">
+            <li ng-repeat="friend in step1.friends | filter : friendSearch | limitTo : 5" ng-click="step1.addFriend(friend)">
               <img ng-src="{{friend.img}}">
               <p>{{friend.name}}</p>
             </li>
@@ -28,7 +28,8 @@ Parent Controller : challengeNC
       <div class="col-md-6 challengeTypes">
         <h1>Challenge Details</h1>
         <div ng-include="'partial/challengeTypeRadio.html'"></div>
-        <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge" ng-model="step1.challengeDescription"></textarea>
+        <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge" ng-model="step1.description"></textarea>
+        <button ng-click="step1.save()">Save</button>
       </div>
     </div>
   </uib-tab>

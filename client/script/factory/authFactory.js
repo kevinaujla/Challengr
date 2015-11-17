@@ -44,9 +44,6 @@ angular.module('App.authFactory', [])
     }
   };
 
-
-
-
   return {
     signup: signup,
     signin: signin,
@@ -54,19 +51,4 @@ angular.module('App.authFactory', [])
     isAuth: isAuth
   };
 
-}])
-
-.factory('attachToken', function($window){
-  console.lot('in attachToken...');
-  return {
-    request : function(object){
-      var jwt = $window.localStorage.getItem('com.challengr');
-      if (jwt) {
-        object.headers['x-access-token'] = jwt;
-      }
-      object.headers['Allow-Control-Allow-Origin'] = '*';
-      return object;
-    }
-  };
-});
-
+}]);
