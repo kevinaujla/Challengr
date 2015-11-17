@@ -1,8 +1,15 @@
+/*
+
+radioButton.js
+shares radio button functionality 
+
+*/
+
 angular.module('App.radio', [])
 
 .controller('ButtonsCtrl',['$scope', function ($scope) {
 
-  $scope.radioModel = 'Middle';
+  $scope.radioModel = null;
 
   $scope.checkModel = {
     left: false,

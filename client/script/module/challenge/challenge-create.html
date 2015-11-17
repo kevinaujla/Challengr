@@ -67,16 +67,14 @@ create a new challenge
       </div>
       <div class="col-md-6">
         <h1>OverView</h1>
-        <div class="btn-group" role="group" aria-label="...">
-          <button type="button" class="btn btn-default">25&#162;</button>
-          <button type="button" class="btn btn-default">50&#162;</button>
-          <button type="button" class="btn btn-default">100&#162;</button>
-        </div>
+        <div ng-include="'partial/paymentAmount.html'"></div>
       </div>
     </div>
     <div class="row tab--footer">
       <button class="btn btn-default">Previous</button>
       <button class="btn btn-primary">Submit</button>
     </div>
+
+
   </uib-tab>
 </uib-tabset>
