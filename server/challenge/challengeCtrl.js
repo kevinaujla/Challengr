@@ -59,7 +59,7 @@ module.exports = function (db) {
 
     retrieveAll: function (req, res) {
       // Console Log 
-      console.log('api/challenge is being called: retrieving all challenges');
+      console.log('api/challenge retrieving all challenges');
       // query for all challenges
       db.Challenge.findAll({
           attributes: ['id',
