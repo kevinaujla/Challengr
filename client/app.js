@@ -11,6 +11,7 @@ angular.module('App', [
   'ngResource',
   'ngMessages',
   'angularMoment',
+  'angular-momentjs',
   'App.auth',
   'App.profile',
   'App.charity',
@@ -28,7 +29,11 @@ angular.module('App', [
   'App.createChallengeService',
 ])
 
-.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$momentProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $momentProvider) {
+
+  $momentProvider
+    .asyncLoading(true)
+    .scriptUrl('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js');
 
   $urlRouterProvider
     .otherwise('/');
