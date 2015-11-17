@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl',['$window', '$state', 'authFactory', function ($window, $state, authFactory) {
+.controller('authCtrl',['$window', '$state', 'authFactory', 'braintreeFactory', function ($window, $state, authFactory, braintreeFactory) {
 
   var self = this;
 
@@ -23,6 +23,10 @@ angular.module('App.auth', [])
           console.log('signed up successfully... : ', data);
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
+
+          // Call Braintree create customer function
+          self.createBraintreeCustomer();
+
           // redirect
           $state.go('home');
         } else {
@@ -58,6 +62,22 @@ angular.module('App.auth', [])
       })
       .catch(function (err) {
         console.log(err);
+      });
+  };
+
+  /*
+    Braintree create customer account
+  */
+  self.createBraintreeCustomer = function(){
+    braintreeFactory.createCustomer(self)
+      .then(function(data){
+        // console log
+        console.log('created braintree customer... : ', data);
+        // set token
+        $window.localStorage.setItem('com.braintree', data.customer);
+      })
+      .catch(function(err){
+        console.log('error creating braintree customer...');
       });
   };
 

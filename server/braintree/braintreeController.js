@@ -58,17 +58,15 @@ module.exports = {
   */
   createCustomer: function(req, res){
     // console log
-    console.log('create new customer... ', req.body.user, ' with nonce : ', req.body.payment_method_nonce);
+    console.log('create new braintree customer... ', req.body);
     // get user object
     var user = req.body.user;
-    var nonce = req.body.payment_method_nonce;
-    // create new customer with payment method
+    // create new customer
     gateway.customer.create({
-      firstName: user.fname,
-      lastName: user.lname,
+      firstName: user.firstName,
+      lastName: user.lastName,
       // company: "Braintree",
-      email: user.email,
-      paymentMethodNonce: nonce
+      email: user.email
     }, function (err, result) {
       if (err) {
         console.log('error creating customer : ', err);
