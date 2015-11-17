@@ -1,3 +1,10 @@
+/*
+
+fbAuthCtrl.js
+configuring routes for fbAuthRouter
+
+*/
+
 
     // ensureAuthenticated = function (req, res, next) { // make sure user auth is valid, use this for anything that needs to be protected
     //   if (req.isAuthenticated()) {
