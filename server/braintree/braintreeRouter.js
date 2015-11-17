@@ -5,7 +5,7 @@ specifying routes for braintreeRouter
 
 */
 
-var braintreeController = require('./braintreeController.js');
+var braintreeController = require(__dirname + '/braintreeController.js');
 
 module.exports = function (app) {
   // app === braintreeRouter injected from server.js

@@ -82,11 +82,14 @@ module.exports = function (db) {
             model: db.User,
             as: 'Challenged',
             attributes: ['id', 'firstName', 'lastName', 'email']
-          }],
-          raw: true
+          }]
         })
         .then(function (challenges) {
-          res.json(challenges);
+          allChallenges = [];
+          for (var i = 0; i < challenges.length; i++) {
+            allChallenges.push(challenges[i].dataValues);
+          }
+          res.json(allChallenges);
         });
     }
   };
