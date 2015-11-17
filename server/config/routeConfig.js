@@ -7,7 +7,7 @@ configure routes for our app
 
 module.exports = function (app, express, db) {
   // serving static files from client folder
-  app.use(express.static(__dirname + '/../client'));
+  app.use(express.static(__dirname + '/../../client'));
 
   // handling all authentication (signup, signin, route protection)
   var authRouter = express.Router();
