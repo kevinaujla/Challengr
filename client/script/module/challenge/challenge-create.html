@@ -12,9 +12,9 @@ create a new challenge
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter Challenger..">
+          <input type="text" class="form-control" placeholder="Enter Challenger.." ng-model="friendSearch">
           <ul class="friendList" ng-init="challengeNC.loadFriends()">
-            <li ng-repeat="friend in challengeNC.friends">
+            <li ng-repeat="friend in challengeNC.friends | filter : friendSearch | limitTo : 3" ng-click="challengeNC.addFriend(friend)">
               <img ng-src="{{friend.img}}">
               <p>{{friend.name}}</p>
             </li>
@@ -23,33 +23,24 @@ create a new challenge
       </div>
       <div class="col-md-6 challengeTypes">
         <h1>Challenge Details</h1>
-       <div ng-include="'partial/challengeTypeRadio.html'"></div>
-        <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge"></textarea>
+
+        <div ng-include="'partial/challengeTypeRadio.html'"></div>
+
+        <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge" ng-model="challengeNC.challengeDescription"></textarea>
+
       </div>
     </div>
     <div class="row tab--footer">
-      <button class="btn btn-primary">Next</button>
+      <button class="btn btn-primary" ng-click="challengeNC.saveChallengeInfo()">Next</button>
     </div>
   </uib-tab>
   <uib-tab heading="Pick Charity">
     <div class="row">
-      <div class="col-md-4 charity">
-        <h1>Charity Name</h1>
-        <p>Charity description and cause</p>
-        <a href="">redcross.com</a>
-        <img src="image/charity/redCross.png">
-      </div>
-      <div class="col-md-4 charity">
-        <h1>Charity Name</h1>
-        <p>Charity description and cause</p>
-        <a href="">salvationarmy.com</a>
-        <img src="image/charity/salvationArmy.png">
-      </div>
-      <div class="col-md-4 charity">
-        <h1>Charity Name</h1>
-        <p>Charity description and cause</p>
-        <a href="">salvationarmy.com</a>
-        <img src="image/charity/salvationArmy.png">
+      <div class="col-md-4 charity" ng-repeat="charity in challengeNC.charities">
+        <h1>{{charity.name}}</h1>
+        <p>{{charity.description}}</p>
+        <a href="{{charity.website}}">{{charity.website}}</a>
+        <img ng-src="{{charity.img}}">
       </div>
     </div>
     <div class="row tab--footer">
