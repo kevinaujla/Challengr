@@ -7,11 +7,17 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', function (challengeFactory, $scope) {
+.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', function (challengeFactory, $scope, $moment) {
 
   var self = this;
 
   self.challenges = [];
+
+  // If you set asyncLoading to true then angular-momentjs 
+  // will inject the script and return a promise 
+  $moment.then(function(moment) {
+    $scope.anotherTime = moment("20151131", "YYYYMMDD").fromNow();
+  });
 
   /* Load All Challenges from DB */
   self.read = function(){

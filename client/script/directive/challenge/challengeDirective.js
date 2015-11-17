@@ -24,13 +24,20 @@ angular.module('App.challengeDirective', [])
       notcompleted : '=',
       type : '=',
     },
-    link : function(scope, element, attrs){
+    link : function($scope, element, attrs){
       // Need to fire an event when the issueDate moment difference passes the expiresdate
       // event should change the state of the challenge to become incomplete
-      element.bind('click', function(){
-        console.log('scope : ', scope.issueddate);
-        console.log('attrs : ', attrs.expiresdate);  
-      });
+      // element.bind('click', function(){
+      //   console.log('scope : ', scope.issueddate);
+      //   console.log('attrs : ', attrs.expiresdate);  
+      //   console.log('element : ', element);
+      // });
+
+      $scope.increaseLike = function(){
+        console.log('increase like...');
+        
+      };
+
     }
   };
 
