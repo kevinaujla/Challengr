@@ -1,8 +1,7 @@
 /*
 
 challengeCtrl.js
-conf
-iguring routes for challengeRouter
+configuring routes for challengeRouter
 
  */
 
@@ -60,17 +59,34 @@ module.exports = function (db) {
 
     retrieveAll: function (req, res) {
       // Console Log 
-      console.log('api/challenge/retrieveAll is being called');
+      console.log('api/challenge retrieving all challenges');
       // query for all challenges
       db.Challenge.findAll({
-        include: [{model: db.User, as: 'Challenger'}, {model: db.User, as: 'Challenged'}]
-      })
+          attributes: ['id',
+            'title',
+            'type',
+            'description',
+            'charityAmount',
+            'completed',
+            'notCompleted',
+            'likes',
+            'expiresDate',
+            'issuedDate',
+            'completedDate'
+          ],
+          include: [{
+            model: db.User,
+            as: 'Challenger',
+            attributes: ['id', 'firstName', 'lastName', 'email']
+          }, {
+            model: db.User,
+            as: 'Challenged',
+            attributes: ['id', 'firstName', 'lastName', 'email']
+          }],
+          raw: true
+        })
         .then(function (challenges) {
-          var allChallenges = [];
-          for(var i=0; i<challenges.length; i++) {
-            allChallenges.push(challenges[i].dataValues);
-          }
-          res.json(allChallenges);
+          res.json(challenges);
         });
     }
   };

@@ -11,7 +11,7 @@ module.exports = function (app, db) {
   var challengeCtrl = require(__dirname + '/challengeCtrl.js')(db);
 
   // create a challenge
-  app.post('/create', challengeCtrl.create);
+  app.post('/', challengeCtrl.create);
   // retrieve all challenges
-  app.get('/retrieveAll', challengeCtrl.retrieveAll);
+  app.get('/', challengeCtrl.retrieveAll);
 };
