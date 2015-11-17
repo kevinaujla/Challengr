@@ -14,4 +14,6 @@ module.exports = function (app, db) {
   app.post('/', challengeCtrl.create);
   // retrieve all challenges
   app.get('/', challengeCtrl.retrieveAll);
+  // update model
+  app.put('/', challengeCtrl.update);
 };
