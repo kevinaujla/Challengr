@@ -16,7 +16,7 @@ module.exports = function (db) {
   return {
     signup: function (req, res) {
       // Console Log
-      console.log('/api/user/signup is being called with body: ' + req.body);
+      console.log('/api/user/signup is being called with body: ', req.body);
       // pull out user data
       var email = req.body.email;
       var firstName = req.body.firstName;
@@ -78,7 +78,7 @@ module.exports = function (db) {
 
     signin: function (req, res) {
       // Console Log
-      console.log('/api/user/signin is being called with body: ' + req.body);
+      console.log('/api/user/signin is being called with body: ', req.body);
       // pull out user data
       var email = req.body.email;
       var password = req.body.password;
@@ -178,7 +178,7 @@ module.exports = function (db) {
 
     authenticate: function (req, res, next) {
       // Console Log
-      console.log('authenticating user with body: ' + req.body);
+      console.log('authenticating user with body: ', req.body);
 
       // pull out token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];
