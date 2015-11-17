@@ -25,6 +25,7 @@
     "angular-bootstrap": "~0.14.3",
     "angular-resource": "~1.4.7",
     "angular-messages": "~1.4.7",
-    "braintree-web": "~2.15.4"
+    "braintree-web": "~2.15.4",
+    "angular-animate": "~1.4.7"
   }
 }

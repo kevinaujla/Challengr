@@ -7,7 +7,7 @@ handles http request for braintree controller
 
 angular.module('App.braintreeFactory', [] )
 
-.factory('BraintreeFactory', ['$http', function($http) {
+.factory('braintreeFactory', ['$http', function($http) {
 
   var getToken = function(){
     return $http({

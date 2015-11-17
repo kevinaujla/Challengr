@@ -11,13 +11,16 @@ angular.module('App.challengeDirective', [])
 
   return {
     restrict : 'E',
-    templateUrl: 'script/directive/challengeDirective.html',
+    templateUrl: 'script/directive/challenge/challengeDirective.html',
     scope : { 
-
+      user : '=',
+      challenge : '='
     },
-    link : function($scope, element, attrs){
+    link : function(scope, element, attrs){
       element.bind('click', function(){
-        console.log('CLICKED ME....');
+        console.log('active challenge...');
+        console.log('user : ', scope.user);
+        console.log('user : ', scope.challenge);
       });
     }
   };
@@ -28,13 +31,13 @@ angular.module('App.challengeDirective', [])
 
   return {
     restrict : 'E',
-    templateUrl: 'script/directive/challengeCDirective.html',
+    templateUrl: 'script/directive/challenge/challengeCDirective.html',
     scope : { 
 
     },
     link : function($scope, element, attrs){
       element.bind('click', function(){
-        console.log('CLICKED ME....');
+        console.log('completed challenge...');
       });
     }
   };
@@ -45,13 +48,13 @@ angular.module('App.challengeDirective', [])
 
   return {
     restrict : 'E',
-    templateUrl: 'script/directive/challengeICDirective.html',
+    templateUrl: 'script/directive/challenge/challengeICDirective.html',
     scope : { 
 
     },
     link : function($scope, element, attrs){
       element.bind('click', function(){
-        console.log('CLICKED ME....');
+        console.log('incomplete challenge...');
       });
     }
   };

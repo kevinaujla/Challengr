@@ -9,4 +9,6 @@ angular.module('App.home', [])
 
 .controller('homeCtrl', [function () {
 
+  var self = this;
+
 }]);

@@ -9,4 +9,6 @@ angular.module('App.charity', [])
 
 .controller('charityCtrl', [function() {
 
+  var self = this;
+
 }]);

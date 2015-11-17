@@ -7,16 +7,17 @@ handles http request for auth controller
 
 angular.module('App.authFactory', [])
 
-.factory('AuthFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
+.factory('authFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
+
   var signup = function (user) {
     return $http({
         method: 'POST',
         url: '/api/auth/signup',
-        data: user
+        data: user,
       })
       .then(function (resp) {
-        return resp.data.token;
-      })
+        return resp.data;
+      });
   };
 
   var signin = function (user) {
@@ -26,13 +27,13 @@ angular.module('App.authFactory', [])
         data: user
       })
       .then(function (resp) {
-        return resp.data.token;
+        return resp.data;
       });
   };
 
   var signout = function () {
     $window.localStorage.removeItem('com.challengr');
-    $location.path('/signin');
+    $state.go('signin');
   };
 
   return {
@@ -41,4 +42,4 @@ angular.module('App.authFactory', [])
     signout: signout
   };
 
-}])
+}]);

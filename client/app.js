@@ -14,15 +14,13 @@ angular.module('App', [
   'App.profile',
   'App.charity',
   'App.challenge',
-  'App.alertService',
-  'App.loadingService',
-  'App.alertDirective',
   'App.challengeDirective',
   'App.home',
   'App.authFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
-  'App.radio'
+  'App.radio',
+  'App.createChallengeService',
   ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

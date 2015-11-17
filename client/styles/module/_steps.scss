@@ -50,11 +50,11 @@
     border-right: 0;
     background-color: #fbfbfb;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(251, 251, 251)), to(rgb(233, 233, 233)));
-    background-image: -webkit-linear-gradient(top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: -moz-linear-gradient(top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: -o-linear-gradient(top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: -ms-linear-gradient(top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: linear-gradient(top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -webkit-linear-gradient(to top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -moz-linear-gradient(to top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -o-linear-gradient(to top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -ms-linear-gradient(to top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: linear-gradient(to top, rgb(251, 251, 251), rgb(233, 233, 233));
     float: left;
     position: relative;
     -webkit-box-sizing: border-box;
@@ -76,11 +76,11 @@
     border-right: 1px solid #dddddd;
     border-bottom: 1px solid #cbcbcb;
     background-image: -webkit-gradient(linear, right top, left bottom, from(rgb(251, 251, 251)), to(rgb(233, 233, 233)));
-    background-image: -webkit-linear-gradient(right top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: -moz-linear-gradient(right top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: -o-linear-gradient(right top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: -ms-linear-gradient(right top, rgb(251, 251, 251), rgb(233, 233, 233));
-    background-image: linear-gradient(right top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -webkit-linear-gradient(to right top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -moz-linear-gradient(to right top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -o-linear-gradient(to right top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: -ms-linear-gradient(to right top, rgb(251, 251, 251), rgb(233, 233, 233));
+    background-image: linear-gradient(to right top, rgb(251, 251, 251), rgb(233, 233, 233));
     display: block;
     position: absolute;
     top: 6px;
@@ -96,20 +96,20 @@
     color: #2e2e2e;
     background-color: #f5f5f5;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(242, 242, 242)), to(rgb(217, 217, 217)));
-    background-image: -webkit-linear-gradient(top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: -moz-linear-gradient(top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: -o-linear-gradient(top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: -ms-linear-gradient(top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: linear-gradient(top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -webkit-linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -moz-linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -o-linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -ms-linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
     }
     
   .stepNav a:hover:before {
     background-image: -webkit-gradient(linear, right top, left bottom, from(rgb(242, 242, 242)), to(rgb(217, 217, 217)));
-    background-image: -webkit-linear-gradient(right top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: -moz-linear-gradient(right top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: -o-linear-gradient(right top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: -ms-linear-gradient(right top, rgb(242, 242, 242), rgb(217, 217, 217));
-    background-image: linear-gradient(right top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -webkit-linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -moz-linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -o-linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: -ms-linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
+    background-image: linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
     }
   
   /* selected */
