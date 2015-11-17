@@ -13,6 +13,7 @@ angular.module('App.radio', [])
 
   $scope.$watch('radioModel', function(){
     radioButtonService.radio = $scope.radioModel;
+    console.log('radio model  :', $scope.radioModel);
   });
 
   $scope.checkModel = {

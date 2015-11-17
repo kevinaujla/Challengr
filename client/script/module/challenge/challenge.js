@@ -11,14 +11,17 @@ angular.module('App.challenge', [])
 
   var self = this;
 
+  /***
+    Utility Methods
+  ***/
+
   /*
     Steps Tabs
   */
   self.tabs = [true, false, false];
   self.currentTab = 0;
-  /*
-    Next Step
-  */
+  
+  /* Next Step */
   self.nextTab = function(){
     if (self.currentTab < 2) {
       console.log('next tab');
@@ -27,9 +30,7 @@ angular.module('App.challenge', [])
       self.tabs[self.currentTab] = true;
     }
   };
-  /*
-    Previous Step
-  */
+  /* Previous Step */
   self.prevTab = function(){
     if (self.currentTab > 0) {
       self.tabs[self.currentTab] = false;
@@ -38,9 +39,29 @@ angular.module('App.challenge', [])
     }
   };
 
-  /*
-    Braintree get token from server to load drop-in UI
-  */
+  /***
+    Challenge Methods
+  ***/
+
+  /* Create challenge */
+  self.save = function(){
+    // console log
+    console.log('create challenge... : ', createChallengeService.challenge);
+    // factory function
+    challengeFactory.createChallenge(createChallengeService.challenge)
+      .then(function(data){
+        console.log('created challenge : ', data);
+      })
+      .catch(function(err){
+        console.log('error creating challenge... : ', err);
+      });
+  };
+
+  /***
+    Braintree Methods
+  ***/
+
+  /* Braintree get token from server to load drop-in UI */
   self.getToken = function(){
     // console log
     console.log('get braintree client token...');
@@ -66,6 +87,7 @@ angular.module('App.challenge', [])
       });
   };
 
+  /* Braintree search if customer exists */
   self.searchCustomer = function(){
     console.log('search braintree customer...');
     braintreeFactory.searchCustomer()
@@ -151,6 +173,10 @@ angular.module('App.challenge', [])
     createChallengeService.challenge.type = radioButtonService.radio;
     createChallengeService.challenge.challenged = self.challengeFriend;
 
+    // reset the radio back to empty string so that step3 can use it without interference
+    // radioButtonService.radio
+    radioButtonService.radio = null;
+
     // console log
     console.log('createChallengeService.challenge : ', createChallengeService.challenge);
   };
@@ -206,40 +232,27 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep3Ctrl', ['createChallengeService', function(createChallengeService){
+.controller('challengeStep3Ctrl', ['createChallengeService', 'radioButtonService', function(createChallengeService, radioButtonService){
 
   var self = this;
 
-  self.payment = {};
+  self.charityAmount = null;
 
   /*
-    
+    save info to challenge service object
   */
   self.info = function(){
     // console log
-    console.log('add challenge information...');
-
-  }
-
-}])
-
-
-
-
-.controller('challengeListCtrl', ['challengeFactory', function (challengeFactory) {
-
-  var self = this;
-
-}])
-
-.controller('challengeViewCtrl', ['challengeFactory', function(challengeFactory) {
-
-  var self = this;
-
-}])
-
-.controller('challengeEditCtrl', ['challengeFactory', function (challengeFactory) {
-
-  var self = this;
+    console.log('add charity amount information...');
+    // Validate if challenge category has been selected
+    if (radioButtonService.radio === null) {
+      console.log('charity amount not selected...');
+      // display alert/message telling user to fix the problem
+    } 
+    // save locally
+    self.charityAmount = radioButtonService.radio;
+    // save to service object
+    createChallengeService.challenge.charityAmount = self.charityAmount;
+  };
 
 }]);

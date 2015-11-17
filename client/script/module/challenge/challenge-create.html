@@ -57,12 +57,14 @@ Parent Controller : challengeNC
         <h1>OverView</h1>
         <div ng-include="'partial/paymentAmount.html'"></div>
       </div>
+      <button ng-click="step3.info()">Save Charity Amount</button>
     </div>
   </uib-tab>
 
   <div class="row tab--footer">
     <button class="btn btn-primary" ng-click="challengeNC.prevTab()">Prev</button>
     <button class="btn btn-primary" ng-click="challengeNC.nextTab()">Next</button>
+    <button class="btn btn-primary" ng-click="challengeNC.save()">Create Challenge</button>
   </div>
 
 </uib-tabset>
