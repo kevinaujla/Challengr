@@ -82,7 +82,8 @@ module.exports = function (db) {
             model: db.User,
             as: 'Challenged',
             attributes: ['id', 'firstName', 'lastName', 'email']
-          }]
+          }],
+          order: 'issuedDate DESC'
         })
         .then(function (challenges) {
           allChallenges = [];
