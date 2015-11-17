@@ -16,18 +16,18 @@ injects all views into home page
   Send the challenger
   Send the challenge
 -->
-
 <div ng-repeat="challenge in homeCtrl.challenges">
-  
-<!-- challenged="{ firstName : {{challenge.Challenged.firstName}}, lastName : {{challenge.Challenged.lastName}}, email : {{challenge.Challenged.email}} }" -->
-  {{challenge.title}}
-  <challenge 
-    title="challenge.title" 
-    description="challenge.description"
-    likes="challenge.likes"
-    expiresDate="challenge.expiresDate"
-    type="challenge.type">
-    
+  <challenge
+    title = 'challenge.title',
+    description = 'challenge.description',
+    challenged = '',
+    likes = 'challenge.likes',
+    completeddate = 'challenge.completed',
+    expiresdate = 'challenge.expiresDate',
+    issueddate = 'challenge.issuedDate',
+    completed = 'challenge.completed',
+    notcompleted = 'challenge.notCompleted',
+    type = 'challenge.type'>
   </challenge>
 </div>
 
