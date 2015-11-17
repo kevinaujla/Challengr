@@ -8,7 +8,7 @@ configuring routes for challengeRouter
 module.exports = function (db) {
   return {
     create: function (req, res) {
-      // Console Log
+      // console Log
       console.log('/api/challenge/create is being called with body: ', req.body);
       // pull out data
       var challenger = req.user;
@@ -58,7 +58,7 @@ module.exports = function (db) {
     },
 
     retrieveAll: function (req, res) {
-      // Console Log 
+      // console Log 
       console.log('api/challenge retrieving all challenges');
       // query for all challenges
       db.Challenge.findAll({
@@ -92,6 +92,27 @@ module.exports = function (db) {
           }
           res.json(allChallenges);
         });
+    },
+
+    update: function (req, res) {
+      // console log
+      console.log('/api/challenge updating model');
+      // pull out necessary data
+      var id = req.body.id;
+      var updateModel = {
+        completed: req.body.completed,
+        notCompleted: req.body.notCompleted,
+        likes: req.body.likes
+      };
+      // query for model to update
+      db.Challenge.findOne({
+        where: {
+          id: id
+        }
+      }).then(function (challenge) {
+        challenge.update(updateModel);
+        res.end();
+      });
     }
   };
 };
