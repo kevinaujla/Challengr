@@ -164,7 +164,7 @@ module.exports = function (db) {
             res.json({
               success: true,
               message: 'user is allowed access'
-            })
+            });
           }
         });
       } else {

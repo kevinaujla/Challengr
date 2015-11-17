@@ -10,50 +10,19 @@ require('dotenv').config({
   path: __dirname + '/../.env'
 });
 
-// create express app
-var express = require('express'); 
+var express = require('express');
 var app = express();
 
-// logging requests to the server
-var morgan = require('morgan');
-// parsing HTTP request bodys 
-var bodyParser = require('body-parser');
+// setup and configure database
+var db = require(__dirname + '/../database/database.js');
+
+// configure middleware
+require(__dirname + '/config/middlewareConfig.js')(app, express);
+// configure routes
+require(__dirname + '/config/routeConfig.js')(app, express, db);
 
 // choose process port if applicable
 var port = process.env.PORT || 3000;
-
-// Middleware
-app.use(morgan('dev'));
-// parses application/x-www-form-urlencoded from forms
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-app.use(bodyParser.json());
-
-var db = require(__dirname + '/../database/database.js');
-
-// serving static files from client folder
-app.use(express.static(__dirname + '/../client'));
-
-// Routing
-// creating router for all requests to '/api/auth'
-var authRouter = express.Router();
-var braintreeRouter = express.Router();
-// creating router for all requests to '/api/challenge'
-var challengeRouter = express.Router();
-
-// configuring router to server all requests to 'api/auth'
-app.use('/api/braintree', braintreeRouter);
-require(__dirname + '/braintree/braintreeRouter.js')(braintreeRouter);
-app.use('/api/auth', authRouter);
-// everything after here is protected and checks for jwt
-// injecting authRouter and database for setup of routes
-require(__dirname + '/auth/authRouter.js')(authRouter, db, app);
-
-// configuring router to serve all requests to 'api/challenge'
-app.use('/api/challenge', challengeRouter);
-// injecting challengeRouter and database for setup of routes
-require(__dirname + '/challenge/challengeRouter.js')(challengeRouter, db);
 
 // start server to listen on localhost:port
 app.listen(port);
