@@ -33,7 +33,14 @@ module.exports = function (app, express, db) {
   // handling all user related routes (retrieveAll)
   var userRouter = express.Router();
   // protect user routes
-  challengeRouter.use(authCtrl.authenticate);
+  userRouter.use(authCtrl.authenticate);
   require(__dirname + '/../user/userRouter.js')(userRouter, db);
   app.use('/api/user', userRouter);
+
+  // handling all charity related routes (retrieveAll)
+  var charityRouter = express.Router();
+  // protect charity routes
+  charityRouter.use(authCtrl.authenticate);
+  require(__dirname + '/../charity/charityRouter.js')(charityRouter, db);
+  app.use('/api/charity', charityRouter);
 };
