@@ -25,9 +25,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-    // this location data will have to have a 
-    // different data type at some point
-    // location: DataTypes.STRING,
-    // photo_url: DataTypes.STRING
+  }, {
+    timestamps: false
   });
 };
