@@ -17,17 +17,19 @@ angular.module('App.challengeDirective', [])
       description : '=',
       challenged : '=',
       likes : '=',
-      expiresDate : '=',
+      completeddate : '=',
+      expiresdate : '=',
+      issueddate : '=',
+      completed : '=',
+      notcompleted : '=',
       type : '=',
     },
     link : function(scope, element, attrs){
+      // Need to fire an event when the issueDate moment difference passes the expiresdate
+      // event should change the state of the challenge to become incomplete
       element.bind('click', function(){
-        console.log('title : ', scope.title);
-        console.log('description : ', scope.description);
-        console.log('challenged : ', scope.challenged);
-        console.log('likes : ', scope.likes);
-        console.log('expiresDate : ', scope.expiresDate);
-        console.log('type : ', scope.type);
+        console.log('scope : ', scope.issueddate);
+        console.log('attrs : ', attrs.expiresdate);  
       });
     }
   };

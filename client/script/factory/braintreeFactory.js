@@ -14,8 +14,8 @@ angular.module('App.braintreeFactory', [] )
       method : 'GET',
       url : '/api/braintree/clientToken'
     })
-    .then(function(data){
-      return data.data;
+    .then(function(resp){
+      return resp.data;
     });
   };
 
@@ -26,8 +26,8 @@ angular.module('App.braintreeFactory', [] )
       url : '/api/braintree/createCustomer',
       data : {user : user},
     })
-    .then(function(data){
-      return data.data;
+    .then(function(resp){
+      return resp.data;
     });
   };
 
@@ -37,8 +37,8 @@ angular.module('App.braintreeFactory', [] )
       method : 'GET',
       url : '/api/braintree/searchCustomer',
     })
-    .then(function(data){
-      return data.data;
+    .then(function(resp){
+      return resp.data;
     });
   };
 

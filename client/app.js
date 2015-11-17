@@ -10,6 +10,7 @@ angular.module('App', [
   'ui.bootstrap',
   'ngResource',
   'ngMessages',
+  'angularMoment',
   'App.auth',
   'App.profile',
   'App.charity',
