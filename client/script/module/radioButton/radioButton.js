@@ -7,9 +7,14 @@ shares radio button functionality
 
 angular.module('App.radio', [])
 
-.controller('buttonsCtrl', ['$scope', function ($scope) {
+.controller('buttonsCtrl', ['$scope', 'radioButtonService', function ($scope, radioButtonService) {
 
   $scope.radioModel = null;
+
+  $scope.$watch('radioModel', function(){
+    radioButtonService.radio = $scope.radioModel;
+    console.log('radio model  :', $scope.radioModel);
+  });
 
   $scope.checkModel = {
     left: false,
@@ -27,4 +32,8 @@ angular.module('App.radio', [])
       }
     });
   });
-}]);
+}])
+
+.service('radioButtonService', function(){
+  this.radio = '';
+});

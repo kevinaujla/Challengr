@@ -13,14 +13,21 @@ angular.module('App.challengeDirective', [])
     restrict : 'E',
     templateUrl: 'script/directive/challenge/challengeDirective.html',
     scope : { 
-      user : '=',
-      challenge : '='
+      title : '=',
+      description : '=',
+      challenged : '=',
+      likes : '=',
+      expiresDate : '=',
+      type : '=',
     },
     link : function(scope, element, attrs){
       element.bind('click', function(){
-        console.log('active challenge...');
-        console.log('user : ', scope.user);
-        console.log('user : ', scope.challenge);
+        console.log('title : ', scope.title);
+        console.log('description : ', scope.description);
+        console.log('challenged : ', scope.challenged);
+        console.log('likes : ', scope.likes);
+        console.log('expiresDate : ', scope.expiresDate);
+        console.log('type : ', scope.type);
       });
     }
   };

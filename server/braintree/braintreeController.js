@@ -58,17 +58,19 @@ module.exports = {
   */
   createCustomer: function(req, res){
     // console log
-    console.log('create new customer... ', req.body.user, ' with nonce : ', req.body.payment_method_nonce);
+    console.log('create new braintree customer... ', req.body);
     // get user object
     var user = req.body.user;
-    var nonce = req.body.payment_method_nonce;
-    // create new customer with payment method
+
+    // // Check if the customer already exists or not
+    // searchCustomer(req);
+
+    // create new customer
     gateway.customer.create({
-      firstName: user.fname,
-      lastName: user.lname,
+      firstName: user.firstName,
+      lastName: user.lastName,
       // company: "Braintree",
-      email: user.email,
-      paymentMethodNonce: nonce
+      email: user.email
     }, function (err, result) {
       if (err) {
         console.log('error creating customer : ', err);
@@ -93,6 +95,29 @@ module.exports = {
     gateway.customer.find(user.customer.id, function (err, customer) {
       var token = customer.creditCards[0].token;
     });
-  } 
+  }, 
+
+  /*
+    Search if customer exists
+  */
+  searchCustomer: function(req, res){
+    console.log('SEARCH for braintree customer...');
+    console.log('req.body : ', req.body);
+    console.log('req.user : ', req.user);
+    var stream = gateway.customer.search(function (search) {
+      search.email().is('jordanwink201@gmail.com');
+      search.firstName().is('Jordan');
+      search.lastName().is('Winkelman');
+    }, function (err, response) {
+      response.each(function (err, customer) {
+        if (err) {
+          console.log('error searching for customer...', err);
+        } else{
+          console.log('found customer : ', customer.firstName);
+          res.json({braintreeUser : customer})
+        }
+      });
+    });
+  },
 
 };
