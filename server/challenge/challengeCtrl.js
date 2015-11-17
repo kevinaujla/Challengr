@@ -10,7 +10,7 @@ module.exports = function (db) {
   return {
     create: function (req, res) {
       // Console Log
-      console.log('/api/challenge/create is being called with body: ' + req.body);
+      console.log('/api/challenge/create is being called with body: ', req.body);
       // pull out data
       var challenger = req.user;
       var challenged = req.body.challenged;
@@ -59,6 +59,9 @@ module.exports = function (db) {
     },
 
     retrieveAll: function (req, res) {
+      // Console Log 
+      console.log('api/challenge/retrieveAll is being called');
+      // query for all challenges
       db.Challenge.findAll({
         include: [{model: db.User, as: 'Challenger'}, {model: db.User, as: 'Challenged'}]
       })
