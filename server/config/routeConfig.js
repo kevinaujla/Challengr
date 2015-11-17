@@ -29,4 +29,11 @@ module.exports = function (app, express, db) {
   challengeRouter.use(authCtrl.authenticate);
   require(__dirname + '/../challenge/challengeRouter.js')(challengeRouter, db);
   app.use('/api/challenge', challengeRouter);
+
+  // handling all user related routes (retrieveAll)
+  var userRouter = express.Router();
+  // protect user routes
+  challengeRouter.use(authCtrl.authenticate);
+  require(__dirname + '/../user/userRouter.js')(userRouter, db);
+  app.use('/api/user', userRouter);
 };
