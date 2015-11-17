@@ -93,7 +93,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
   };
 
   /*
-    Load all friends for the user to filter and choose from
+    Load all friends from server for the user to filter and choose from for who they want to challenge
   */
   self.loadFriends = function(){
     console.log('loading friends...');
