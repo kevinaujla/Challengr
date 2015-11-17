@@ -36,10 +36,37 @@ angular.module('App.authFactory', [])
     $state.go('signin');
   };
 
+  var isAuth = function() {
+    if(!window.localStorage.getItem('com.challengr')){
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+
+
+
   return {
     signup: signup,
     signin: signin,
-    signout: signout
+    signout: signout,
+    isAuth: isAuth
   };
 
-}]);
+}])
+
+.factory('attachToken', function($window){
+  console.lot('in attachToken...');
+  return {
+    request : function(object){
+      var jwt = $window.localStorage.getItem('com.challengr');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+});
+
