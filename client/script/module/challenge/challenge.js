@@ -7,13 +7,13 @@ CRUD for challenges
 
 angular.module('App.challenge', ['ui.bootstrap'])
 
-.controller('challengeListCtrl', ['ChallengeFactory', function (ChallengeFactory) {
+.controller('challengeListCtrl', ['challengeFactory', function (challengeFactory) {
 
   var self = this;
 
 }])
 
-.controller('challengeNewCtrl', ['CreateChallengeService', 'ChallengeFactory', 'BraintreeFactory', '$state', function(CreateChallengeService, ChallengeFactory, BraintreeFactory, $state, $scope) {
+.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function(createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
 
   var self = this;
 
@@ -77,7 +77,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
     // console log
     console.log('add friend to create challenge service : ', friend);
     // argument to service object
-    CreateChallengeService.challenge.friendToChallenge = friend;
+    createChallengeService.challenge.friendToChallenge = friend;
     // console log
     console.log('self.challengeDescription : ', self.challengeDescription);
   };
@@ -89,7 +89,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
     // console log
     console.log('add challenge information...');
     // 
-    CreateChallengeService.challenge.description = self.challengeDescription;
+    createChallengeService.challenge.description = self.challengeDescription;
   };
 
   /*
@@ -105,7 +105,7 @@ angular.module('App.challenge', ['ui.bootstrap'])
   self.getToken = function(){
     // console log
     console.log('get client token...');
-    BraintreeFactory.getToken()
+    braintreeFactory.getToken()
       .then(function (token) {
         // console log
         console.log('received token...');
@@ -129,13 +129,13 @@ angular.module('App.challenge', ['ui.bootstrap'])
 
 }])
 
-.controller('challengeViewCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+.controller('challengeViewCtrl', ['challengeFactory', function(challengeFactory) {
 
   var self = this;
 
 }])
 
-.controller('challengeEditCtrl', ['ChallengeFactory', function (ChallengeFactory) {
+.controller('challengeEditCtrl', ['challengeFactory', function (challengeFactory) {
 
   var self = this;
 

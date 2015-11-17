@@ -19,10 +19,7 @@ angular.module('App', [
   'App.authFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
-<<<<<<< 954430eb52bbcdc378e2151cc263ddfe6c2da37d
   'App.radio',
-=======
->>>>>>> [feat] : hookup controller and view
   'App.createChallengeService',
   ])
 

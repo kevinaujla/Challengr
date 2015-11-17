@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl',['$window', '$state', 'AuthFactory', function ($window, $state, AuthFactory) {
+.controller('authCtrl',['$window', '$state', 'authFactory', function ($window, $state, authFactory) {
 
   var self = this;
 
@@ -15,12 +15,21 @@ angular.module('App.auth', [])
     // console log
     console.log('signup the user...');
     // factory function
-    AuthFactory.signup()
+    authFactory.signup(self)
       .then(function (data) {
-        // console log
-        console.log('received data from server : ', data);
-        // set token
-        $window.localStorage.setItem('com.challengr', data.token);
+        // check if successful        
+        if (data.success === true) {
+          // console log
+          console.log('signed up successfully... : ', data);
+          // set token
+          $window.localStorage.setItem('com.challengr', data.token);
+          // redirect
+          $state.go('home');
+        } else {
+          // console log 
+          console.log('sign up failure...');
+          // show alert of failure with data.message
+        }
       })
       .catch(function (err) {
         console.log('signup error:', err);
@@ -31,22 +40,25 @@ angular.module('App.auth', [])
     // console log
     console.log('signin the user...');
     // factory function
-    AuthFactory.signin()
+    authFactory.signin(self)
       .then(function (data) {
-        // console log
-        console.log('signed in successfully... : ', data);
-        // if (data.token) {
-          
-        // }
-        // set token
-        $window.localStorage.setItem('com.challengr', data.token);
-        // redirect
-        $state.go('home');
+        // check if successful
+        if (data.success === true) {
+          // console log
+          console.log('signed in successfully... : ', data);
+          // set token
+          $window.localStorage.setItem('com.challengr', data.token);
+          // redirect
+          $state.go('home');
+        } else {
+          // console log 
+          console.log('sign in failure...');
+          // show alert of failure with data.message
+        }
       })
       .catch(function (err) {
         console.log(err);
       });
-
   };
 
 }]);

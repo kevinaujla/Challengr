@@ -7,7 +7,7 @@ create a challenge
 
 angular.module('App.createChallengeService', [])
 
-.service('CreateChallengeService', [function () {
+.service('createChallengeService', [function () {
 
   this.challenge = {};
 

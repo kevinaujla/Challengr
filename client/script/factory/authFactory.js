@@ -7,13 +7,13 @@ handles http request for auth controller
 
 angular.module('App.authFactory', [])
 
-.factory('AuthFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
+.factory('authFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
 
   var signup = function (user) {
     return $http({
         method: 'POST',
         url: '/api/auth/signup',
-        data: user
+        data: user,
       })
       .then(function (resp) {
         return resp.data;
