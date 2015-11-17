@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl', function ($scope, $window, $location, AuthFactory) {
+.controller('authCtrl',['$window', '$state', 'AuthFactory', function ($window, $state, AuthFactory) {
 
   var self = this;
 
@@ -26,13 +26,11 @@ angular.module('App.auth', [])
     console.log('user signing in:', self);
     AuthFactory.signin(self)
       .then(function (token) {
-        $location.path('/home');
+        $state.go('home');
       })
       .catch(function (err) {
         console.log(err);
       });
   }
 
-
-
-});
+}]);

@@ -4,9 +4,7 @@ challenge-create.html
 create a new challenge
 
 -->
-
 <uib-tabset class="stepNav threeWide">
-
   <uib-tab heading="Create Challenge">
     <div class="row">
       <div class="col-md-6">
@@ -26,14 +24,7 @@ create a new challenge
       </div>
       <div class="col-md-6 challengeTypes">
         <h1>Challenge Details</h1>
-        <ul class="challengeTypes">
-          <li><span class="badge">Design</span></li>
-          <li><span class="badge">Design</span></li>
-          <li><span class="badge badge--active">Design</span></li>
-          <li><span class="badge">Design</span></li>
-          <li><span class="badge">Design</span></li>
-          <li><span class="badge">Design</span></li>
-        </ul>
+       <div ng-include="'partial/challengeTypeRadio.html'"></div>
         <textarea type="text" col="2" class="form-control" placeholder="Type in Challenge"></textarea>
       </div>
     </div>
@@ -41,7 +32,6 @@ create a new challenge
       <button class="btn btn-primary">Next</button>
     </div>
   </uib-tab>
-
   <uib-tab heading="Pick Charity">
     <div class="row">
       <div class="col-md-4 charity">
@@ -68,32 +58,23 @@ create a new challenge
       <button class="btn btn-primary">Next</button>
     </div>
   </uib-tab>
-
   <uib-tab heading="Submit">
     <div class="row">
-
       <div class="col-md-6">
         <h1>Select Payment Info</h1>
-
         <!-- Braintree Drop-In Payment UI -->
         <div ng-include="'partial/payment.html'"></div>
-
       </div>
-
       <div class="col-md-6">
         <h1>OverView</h1>
-        <div class="btn-group" role="group" aria-label="...">
-          <button type="button" class="btn btn-default">25&#162;</button>
-          <button type="button" class="btn btn-default">50&#162;</button>
-          <button type="button" class="btn btn-default">100&#162;</button>
-        </div>
+        <div ng-include="'partial/paymentAmount.html'"></div>
       </div>
     </div>
-
     <div class="row tab--footer">
       <button class="btn btn-default">Previous</button>
       <button class="btn btn-primary">Submit</button>
     </div>
-  </uib-tab>
 
+
+  </uib-tab>
 </uib-tabset>

@@ -5,26 +5,26 @@ CRUD for challenges
 
 */
 
-angular.module('App.challenge', [])
+angular.module('App.challenge', ['ui.bootstrap'])
 
-.controller('challengeListCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+.controller('challengeListCtrl', ['ChallengeFactory', function (ChallengeFactory) {
 
   var self = this;
 
 }])
 
-.controller('challengeNewCtrl', ['ChallengeFactory', 'BraintreeFactory', '$state', function(ChallengeFactory, BraintreeFactory, $state) {
+.controller('challengeNewCtrl', ['ChallengeFactory', 'BraintreeFactory', '$state', function (ChallengeFactory, BraintreeFactory, $state) {
 
   var self = this;
 
   self.payment = {};
 
   // get token
-  self.getToken = function(){
+  self.getToken = function () {
     // console log
     console.log('get client token...');
     BraintreeFactory.getToken()
-      .then(function(token){
+      .then(function (token) {
         // console log
         console.log('received token...');
         // initialize braintree dropin with client token
@@ -40,20 +40,20 @@ angular.module('App.challenge', [])
           // },
         });
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('error : ', err);
       });
   };
 
 }])
 
-.controller('challengeViewCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+.controller('challengeViewCtrl', ['ChallengeFactory', function (ChallengeFactory) {
 
   var self = this;
 
 }])
 
-.controller('challengeEditCtrl', ['ChallengeFactory', function(ChallengeFactory) {
+.controller('challengeEditCtrl', ['ChallengeFactory', function (ChallengeFactory) {
 
   var self = this;
 

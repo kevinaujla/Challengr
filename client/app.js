@@ -22,6 +22,7 @@ angular.module('App', [
   'App.authFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
+  'App.radio'
   ])
 
 .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
