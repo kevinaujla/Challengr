@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.profile', [])
 
-.controller('profileCtrl', [function() {
+.controller('profileCtrl', ['authFactory', function(authFactory) {
 
   var self = this;
 
@@ -28,7 +28,7 @@ angular.module('App.profile', [])
 
   // Sign user out
   self.signout = function(){
-    
+    authFactory.signout();
   };
 
 }]);

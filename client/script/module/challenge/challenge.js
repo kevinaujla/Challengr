@@ -66,6 +66,17 @@ angular.module('App.challenge', [])
       });
   };
 
+  self.searchCustomer = function(){
+    console.log('search braintree customer...');
+    braintreeFactory.searchCustomer()
+      .then(function(data){
+        console.log('data : ', data);
+      })
+      .catch(function(err){
+        console.log('err : ', err);
+      });
+  }
+
 }])
 
 

@@ -11,6 +11,7 @@ module.exports = function (app) {
   // app === braintreeRouter injected from server.js
 
   app.get('/clientToken', braintreeController.generateToken);
+  app.get('/searchCustomer', braintreeController.searchCustomer);
 
   app.post('/checkout', braintreeController.checkout);
   

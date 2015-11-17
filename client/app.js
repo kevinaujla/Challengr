@@ -123,14 +123,18 @@ angular.module('App', [
     return {
       request: function (config) {
         var jwt = $window.localStorage.getItem('com.challengr');
+        var braintree = $window.localStorage.getItem('com.braintree');
         if (jwt) {
           config.headers['x-access-token'] = jwt;
+        }
+        if (braintree) {
+          config.headers['x-braintree-token'] = braintree;
         }
         config.headers['Allow-Control-Allow-Origin'] = '*';
         return config;
       }
     };
-  })
+  });
 }])
 
 .run(function ($rootScope, $state, authFactory, $window) {

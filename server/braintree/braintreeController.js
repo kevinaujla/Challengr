@@ -61,6 +61,10 @@ module.exports = {
     console.log('create new braintree customer... ', req.body);
     // get user object
     var user = req.body.user;
+
+    // // Check if the customer already exists or not
+    // searchCustomer(req);
+
     // create new customer
     gateway.customer.create({
       firstName: user.firstName,
@@ -91,6 +95,29 @@ module.exports = {
     gateway.customer.find(user.customer.id, function (err, customer) {
       var token = customer.creditCards[0].token;
     });
-  } 
+  }, 
+
+  /*
+    Search if customer exists
+  */
+  searchCustomer: function(req, res){
+    console.log('SEARCH for braintree customer...');
+    console.log('req.body : ', req.body);
+    console.log('req.user : ', req.user);
+    var stream = gateway.customer.search(function (search) {
+      search.email().is('jordanwink201@gmail.com');
+      search.firstName().is('Jordan');
+      search.lastName().is('Winkelman');
+    }, function (err, response) {
+      response.each(function (err, customer) {
+        if (err) {
+          console.log('error searching for customer...', err);
+        } else{
+          console.log('found customer : ', customer.firstName);
+          res.json({braintreeUser : customer})
+        }
+      });
+    });
+  },
 
 };
