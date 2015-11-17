@@ -16,6 +16,4 @@ module.exports = function (app, db, mainApp) {
   app.post('/signin', authCtrl.signin);
   // API endpoint for authenticating user
   app.get('/authenticate', authCtrl.checkUser);
-  // middleware for all routes after here
-  // mainApp.use(authCtrl.authenticate);
 };

@@ -25,7 +25,7 @@ module.exports = function (app, express, db) {
 
   // handling all challenge related operations (create, retrieveAll)
   var challengeRouter = express.Router();
-  // protect 
+  // protect challenge routes
   challengeRouter.use(authCtrl.authenticate);
   require(__dirname + '/../challenge/challengeRouter.js')(challengeRouter, db);
   app.use('/api/challenge', challengeRouter);
