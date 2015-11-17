@@ -65,6 +65,7 @@ module.exports = function (db) {
                       message: 'Successfully signed up with ' + email,
                       token: token,
                       user: {
+                        id: user.id,
                         email: user.email,
                         firstName: user.firstName,
                         lastName: user.lastName
@@ -126,6 +127,7 @@ module.exports = function (db) {
                   message: 'Successfully signed in with: ' + email,
                   token: token,
                   user: {
+                    id: user.id,
                     email: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName
