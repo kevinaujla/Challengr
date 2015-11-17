@@ -69,45 +69,28 @@ angular.module('App.challenge', [])
 }])
 
 
-.controller('challengeStep1Ctrl', ['createChallengeService', 'radioButtonService', function(createChallengeService, radioButtonService){
+.controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', 'radioButtonService', function(userFactory, createChallengeService, radioButtonService){
 
   var self = this;
 
-  self.description = '';
-
-  // This is dummy data and needs to be removed once server function works
-  self.friends = [
-    {
-      name : 'Jordan Winkelman',
-      img : 'image/profileImg.jpg'
-    },
-    {
-      name : 'Kevin Aujla',
-      img : 'image/profileImg2.jpg'
-    },
-    {
-      name : 'Faisal Aujla',
-      img : 'image/profileImg2.jpg'
-    },
-    {
-      name : 'Jordan Winkelman',
-      img : 'image/profileImg.jpg'
-    },
-    {
-      name : 'Kevin Aujla',
-      img : 'image/profileImg2.jpg'
-    },
-    {
-      name : 'Faisal Aujla',
-      img : 'image/profileImg2.jpg'
-    }
-  ];
+  self.title = null;
+  self.description = null;
+  self.challengeFriend = null;
 
   /*
     Load all friends from server for the user to filter and choose from for who they want to challenge
   */
   self.loadFriends = function(){
+    // console log
     console.log('loading friends...');
+    userFactory.getAllUsers()
+      .then(function(users){
+        console.log('users loaded : ', users);
+        self.friends = users;
+      })
+      .catch(function(err){
+        console.log('error loading user... ', err);
+      });
   };
 
   /*
@@ -115,11 +98,9 @@ angular.module('App.challenge', [])
   */
   self.addFriend = function(friend){
     // console log
-    console.log('add friend to create challenge service : ', friend);
-    // argument to service object
-    createChallengeService.challenge.friendToChallenge = friend;
-    // console log
-    console.log('self.challengeDescription : ', self.challengeDescription);
+    console.log('friend to challenge chosen...');
+    // argument to local variable
+    self.challengeFriend = friend;
   };
 
   /*
@@ -128,9 +109,39 @@ angular.module('App.challenge', [])
   self.save = function(){
     // console log
     console.log('add challenge information...');
-    console.log('buttonsCtrl : ', radioButtonService.radio);
-    // 
-    // createChallengeService.challenge.description = self.challengeDescription;
+
+    // Validate if challenge title has been put in
+    if (self.title === null) {
+      console.log('title not provided...');
+      // display alert/message telling user to fix the problem
+    }
+
+    // Validate if challenge description has been put in
+    if (self.description === null) {
+      console.log('description not provided...');
+      // display alert/message telling user to fix the problem
+    }
+
+    // Validate if challenge category has been selected
+    if (radioButtonService.radio === null) {
+      console.log('category not selected...');
+      // display alert/message telling user to fix the problem
+    }    
+
+    // Validate if friend to challenge has been selected
+    if (self.challengeFriend === null) {
+      console.log('friend not selected...');
+      // display alert/message telling user to fix the problem
+    }
+
+    // save to service object
+    createChallengeService.challenge.title = self.title;
+    createChallengeService.challenge.description = self.description;
+    createChallengeService.challenge.type = radioButtonService.radio;
+    createChallengeService.challenge.challenged = self.challengeFriend;
+
+    // console log
+    console.log('createChallengeService.challenge : ', createChallengeService.challenge);
   };
 
 }])

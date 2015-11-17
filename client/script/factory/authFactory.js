@@ -48,7 +48,7 @@ angular.module('App.authFactory', [])
     signup: signup,
     signin: signin,
     signout: signout,
-    isAuth: isAuth
+    isAuth: isAuth,
   };
 
 }]);

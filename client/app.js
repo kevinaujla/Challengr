@@ -17,6 +17,7 @@ angular.module('App', [
   'App.challengeDirective',
   'App.home',
   'App.authFactory',
+  'App.userFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
   'App.radio',
