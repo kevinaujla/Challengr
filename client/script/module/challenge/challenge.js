@@ -71,6 +71,37 @@ angular.module('App.challenge', ['ui.bootstrap'])
   self.payment = {};
 
   /*
+   Steps Tabs
+  */
+  self.tabs = [true, false, false];
+  /*
+   Next Step
+  */
+  self.nextTab = function(){
+    for (var i = 0; i < self.tabs.length - 1; i++) {
+      if(self.tabs[i] === true){
+        self.tabs[i] = false;
+        if (i < 2) {    
+          self.tabs[++i] = true;
+        }
+      }
+    }
+  };
+  /*
+   Previous Step
+  */
+  self.prevTab = function(){
+    for (var i = 0; i < self.tabs.length; i++) {
+      if(self.tabs[i] === true){
+        if (i > 0) {  
+          self.tabs[i] = false;  
+          self.tabs[--i] = true;
+        }
+      }
+    }
+  };
+
+  /*
     Add selected friend to create challenge service
   */
   self.addFriend = function(friend){
@@ -104,11 +135,11 @@ angular.module('App.challenge', ['ui.bootstrap'])
   */
   self.getToken = function(){
     // console log
-    console.log('get client token...');
+    console.log('get braintree client token...');
     braintreeFactory.getToken()
       .then(function (token) {
         // console log
-        console.log('received token...');
+        console.log('received braintree token...');
         // initialize braintree dropin with client token
         braintree.setup(token, 'dropin', {
           container: 'payment-form',

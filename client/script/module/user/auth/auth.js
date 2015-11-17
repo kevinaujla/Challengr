@@ -23,10 +23,8 @@ angular.module('App.auth', [])
           console.log('signed up successfully... : ', data);
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
-
           // Call Braintree create customer function
           self.createBraintreeCustomer();
-
           // redirect
           $state.go('home');
         } else {
