@@ -6,7 +6,7 @@
     </div>
     <div class="">
       <i class="icon-budicon-30"></i>
-      <span>{{expiresDate}}</span>
+      <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
     </div>
   </div>
   <div class="challenge--main">
@@ -18,13 +18,13 @@
       <span>{{description}}</span>
     </div>
     <div>
-      <a href="">
+      <a href="" ng-click="increaseLike()">
         <i class="icon-heart-empty"></i>
         {{likes}}
       </a>
       <a href="">
-        <i class="icon-budicon-53"></i>
-        4
+        <i class="icon-dollar-bill"></i>
+        {{charityamount*100}}
       </a>
     </div>    
   </div>

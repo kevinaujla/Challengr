@@ -21,8 +21,8 @@ angular.module('App.challengeFactory', [] )
       url : '/api/challenge',
       data : challenge
     })
-    .then(function(res){
-      return res.data;
+    .then(function(resp){
+      return resp.data;
     });
   };
 
@@ -31,14 +31,26 @@ angular.module('App.challengeFactory', [] )
       method : 'GET',
       url : '/api/challenge'
     })
-    .then(function(res){
-      return res.data;
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
+  var updateChallenge = function(challenge){
+    return $http({
+      method : 'PUT',
+      url : '/api/challenge',
+      data : challenge
+    })
+    .then(function(resp){
+      return resp.data;
     });
   };
 
   return {
     createChallenge : createChallenge,
     readAllChallenge : readAllChallenge,
+    updateChallenge : updateChallenge,
   };
 
 }]);

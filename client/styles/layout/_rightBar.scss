@@ -7,4 +7,47 @@
 #rightBar{
   background-color: $lightBG;
   padding: ($padding * 2) ($padding * 2) $padding $padding;
+
+  .center{
+    text-align: center;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    li{
+      padding: $padding;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      img{
+        height: 20%;
+        width: 20%;
+      }
+      div{
+        padding-left: $padding;
+        h1{
+          color: #7D8995;
+          text-transform: initial;
+          margin-top: 0px;
+        }
+        p{
+          text-transform: initial;
+          color: #D2D6D9;
+        }
+      }
+    }
+  }
+
+  div.alertIcon{
+    display: inline-block;
+    float: left;
+    margin-right: $padding;
+    i{
+      font-size: 200%;
+
+    }
+  }
+
 }
+

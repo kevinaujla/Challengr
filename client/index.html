@@ -42,20 +42,18 @@
 
       <div id="rightBar" class="col-xs-3">
 
-        <!-- Display challenges received -->
-        <ul class="list-group userChallenges">
-          <li class="list-group-item">
-            <img src="image/profileImg.jpg">
-            <div>
-              <h1>Workout</h1>
-              <p>Challenge details here</p>
+        <div>
+          <uib-alert type="success" close="closeAlert($index)">
+            <div class="alertIcon">
+              <i class="icon-bell-o"></i>
             </div>
-          </li>
-          <li class="list-group-item">
-            Dapibus ac facilisis in
-          </li>
-          <li class="list-group-item">Morbi leo risus</li>
-        </ul>
+            Faisal challenged you to do something crazy...
+          </uib-alert>
+        </div>
+
+        <!-- Display challenges received -->
+        <h2 class="center">Your Challenges<h2>
+        <div ng-include="'script/module/challenge/challenge-personal.html'"></div>
 
       </div>
 
@@ -72,6 +70,10 @@
   <script src="lib/angular-resource/angular-resource.min.js"></script>
   <script src="lib/angular-messages/angular-messages.min.js"></script>
   <script src="lib/braintree-web/dist/braintree.js"></script>
+  <script src="lib/moment/min/moment.min.js"></script>
+  <script src="lib/angular-moment/angular-moment.min.js"></script>
+  <script src="lib/angular-momentjs/angular-momentjs.min.js"></script>
+
   <!-- Concatenated Scripts -->
   <script src="scripts.js"></script>
 

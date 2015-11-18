@@ -111,7 +111,7 @@ module.exports = function (db) {
         }
       }).then(function (challenge) {
         challenge.update(updateModel);
-        res.end();
+        res.send(200).end();
       });
     }
   };

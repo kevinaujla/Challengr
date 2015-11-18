@@ -7,9 +7,11 @@ injects all views into home page
 
 <!-- Search -->
 <div class="input-group" ng-init="homeCtrl.read()">
-  <input type="text" class="form-control" placeholder="Search">
+  <input type="text" class="form-control" placeholder="Search" ng-model="search">
   <span class="input-group-addon"><i class="icon-budicon-11"></i></span>
 </div>
+
+<p>{{anotherTime}}</p>
 
 <!-- 
   Active Challenge
@@ -17,22 +19,34 @@ injects all views into home page
   Send the challenge
 -->
 
-<div ng-repeat="challenge in homeCtrl.challenges">
-  
-<!-- challenged="{ firstName : {{challenge.Challenged.firstName}}, lastName : {{challenge.Challenged.lastName}}, email : {{challenge.Challenged.email}} }" -->
-  {{challenge.title}}
-  <challenge 
-    title="challenge.title" 
-    description="challenge.description"
-    likes="challenge.likes"
-    expiresDate="challenge.expiresDate"
-    type="challenge.type">
-    
-  </challenge>
-</div>
+<challenge ng-repeat="challenge in homeCtrl.challenges | filter : search"
+  challengeid = 'challenge.id',
+  charityamount = 'challenge.charityAmount',
+  title = 'challenge.title',
+  description = 'challenge.description',
+  challenged = '',
+  likes = 'challenge.likes',
+  completeddate = 'challenge.completed',
+  expiresdate = 'challenge.expiresDate',
+  issueddate = 'challenge.issuedDate',
+  completed = 'challenge.completed',
+  notcompleted = 'challenge.notCompleted',
+  type = 'challenge.type'>
+</challenge>
 
-<!-- Completed Challenge -->
-<completed></completed>
 
-<!-- Incomplete Challenge -->
-<incomplete></incompleted>
+<!-- InCompleted Challenge -->
+<incomplete ng-repeat="challenge in homeCtrl.challenges | filter : search"
+  challengeid = 'challenge.id',
+  charityamount = 'challenge.charityAmount',
+  title = 'challenge.title',
+  description = 'challenge.description',
+  challenged = '',
+  likes = 'challenge.likes',
+  completeddate = 'challenge.completed',
+  expiresdate = 'challenge.expiresDate',
+  issueddate = 'challenge.issuedDate',
+  completed = 'challenge.completed',
+  notcompleted = 'challenge.notCompleted',
+  type = 'challenge.type'>
+</incomplete>
