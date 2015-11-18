@@ -7,7 +7,7 @@ injects all views into home page
 
 <!-- Search -->
 <div class="input-group" ng-init="homeCtrl.read()">
-  <input type="text" class="form-control" placeholder="Search">
+  <input type="text" class="form-control" placeholder="Search" ng-model="search">
   <span class="input-group-addon"><i class="icon-budicon-11"></i></span>
 </div>
 
@@ -18,7 +18,7 @@ injects all views into home page
   Send the challenger
   Send the challenge
 -->
-<div ng-repeat="challenge in homeCtrl.challenges">
+<div ng-repeat="challenge in homeCtrl.challenges | filter : search">
   <challenge
     challengeid = 'challenge.id',
     charityamount = 'challenge.charityAmount',
