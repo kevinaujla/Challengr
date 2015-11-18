@@ -18,3 +18,4 @@ database/data/db.sqlite
 
 # Compiled Styles
 client/styles/main.css
+client/main.css
