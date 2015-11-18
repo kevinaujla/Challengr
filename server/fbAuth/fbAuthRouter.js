@@ -7,21 +7,38 @@ specifying routes for /auth/facebook
 
 var passport = require('passport');  // auth via passport
 var FacebookStrategy = require('passport-facebook').Strategy;  // FB auth via passport
+var session = require('express-session');  // to enable user sessions
+var cookieParser = require('cookie-parser');  // parses cookies
 
 module.exports = function (app, db, mainApp) {
   // app === userRouter injected from server.js
 
-  var fbAuthCtrl = require(__dirname + '/fbAuthCtrl.js')(db);
+// AUTH INIT
+app.use(session({ secret: 'this is challengr' }));
+app.use(passport.initialize());  // initialize passport
+app.use(passport.session());  // to support persistent login sessions
+app.use(cookieParser());
 
-  app.get('/auth/facebook/callback',
+
+passport.serializeUser(function(user, done) { // serialization is necessary for persistent sessions
+  done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+
+  var utils = require(__dirname + '/fbAuthCtrl.js')(db);
+
+  app.get('/callback',
     passport.authenticate('facebook', {
-      failureRedirect: '/login'
+      failureRedirect: '/signin'
     }),
     function (req, res) {
-      utils.fetchUserInfoFromFB(req, res);
+      res.redirect('/');
     });
 
-  app.get('/auth/facebook',
+  app.get('/',
     passport.authenticate('facebook'),
     function (req, res) {
       // The request will be redirected to Facebook for authentication, so this
@@ -29,7 +46,7 @@ module.exports = function (app, db, mainApp) {
     });
 
   app.get('/userauth', passport.authenticate('facebook', {
-      failureRedirect: '/login'
+      failureRedirect: '/signin'
     }),
     function (req, res) {
       res.redirect('/');

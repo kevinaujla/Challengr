@@ -11,7 +11,7 @@ module.exports = function (db) {
       if (req.isAuthenticated()) {
         return next();
       }
-      res.redirect('/login')
+      res.redirect('/signin')
     },
 
     fetchUserInfoFromFB: function (req, res) { // Get User info from FB
