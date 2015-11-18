@@ -47,7 +47,6 @@ Parent Controller : challengeNC
   <uib-tab heading="Pick Charity" active="challengeNC.tabs[1]">
     <div class="row" ng-controller="challengeStep2Ctrl as step2">
 
-
       <ul class="grid-testimonials">
         <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(self)">
           <div>
@@ -60,12 +59,6 @@ Parent Controller : challengeNC
         </li>                                                      
       </ul>
 
-<!--       <div class="col-md-4 charity" ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(self)">
-        <h1>{{charity.name}}</h1>
-        <p>{{charity.description}}</p>
-        <a href="{{charity.website}}">{{charity.website}}</a>
-        <img ng-src="{{charity.img}}">
-      </div> -->
     </div>
   </uib-tab>
 
@@ -95,7 +88,7 @@ Parent Controller : challengeNC
     Next <span class="icon-arrow-circle-o-right"></span>
   </button>
   
-  <button ng-if="challengeNC.currentTab === 2" class="btn btn-primary pull-right" ng-click="challengeNC.save()">Create Challenge</button>
+  <button ng-if="challengeNC.currentTab === 2" class="btn btn-success pull-right" ng-click="challengeNC.save()">Create Challenge</button>
 </div>
 
 
