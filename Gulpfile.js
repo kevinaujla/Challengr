@@ -115,3 +115,5 @@ gulp.task('watcher', function() {
 
 // Run this command while developing
 gulp.task('default', ['watcher', 'nodemon']);
+
+gulp.task('front', ['watcher', 'connect']);

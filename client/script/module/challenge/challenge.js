@@ -102,7 +102,7 @@ angular.module('App.challenge', [])
 }])
 
 
-.controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', 'radioButtonService', function(userFactory, createChallengeService, radioButtonService){
+.controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', 'radioButtonService', '$scope', function(userFactory, createChallengeService, radioButtonService, $scope){
 
   var self = this;
 
@@ -126,6 +126,18 @@ angular.module('App.challenge', [])
       });
   };
 
+  $scope.$watch('title', function(oldVal, newVal){
+    createChallengeService.challenge.title = newVal;
+  });
+
+  $scope.$watch('description', function(oldVal, newVal){
+    createChallengeService.challenge.description = newVal;
+  });
+
+  // $scope.$watch('radioModel', function(oldVal, newVal){
+  //   createChallengeService.challenge.type = newVal;
+  // });
+
   /*
     Add selected friend to create challenge service
   */
@@ -134,51 +146,6 @@ angular.module('App.challenge', [])
     console.log('friend to challenge chosen...');
     // argument to local variable
     self.challengeFriend = friend;
-  };
-
-  /*
-    Add information to service object
-  */
-  self.save = function(){
-    // console log
-    console.log('add challenge information...');
-
-    // Validate if challenge title has been put in
-    if (self.title === null) {
-      console.log('title not provided...');
-      // display alert/message telling user to fix the problem
-    }
-
-    // Validate if challenge description has been put in
-    if (self.description === null) {
-      console.log('description not provided...');
-      // display alert/message telling user to fix the problem
-    }
-
-    // Validate if challenge category has been selected
-    if (radioButtonService.radio === null) {
-      console.log('category not selected...');
-      // display alert/message telling user to fix the problem
-    }    
-
-    // Validate if friend to challenge has been selected
-    if (self.challengeFriend === null) {
-      console.log('friend not selected...');
-      // display alert/message telling user to fix the problem
-    }
-
-    // save to service object
-    createChallengeService.challenge.title = self.title;
-    createChallengeService.challenge.description = self.description;
-    createChallengeService.challenge.type = radioButtonService.radio;
-    createChallengeService.challenge.challenged = self.challengeFriend;
-
-    // reset the radio back to empty string so that step3 can use it without interference
-    // radioButtonService.radio
-    radioButtonService.radio = null;
-
-    // console log
-    console.log('createChallengeService.challenge : ', createChallengeService.challenge);
   };
 
 }])
