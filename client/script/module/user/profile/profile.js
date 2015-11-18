@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.profile', [])
 
-.controller('profileCtrl', ['authFactory', function(authFactory) {
+.controller('profileCtrl', ['authFactory', 'braintreeFactory', function(authFactory, braintreeFactory) {
 
   var self = this;
 
@@ -18,12 +18,19 @@ angular.module('App.profile', [])
 
   // Update user information
   self.updateUser = function(){
-
+    
   };
 
   // Get all transaction history for user
   self.getBilling = function(){
-      
+    braintreeFactory.searchCustomer()
+      .then(function(data){
+        console.log('data : ', data);
+
+      })
+      .catch(function(err){
+        console.log('error : ', err);
+      });
   };
 
   // Sign user out
