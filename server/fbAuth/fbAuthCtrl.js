@@ -23,19 +23,13 @@ module.exports = function (db) {
 
       res.cookie('facebook', fbUserInfo); // Set user info in cookies
 
-      exports.postUserInfo(fbUserInfo);
+      this.postUserInfo(fbUserInfo);
 
       res.redirect('/');
     },
 
     postUserInfo: function (userInfo) { // post user info to our db
-      var userCreate = Q.nbind(User.findOrCreate, User);
-      var newUser = {
-        'user_fb_id': userInfo.fbId,
-        'username': userInfo.fbUserName,
-        'photo': userInfo.fbPicture
-      };
-      userCreate(newUser);
+      console.log(userInfo);
     },
   };
 };
