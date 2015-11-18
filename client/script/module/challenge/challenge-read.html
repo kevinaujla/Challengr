@@ -5,15 +5,24 @@ view large details of single challenge
 
 -->
 
-<div class="col-md-10 col-md-offset-1">
-  <div class="col-md-6">
-    <h1>Challenge Title</h1>
-    <span>Challenge Category</span>
-    <p>Challenge Description</p>
-    <p>Challenge Price</p>
-    <p>Challenger</p>
-  </div>
-  <div class="col-md-6">
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Challenge from </h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-12">
 
+        <h4>{{title}}</h4>
+        <img src="image/profileImg.jpg">
+        <p>{{description}}</p>
+
+        <h5>
+          <i class="icon-dollar-bill"></i>{{charityamount*100}}
+        </h5>
+
+        <button class="btn btn-default">OK</button>
+        
+      </div>
+    </div>
   </div>
-</div>
