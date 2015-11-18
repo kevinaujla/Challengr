@@ -36,9 +36,21 @@ angular.module('App.challengeFactory', [] )
     });
   };
 
+  var updateChallenge = function(challenge){
+    return $http({
+      method : 'PUT',
+      url : '/api/challenge',
+      data : challenge
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
   return {
     createChallenge : createChallenge,
     readAllChallenge : readAllChallenge,
+    updateChallenge : updateChallenge,
   };
 
 }]);

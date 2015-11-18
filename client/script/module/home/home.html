@@ -20,6 +20,8 @@ injects all views into home page
 -->
 <div ng-repeat="challenge in homeCtrl.challenges">
   <challenge
+    challengeid = 'challenge.id',
+    charityamount = 'challenge.charityAmount',
     title = 'challenge.title',
     description = 'challenge.description',
     challenged = '',
