@@ -252,8 +252,7 @@ SCSS Variables
 ***/
 #main {
   background-color: white;
-  padding: 30px 15px 15px 30px;
-  color: blue; }
+  padding: 30px 15px 15px 30px; }
 
 /*** Module ***/
 /***
@@ -473,8 +472,11 @@ i.icon-budicon-55 {
   Profile
 
 ***/
+<<<<<<< HEAD
 <<<<<<< 88de9f2f50c1334ad21a7a3adddad075d07bc971
 =======
+=======
+>>>>>>> tabs
 .tab-content {
   margin-top: 15px; }
 
@@ -503,15 +505,103 @@ i.icon-budicon-55 {
 #profile .btn-danger {
   background-color: #FF7978; }
 
+<<<<<<< HEAD
 >>>>>>> [refactor] : styling profile page
+=======
+>>>>>>> tabs
 .charity img {
   width: 100%; }
+
+.grid-testimonials {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center; }
+  .grid-testimonials li {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    list-style-type: none; }
+    .grid-testimonials li:last-child {
+      margin-right: 0; }
+  .grid-testimonials h1 {
+    color: #7D8A9A;
+    margin-top: 0px; }
+  .grid-testimonials img {
+    width: 25%;
+    margin-left: -10px; }
+  .grid-testimonials p {
+    line-height: 1.5em;
+    margin: 0;
+    color: #7D8995;
+    text-transform: initial; }
+  .grid-testimonials a {
+    position: relative;
+    z-index: 5;
+    text-transform: initial; }
+  .grid-testimonials .quote-arrow {
+    background: #fff;
+    box-shadow: 2px 2px 0px #EAEEF1;
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -19px;
+    left: 50%;
+    margin-left: -25px;
+    width: 40px;
+    height: 40px;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    z-index: 1; }
+
+.btn-success {
+  background-color: #66D3E2;
+  border-color: #66D3E2;
+  /* padding: 15px; */ }
+
+.grid-testimonials-citation {
+  color: #656262;
+  display: block;
+  font-size: 1.125em;
+  font-weight: 700;
+  margin-top: 2em;
+  text-transform: uppercase;
+  text-align: center; }
+
+.grid-testimonials li div {
+  border: 0px solid #ebebeb;
+  padding: 15px;
+  margin: 15px;
+  position: relative;
+  box-shadow: 0px 2px 0px #EAEEF1, 0px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 4px; }
 
 /***
 
   Challenge Types/Categories
 
 ***/
+div.challengeTypes {
+  text-align: center;
+  background-color: #323133;
+  border-radius: 4px;
+  padding-bottom: 15px; }
+  div.challengeTypes .badge {
+    background-color: #555457;
+    color: #B3B3B3;
+    border: 0px solid white;
+    padding: 15px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin: 5px; }
+  div.challengeTypes input, div.challengeTypes textarea {
+    margin-top: 15px; }
+  div.challengeTypes h1 {
+    color: white;
+    padding: 15px 0; }
+  div.challengeTypes .btn-primary:active:hover, div.challengeTypes .btn-primary.active:hover, div.challengeTypes .open > .dropdown-toggle.btn-primary:hover, div.challengeTypes .btn-primary:active:focus, div.challengeTypes .btn-primary.active:focus, div.challengeTypes .open > .dropdown-toggle.btn-primary:focus, div.challengeTypes .btn-primary:active.focus, div.challengeTypes .btn-primary.active.focus, div.challengeTypes .open > .dropdown-toggle.btn-primary.focus {
+    background-color: #A0CECB; }
+
 ul.challengeTypes li {
   display: inline-block; }
   ul.challengeTypes li span {
@@ -552,6 +642,7 @@ ul.userChallenges li img {
 ul.userChallenges li div {
   display: inline-block; }
 
+<<<<<<< HEAD
 <<<<<<< 88de9f2f50c1334ad21a7a3adddad075d07bc971
 /* Step Navigation
 ------------------------------------------------------------------------- */
@@ -645,6 +736,8 @@ ul.userChallenges li div {
   border-bottom: 1px solid #cbcbcb;
   box-shadow: inset -1px -1px 1px rgba(0, 0, 0, 0.1); }
 =======
+=======
+>>>>>>> tabs
 .tab--footer {
   border-top: 1px solid #E4E7E7;
   padding-top: 15px;
@@ -710,7 +803,10 @@ ul.userChallenges li div {
     background-color: #45609B; }
   .panel a#twitter {
     background-color: #59ADEB; }
+<<<<<<< HEAD
 >>>>>>> [refactor] : styling profile page
+=======
+>>>>>>> tabs
 
 /*** State ***/
 /***
