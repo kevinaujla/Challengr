@@ -31,6 +31,13 @@
     background-color: #F5F5F5;
   }
 
+  .terms{
+    color: #808080;
+    font-weight: normal;
+  }
+
+
+
   .form-control{
     height: 43px !important;
   }
@@ -43,7 +50,27 @@
     font-weight: bold;
     border: 0px solid white;
     margin: auto;
+    margin-top: $padding*2;
+    margin-bottom: $padding;
     display: block;
+  }
+
+  .btn-default:hover{
+    background-color: $unique;
+    border: 1px solid white;
+  }
+
+  .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus{
+    background-color: $unique;
+  }
+
+  .btn-success:hover{
+    background-color: $unique;
+    border: 1px solid white;
+  }
+
+  .btn-success:active:hover, .btn-success.active:hover, .open > .dropdown-toggle.btn-success:hover, .btn-success:active:focus, .btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus{
+    background-color: $unique;
   }
 
   a#facebook, a#twitter{

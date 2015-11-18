@@ -7,27 +7,22 @@ manage payments, signout, manage user information
 
 <h1>My Account</h1>
 
-<uib-tabset>
+<uib-tabset id="profile">
 
-  <uib-tab heading="Profile" ng-init="profileCtrl.getUser()">
+  <uib-tab heading="Profile" ng-init="profileCtrl.getUser()" id="account">
     <div class="input-group">
-      <span class="input-group-addon">@</span>
       <input type="text" class="form-control" placeholder="first name">
     </div>
     <div class="input-group">
-      <span class="input-group-addon">@</span>
       <input type="text" class="form-control" placeholder="last name">
     </div>
     <div class="input-group">
-      <span class="input-group-addon">@</span>
       <input type="text" class="form-control" placeholder="email">
     </div>
     <div class="input-group">
-      <span class="input-group-addon">@</span>
       <input type="text" class="form-control" placeholder="password">
     </div>
     <div class="input-group">
-      <span class="input-group-addon">@</span>
       <input type="text" class="form-control" placeholder="location">
     </div>
     <button class="btn btn-warning" ng-click="profileCtrl.updateUser()">Update</button>

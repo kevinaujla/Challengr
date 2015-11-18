@@ -7,7 +7,7 @@ signup.html
 
 <div class="col-md-12">
   <div class="panel panel-default">
-  
+
     <div class="panel-heading">
       <h3 class="panel-title">SIGN UP</h3>
     </div>
@@ -15,7 +15,7 @@ signup.html
     <div class="panel-body">
       <form name="signupForm" ng-submit="authCtrl.signup()">
 
-        <div class "row">
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <input type="text" ng-model="authCtrl.firstName" class="form-control" placeholder="First Name">
@@ -24,7 +24,7 @@ signup.html
               <input type="text" ng-model="authCtrl.lastName" class="form-control" placeholder="Last Name">
             </div>
             <div class="checkbox">
-              <label>
+              <label class="terms">
                 <input type="checkbox">I agree to the <a href="">terms of use</a> and <a href="">privacy policy</a>
               </label>
             </div>
@@ -37,19 +37,20 @@ signup.html
             <div class="form-group">
               <input type="password" ng-model="authCtrl.password" class="form-control" placeholder="Password">
             </div>
-            <div class="form-group">
-              <label for="country" class="control-label">
-              </label>
+<!--             <div class="form-group">
+              <label for="country" class="control-label">Country</label>
               <select name="country" id="country">
                 <option value="US">United States</option>
               </select>
-              Country
-            </div>
+            </div> -->
           </div>
 
-          <button type="submit" class="btn btn-success">CREATE ACCOUNT</button>
-
         </div>
+
+        <div class="row">
+          <button type="submit" class="btn btn-success">CREATE ACCOUNT</button>
+        </div>
+
       </form>
     </div>
   </div>

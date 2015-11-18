@@ -437,6 +437,31 @@ i.icon-budicon-55 {
 .tab-content {
   margin-top: 15px; }
 
+#profile #account {
+  margin: 0 auto;
+  display: block; }
+
+#profile .input-group {
+  margin: 15px 0;
+  border: 2px solid #DEDEDE; }
+  #profile .input-group input {
+    border: 0px solid white; }
+
+#profile button {
+  border-radius: 50px;
+  padding: 10px 30px;
+  background-color: #A0CECB;
+  color: white;
+  font-weight: bold;
+  border: 0px solid white;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  display: block; }
+
+#profile .btn-danger {
+  background-color: #FF7978; }
+
 .charity img {
   width: 100%; }
 
@@ -597,6 +622,9 @@ ul.userChallenges li div {
   .panel input {
     border: 1px solid #E8E8E8;
     background-color: #F5F5F5; }
+  .panel .terms {
+    color: #808080;
+    font-weight: normal; }
   .panel .form-control {
     height: 43px !important; }
   .panel button {
@@ -607,7 +635,19 @@ ul.userChallenges li div {
     font-weight: bold;
     border: 0px solid white;
     margin: auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
     display: block; }
+  .panel .btn-default:hover {
+    background-color: #A0CECB;
+    border: 1px solid white; }
+  .panel .btn-default:active:hover, .panel .btn-default.active:hover, .panel .open > .dropdown-toggle.btn-default:hover, .panel .btn-default:active:focus, .panel .btn-default.active:focus, .panel .open > .dropdown-toggle.btn-default:focus, .panel .btn-default:active.focus, .panel .btn-default.active.focus, .panel .open > .dropdown-toggle.btn-default.focus {
+    background-color: #A0CECB; }
+  .panel .btn-success:hover {
+    background-color: #A0CECB;
+    border: 1px solid white; }
+  .panel .btn-success:active:hover, .panel .btn-success.active:hover, .panel .open > .dropdown-toggle.btn-success:hover, .panel .btn-success:active:focus, .panel .btn-success.active:focus, .panel .open > .dropdown-toggle.btn-success:focus, .panel .btn-success:active.focus, .panel .btn-success.active.focus, .panel .open > .dropdown-toggle.btn-success.focus {
+    background-color: #A0CECB; }
   .panel a#facebook, .panel a#twitter {
     display: block;
     border-radius: 50px;
