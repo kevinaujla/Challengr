@@ -48,4 +48,11 @@ module.exports = function (app, express, db) {
   charityRouter.use(authCtrl.authenticate);
   require(__dirname + '/../charity/charityRouter.js')(charityRouter, db);
   app.use('/api/charity', charityRouter);
+
+  // handling all s3 routes for storing images
+  var s3Router = express.Router();
+  // protect s3 routes
+  s3Router.use(authCtrl.authenticate);
+  require(__dirname + '/../s3/s3Router.js');
+  app.use('/api/s3'. s3Router);
 };
