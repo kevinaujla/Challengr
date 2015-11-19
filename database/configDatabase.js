@@ -58,7 +58,7 @@ module.exports = function (db) {
             ' global humanitarian organization committed to ending world hunger,' +
             ' works to save the lives of malnourished children while providing communities' +
             ' with access to safe water and sustainable solutions to hunger.',
-          imgUrl: '/client/image/charity/ActionAgainstHungerLogo.jpg'
+          imgUrl: 'image/charity/ActionAgainstHungerLogo.jpg'
         }
       }).spread(function (charity, created) {
         db.Charity.findOrCreate({
@@ -73,7 +73,7 @@ module.exports = function (db) {
               ' Bitcoin’s social impact on a global scale through partnerships with charitable organizations' +
               ' for fundraising campaigns, education, and technological innovations.  Several of our charity' +
               ' partners include Save The Children, The Water Project, Medic Mobile, and more.',
-            imgUrl: '/client/image/charity/BitGiveLogo.png'
+            imgUrl: 'image/charity/BitGiveLogo.png'
           }
         }).spread(function (charity, created) {
           console.log('BitGive created');

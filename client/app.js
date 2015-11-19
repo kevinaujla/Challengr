@@ -25,6 +25,7 @@ angular.module('App', [
   'App.userFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
+  'App.charityFactory',
   'App.radio',
   'App.createChallengeService',
   'App.addAlertService',

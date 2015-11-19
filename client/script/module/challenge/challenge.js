@@ -163,33 +163,30 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep2Ctrl', ['createChallengeService', function (createChallengeService) {
+.controller('challengeStep2Ctrl', ['createChallengeService', 'charityFactory', function (createChallengeService, charityFactory) {
 
   var self = this;
 
   self.charity = null;
 
-  self.charities = [{
-    name: 'Charity Name',
-    description: 'Charity description and cause',
-    website: 'salvationarmy.com',
-    img: 'image/charity/salvationArmy.png'
-  }, {
-    name: 'Charity Name',
-    description: 'Charity description and cause',
-    website: 'salvationarmy.com',
-    img: 'image/charity/salvationArmy.png'
-  }, {
-    name: 'Charity Name',
-    description: 'Charity description and cause',
-    website: 'salvationarmy.com',
-    img: 'image/charity/salvationArmy.png'
-  }];
+  self.charities = [];
 
   /* Choose Charity to donate to */
   self.chooseCharity = function (charity) {
     console.log('pick charity...');
     self.charity = charity;
+  };
+
+  self.getCharity = function(){
+    console.log('load all charities...');
+    charityFactory.load()
+      .then(function(charities){
+        console.log('loaded all charities... : ', charities);
+        self.charities = charities;
+      })
+      .catch(function(err){
+        console.log('error loading charities : ', err);
+      });
   };
 
   /* Add information to service object */
