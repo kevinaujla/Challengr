@@ -29,10 +29,9 @@ module.exports = function (db) {
 
       // res.cookie('facebook', fbUserInfo); // Set user info in cookies
 
-      this.postUserInfo(req, res, fbUserInfo);
+      this.postUserInfo(req,res,fbUserInfo);
 
     },
-
 
     postUserInfo: function (req, res, userInfo) { // post user info to our db
       db.User.findOne({
@@ -93,3 +92,4 @@ module.exports = function (db) {
 
   }
 }
+

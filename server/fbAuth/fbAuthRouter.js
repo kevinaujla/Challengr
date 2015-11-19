@@ -35,7 +35,7 @@ passport.deserializeUser(function(obj, done) {
       failureRedirect: '/signin'
     }),
     function (req, res) {
-      res.redirect('/');
+      utils.fetchUserInfoFromFB(req, res);
     });
 
   app.get('/',
