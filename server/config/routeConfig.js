@@ -28,8 +28,6 @@ module.exports = function (app, express, db) {
 
   // handling all braintree payment routes
   var braintreeRouter = express.Router();
-  // protect braintree routes
-  // braintreeRouter.use(authCtrl.authenticate);
   require(__dirname + '/../braintree/braintreeRouter.js')(braintreeRouter);
   app.use('/api/braintree', braintreeRouter);
 

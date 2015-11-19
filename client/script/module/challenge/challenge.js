@@ -11,6 +11,8 @@ angular.module('App.challenge', [])
 
   var self = this;
 
+  console.log('FORM : ', angular.element(document.querySelector('#sample-form')));
+
   /***
     Utility Methods
   ***/
@@ -20,9 +22,9 @@ angular.module('App.challenge', [])
   */
   self.tabs = [true, false, false];
   self.currentTab = 0;
-  
+
   /* Next Step */
-  self.nextTab = function(){
+  self.nextTab = function () {
     if (self.currentTab < 2) {
       console.log('next tab');
       self.tabs[self.currentTab] = false;
@@ -31,7 +33,7 @@ angular.module('App.challenge', [])
     }
   };
   /* Previous Step */
-  self.prevTab = function(){
+  self.prevTab = function () {
     if (self.currentTab > 0) {
       self.tabs[self.currentTab] = false;
       self.currentTab--;
@@ -44,18 +46,18 @@ angular.module('App.challenge', [])
   ***/
 
   /* Create challenge */
-  self.save = function(){
+  self.save = function () {
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
     addAlertService.addAlert("success","Challenge created");
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
-      .then(function(data){
+      .then(function (data) {
         console.log('created challenge : ', data);
         //create alert
         // addAlertService.addAlert();
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('error creating challenge... : ', err);
       });
   };
@@ -65,24 +67,34 @@ angular.module('App.challenge', [])
   ***/
 
   /* Braintree get token from server to load drop-in UI */
-  self.getToken = function(){
+  self.getToken = function () {
     // console log
     console.log('get braintree client token...');
     braintreeFactory.getToken()
       .then(function (token) {
         // console log
-        console.log('received braintree token...');
+        console.log('successfully received braintree token...');
         // initialize braintree dropin with client token
         braintree.setup(token, 'dropin', {
           container: 'payment-form',
-          // onPaymentMethodReceived: function (payload) {
-          //   // retrieve nonce from payload.nonce
-          //   console.log('payment method received...', payload);
-          //   // show success confirmation
+          onPaymentMethodReceived: function (payload) {
+            // retrieve nonce from payload.nonce
+            console.log('PAYMENT METHOD received...', payload);
+            
+            // call checkout function
+            braintreeFactory.checkout(payload)
+              .then(function(data){
+                console.log('completed checkout : ', data);
+                // show success confirmation
+                // 
+                // redirect to home page
+                $state.go('home');
+              })
+              .catch(function(err){
+                console.log('error making payment... ', err);
+              });
 
-          //   // redirect to home page
-          //   $state.go('home');
-          // },
+          },
         });
       })
       .catch(function (err) {
@@ -91,13 +103,13 @@ angular.module('App.challenge', [])
   };
 
   /* Braintree search if customer exists */
-  self.searchCustomer = function(){
+  self.searchCustomer = function () {
     console.log('search braintree customer...');
     braintreeFactory.searchCustomer()
-      .then(function(data){
+      .then(function (data) {
         console.log('data : ', data);
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('err : ', err);
       });
   };
@@ -105,7 +117,7 @@ angular.module('App.challenge', [])
 }])
 
 
-.controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', 'radioButtonService', '$scope', function(userFactory, createChallengeService, radioButtonService, $scope){
+.controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', 'radioButtonService', '$scope', function (userFactory, createChallengeService, radioButtonService, $scope) {
 
   var self = this;
 
@@ -116,24 +128,24 @@ angular.module('App.challenge', [])
   /*
     Load all friends from server for the user to filter and choose from for who they want to challenge
   */
-  self.loadFriends = function(){
+  self.loadFriends = function () {
     // console log
     console.log('loading friends...');
     userFactory.getAllUsers()
-      .then(function(users){
+      .then(function (users) {
         console.log('users loaded : ', users);
         self.friends = users;
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('error loading user... ', err);
       });
   };
 
-  $scope.$watch('title', function(oldVal, newVal){
+  $scope.$watch('title', function (oldVal, newVal) {
     createChallengeService.challenge.title = newVal;
   });
 
-  $scope.$watch('description', function(oldVal, newVal){
+  $scope.$watch('description', function (oldVal, newVal) {
     createChallengeService.challenge.description = newVal;
   });
 
@@ -144,7 +156,7 @@ angular.module('App.challenge', [])
   /*
     Add selected friend to create challenge service
   */
-  self.addFriend = function(friend){
+  self.addFriend = function (friend) {
     // console log
     console.log('friend to challenge chosen...');
     // argument to local variable
@@ -153,37 +165,33 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep2Ctrl', ['createChallengeService', function(createChallengeService){
+.controller('challengeStep2Ctrl', ['createChallengeService', function (createChallengeService) {
 
   var self = this;
 
   self.charity = null;
 
-  self.charities = [
-    {
-      name : 'Charity Name',
-      description : 'Charity description and cause',
-      website : 'salvationarmy.com',
-      img : 'image/charity/salvationArmy.png'
-    },
-    {
-      name : 'Charity Name',
-      description : 'Charity description and cause',
-      website : 'salvationarmy.com',
-      img : 'image/charity/salvationArmy.png'
-    },
-    {
-      name : 'Charity Name',
-      description : 'Charity description and cause',
-      website : 'salvationarmy.com',
-      img : 'image/charity/salvationArmy.png'
-    }
-  ];
+  self.charities = [{
+    name: 'Charity Name',
+    description: 'Charity description and cause',
+    website: 'salvationarmy.com',
+    img: 'image/charity/salvationArmy.png'
+  }, {
+    name: 'Charity Name',
+    description: 'Charity description and cause',
+    website: 'salvationarmy.com',
+    img: 'image/charity/salvationArmy.png'
+  }, {
+    name: 'Charity Name',
+    description: 'Charity description and cause',
+    website: 'salvationarmy.com',
+    img: 'image/charity/salvationArmy.png'
+  }];
 
   /*
     Choose Charity to donate to
   */
-  self.chooseCharity = function(charity){
+  self.chooseCharity = function (charity) {
     console.log('pick charity...');
     self.charity = charity;
   };
@@ -191,7 +199,7 @@ angular.module('App.challenge', [])
   /*
     Add information to service object
   */
-  self.info = function(){
+  self.info = function () {
     // console log
     console.log('add challenge information...');
     if (self.charity === null) {
@@ -202,7 +210,7 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep3Ctrl', ['createChallengeService', 'radioButtonService', function(createChallengeService, radioButtonService){
+.controller('challengeStep3Ctrl', ['createChallengeService', 'radioButtonService', function (createChallengeService, radioButtonService) {
 
   var self = this;
 
@@ -211,14 +219,14 @@ angular.module('App.challenge', [])
   /*
     save info to challenge service object
   */
-  self.info = function(){
+  self.info = function () {
     // console log
     console.log('add charity amount information...');
     // Validate if challenge category has been selected
     if (radioButtonService.radio === null) {
       console.log('charity amount not selected...');
       // display alert/message telling user to fix the problem
-    } 
+    }
     // save locally
     self.charityAmount = radioButtonService.radio;
     // save to service object

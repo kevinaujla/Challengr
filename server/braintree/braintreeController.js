@@ -21,26 +21,24 @@ module.exports = {
 
   generateToken: function (req, res) {
     // console log
-    console.log('Generate braintree client token and send back to user...');
+    console.log('Generate braintree client token and send back to user... with customer : ', req.body.id);
     // generate token
     gateway.clientToken.generate({
-      // customerId: '69633792'
+      customerId: req.body.id
     }, function (err, response) {
       // propogate token to client
+      console.log('generated token...');
       res.send(response.clientToken);
     });
   },
 
   checkout: function(req, res){
     // console log
-    console.log('Receive payment method nonce from client : ', req.body.payment_method_nonce, ' and generate a transaction...');
-    // get payment nonce
-    var nonce = req.body.payment_method_nonce;
-    var payment = req.body.payment;
+    console.log('Receive payment method nonce from client : ', req.body.nonce, ' and generate a transaction...', req.body);
     // create transaction
     gateway.transaction.sale({
-      amount : payment.amount,
-      paymentMethodNonce: nonce
+      amount : 24.00,
+      paymentMethodNonce: req.body.nonce,
     }, function(err, result){
       if (err) {
         console.log('error creating transaction...', err);
@@ -100,12 +98,11 @@ module.exports = {
   */
   searchCustomer: function(req, res){
     console.log('SEARCH for braintree customer...');
-    console.log('req.body : ', req.body);
     console.log('req.user : ', req.user);
     var stream = gateway.customer.search(function (search) {
-      search.email().is('jordanwink201@gmail.com');
-      search.firstName().is('Jordan');
-      search.lastName().is('Winkelman');
+      search.email().is(req.user.email);
+      search.firstName().is(req.user.firstName);
+      search.lastName().is(req.user.lastName);
     }, function (err, response) {
       response.each(function (err, customer) {
         if (err) {
@@ -116,6 +113,11 @@ module.exports = {
         }
       });
     });
+  },
+
+  transaction: function(req, res){
+    console.log('store transaction into database...');
+
   },
 
 };
