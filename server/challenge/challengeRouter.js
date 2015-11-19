@@ -16,4 +16,6 @@ module.exports = function (app, db) {
   app.get('/', challengeCtrl.retrieveAll);
   // update model
   app.put('/', challengeCtrl.update);
+  // getting the challenges for user specified in query parameters
+  app.get('/user', challengeCtrl.getMyChallenges);
 };
