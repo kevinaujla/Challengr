@@ -7,5 +7,6 @@ submit a payment
 
 <form id="checkout" ng-init="challengeNC.getToken()">
   <div id="payment-form"></div>
-  <button class="btn btn-primary" type="submit">Pay</button>
+  <div ng-include="'partial/paymentAmount.html'"></div>
+  <button class="btn btn-success pull-right" type="submit">Create Challenge</button>
 </form>

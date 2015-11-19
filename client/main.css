@@ -596,6 +596,9 @@ div.challengeTypes {
   div.challengeTypes h1 {
     color: white;
     padding: 15px 0; }
+  div.challengeTypes label.active {
+    background-color: #A0CECB;
+    color: white; }
   div.challengeTypes .btn-primary:active:hover, div.challengeTypes .btn-primary.active:hover, div.challengeTypes .open > .dropdown-toggle.btn-primary:hover, div.challengeTypes .btn-primary:active:focus, div.challengeTypes .btn-primary.active:focus, div.challengeTypes .open > .dropdown-toggle.btn-primary:focus, div.challengeTypes .btn-primary:active.focus, div.challengeTypes .btn-primary.active.focus, div.challengeTypes .open > .dropdown-toggle.btn-primary.focus {
     background-color: #A0CECB; }
 

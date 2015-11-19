@@ -18,7 +18,7 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div id="leftBar" class="col-xs-1">
+      <div id="leftBar" class="col-xs-1" ng-show="notLoggedIn">
         <div>
           <img id="profileImg" src="image/profileImg.jpg">
           <h5>Jordan</h5>
@@ -38,9 +38,9 @@
       </div>
 
       <!-- Inject Views -->
-      <div id="main" class="col-xs-8" ui-view></div>
+      <div id="main" ng-class=" notLoggedIn ? 'col-xs-8' : 'col-xs-8 col-xs-offset-2' " ui-view></div>
 
-      <div id="rightBar" class="col-xs-3">
+      <div id="rightBar" class="col-xs-3" ng-show="notLoggedIn">
 
         <div>
           <uib-alert type="success" close="closeAlert($index)">
