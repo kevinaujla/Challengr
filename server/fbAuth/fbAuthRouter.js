@@ -53,7 +53,7 @@ passport.deserializeUser(function(obj, done) {
     });
 
   passport.use(new FacebookStrategy({ // request fields from facebook
-      profileFields: ['id', 'displayName', 'photos'],
+      profileFields: ['id', 'displayName', 'photos','email'],
       clientID: '1534819266808872',
       clientSecret: '7cb15159c731afe15686d596b633b20c',
       callbackURL: '/auth/facebook/callback',
