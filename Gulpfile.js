@@ -9,6 +9,7 @@ var notify = require('gulp-notify');
 var connect = require('gulp-connect');
 var livereload = require('gulp-livereload');
 var autoprefixer = require('gulp-autoprefixer');
+var sequence = require('run-sequence');
 
 var jsScripts = ['All javascript files that have to be concated in specific order'];
 
@@ -21,33 +22,10 @@ var paths = {
   images: ['client/images/*']
 };
 
-gulp.task('build-js', function() {
-  //specifc order
-  return gulp.src(jsScripts)
-    .pipe(concat('scripts.min.js', { newLine: '\n' }))
-    .pipe(uglify())
-    .pipe(gulp.dest('build/'))
-    .pipe(filesize())
-    .on('error', gutil.log);
-});
-
-// gulp.task('copy-css', function() {
-//   gulp.src(paths.styles, { base : './client/styles' })
-//     .pipe(gulp.dest('./build/styles'));
-// });
-
-// gulp.task('copy-images', function() {
-//   gulp.src(paths.images, {
-//       base: './client/images'
-//     })
-//     .pipe(gulp.dest('./build/images'));
-// });
-
-// gulp.task('copy-html', function() {
-//   gulp.src(paths.html, { base: './client/' })
-//     .pipe(gulp.dest('./build/'));
-// });
-// 
+// deployment buil
+gulp.task('build', function(cb) {
+  sequence('scripts', 'sass', 'autoprefixer');
+}); 
 
 // JS Hinting
 gulp.task('jshint', function() {
