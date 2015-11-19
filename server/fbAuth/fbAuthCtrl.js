@@ -29,7 +29,7 @@ module.exports = function (db) {
 
       // res.cookie('facebook', fbUserInfo); // Set user info in cookies
 
-      this.postUserInfo(res, res, fbUserInfo);
+      this.postUserInfo(req, res, fbUserInfo);
 
     },
 
@@ -70,6 +70,7 @@ module.exports = function (db) {
 
               });
           } else {
+
             var token = jwt.sign(user, process.env.TOKEN_SECRET, {
               expiresIn: '1h'
             });
@@ -86,7 +87,6 @@ module.exports = function (db) {
             });
 
           }
-
         });
 
     }
