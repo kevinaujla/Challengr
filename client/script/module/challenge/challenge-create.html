@@ -65,14 +65,13 @@ Parent Controller : challengeNC
   <uib-tab heading="Submit" active="challengeNC.tabs[2]">
     <div class="row" ng-controller="challengeStep3Ctrl as step3">
       <div class="col-md-6">
+        <h1>OverView</h1>
+        
+      </div>
+      <div class="col-md-6">
         <h1>Select Payment Info</h1>
         <!-- Braintree Drop-In Payment UI -->
         <div ng-include="'partial/payment.html'"></div>
-      </div>
-      <div class="col-md-6">
-        <h1>OverView</h1>
-        {{challengeNC.paymentAmount}}
-        <div ng-include="'partial/paymentAmount.html'"></div>
       </div>
     </div>
   </uib-tab>
@@ -88,8 +87,7 @@ Parent Controller : challengeNC
   <button type="button" class="btn btn-default dropdown-toggle pull-right" ng-click="challengeNC.nextTab()" ng-if="challengeNC.currentTab < 2" data-toggle="dropdown">
     Next <span class="icon-arrow-circle-o-right"></span>
   </button>
-  
-  <button ng-if="challengeNC.currentTab === 2" class="btn btn-success pull-right" ng-click="challengeNC.save()">Create Challenge</button>
+
 </div>
 
 

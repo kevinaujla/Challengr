@@ -156,10 +156,8 @@ module.exports = function(db) {
             email: req.user.email
           }
         })
-        // user.getTransactions()
-        //  .then()
         .then(function(user){
-          console.log('found user : ', user.firstName);
+          console.log('found user : ', user);
           user.getTransactions()
             .then(function(transactions){
               console.log('retreived transactions...');

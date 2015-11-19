@@ -29,8 +29,15 @@ div.challengeTypes{
       padding: 15px 0;
   }
 
-  .challengeTypes input {}
+  .challengeTypes input {
 
+  }
+
+  label.active{
+    background-color: $unique;
+    color: white;
+  }
+  
   .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus{
     background-color: #A0CECB;
   }
