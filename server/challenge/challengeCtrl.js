@@ -115,6 +115,24 @@ module.exports = function (db) {
             res.status(200).end();
           });
       });
+    },
+
+    getMyChallenges: function (req, res) {
+      // console log
+      console.log('/api/challenge retrieving challenges for user: ' + req.user.firstName);
+      // pull out data
+      var id = req.user.id;
+      db.User.find({
+        where: {
+          id: id
+        }
+      }).then(function(user) {
+        user.getMyChallenges()
+        .then(function(challenges) {
+          console.log('received challenges for specific user from db: ' + challenges);
+          res.json(challenges);
+        });
+      });
     }
   };
 };
