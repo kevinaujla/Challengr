@@ -5,9 +5,7 @@ submit a payment
 
 -->
 
-<form id="checkout" method="post" action="/api/braintree/checkout" ng-init="challengeNC.getToken()">
+<form id="checkout" ng-init="challengeNC.getToken()">
   <div id="payment-form"></div>
-  <input type="number" name="amount"></input>
   <button class="btn btn-primary" type="submit">Pay</button>
-
 </form>

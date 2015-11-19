@@ -35,10 +35,10 @@ module.exports = function(db) {
 
     checkout: function(req, res){
       // console log
-      console.log('Receive payment method nonce from client : ', req.body.nonce, ' and generate a transaction...', req.body);
+      console.log('Receive payment method nonce from client : ', req.body.nonce, ' and generate a transaction...', req.body.amount);
       // create transaction
       gateway.transaction.sale({
-        amount : 24.00,
+        amount : req.body.amount,
         paymentMethodNonce: req.body.nonce,
       }, function(err, result){
         if (err) {
@@ -162,7 +162,7 @@ module.exports = function(db) {
           console.log('found user : ', user.firstName);
           user.getTransactions()
             .then(function(transactions){
-              console.log('retreived transactions : ', transactions);
+              console.log('retreived transactions...');
               res.json({transactions : transactions});
             })
             .catch(function(err){
