@@ -112,7 +112,7 @@ module.exports = {
           console.log('error searching for customer...', err);
         } else{
           console.log('found customer : ', customer.firstName);
-          res.json({braintreeUser : customer})
+          res.json({braintreeUser : customer});
         }
       });
     });

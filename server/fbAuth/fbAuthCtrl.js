@@ -11,14 +11,14 @@ module.exports = function (db) {
       if (req.isAuthenticated()) {
         return next();
       }
-      res.redirect('/signin')
+      res.redirect('/signin');
     },
 
     fetchUserInfoFromFB: function (req, res) { // Get User info from FB
       var fbUserInfo = {
-        "fbId": res.req.user.id,
-        "fbUserName": res.req.user.displayName,
-        "fbPicture": res.req.user.photos[0].value,
+        'fbId': res.req.user.id,
+        'fbUserName': res.req.user.displayName,
+        'fbPicture': res.req.user.photos[0].value,
       };
 
       res.cookie('facebook', fbUserInfo); // Set user info in cookies
