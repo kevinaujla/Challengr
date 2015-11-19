@@ -14,11 +14,11 @@ module.exports = {
     // set config variables
     aws.config.update({
       accessKeyId: process.env.AWS_ACESS_KEY,
-      secretAccessKey: process.envAWS_SECRET_KEY
+      secretAccessKey: process.env.AWS_SECRET_KEY
     });
     aws.config.update({
-      region: 'Oregon',
-      signutareVersion: 'v4'
+      region: process.env.AWS_REGION,
+      signatureVersion: 'v4'
     });
     var s3 = new aws.S3();
     var s3Params = {

@@ -24,6 +24,9 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    photoURL: {
+      type: DataTypes.STRING
     }
   }, {
     timestamps: false
