@@ -46,6 +46,7 @@ angular.module('App.braintreeFactory', [] )
   };
 
   var checkout = function(payment){
+    console.log('PAYMENT : ', payment);
     return $http({
       method : 'POST',
       url : '/api/braintree/checkout',
@@ -53,7 +54,7 @@ angular.module('App.braintreeFactory', [] )
     })
     .then(function(resp){
       var transactionData = resp.data.transaction;
-      console.log('transaction : ', transactionData);
+      console.log('TRansaction : ', transactionData);
       // store transaction in database
       return $http({
         method : 'POST',

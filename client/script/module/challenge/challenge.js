@@ -11,22 +11,22 @@ angular.module('App.challenge', [])
 
   var self = this;
 
-  console.log('FORM : ', angular.element(document.querySelector('#sample-form')));
+  self.paymentAmount = radioButtonService.radio;
+
+  console.log('radioButtonService : ', radioButtonService.radio);
+
+
 
   /***
     Utility Methods
   ***/
 
-  /*
-    Steps Tabs
-  */
+  /* Steps Tabs */
   self.tabs = [true, false, false];
   self.currentTab = 0;
-
   /* Next Step */
   self.nextTab = function () {
     if (self.currentTab < 2) {
-      console.log('next tab');
       self.tabs[self.currentTab] = false;
       self.currentTab++;
       self.tabs[self.currentTab] = true;
@@ -78,9 +78,8 @@ angular.module('App.challenge', [])
         braintree.setup(token, 'dropin', {
           container: 'payment-form',
           onPaymentMethodReceived: function (payload) {
-            // retrieve nonce from payload.nonce
-            console.log('PAYMENT METHOD received...', payload);
-            
+            // attach the payment button amount to object
+            payload.amount = radioButtonService.radio;
             // call checkout function
             braintreeFactory.checkout(payload)
               .then(function(data){
@@ -115,7 +114,6 @@ angular.module('App.challenge', [])
   };
 
 }])
-
 
 .controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', 'radioButtonService', '$scope', function (userFactory, createChallengeService, radioButtonService, $scope) {
 
@@ -188,17 +186,13 @@ angular.module('App.challenge', [])
     img: 'image/charity/salvationArmy.png'
   }];
 
-  /*
-    Choose Charity to donate to
-  */
+  /* Choose Charity to donate to */
   self.chooseCharity = function (charity) {
     console.log('pick charity...');
     self.charity = charity;
   };
 
-  /*
-    Add information to service object
-  */
+  /* Add information to service object */
   self.info = function () {
     // console log
     console.log('add challenge information...');
@@ -216,9 +210,7 @@ angular.module('App.challenge', [])
 
   self.charityAmount = null;
 
-  /*
-    save info to challenge service object
-  */
+  /* save info to challenge service object */
   self.info = function () {
     // console log
     console.log('add charity amount information...');
