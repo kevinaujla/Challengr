@@ -7,7 +7,7 @@ handles image upload to s3 bucket
 
 angular.module('App.s3Factory', [])
 
-.factory('s3Factory', ['$http'function ($http) {
+.factory('s3Factory', ['$http', function ($http) {
 
   var getSignedRequest = function (file) {
     return $http({
@@ -33,19 +33,22 @@ angular.module('App.s3Factory', [])
     });
   };
 
-  var updatePicture = function(url) {
+  var updatePicture = function (url) {
     return $http({
       method: 'PUT',
       url: '/api/user/',
       data: {
-        image
+        photoURL: url
       }
-    })
+    }).then(function (resp) {
+      return resp.data;
+    });
   };
 
   return {
     getSignedRequest: getSignedRequest,
-    uploadFile: uploadFile
+    uploadFile: uploadFile,
+    updatePicture: updatePicture
   };
 
 }]);

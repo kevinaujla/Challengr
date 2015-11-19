@@ -23,9 +23,9 @@ module.exports = {
     var s3 = new aws.S3();
     var s3Params = {
       Bucket: process.env.S3_BUCKET,
-      Key: req.query.fileName,
+      Key: req.query.file_name,
       Expires: 60,
-      ContentType: req.query.fileType,
+      ContentType: req.query.file_type,
       ACL: 'public-read'
     };
     s3.getSignedUrl('putObject', s3Params, function (err, data) {
@@ -34,7 +34,7 @@ module.exports = {
       } else {
         var returnData = {
           signedRequest: data,
-          url: 'https://' + process.env.S3_BUCKET + 's3.amazonaws.com/' + req.query.fileName
+          url: 'https://' + process.env.S3_BUCKET + '.s3-website-us-west-2.amazonaws.com/' + req.query.file_name
         };
         // respond to client
         res.json(returnData);
