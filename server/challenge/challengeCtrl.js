@@ -110,8 +110,10 @@ module.exports = function (db) {
           id: id
         }
       }).then(function (challenge) {
-        challenge.update(updateModel);
-        res.send(200).end();
+        challenge.update(updateModel)
+          .then(function (challenge) {
+            res.status(200).end();
+          });
       });
     }
   };

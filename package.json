@@ -22,6 +22,7 @@
     "jshint-stylish": "^2.0.1"
   },
   "dependencies": {
+    "aws-sdk": "^2.2.17",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.0.5",
     "body-parser": "^1.14.1",

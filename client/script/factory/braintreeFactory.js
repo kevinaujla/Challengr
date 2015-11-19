@@ -60,4 +60,4 @@ angular.module('App.braintreeFactory', [] )
     // checkout : checkout
   };
 
-}])
+}]);

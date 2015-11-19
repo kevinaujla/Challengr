@@ -97,7 +97,7 @@ angular.module('App.challenge', [])
       .catch(function(err){
         console.log('err : ', err);
       });
-  }
+  };
 
 }])
 

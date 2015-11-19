@@ -11,4 +11,4 @@ angular.module('App.challengeView', [])
 
   var self = this;
 
-}])
+}]);

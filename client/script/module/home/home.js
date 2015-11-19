@@ -16,7 +16,7 @@ angular.module('App.home', [])
   // If you set asyncLoading to true then angular-momentjs 
   // will inject the script and return a promise 
   $moment.then(function(moment) {
-    $scope.anotherTime = moment("20151118", "YYYYMMDD").fromNow();
+    $scope.anotherTime = moment('20151118', 'YYYYMMDD').fromNow();
   });
 
   /* Load All Challenges from DB */

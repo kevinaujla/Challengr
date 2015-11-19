@@ -27,6 +27,7 @@ angular.module('App', [
   'App.braintreeFactory',
   'App.radio',
   'App.createChallengeService',
+  'App.s3Factory'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$momentProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $momentProvider) {

@@ -17,9 +17,9 @@ module.exports = function (app, express, db) {
   app.use('/api/auth', authRouter);
 
   //handling all fb authentication 
-  var fbAuthRouter=express.Router();
+  var fbAuthRouter = express.Router();
   require(__dirname + '/../fbAuth/fbAuthRouter.js')(fbAuthRouter, db, app);
-  app.use('/auth/facebook',fbAuthRouter);
+  app.use('/auth/facebook', fbAuthRouter);
 
   // handling all braintree payment routes
   var braintreeRouter = express.Router();
@@ -48,4 +48,11 @@ module.exports = function (app, express, db) {
   charityRouter.use(authCtrl.authenticate);
   require(__dirname + '/../charity/charityRouter.js')(charityRouter, db);
   app.use('/api/charity', charityRouter);
+
+  // handling all s3 routes for storing images
+  var s3Router = express.Router();
+  // protect s3 routes
+  s3Router.use(authCtrl.authenticate);
+  require(__dirname + '/../s3/s3Router.js');
+  app.use('/api/s3', s3Router);
 };

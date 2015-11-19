@@ -15,5 +15,5 @@ module.exports = function (db) {
         res.json(charities);
       });
     }
-  }
+  };
 };
