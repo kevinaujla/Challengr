@@ -31,12 +31,10 @@ Parent Controller : challengeNC
       <div class="col-md-6 challengeTypes">
         <h1>Challenge Types</h1>
         <div class="btn-group">
-          <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Basketball'">Basketball</label>
-          <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Education'">Education</label>
-          <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Gym'">Gym</label>
-          <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Drinking'">Drinking</label>
-          <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Trending'">Trending</label>
-          <label class="badge btn-primary" ng-model="radioModel" uib-btn-radio="'Swimming'">Swimming</label>
+          <label class="badge btn-primary" ng-model="type" uib-btn-radio="'Basketball'">Basketball</label>
+          <label class="badge btn-primary" ng-model="type" uib-btn-radio="'Education'">Education</label>
+          <label class="badge btn-primary" ng-model="type" uib-btn-radio="'Gym'">Gym</label>
+          <label class="badge btn-primary" ng-model="type" uib-btn-radio="'Drinking'">Drinking</label>
         </div>
         <input type="text" class="form-control" placeholder="Challenge Title" ng-model="title">
         <textarea type="text" col="2" class="form-control" placeholder="Challenge Description" ng-model="description"></textarea>
@@ -48,7 +46,7 @@ Parent Controller : challengeNC
     <div class="row" ng-controller="challengeStep2Ctrl as step2" ng-init="step2.getCharity()">
 
       <ul class="grid-testimonials">
-        <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(self)">
+        <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(charity)">
           <div>
             <h1>{{charity.name}}</h1>
             <p>{{charity.description}}</p>
@@ -64,20 +62,32 @@ Parent Controller : challengeNC
 
   <uib-tab heading="Submit" active="challengeNC.tabs[2]">
     <div class="row" ng-controller="challengeStep3Ctrl as step3">
+
       <div class="col-md-6">
         <h1>OverView</h1>
         
       </div>
       <div class="col-md-6">
         <h1>Select Payment Info</h1>
+
         <!-- Braintree Drop-In Payment UI -->
-        <div ng-include="'partial/payment.html'"></div>
+        <form id="checkout" ng-init="step3.getToken()">
+          <div id="payment-form"></div>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="amount" uib-btn-radio="'.25'">25&#162;</label>
+            <label class="btn btn-primary" ng-model="amount" uib-btn-radio="'.50'">50&#162;</label>
+            <label class="btn btn-primary" ng-model="amount" uib-btn-radio="'1.00'">100&#162;</label>
+          </div>
+          <button class="btn btn-success pull-right" type="submit">Create Challenge</button>
+        </form>
       </div>
+
     </div>
   </uib-tab>
 
 </uib-tabset>
 
+<!-- Steps Footer -->
 <div class="row tab--footer">
 
   <button type="button" class="btn btn-default dropdown-toggle pull-left" ng-click="challengeNC.prevTab()" ng-if="challengeNC.currentTab > 0" data-toggle="dropdown">
@@ -89,5 +99,3 @@ Parent Controller : challengeNC
   </button>
 
 </div>
-
-

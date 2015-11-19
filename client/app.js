@@ -26,7 +26,6 @@ angular.module('App', [
   'App.challengeFactory',
   'App.braintreeFactory',
   'App.charityFactory',
-  'App.radio',
   'App.createChallengeService',
   'App.addAlertService',
   'App.alertController',
@@ -153,12 +152,9 @@ angular.module('App', [
 .run(function ($rootScope, $state, authFactory, $window) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
-    if (toState.url === '/signin') {
+    if (toState.url === '/signin' || toState.url === '/signup') {
       $rootScope.signupOrLoginPage = true;
     }
-    if (toState.url === '/signup') {
-      $rootScope.signupOrLoginPage = true;
-    } 
     if (toState.url !== '/signup' && toState.url !== '/signin'){
       $rootScope.signupOrLoginPage = false;
     }
