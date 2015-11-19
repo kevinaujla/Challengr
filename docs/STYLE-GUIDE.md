@@ -5,8 +5,6 @@ log the arguments passed in if any and the name of the function
 Example of client code, generic comments almost every line except if doing same thing
   /***
   Explain at the top of each function, what it does
-    After manually entering the crash driver's information
-    save the crash user obj into the CrashEventObj.crashEvent object
   ***/
   self.saveDriver = function(){
     // Console Log
@@ -46,26 +44,3 @@ Example of client code, generic comments almost every line except if doing same 
         res.status(404).send({error : err.message});
       });
   }
-  
-Art of Commit Messages
-Layout
-        [type] : \<subject>
-        \<body>
-        \<footer> 
-Allowed Values for \<type>
-- feat (new feature)
-- fix (bug fix)
-- docs (changes to documentation)
-- style (formatting, missing semi colons, etc; no code change)
-- refactor (refactoring production code)
-- test (adding missing tests, refactoring tests; no production code change)
-- chore (updating grunt tasks etc; no production code change)
-- library (adding any kind of dependencies or library code to production code)
-Subject
-Use an imperative tone for your commit messages conveying what a commit does, rather than what it did. Ex. **change** rather than **changed** or **changes**
-Example: 
-        [docs]: add README.md
-        [refactor]: remove unused container element       
-The Body
-The body, just like the subject, should use an imperative tone. You do not necessarily have to use the body, but you may if you think it further clears your point.
-ex: git commit -m "Subject" -m "Body"

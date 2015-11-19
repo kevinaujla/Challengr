@@ -1,6 +1,6 @@
 #The Art of Commit Messages
 
-There is a strict style and format that we use for our commit messages at **ThesisProjectName**. If your commit messages are not clear and concise your Pull Request will not be merged.
+There is a strict style and format that we use for our commit messages at **Challengr**. If your commit messages are not clear and concise your Pull Request will not be merged.
 
 ####The Layout
 
@@ -26,7 +26,7 @@ Use an imperative tone for your commit messages conveying what a commit does, ra
 
 Example:
   
-  [docs]: Add README.md
+  [docs]: add README.md
   [refactor]: remove unused container element
   
 ####The Body
