@@ -186,7 +186,7 @@ module.exports = function (db) {
 
     authenticate: function (req, res, next) {
       // Console Log
-      console.log('authenticating user with body: ', req.body);
+      console.log('authenticating user with body...');
 
       // pull out token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];

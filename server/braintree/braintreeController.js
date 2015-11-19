@@ -112,14 +112,14 @@ module.exports = function(db) {
             console.log('error searching for customer...', err);
           } else{
             console.log('found customer : ', customer.firstName);
-            res.json({braintreeUser : customer})
+            res.json({braintreeUser : customer});
           }
         });
       });
     },
 
     transaction: function(req, res){
-      console.log('STORE TRANSACTION into database... user : ', req.user.email, ' : transaction : ', req.body.transaction);
+      console.log('STORE TRANSACTION into database... user : ', req.user.email);
       // query for user with email(unique)
       db.User.findOne({
           where: {
