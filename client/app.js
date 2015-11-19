@@ -13,6 +13,7 @@ angular.module('App', [
   'angularMoment',
   'angular-momentjs',
   'App.auth',
+  'App.fbAuth',
   'App.profile',
   'App.charity',
   'App.challenge',
@@ -25,6 +26,7 @@ angular.module('App', [
   'App.userFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
+  'App.fbAuthFactory',
   'App.radio',
   'App.createChallengeService',
   'App.s3Factory'
