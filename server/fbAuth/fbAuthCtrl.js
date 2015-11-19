@@ -29,7 +29,7 @@ module.exports = function (db) {
 
       // res.cookie('facebook', fbUserInfo); // Set user info in cookies
 
-      this.postUserInfo(req,res,fbUserInfo);
+      this.postUserInfo(req, res, fbUserInfo);
 
     },
 
@@ -84,12 +84,8 @@ module.exports = function (db) {
                 lastName: user.lastName
               }
             });
-
           }
         });
-
     }
-
   }
 }
-
