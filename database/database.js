@@ -24,7 +24,8 @@ var db = new sequelize(
       // milliseconds being idle before released
       idle: 100000
     },
-    storage: __dirname + '/data/db.sqlite'
+    storage: __dirname + '/data/db.sqlite',
+    logging : false,
   });
 
 require(__dirname + '/configDatabase.js')(db);
