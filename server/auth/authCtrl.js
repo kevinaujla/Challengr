@@ -15,14 +15,13 @@ var jwt = require('jsonwebtoken');
 module.exports = function (db) {
   return {
     signup: function (req, res) {
-      // Console Log
+      // console Log
       console.log('/api/user/signup is being called with body: ', req.body);
       // pull out user data
       var email = req.body.email;
       var firstName = req.body.firstName;
       var lastName = req.body.lastName;
       var password = req.body.password;
-
       // query for user with email(unique)
       db.User.findOne({
           where: {
@@ -30,7 +29,7 @@ module.exports = function (db) {
           }
         })
         .then(function (user) {
-          // Console Log
+          // console Log
           console.log('user with email: ' + email + ' exists: ' + !!user);
           if (user) {
             // respond to client
@@ -55,22 +54,26 @@ module.exports = function (db) {
                     // Console Log
                     console.log('user with email: ' + email + ' got created: ' + !!user);
                     // create token
-                    var token = jwt.sign(user, process.env.TOKEN_SECRET, {
+                    jwt.sign(user, process.env.TOKEN_SECRET, {
                       expiresIn: '1h'
+                    }, function (token) {
+                      // respond to client
+                      res.json({
+                        success: true,
+                        message: 'Successfully signed up with ' + email,
+                        token: token,
+                        user: {
+                          id: user.id,
+                          email: user.email,
+                          firstName: user.firstName,
+                          lastName: user.lastName
+                        }
+                      });
                     });
-
-                    // respond to client
-                    res.json({
-                      success: true,
-                      message: 'Successfully signed up with ' + email,
-                      token: token,
-                      user: {
-                        id: user.id,
-                        email: user.email,
-                        firstName: user.firstName,
-                        lastName: user.lastName
-                      }
-                    });
+                  })
+                  .catch(function (err) {
+                    console.log('error signing up user: ', err);
+                    return done(err);
                   });
               });
           }
@@ -83,7 +86,6 @@ module.exports = function (db) {
       // pull out user data
       var email = req.body.email;
       var password = req.body.password;
-
       // query for user with email(unique)
       db.User.findOne({
           where: {
@@ -136,6 +138,10 @@ module.exports = function (db) {
               }
             });
           }
+        })
+        .catch(function (err) {
+          console.log('error signing in user: ', err);
+          done(err);
         });
     },
 
