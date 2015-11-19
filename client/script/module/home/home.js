@@ -7,25 +7,9 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', function (challengeFactory, $scope, $moment) {
+.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', 'createChallengeService', function (challengeFactory, $scope, $moment, createChallengeService) {
 
   var self = this;
-
-  $scope.$on('$routeChangeSuccess', function() {
-    // var path = $location.path();
-    // console.log(path);
-    // $scope.carsVisible = false;
-    // $scope.bikesVisible = false;
-    // if(path === '/cars') {
-    //    $scope.carsVisible = true;
-    // } else if(path === '/bikes') {
-    //    $scope.bikesVisible = true;
-    // }
-    console.log('changing....');
-  });
-  
-
-  self.notLoggedIn = true;
 
   self.challenges = [];
 

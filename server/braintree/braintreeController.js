@@ -43,10 +43,13 @@ module.exports = function(db) {
       }, function(err, result){
         if (err) {
           console.log('error searching for customer...', err);
-        } else{
-          console.log('found customer : ', customer.firstName);
-          res.json({braintreeUser : customer});
-        }
+        } 
+
+        // else{
+        //   console.log('found customer : ', customer.firstName);
+        //   res.json({braintreeUser : customer});
+        // }
+        
         // propogate result to client
         res.json(result);
       });
@@ -77,9 +80,6 @@ module.exports = function(db) {
         }
         // propogate result to client
         res.json(result);
-        // result.success; // true
-        // result.customer.id; // e.g 160923
-        // result.customer.paymentMethods[0].token; // e.g f28wm
       });
     },
 
@@ -107,6 +107,7 @@ module.exports = function(db) {
         search.firstName().is(req.user.firstName);
         search.lastName().is(req.user.lastName);
       }, function (err, response) {
+        // FIX THIS, try out response[0]
         response.each(function (err, customer) {
           if (err) {
             console.log('error searching for customer...', err);

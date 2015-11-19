@@ -530,8 +530,7 @@ i.icon-budicon-55 {
     line-height: 1.5em;
     margin: 0;
     color: #7D8995;
-    text-transform: initial;
-    padding-bottom: 15px; }
+    text-transform: initial; }
   .grid-testimonials a {
     position: relative;
     z-index: 5;
@@ -596,9 +595,6 @@ div.challengeTypes {
   div.challengeTypes h1 {
     color: white;
     padding: 15px 0; }
-  div.challengeTypes label.active {
-    background-color: #A0CECB;
-    color: white; }
   div.challengeTypes .btn-primary:active:hover, div.challengeTypes .btn-primary.active:hover, div.challengeTypes .open > .dropdown-toggle.btn-primary:hover, div.challengeTypes .btn-primary:active:focus, div.challengeTypes .btn-primary.active:focus, div.challengeTypes .open > .dropdown-toggle.btn-primary:focus, div.challengeTypes .btn-primary:active.focus, div.challengeTypes .btn-primary.active.focus, div.challengeTypes .open > .dropdown-toggle.btn-primary.focus {
     background-color: #A0CECB; }
 
@@ -707,36 +703,6 @@ ul.userChallenges li div {
     background-color: #45609B; }
   .panel a#twitter {
     background-color: #59ADEB; }
-
-ul.list-group.billings {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column; }
-  ul.list-group.billings li.list-group-item {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center; }
-    ul.list-group.billings li.list-group-item span.date {
-      text-transform: initial;
-      color: #7D8995;
-      -webkit-flex: 1;
-      -ms-flex: 1;
-      flex: 1; }
-    ul.list-group.billings li.list-group-item span.amount {
-      padding-right: 15px;
-      color: #323133;
-      font-weight: bold; }
-    ul.list-group.billings li.list-group-item span.creditCard {
-      padding-right: 15px; }
 
 /*** State ***/
 /***
