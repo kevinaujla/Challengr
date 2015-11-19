@@ -52,12 +52,13 @@ angular.module('App.braintreeFactory', [] )
       data : payment,
     })
     .then(function(resp){
-      console.log('transaction : ', resp.data.transaction);
+      var transactionData = resp.data.transaction;
+      console.log('transaction : ', transactionData);
       // store transaction in database
       return $http({
         method : 'POST',
         url : '/api/braintree/transaction',
-        data : resp.transaction
+        data : {transaction : transactionData}
       })
       .then(function(resp){
         return resp.data;  
@@ -66,11 +67,22 @@ angular.module('App.braintreeFactory', [] )
     });
   };
 
+  var getTransactions = function(){
+    return $http({
+      method : 'GET',
+      url : '/api/braintree/transactions',
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
   return {
     getToken : getToken,
     createCustomer : createCustomer,
     searchCustomer : searchCustomer,
     checkout : checkout,
+    getTransactions : getTransactions,
   };
 
 }]);

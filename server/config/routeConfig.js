@@ -28,7 +28,7 @@ module.exports = function (app, express, db) {
 
   // handling all braintree payment routes
   var braintreeRouter = express.Router();
-  require(__dirname + '/../braintree/braintreeRouter.js')(braintreeRouter);
+  require(__dirname + '/../braintree/braintreeRouter.js')(braintreeRouter, db);
   app.use('/api/braintree', braintreeRouter);
 
   // handling all challenge related operations (create, retrieveAll)
