@@ -10,6 +10,7 @@ angular.module('App.profile', [])
 .controller('profileCtrl', ['authFactory', 'braintreeFactory', function(authFactory, braintreeFactory) {
 
   var self = this;
+  var transactions = [];
 
   // Retreive user's information and display
   self.getUser = function(){
@@ -23,13 +24,13 @@ angular.module('App.profile', [])
 
   // Get all transaction history for user
   self.getBilling = function(){
-    braintreeFactory.searchCustomer()
+    braintreeFactory.getTransactions()
       .then(function(data){
-        console.log('data : ', data);
-
+        console.log('Transactions : ', data.transactions);
+        self.transactions = data.transactions;
       })
       .catch(function(err){
-        console.log('error : ', err);
+        console.log('error retreiving transactions...', err);
       });
   };
 

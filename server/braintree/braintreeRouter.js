@@ -5,13 +5,14 @@ specifying routes for braintreeRouter
 
 */
 
-var braintreeController = require(__dirname + '/braintreeController.js');
 var authCtrl = require(__dirname + '/../auth/authCtrl.js')();
 
-module.exports = function (app) {
-  // app === braintreeRouter injected from server.js
+module.exports = function (app, db) {
   
+  var braintreeController = require(__dirname + '/braintreeController.js')(db);
+
   app.get('/searchCustomer', authCtrl.authenticate, braintreeController.searchCustomer);
+  app.get('/transactions', authCtrl.authenticate, braintreeController.transactions);
 
   app.post('/checkout', braintreeController.checkout);
   app.post('/clientToken', authCtrl.authenticate, braintreeController.generateToken);
