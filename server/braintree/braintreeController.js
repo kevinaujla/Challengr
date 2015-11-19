@@ -44,20 +44,13 @@ module.exports = function(db) {
         if (err) {
           console.log('error searching for customer...', err);
         } 
-
-        // else{
-        //   console.log('found customer : ', customer.firstName);
-        //   res.json({braintreeUser : customer});
-        // }
-        
         // propogate result to client
         res.json(result);
       });
     },
 
     /*
-      Create a new customer with a payment method
-      (First time checkout)
+      Create a new customer with a payment method (First time checkout)
     */
     createCustomer: function(req, res){
       // console log
@@ -65,7 +58,7 @@ module.exports = function(db) {
       // get user object
       var user = req.body.user;
 
-      // // Check if the customer already exists or not
+      // Check if the customer already exists or not
       // searchCustomer(req);
 
       // create new customer
@@ -100,7 +93,7 @@ module.exports = function(db) {
       Search if customer exists
     */
     searchCustomer: function(req, res){
-      console.log('SEARCH for braintree customer...');
+      console.log('search for braintree customer...');
       console.log('req.user : ', req.user);
       var stream = gateway.customer.search(function (search) {
         search.email().is(req.user.email);
@@ -120,7 +113,7 @@ module.exports = function(db) {
     },
 
     transaction: function(req, res){
-      console.log('STORE TRANSACTION into database... user : ', req.user.email);
+      console.log('store transaction into database... user : ', req.user.email);
       // query for user with email(unique)
       db.User.findOne({
           where: {
@@ -144,13 +137,11 @@ module.exports = function(db) {
           .catch(function(err){
             console.log('err : ', err);
           });
-
         });
     },
 
     transactions : function(req, res){
       console.log('get all transactions...');
-
       // query for user with email(unique)
       db.User.findOne({
           where: {
@@ -171,10 +162,7 @@ module.exports = function(db) {
         .catch(function(err){
           console.log('error finding user...', err);
         });
-     
-
     }
-
   };
 
 };
