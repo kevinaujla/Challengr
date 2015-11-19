@@ -5,27 +5,29 @@ specifying routes for /auth/facebook
 
 */
 
-var passport = require('passport');  // auth via passport
-var FacebookStrategy = require('passport-facebook').Strategy;  // FB auth via passport
-var session = require('express-session');  // to enable user sessions
-var cookieParser = require('cookie-parser');  // parses cookies
+var passport = require('passport'); // auth via passport
+var FacebookStrategy = require('passport-facebook').Strategy; // FB auth via passport
+var session = require('express-session'); // to enable user sessions
+var cookieParser = require('cookie-parser'); // parses cookies
 
 module.exports = function (app, db, mainApp) {
   // app === userRouter injected from server.js
 
-// AUTH INIT
-app.use(session({ secret: 'this is challengr' }));
-app.use(passport.initialize());  // initialize passport
-app.use(passport.session());  // to support persistent login sessions
-app.use(cookieParser());
+  // AUTH INIT
+  app.use(session({
+    secret: 'this is challengr'
+  }));
+  app.use(passport.initialize()); // initialize passport
+  app.use(passport.session()); // to support persistent login sessions
+  app.use(cookieParser());
 
 
-passport.serializeUser(function(user, done) { // serialization is necessary for persistent sessions
-  done(null, user);
-});
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
+  passport.serializeUser(function (user, done) { // serialization is necessary for persistent sessions
+    done(null, user);
+  });
+  passport.deserializeUser(function (obj, done) {
+    done(null, obj);
+  });
 
 
   var utils = require(__dirname + '/fbAuthCtrl.js')(db);
@@ -35,7 +37,7 @@ passport.deserializeUser(function(obj, done) {
       failureRedirect: '/signin'
     }),
     function (req, res) {
-      res.redirect('/');
+      utils.fetchUserInfoFromFB(req, res);
     });
 
   app.get('/',
@@ -45,15 +47,8 @@ passport.deserializeUser(function(obj, done) {
       // function will not be called.
     });
 
-  app.get('/userauth', passport.authenticate('facebook', {
-      failureRedirect: '/signin'
-    }),
-    function (req, res) {
-      res.redirect('/');
-    });
-
   passport.use(new FacebookStrategy({ // request fields from facebook
-      profileFields: ['id', 'displayName', 'photos'],
+      profileFields: ['id', 'displayName', 'photos', 'email'],
       clientID: '1534819266808872',
       clientSecret: '7cb15159c731afe15686d596b633b20c',
       callbackURL: '/auth/facebook/callback',
