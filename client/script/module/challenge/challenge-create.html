@@ -45,17 +45,17 @@ Parent Controller : challengeNC
   </uib-tab>
 
   <uib-tab heading="Pick Charity" active="challengeNC.tabs[1]">
-    <div class="row" ng-controller="challengeStep2Ctrl as step2">
+    <div class="row" ng-controller="challengeStep2Ctrl as step2" ng-init="step2.getCharity()">
 
       <ul class="grid-testimonials">
         <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(self)">
           <div>
             <h1>{{charity.name}}</h1>
             <p>{{charity.description}}</p>
-            <a href="{{charity.website}}">{{charity.website}}</a>
+            <a href="{{charity.link}}">{{charity.link}}</a>
             <span class="quote-arrow"></span>
           </div>
-          <span class="grid-testimonials-citation"><img ng-src="{{charity.img}}" width="100%"></span>
+          <span class="grid-testimonials-citation"><img ng-src="{{charity.imgUrl}}" width="100%"></span>
         </li>                                                      
       </ul>
 

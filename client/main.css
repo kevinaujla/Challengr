@@ -530,7 +530,8 @@ i.icon-budicon-55 {
     line-height: 1.5em;
     margin: 0;
     color: #7D8995;
-    text-transform: initial; }
+    text-transform: initial;
+    padding-bottom: 15px; }
   .grid-testimonials a {
     position: relative;
     z-index: 5;
