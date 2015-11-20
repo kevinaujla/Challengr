@@ -20,7 +20,6 @@ angular.module('App.userFactory', [])
   };
 
   var getUserByID = function(userID){
-    console.log('get user by id : ', userID);
     return $http({
         method: 'GET',
         url: '/api/user/one',

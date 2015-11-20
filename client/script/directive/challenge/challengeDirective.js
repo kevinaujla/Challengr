@@ -30,10 +30,6 @@ angular.module('App.challengeDirective', [])
     },
     link : function(scope, element, attrs){
 
-      console.log('challengechallenged : ', scope.challengechallenged);
-
-      console.log('challengechallenger : ', scope.challengechallenger);
-
       // Need to fire an event when the issueDate moment difference passes the expiresdate
       // event should change the state of the challenge to become incomplete
       
