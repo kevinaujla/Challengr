@@ -176,7 +176,7 @@ module.exports = function(db) {
         console.log('response ids : ', ids);
         for(var i = 0; i < ids.length; i++){
           console.log('THIS : ', this);
-          this.deleteAllBraintreeCustomers(ids[i]);
+          // this.deleteAllBraintreeCustomers(ids[i]);
         }
 
       });

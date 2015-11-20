@@ -36,7 +36,6 @@ angular.module('App.challenge', [])
   };
 
   /***
-<<<<<<< 1361b40e293d592277613c13c251068580e6ad44
     Challenge Methods
   ***/
 
@@ -44,13 +43,12 @@ angular.module('App.challenge', [])
   self.save = function () {
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
-    addAlertService.addAlert("success","Challenge created");
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function (data) {
         console.log('created challenge : ', data);
-        //create alert
-        // addAlertService.addAlert();
+        // create alert
+        addAlertService.addAlert('success', 'Challenge created');
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
@@ -58,8 +56,6 @@ angular.module('App.challenge', [])
   };
 
   /***
-=======
->>>>>>> [refactor] : steps refactored and cleanup code
     Braintree Methods
   ***/
 

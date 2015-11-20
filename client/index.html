@@ -18,7 +18,7 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div id="leftBar" class="col-xs-1" ng-show="!signupOrLoginPage">
+      <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
         <div>
           <img id="profileImg" src="image/profileImg.jpg">
           <h5>Jordan</h5>
@@ -40,7 +40,7 @@
 
       <div id="main" ng-class=" signupOrLoginPage ? 'col-xs-8 col-xs-offset-2' : 'col-xs-8' " ui-view></div>
 
-      <div id="rightBar" class="col-xs-3" ng-show="!signupOrLoginPage">
+      <div id="rightBar" class="col-xs-3" ng-if="!signupOrLoginPage">
 
         <div>
           <div ng-controller="alertController">
