@@ -13,13 +13,20 @@ angular.module('App.profile', [])
   var transactions = [];
 
   // Retreive user's information and display
-  self.getUser = function(){
-
+  self.getUser = function () {
+    var firstName = localStorage.getItem('com.challengr.firstName');
+    var lastName = localStorage.getItem('com.challengr.lastName');
+    var email = localStorage.getItem('com.challengr.email');
+    var location = "San Francisco, CA"; // temp; to be replaced with database location in future
+    self.firstName = firstName;
+    self.lastName = lastName;
+    self.email = email;
+    self.location = location;
   };
 
   // Update user information
   self.updateUser = function(){
-    
+
   };
 
   // Get all transaction history for user
