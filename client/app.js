@@ -27,6 +27,8 @@ angular.module('App', [
   'App.braintreeFactory',
   'App.radio',
   'App.createChallengeService',
+  'App.alertService',
+  'App.addAlertService',
   'App.s3Factory'
 ])
 
