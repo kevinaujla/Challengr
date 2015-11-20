@@ -4,53 +4,54 @@
 
 ***/
 
-div.challengeTypes{
+div.challengeTypes {
   text-align: center;
   background-color: #323133;
   border-radius: 4px;
   padding-bottom: $padding;
-
   .badge {
-      background-color: #555457;
-      color: #B3B3B3;
-      border: 0px solid white;
-      padding: 15px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      margin: 5px;
+    background-color: #555457;
+    color: #B3B3B3;
+    border: 0px solid white;
+    padding: 15px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin: 5px;
   }
-
-  input, textarea{
+  input,
+  textarea {
     margin-top: $padding;
   }
-
   h1 {
-      color: white;
-      padding: 15px 0;
+    color: white;
+    padding: 15px 0;
   }
-
-  .challengeTypes input {
-
-  }
-
-  label.active{
+  .challengeTypes input {}
+  label.active {
     background-color: $unique;
     color: white;
   }
-  
-  .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus{
+  .btn-primary:active:hover,
+  .btn-primary.active:hover,
+  .open > .dropdown-toggle.btn-primary:hover,
+  .btn-primary:active:focus,
+  .btn-primary.active:focus,
+  .open > .dropdown-toggle.btn-primary:focus,
+  .btn-primary:active.focus,
+  .btn-primary.active.focus,
+  .open > .dropdown-toggle.btn-primary.focus {
     background-color: #A0CECB;
   }
-
 }
-ul.challengeTypes{
-  li{
+
+ul.challengeTypes {
+  li {
     display: inline-block;
-    span{
+    span {
       padding: $padding;
       border-radius: 50px;
     }
-    .badge--active{
+    .badge--active {
       background-color: #A0CECB;
     }
   }

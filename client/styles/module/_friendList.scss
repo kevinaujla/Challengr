@@ -4,11 +4,11 @@
 
 ***/
 
-ul.friendList{
-  li{
+ul.friendList {
+  li {
     padding: $padding;
     border-bottom: 1px solid #EFF0F4;
-    img{
+    img {
       width: 10%;
       border-radius: 50%;
       display: inline-block;
@@ -16,9 +16,10 @@ ul.friendList{
       box-shadow: 1px 1px 1px #E6E6E6;
       margin-right: $padding;
     }
-    p{
+    p {
       display: inline-block;
       color: #70838D;
     }
   }
 }
+

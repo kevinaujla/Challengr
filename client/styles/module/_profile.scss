@@ -14,23 +14,19 @@
   margin-top: $padding;
 }
 
-#profile{
-
-  #account{
+#profile {
+  #account {
     margin: 0 auto;
     display: block;
   }
-
-  .input-group{
+  .input-group {
     margin: $padding 0;
     border: 2px solid #DEDEDE;
-
-    input{
+    input {
       border: 0px solid white;
     }
   }
-
-  button{
+  button {
     border-radius: 50px;
     padding: 10px $padding*2;
     background-color: $unique;
@@ -42,8 +38,8 @@
     margin-bottom: $padding;
     display: block;
   }
-
-  .btn-danger{
+  .btn-danger {
     background-color: #FF7978;
   }
 }
+

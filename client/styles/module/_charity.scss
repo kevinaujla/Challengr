@@ -1,37 +1,35 @@
-.charity{
-  img{
+.charity {
+  img {
     width: 100%;
-    
   }
 }
 
-.grid-testimonials
-{
+.grid-testimonials {
   display: flex;
   text-align: center;
   li {
-    flex: 1; 
+    flex: 1;
     list-style-type: none;
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
-  h1{
+  h1 {
     color: #7D8A9A;
     margin-top: 0px;
   }
-  img{
+  img {
     width: 25%;
-    margin-left: -10px; 
+    margin-left: -10px;
   }
-  p{
+  p {
     line-height: 1.5em;
     margin: 0;
     color: #7D8995;
     text-transform: initial;
     padding-bottom: $padding;
   }
-  a{
+  a {
     position: relative;
     z-index: 5;
     text-transform: initial;
@@ -51,18 +49,16 @@
     -moz-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     z-index: 1;
-    }
+  }
 }
 
 .btn-success {
-    background-color: #66D3E2;
-    border-color: #66D3E2;
-    /* padding: 15px; */
+  background-color: #66D3E2;
+  border-color: #66D3E2;
+  /* padding: 15px; */
 }
 
-
-.grid-testimonials-citation
-{
+.grid-testimonials-citation {
   color: #656262;
   display: block;
   font-size: 1.125em;
@@ -77,6 +73,7 @@
   padding: 15px;
   margin: 15px;
   position: relative;
-  box-shadow: 0px 2px 0px #EAEEF1, 0px 2px 4px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 0px #EAEEF1, 0px 2px 4px rgba(0, 0, 0, 0.5);
   border-radius: 4px;
-  }
+}
+
