@@ -10,13 +10,7 @@ angular.module('App.challenge', [])
 .controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'addAlertService','$state', function(createChallengeService, challengeFactory, braintreeFactory, addAlertService, $state, $scope) {
 
   var self = this;
-
-  self.paymentAmount = radioButtonService.radio;
-
-  console.log('radioButtonService : ', radioButtonService.radio);
-
-
-
+  
   /***
     Utility Methods
   ***/

@@ -92,6 +92,6 @@ gulp.task('watcher', function() {
 });
 
 // Run this command while developing
-gulp.task('default', ['watcher', 'nodemon']);
+gulp.task('default', ['watcher', 'nodemon', 'sass', 'autoprefixer', 'scripts']);
 
 gulp.task('front', ['watcher', 'connect']);
