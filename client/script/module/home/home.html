@@ -21,6 +21,8 @@ injects all views into home page
 
 <challenge ng-repeat="challenge in homeCtrl.challenges | filter : search"
   challengeid = 'challenge.id',
+  challengechallenged = 'challenge.Challenged',
+  challengechallenger = 'challenge.Challenger',
   charityamount = 'challenge.charityAmount',
   title = 'challenge.title',
   description = 'challenge.description',

@@ -19,7 +19,7 @@ var gateway = braintree.connect({
 
 module.exports = function(db) {
 
-  return {
+  var braintreeObj = {
     generateToken: function (req, res) {
       // console log
       console.log('Generate braintree client token and send back to user... with customer : ', req.body.id);
@@ -57,7 +57,7 @@ module.exports = function(db) {
       console.log('create new braintree customer... ', req.body);
       // get user object
       var user = req.body.user;
-
+      
       // Check if the customer already exists or not
       // searchCustomer(req);
 
@@ -174,6 +174,10 @@ module.exports = function(db) {
       }, function(err, response){
         var ids = response.ids;
         // console.log('response ids : ', ids);
+        for(var i = 0; i < ids.length; i++){
+          // console.log('THIS : ', this);
+          // this.deleteAllBraintreeCustomers(ids[i]);
+        }
       });
     },
 
@@ -182,5 +186,7 @@ module.exports = function(db) {
     },
 
   };
+
+  return braintreeObj;
 
 };

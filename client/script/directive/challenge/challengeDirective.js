@@ -14,6 +14,8 @@ angular.module('App.challengeDirective', [])
     templateUrl: 'script/directive/challenge/challengeDirective.html',
     scope : { 
       challengeid : '=',
+      challengechallenged : '=',
+      challengechallenger : '=',
       charityamount : '=',
       title : '=',
       description : '=',
@@ -27,10 +29,14 @@ angular.module('App.challengeDirective', [])
       type : '=',
     },
     link : function(scope, element, attrs){
+
+      console.log('challengechallenged : ', scope.challengechallenged);
+
+      console.log('challengechallenger : ', scope.challengechallenger);
+
       // Need to fire an event when the issueDate moment difference passes the expiresdate
       // event should change the state of the challenge to become incomplete
       
-
       scope.increaseLike = function(){
         // console log
         console.log('increase like...');

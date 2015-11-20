@@ -10,7 +10,7 @@ loads all challenge related to the user
     <p>You have no challenges</p>
   </div>
   <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges">
-    <img src="image/profileImg.jpg">
+    <img ng-src="{{challenge.challengerImg}}">
     <div>
       <h1>{{challenge.title}}</h1>
       <p>{{challenge.description}}</p>

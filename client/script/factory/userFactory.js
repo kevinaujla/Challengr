@@ -28,7 +28,6 @@ angular.module('App.userFactory', [])
       })
       .then(function (resp) {
         // return the image
-        console.log('resp : ', resp.data.photoURL);
         return resp.data.photoURL;
       });
   };

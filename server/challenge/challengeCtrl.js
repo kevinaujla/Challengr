@@ -77,11 +77,11 @@ module.exports = function (db) {
           include: [{
             model: db.User,
             as: 'Challenger',
-            attributes: ['id', 'firstName', 'lastName', 'email']
+            attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
           }, {
             model: db.User,
             as: 'Challenged',
-            attributes: ['id', 'firstName', 'lastName', 'email']
+            attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
           }],
           order: 'issuedDate DESC'
         })

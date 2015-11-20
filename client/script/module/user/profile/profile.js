@@ -17,7 +17,7 @@ angular.module('App.profile', [])
     self.firstName = localStorage.getItem('com.challengr.firstName');
     self.lastName = localStorage.getItem('com.challengr.lastName');
     self.email = localStorage.getItem('com.challengr.email');
-    self.location = "San Francisco"; // temp; to be replaced with database location in future
+    self.location = 'San Francisco'; // temp; to be replaced with database location in future
   };
 
   // Update user information
