@@ -10,4 +10,8 @@ module.exports = function (app, db) {
 
   // retrieve all users
   app.get('/', userCtrl.retrieveAll);
+  // update user
+  app.put('/', userCtrl.update);
+  // retrieve specified user
+  app.get('/one', userCtrl.retrieveUser);
 };

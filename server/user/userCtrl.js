@@ -12,7 +12,7 @@ module.exports = function (db) {
       console.log('api/user/ retrieving all users');
       // query for all users
       db.User.findAll({
-        attributes: ['id', 'firstName', 'lastName', 'email'],
+        attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL'],
         raw: true
       }).then(function (users) {
         res.json(users);
@@ -34,6 +34,24 @@ module.exports = function (db) {
           .then(function (user) {
             res.status(200).end();
           });
+      });
+    },
+    retrieveUser: function (req, res) {
+      // console log
+      console.log('/api/user/one');
+      // pull out data
+      var id = req.query.id;
+      db.User.find({
+        attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL'],
+        where: {
+          id: id
+        }
+      }).then(function (user) {
+        if (!user) {
+          res.send('no such user exists');
+        } else {
+          res.json(user);
+        }
       });
     }
   };
