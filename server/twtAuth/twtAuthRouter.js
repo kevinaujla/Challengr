@@ -6,7 +6,7 @@ specifying routes for /auth/twitter
 */
 
 var passport = require('passport'); // auth via passport
-var TwitterStrategy = require('passport-twitter').Strategy; // FB auth via passport
+var twitterStrategy = require('passport-twitter').Strategy; // FB auth via passport
 var session = require('express-session'); // to enable user sessions
 var cookieParser = require('cookie-parser'); // parses cookies
 
@@ -21,7 +21,6 @@ module.exports = function (app, db, mainApp) {
   app.use(passport.session()); // to support persistent login sessions
   app.use(cookieParser());
 
-
   passport.serializeUser(function (user, done) { // serialization is necessary for persistent sessions
     done(null, user);
   });
@@ -31,7 +30,6 @@ module.exports = function (app, db, mainApp) {
 
   var utils = require(__dirname + '/twtAuthCtrl.js')(db);
 
-
   app.get('/callback',
     passport.authenticate('twitter', {
       failureRedirect: '/signin'
@@ -40,16 +38,12 @@ module.exports = function (app, db, mainApp) {
       utils.fetchUserInfoFromTWT(req, res);
     });
 
-
   // Redirect the user to Twitter for authentication.  When complete, Twitter
   // will redirect the user back to the application at
   //   /auth/twitter/callback
   app.get('/', passport.authenticate('twitter'));
 
-
-
-
-  passport.use(new TwitterStrategy({
+  passport.use(new twitterStrategy({
       consumerKey: 'zhoYvm3yPgyV6iVRaly89mdiU',
       consumerSecret: 'GfkmGY69RHKimjS1rojsMd8zmTOu0Sqh2mS4Ko9TNRiGlvkrTv',
       callbackURL: 'oob'
@@ -62,7 +56,6 @@ module.exports = function (app, db, mainApp) {
       });
     }
   ));
-
 
   // Twitter will redirect the user to this URL after approval.  Finish the
   // authentication process by attempting to obtain an access token.  If
@@ -80,6 +73,4 @@ module.exports = function (app, db, mainApp) {
       res.redirect('/');
     });
   });
-
-
 };
