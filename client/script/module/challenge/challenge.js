@@ -11,6 +11,12 @@ angular.module('App.challenge', [])
 
   var self = this;
 
+  self.paymentAmount = radioButtonService.radio;
+
+  console.log('radioButtonService : ', radioButtonService.radio);
+
+
+
   /***
     Utility Methods
   ***/

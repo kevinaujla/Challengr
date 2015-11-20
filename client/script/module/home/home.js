@@ -11,6 +11,22 @@ angular.module('App.home', [])
 
   var self = this;
 
+  $scope.$on('$routeChangeSuccess', function() {
+    // var path = $location.path();
+    // console.log(path);
+    // $scope.carsVisible = false;
+    // $scope.bikesVisible = false;
+    // if(path === '/cars') {
+    //    $scope.carsVisible = true;
+    // } else if(path === '/bikes') {
+    //    $scope.bikesVisible = true;
+    // }
+    console.log('changing....');
+  });
+  
+
+  self.notLoggedIn = true;
+
   self.challenges = [];
 
   // If you set asyncLoading to true then angular-momentjs 
