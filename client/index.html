@@ -39,16 +39,14 @@
       <div id="main" class="col-xs-8" ui-view></div>
       <div id="rightBar" class="col-xs-3">
         <div>
-
-          <div ng-controller ="alertController">
-            <script type="text/ng-template" id="alert.html">
-              <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
-                <div ng-transclude></div>
+          <div ng-controller="alertController">
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+              {{alert.msg}}
+              <div class="alertIcon">
+                <i class="icon-bell-o"></i>
               </div>
-            </script>
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+            </uib-alert>
           </div>
-
         </div>
         <!-- Display challenges received -->
         <h2 class="center">Your Challenges<h2>
