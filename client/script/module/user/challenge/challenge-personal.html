@@ -1,23 +1,16 @@
+<!--
+
+challenge-personal.html
+loads all challenge related to the user
+
+-->
+
 <ul class="list-group userChallenges" ng-controller="personalChallengeCtrl as personalChallengeC" ng-init="personalChallengeC.load()">
-  <li class="list-group-item">
+  <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges">
     <img src="image/profileImg.jpg">
     <div>
-      <h1>Workout</h1>
-      <p>Challenge details here hallenge details here. hallenge details here hallenge details herehallenge details here.</p>
-    </div>
-  </li>
-  <li class="list-group-item">
-    <img src="image/profileImg.jpg">
-    <div>
-      <h1>Workout</h1>
-      <p>Challenge details here hallenge details here. hallenge details here hallenge details herehallenge details here.</p>
-    </div>
-  </li>
-  <li class="list-group-item">
-    <img src="image/profileImg.jpg">
-    <div>
-      <h1>Workout</h1>
-      <p>Challenge details here hallenge details here. hallenge details here hallenge details herehallenge details here.</p>
+      <h1>{{challenge.title}}</h1>
+      <p>{{challenge.description}}</p>
     </div>
   </li>
 </ul>

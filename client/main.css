@@ -65,6 +65,16 @@ body {
     margin-bottom: 0px;
     text-transform: uppercase;
     list-style-type: none; }
+  body .btn-default:hover {
+    background-color: #A0CECB;
+    border: 1px solid white; }
+  body .btn-default:active:hover, body .btn-default.active:hover, body .open > .dropdown-toggle.btn-default:hover, body .btn-default:active:focus, body .btn-default.active:focus, body .open > .dropdown-toggle.btn-default:focus, body .btn-default:active.focus, body .btn-default.active.focus, body .open > .dropdown-toggle.btn-default.focus {
+    background-color: #A0CECB; }
+  body .btn-success:hover, body .btn-success:active, body .btn-success.active, body .open > .dropdown-toggle.btn-success {
+    background-color: #A0CECB;
+    border: 1px solid white; }
+  body .btn-success:active:hover, body .btn-success.active:hover, body .open > .dropdown-toggle.btn-success:hover, body .btn-success:active:focus, body .btn-success.active:focus, body .open > .dropdown-toggle.btn-success:focus, body .btn-success:active.focus, body .btn-success.active.focus, body .open > .dropdown-toggle.btn-success.focus {
+    background-color: #A0CECB; }
 
 /***
 
@@ -230,6 +240,9 @@ SCSS Variables
         height: 20%;
         width: 20%; }
       #rightBar ul li div {
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
         padding-left: 15px; }
         #rightBar ul li div h1 {
           color: #7D8995;
@@ -685,16 +698,6 @@ ul.userChallenges li div {
     margin-top: 30px;
     margin-bottom: 15px;
     display: block; }
-  .panel .btn-default:hover {
-    background-color: #A0CECB;
-    border: 1px solid white; }
-  .panel .btn-default:active:hover, .panel .btn-default.active:hover, .panel .open > .dropdown-toggle.btn-default:hover, .panel .btn-default:active:focus, .panel .btn-default.active:focus, .panel .open > .dropdown-toggle.btn-default:focus, .panel .btn-default:active.focus, .panel .btn-default.active.focus, .panel .open > .dropdown-toggle.btn-default.focus {
-    background-color: #A0CECB; }
-  .panel .btn-success:hover {
-    background-color: #A0CECB;
-    border: 1px solid white; }
-  .panel .btn-success:active:hover, .panel .btn-success.active:hover, .panel .open > .dropdown-toggle.btn-success:hover, .panel .btn-success:active:focus, .panel .btn-success.active:focus, .panel .open > .dropdown-toggle.btn-success:focus, .panel .btn-success:active.focus, .panel .btn-success.active.focus, .panel .open > .dropdown-toggle.btn-success.focus {
-    background-color: #A0CECB; }
   .panel a#facebook, .panel a#twitter {
     display: block;
     border-radius: 50px;
@@ -707,36 +710,6 @@ ul.userChallenges li div {
     background-color: #45609B; }
   .panel a#twitter {
     background-color: #59ADEB; }
-
-ul.list-group.billings {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column; }
-  ul.list-group.billings li.list-group-item {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center; }
-    ul.list-group.billings li.list-group-item span.date {
-      text-transform: initial;
-      color: #7D8995;
-      -webkit-flex: 1;
-      -ms-flex: 1;
-      flex: 1; }
-    ul.list-group.billings li.list-group-item span.amount {
-      padding-right: 15px;
-      color: #323133;
-      font-weight: bold; }
-    ul.list-group.billings li.list-group-item span.creditCard {
-      padding-right: 15px; }
 
 /*** State ***/
 /***

@@ -16,7 +16,7 @@ module.exports = function (db) {
   // where the specific user is challenged
   db.User.hasMany(db.Challenge, {
     as: 'MyChallenges',
-    foreignKey: 'challengerUser'
+    foreignKey: 'challengedUser'
   });
 
   // adds foreign key do db.Challenge
@@ -30,7 +30,7 @@ module.exports = function (db) {
   // where the specific user is the challenger
   db.User.hasMany(db.Challenge, {
     as: 'ImposedChallenges',
-    foreignKey: 'challengedUser'
+    foreignKey: 'challengerUser'
   });
 
   // adds foreign key do db.Challenge
