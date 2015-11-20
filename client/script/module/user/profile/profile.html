@@ -30,10 +30,13 @@ manage payments, signout, manage user information
 
   <uib-tab heading="Billing Info" ng-init="profileCtrl.getBilling()">
     <ul class="list-group billings">
-      <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
-      <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
-      <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundation</span></li>
-      <li class="list-group-item"><span class="amount">5$</span> to <span class="charity">red cross foundationss</span></li>
+      <li class="list-group-item" ng-repeat="transaction in profileCtrl.transactions">
+        <span class="date">{{transaction.created | date : fullDate}}</span>
+        <span class="amount">${{transaction.amount}}</span>
+        <span class="creditCard">{{transaction.last4}}</span>
+        <img ng-src="{{transaction.imgUrl}}">
+         <!-- to <span class="charity">red cross foundation</span> -->
+      </li>
     </ul>
   </uib-tab>
 

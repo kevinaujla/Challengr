@@ -7,15 +7,17 @@ create a alert
 
 angular.module('App.alertController', [])
 
-.controller('alertController', ['$scope','addAlertService', function ($scope,addAlertService) {
+.controller('alertController', ['$scope', 'addAlertService', function ($scope, addAlertService) {
 
-  $scope.alerts=addAlertService.alerts;
-  
-  $scope.addAlert = function(msg) {
-    addAlertService.alerts.push({msg: msg});
+  $scope.alerts = addAlertService.alerts;
+
+  $scope.addAlert = function (msg) {
+    addAlertService.alerts.push({
+      msg: msg
+    });
   };
 
-  $scope.closeAlert = function(index) {
+  $scope.closeAlert = function (index) {
     addAlertService.alerts.splice(index, 1);
   };
 

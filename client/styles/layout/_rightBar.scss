@@ -25,6 +25,7 @@
         width: 20%;
       }
       div{
+        flex: 1;
         padding-left: $padding;
         h1{
           color: #7D8995;
@@ -38,7 +39,7 @@
       }
     }
   }
-
+  
   div.alertIcon{
     display: inline-block;
     float: left;

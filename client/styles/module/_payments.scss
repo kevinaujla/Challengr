@@ -1,0 +1,23 @@
+ul.list-group.billings {
+  display: flex;
+  flex-direction: column;
+  li.list-group-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span.date {
+      text-transform: initial;
+      color: #7D8995;
+      flex: 1;
+    }
+    span.amount {
+      padding-right: $padding;
+      color: #323133;
+      font-weight: bold;
+    }
+    span.creditCard {
+      padding-right: $padding;
+    }
+  }
+}
+

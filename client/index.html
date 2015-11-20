@@ -17,7 +17,8 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div id="leftBar" class="col-xs-1">
+
+      <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
         <div>
           <img id="profileImg" src="image/profileImg.jpg">
           <h5>Jordan</h5>
@@ -36,8 +37,11 @@
         </div>
       </div>
       <!-- Inject Views -->
-      <div id="main" class="col-xs-8" ui-view></div>
-      <div id="rightBar" class="col-xs-3">
+
+      <div id="main" ng-class=" signupOrLoginPage ? 'col-xs-8 col-xs-offset-2' : 'col-xs-8' " ui-view></div>
+
+      <div id="rightBar" class="col-xs-3" ng-if="!signupOrLoginPage">
+
         <div>
           <div ng-controller="alertController">
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
@@ -50,7 +54,7 @@
         </div>
         <!-- Display challenges received -->
         <h2 class="center">Your Challenges<h2>
-        <div ng-include="'script/module/challenge/challenge-personal.html'"></div>
+        <div ng-include="'script/module/user/challenge/challenge-personal.html'"></div>
 
       </div>
 

@@ -7,9 +7,25 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', function (challengeFactory, $scope, $moment) {
+.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', 'createChallengeService', 'braintreeFactory', function (challengeFactory, $scope, $moment, createChallengeService, braintreeFactory) {
 
   var self = this;
+
+  $scope.$on('$routeChangeSuccess', function() {
+    // var path = $location.path();
+    // console.log(path);
+    // $scope.carsVisible = false;
+    // $scope.bikesVisible = false;
+    // if(path === '/cars') {
+    //    $scope.carsVisible = true;
+    // } else if(path === '/bikes') {
+    //    $scope.bikesVisible = true;
+    // }
+    console.log('changing....');
+  });
+  
+
+  self.notLoggedIn = true;
 
   self.challenges = [];
 
@@ -18,6 +34,17 @@ angular.module('App.home', [])
   $moment.then(function(moment) {
     $scope.anotherTime = moment('20151118', 'YYYYMMDD').fromNow();
   });
+
+  self.getBraintreeCustomers = function(){
+    console.log('getting braintree customers...');
+    braintreeFactory.getAllBraintreeCustomers()
+      .then(function(data){
+        console.log('all braintree customers : ', data);
+      })
+      .catch(function(err){
+        console.log('error getting all braintree customers : ', err);
+      });
+  };
 
   /* Load All Challenges from DB */
   self.read = function(){

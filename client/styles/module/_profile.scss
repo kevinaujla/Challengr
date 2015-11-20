@@ -5,13 +5,13 @@
 ***/
 
 .tab-content {
-    margin-top: 15px;
+  margin-top: $padding;
 }
 
 .tab--footer {
   border-top: 1px solid #E4E7E7;
-  padding-top: 15px;
-  margin-top: 15px;
+  padding-top: $padding;
+  margin-top: $padding;
 }
 
 #profile{

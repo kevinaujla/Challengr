@@ -10,25 +10,26 @@ module.exports = function (sequelize, DataTypes) {
   return sequelize.define('user', {
     // default size for STRING is 255 bits
     firstName: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     lastName: {
-      type: DataTypes.STRING
-    },
-    photoURL: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     FBid: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     password: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     photoURL: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: '/client/image/placeholder.png'
     }
   }, {
     timestamps: false

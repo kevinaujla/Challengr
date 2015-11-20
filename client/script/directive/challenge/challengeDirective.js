@@ -29,6 +29,7 @@ angular.module('App.challengeDirective', [])
     link : function(scope, element, attrs){
       // Need to fire an event when the issueDate moment difference passes the expiresdate
       // event should change the state of the challenge to become incomplete
+      
 
       scope.increaseLike = function(){
         // console log

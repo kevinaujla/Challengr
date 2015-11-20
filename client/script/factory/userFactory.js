@@ -19,8 +19,23 @@ angular.module('App.userFactory', [])
       });
   };
 
+  var getUserByID = function(userID){
+    console.log('get user by id : ', userID);
+    return $http({
+        method: 'GET',
+        url: '/api/user/one',
+        params: {id : userID},
+      })
+      .then(function (resp) {
+        // return the image
+        console.log('resp : ', resp.data.photoURL);
+        return resp.data.photoURL;
+      });
+  };
+
   return {
     getAllUsers : getAllUsers,
+    getUserByID : getUserByID,
   };
 
 }]);

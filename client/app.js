@@ -14,6 +14,7 @@ angular.module('App', [
   'angular-momentjs',
   'App.auth',
   'App.profile',
+  'App.personalChallenge',
   'App.charity',
   'App.challenge',
   'App.challengeList',
@@ -25,7 +26,7 @@ angular.module('App', [
   'App.userFactory',
   'App.challengeFactory',
   'App.braintreeFactory',
-  'App.radio',
+  'App.charityFactory',
   'App.createChallengeService',
   'App.addAlertService',
   'App.alertController',
@@ -151,6 +152,14 @@ angular.module('App', [
 
 .run(function ($rootScope, $state, authFactory, $window) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+
+    if (toState.url === '/signin' || toState.url === '/signup') {
+      $rootScope.signupOrLoginPage = true;
+    }
+    if (toState.url !== '/signup' && toState.url !== '/signin'){
+      $rootScope.signupOrLoginPage = false;
+    }
+
     if (toState.data.authenticate && !authFactory.isAuth()) {
       console.log('not authenticated, redirecting to signin');
       $state.go('signin');

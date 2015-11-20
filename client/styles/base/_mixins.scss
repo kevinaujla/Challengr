@@ -50,5 +50,21 @@
 }
 
 @mixin links(){
-  
+  .btn-default:hover{
+    background-color: $unique;
+    border: 1px solid white;
+  }
+
+  .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus{
+    background-color: $unique;
+  }
+
+  .btn-success:hover, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success{
+    background-color: $unique;
+    border: 1px solid white;
+  }
+
+  .btn-success:active:hover, .btn-success.active:hover, .open > .dropdown-toggle.btn-success:hover, .btn-success:active:focus, .btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus{
+    background-color: $unique;
+  }
 }
