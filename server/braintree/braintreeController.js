@@ -94,16 +94,22 @@ module.exports = function(db) {
     */
     searchCustomer: function(req, res){
       console.log('search for braintree customer...');
-      console.log('req.user : ', req.user);
       var stream = gateway.customer.search(function (search) {
         search.email().is(req.user.email);
         search.firstName().is(req.user.firstName);
         search.lastName().is(req.user.lastName);
       }, function (err, response) {
-        // FIX THIS, try out response[0]
-        var customer = response[0];
-        console.log('found customer : ', customer);
-        res.json({braintreeUser : customer});
+
+        // will not work if doing response[0]
+        response.each(function (err, customer) {
+          if(err){
+            console.log('error searching braintree customer...', err);
+            res.status(404).end(err);
+          }
+          console.log(customer.firstName);
+          res.json({braintreeUser : customer});
+        });
+      
       });
     },
 
@@ -144,7 +150,7 @@ module.exports = function(db) {
           }
         })
         .then(function(user){
-          console.log('found user : ', user);
+          console.log('found user...');
           user.getTransactions()
             .then(function(transactions){
               console.log('retreived transactions...');
@@ -157,7 +163,8 @@ module.exports = function(db) {
         .catch(function(err){
           console.log('error finding user...', err);
         });
-    }
+    },
+
   };
 
 };

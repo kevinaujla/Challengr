@@ -7,7 +7,7 @@ personalChallenge.js
 
 angular.module('App.personalChallenge', [])
 
-.controller('personalChallengeCtrl', ['challengeFactory', '$scope', '$interval', function(challengeFactory, $scope, $interval) {
+.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$interval', function(challengeFactory, userFactory, $scope, $interval) {
 
   var self = this;
 
@@ -29,7 +29,20 @@ angular.module('App.personalChallenge', [])
     console.log('load challenges for user...');
     challengeFactory.readAllChallengeForUser()
       .then(function(data){
+        console.log('data : ', data);
         self.challenges = data;
+
+        // go through each challenge and call factory function to retreive the image 
+        angular.forEach(data, function(challenge){
+          userFactory.getUserByID(challenge.ChallengedId)
+            .then(function(image){
+              console.log('got image : ', image);
+            })
+            .catch(function(err){
+              console.log('error getting image : ', err);
+            });
+        });
+
       })
       .catch(function(err){
         console.log('error getting challenges for user... : ', err);

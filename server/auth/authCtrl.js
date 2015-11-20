@@ -209,7 +209,7 @@ module.exports = function (db) {
             console.log('Successfully authenticated token, access granted');
             // link user to request for further requests
             req.user = decoded;
-            console.log(decoded);
+            // console.log(decoded);
             // move on to next middleware
             next();
           }

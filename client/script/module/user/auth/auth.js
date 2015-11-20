@@ -88,7 +88,7 @@ angular.module('App.auth', [])
     braintreeFactory.searchCustomer()
       .then(function(data){
         // console log
-        console.log('got existing braintree customer... : ', data.braintreeUser.firstName);
+        console.log('got existing braintree customer...', data);
         // local storage
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
