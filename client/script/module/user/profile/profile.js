@@ -43,6 +43,7 @@ angular.module('App.profile', [])
 
   // Sign user out
   self.signout = function(){
+    localStorage.clear();
     authFactory.signout();
   };
 
