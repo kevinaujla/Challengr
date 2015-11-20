@@ -74,7 +74,7 @@ angular.module('App.auth', [])
         // console log
         console.log('created braintree customer... : ', data);
         // set token
-        $window.localStorage.setItem('com.braintree', data.customer);
+        $window.localStorage.setItem('com.braintree', data.customer.id);
       })
       .catch(function(err){
         console.log('error creating braintree customer...', err);

@@ -6,6 +6,9 @@ loads all challenge related to the user
 -->
 
 <ul class="list-group userChallenges" ng-controller="personalChallengeCtrl as personalChallengeC" ng-init="personalChallengeC.load()">
+  <div ng-show="personalChallengeC.challenges.length === 0">
+    <p>You have no challenges</p>
+  </div>
   <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges">
     <img src="image/profileImg.jpg">
     <div>
