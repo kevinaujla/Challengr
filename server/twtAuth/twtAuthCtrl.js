@@ -67,8 +67,6 @@ ensureAuthenticated: function (req, res, next) { // make sure user auth is valid
                     lastName: user.lastName
                   }
                 });
-
-
               });
           } else {
 
@@ -89,9 +87,5 @@ ensureAuthenticated: function (req, res, next) { // make sure user auth is valid
           }
         });
     }
-
-
-
   }
-
 }
