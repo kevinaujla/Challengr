@@ -7,7 +7,7 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function(createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
+.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'addAlertService','$state', function(createChallengeService, challengeFactory, braintreeFactory, addAlertService, $state, $scope) {
 
   var self = this;
 
@@ -47,10 +47,13 @@ angular.module('App.challenge', [])
   self.save = function(){
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
+    addAlertService.addAlert("success","Challenge created");
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function(data){
         console.log('created challenge : ', data);
+        //create alert
+        // addAlertService.addAlert();
       })
       .catch(function(err){
         console.log('error creating challenge... : ', err);
