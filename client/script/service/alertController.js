@@ -1,13 +1,13 @@
 /*
 
-alertService.js
+alertController.js
 create a alert
 
 */
 
-angular.module('App.alertService', [])
+angular.module('App.alertController', [])
 
-.controller('alertService', ['$scope','addAlertService', function ($scope,addAlertService) {
+.controller('alertController', ['$scope','addAlertService', function ($scope,addAlertService) {
 
   $scope.alerts=addAlertService.alerts;
   
