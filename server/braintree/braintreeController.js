@@ -101,14 +101,9 @@ module.exports = function(db) {
         search.lastName().is(req.user.lastName);
       }, function (err, response) {
         // FIX THIS, try out response[0]
-        response.each(function (err, customer) {
-          if (err) {
-            console.log('error searching for customer...', err);
-          } else{
-            console.log('found customer : ', customer.firstName);
-            res.json({braintreeUser : customer});
-          }
-        });
+        var customer = response[0];
+        console.log('found customer : ', customer);
+        res.json({braintreeUser : customer});
       });
     },
 

@@ -14,6 +14,7 @@ angular.module('App', [
   'angular-momentjs',
   'App.auth',
   'App.profile',
+  'App.personalChallenge',
   'App.charity',
   'App.challenge',
   'App.challengeList',
