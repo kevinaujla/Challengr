@@ -11,8 +11,8 @@ angular.module('App.alertController', [])
 
   $scope.alerts=addAlertService.alerts;
   
-  $scope.addAlert = function() {
-    addAlertService.alerts.push({msg: 'CHALLENGE CREATED'});
+  $scope.addAlert = function(msg) {
+    addAlertService.alerts.push({msg: msg});
   };
 
   $scope.closeAlert = function(index) {

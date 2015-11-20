@@ -14,9 +14,8 @@ angular.module('App.addAlertService', [])
     // { type: 'success', msg: 'Challenge Created' }
   ];
 
-  this.addAlert = function() {
-    console.log("in service add alert");
-    this.alerts.push({type: 'success',msg: 'Challenge Created'});
+  this.addAlert = function(msg) {
+    this.alerts.push({type: 'success',msg: msg});
   };
 
 }]);

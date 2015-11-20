@@ -47,7 +47,7 @@ angular.module('App.challenge', [])
   self.save = function(){
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
-    addAlertService.addAlert();
+    addAlertService.addAlert("hi");
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function(data){
