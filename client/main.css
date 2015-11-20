@@ -655,11 +655,6 @@ ul.userChallenges li img {
 ul.userChallenges li div {
   display: inline-block; }
 
-.tab--footer {
-  border-top: 1px solid #E4E7E7;
-  padding-top: 15px;
-  margin-top: 15px; }
-
 .panel {
   border: 0px solid white !important; }
   .panel .panel-heading {
