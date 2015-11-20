@@ -7,7 +7,7 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', 'createChallengeService', function (challengeFactory, $scope, $moment, createChallengeService) {
+.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', 'createChallengeService', 'braintreeFactory', function (challengeFactory, $scope, $moment, createChallengeService, braintreeFactory) {
 
   var self = this;
 
@@ -18,6 +18,17 @@ angular.module('App.home', [])
   $moment.then(function(moment) {
     $scope.anotherTime = moment('20151118', 'YYYYMMDD').fromNow();
   });
+
+  self.getBraintreeCustomers = function(){
+    console.log('getting braintree customers...');
+    braintreeFactory.getAllBraintreeCustomers()
+      .then(function(data){
+        console.log('all braintree customers : ', data);
+      })
+      .catch(function(err){
+        console.log('error getting all braintree customers : ', err);
+      });
+  };
 
   /* Load All Challenges from DB */
   self.read = function(){

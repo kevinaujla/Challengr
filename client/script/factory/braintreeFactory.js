@@ -78,12 +78,23 @@ angular.module('App.braintreeFactory', [] )
     });
   };
 
+  var getAllBraintreeCustomers = function(){
+    return $http({
+      method : 'GET',
+      url : '/api/braintree/customersAll',
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
   return {
     getToken : getToken,
     createCustomer : createCustomer,
     searchCustomer : searchCustomer,
     checkout : checkout,
     getTransactions : getTransactions,
+    getAllBraintreeCustomers : getAllBraintreeCustomers,
   };
 
 }]);

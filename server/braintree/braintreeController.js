@@ -165,6 +165,27 @@ module.exports = function(db) {
         });
     },
 
+    searchAllBraintreeCustomers : function(req, res){
+      console.log('searching ALL BRAINTREE customers...');
+      var today = new Date();
+      var stream = gateway.customer.search(function (search) {
+        search.createdAt().min(today.getDate() - 10);
+        
+      }, function(err, response){
+        var ids = response.ids;
+        console.log('response ids : ', ids);
+        for(var i = 0; i < ids.length; i++){
+          console.log('THIS : ', this);
+          this.deleteAllBraintreeCustomers(ids[i]);
+        }
+
+      });
+    },
+
+    deleteAllBraintreeCustomers : function(customer){
+      console.log('deleting customer : ', customer);
+    },
+
   };
 
 };

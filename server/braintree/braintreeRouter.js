@@ -13,6 +13,7 @@ module.exports = function (app, db) {
 
   app.get('/searchCustomer', authCtrl.authenticate, braintreeController.searchCustomer);
   app.get('/transactions', authCtrl.authenticate, braintreeController.transactions);
+  app.get('/customersAll', authCtrl.authenticate, braintreeController.searchAllBraintreeCustomers);
 
   app.post('/checkout', braintreeController.checkout);
   app.post('/clientToken', authCtrl.authenticate, braintreeController.generateToken);
