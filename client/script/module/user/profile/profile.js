@@ -14,14 +14,10 @@ angular.module('App.profile', [])
 
   // Retreive user's information and display
   self.getUser = function () {
-    var firstName = localStorage.getItem('com.challengr.firstName');
-    var lastName = localStorage.getItem('com.challengr.lastName');
-    var email = localStorage.getItem('com.challengr.email');
-    var location = "San Francisco, CA"; // temp; to be replaced with database location in future
-    self.firstName = firstName;
-    self.lastName = lastName;
-    self.email = email;
-    self.location = location;
+    self.firstName = localStorage.getItem('com.challengr.firstName');
+    self.lastName = localStorage.getItem('com.challengr.lastName');
+    self.email = localStorage.getItem('com.challengr.email');
+    self.location = "San Francisco"; // temp; to be replaced with database location in future
   };
 
   // Update user information

@@ -24,9 +24,7 @@ angular.module('App.auth', [])
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
-          $window.localStorage.setItem('com.challengr.firstName', data.user.firstName);
-          $window.localStorage.setItem('com.challengr.lastName', data.user.lastName);
-          $window.localStorage.setItem('com.challengr.email', data.user.email);
+          self.saveToLocalStorage(data);
           // Call Braintree create customer function
           self.createBraintreeCustomer();
           // redirect
@@ -42,8 +40,9 @@ angular.module('App.auth', [])
       });
   };
 
-  self.saveToLocalStorage = function() {
+  self.saveToLocalStorage = function(data) {
     // add basic user info to localStorage
+    console.log('saving basic user info to localStorage:', data);
     $window.localStorage.setItem('com.challengr.firstName', data.user.firstName);
     $window.localStorage.setItem('com.challengr.lastName', data.user.lastName);
     $window.localStorage.setItem('com.challengr.email', data.user.email);
@@ -63,9 +62,8 @@ angular.module('App.auth', [])
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
-          $window.localStorage.setItem('com.challengr.firstName', data.user.firstName);
-          $window.localStorage.setItem('com.challengr.lastName', data.user.lastName);
-          $window.localStorage.setItem('com.challengr.email', data.user.email);          // Get Braintree token
+          self.saveToLocalStorage(data);
+          // Get Braintree token
           self.searchBraintreeCustomer();
           // redirect
           $state.go('home');
