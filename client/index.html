@@ -18,9 +18,9 @@
   <div class="container-fluid">
     <div class="row">
       <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
-        <div>
-          <img id="profileImg" src="image/profileImg.jpg">
-          <h5>{{name}}</h5>
+        <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
+          <img id="profileImg" ng-src="{{profileCtrl.photoURL}}">
+          <h5>{{profileCtrl.username}}</h5>
           <span class="bar"></span>
         </div>
         <div>

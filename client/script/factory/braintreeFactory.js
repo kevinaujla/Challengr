@@ -9,7 +9,7 @@ angular.module('App.braintreeFactory', [] )
 
 .factory('braintreeFactory', ['$http', '$window', function($http, $window) {
 
-  var getToken = function(){
+  var getToken = function(brainTreeUserID){
     return $http({
       method : 'POST',
       url : '/api/braintree/clientToken',

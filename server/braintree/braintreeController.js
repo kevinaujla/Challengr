@@ -96,9 +96,9 @@ module.exports = function (db) {
       console.log('search for braintree customer : ', req.user.email, req.user.firstName, req.user.lastName);
 
       var stream = gateway.customer.search(function (search) {
-        search.email().is('jordanwink201@gmail.com');
-        search.firstName().is('jordan');
-        search.lastName().is('wink');
+        search.email().is(req.user.email);
+        search.firstName().is(req.user.firstName);
+        search.lastName().is(req.user.lastName);
       }, function (err, response) {
 
         // will not work if doing response[0]

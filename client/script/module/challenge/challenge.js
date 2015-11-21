@@ -128,12 +128,12 @@ angular.module('App.challenge', [])
   /* Get all charities from DB */
   self.getCharity = function(){
     charityFactory.load()
-      .then(function (charities) {
-        console.log('loaded all charities... : ', charities);
+      .then(function(charities){
+        console.log('loaded all charities : ', charities);
         self.charities = charities;
       })
-      .catch(function (err) {
-        console.log('error loading charities : ', err);
+      .catch(function(err){
+        console.log('error loading charities...');
       });
   };
 
@@ -173,9 +173,9 @@ angular.module('App.challenge', [])
     var brainTreeUserID = $window.localStorage.getItem('com.braintree');
 
     if (brainTreeUserID) {
-      braintreeFactory.getToken()
+      braintreeFactory.getToken(brainTreeUserID)
         .then(function (token) {
-          console.log('successfully received braintree token...');
+          console.log('successfully received braintree token');
           // initialize braintree dropin with client token
           braintree.setup(token, 'dropin', {
             container: 'payment-form',

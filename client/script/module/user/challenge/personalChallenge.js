@@ -45,7 +45,7 @@ angular.module('App.personalChallenge', [])
 
       })
       .catch(function(err){
-        console.log('error getting challenges for user... : ', err);
+        console.log('error getting personal challenges for user...');
       });
 
   };

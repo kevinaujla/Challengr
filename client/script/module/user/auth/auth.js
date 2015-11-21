@@ -17,8 +17,7 @@ angular.module('App.auth', [])
       .then(function (data) {
         // check if successful
         if (data.success === true) {
-          // console log
-          console.log('signed up successfully...');
+          // console.log('signed up successfully...');
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -44,6 +43,7 @@ angular.module('App.auth', [])
     $window.localStorage.setItem('com.challengr.firstName', user.firstName);
     $window.localStorage.setItem('com.challengr.lastName', user.lastName);
     $window.localStorage.setItem('com.challengr.email', user.email);
+    $window.localStorage.setItem('com.challengr.photoURL', user.photoURL);
   };
 
   self.signin = function () {
@@ -52,8 +52,9 @@ angular.module('App.auth', [])
       .then(function (data) {
         // check if successful
         if (data.success === true) {
-          // console log
-          console.log('signed in successfully...');
+          // console.log('signed in successfully...');
+          console.log('DATA : ', data.user);
+
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -64,7 +65,6 @@ angular.module('App.auth', [])
           $state.go('home');
         } else {
           // show alert of failure with data.message
-          console.log('signin failure : ', data.message);
           addAlertService.addAlert('danger', data.message);
         }
       })
@@ -77,16 +77,15 @@ angular.module('App.auth', [])
     Braintree create customer account
   */
   self.createBraintreeCustomer = function(){
-    console.log('create braintree customer...');
     braintreeFactory.createCustomer(self)
       .then(function(data){
         // console log
-        console.log('created braintree customer... : ', data);
+        console.log('created new braintree customer');
         // set token
         $window.localStorage.setItem('com.braintree', data.customer.id);
       })
       .catch(function(err){
-        console.log('error creating braintree customer...', err);
+        console.log('error creating new braintree customer...');
       });
   };
 
@@ -94,16 +93,16 @@ angular.module('App.auth', [])
     Braintree create customer account
   */
   self.searchBraintreeCustomer = function(){
-    console.log('search for existing braintree customer.......');
+    console.log('search for existing braintree customer...');
     braintreeFactory.searchCustomer()
       .then(function(data){
         // console log
-        console.log('got existing braintree customer...', data);
+        console.log('got existing braintree customer', data.braintreeUser.id);
         // local storage
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function(err){
-        console.log('error retreiving braintree customer...', err);
+        console.log('error retreiving braintree customer...');
       });
   };
 

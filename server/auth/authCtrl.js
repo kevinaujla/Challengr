@@ -131,7 +131,8 @@ module.exports = function (db) {
                     id: user.id,
                     email: user.email,
                     firstName: user.firstName,
-                    lastName: user.lastName
+                    lastName: user.lastName,
+                    photoURL: user.photoURL,
                   }
                 });
               }

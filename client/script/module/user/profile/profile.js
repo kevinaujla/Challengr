@@ -12,11 +12,18 @@ angular.module('App.profile', [])
   var self = this;
   var transactions = [];
 
+  // on sign in, to get user name and photo
+  self.getUserInfo = function(){
+    self.username = localStorage.getItem('com.challengr.firstName');
+    self.photoURL = localStorage.getItem('com.challengr.photoURL');
+  };
+
   // Retreive user's information and display
   self.getUser = function () {
     self.firstName = localStorage.getItem('com.challengr.firstName');
     self.lastName = localStorage.getItem('com.challengr.lastName');
     self.email = localStorage.getItem('com.challengr.email');
+    self.photoURL = localStorage.getItem('com.challengr.photoURL');
     self.location = 'San Francisco'; // temp; to be replaced with database location in future
   };
 
