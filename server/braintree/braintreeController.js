@@ -173,11 +173,7 @@ module.exports = function(db) {
         
       }, function(err, response){
         var ids = response.ids;
-        console.log('response ids : ', ids);
-        for(var i = 0; i < ids.length; i++){
-          // this.deleteAllBraintreeCustomers(ids[i]);
-        }
-
+        // console.log('response ids : ', ids);
       });
     },
 

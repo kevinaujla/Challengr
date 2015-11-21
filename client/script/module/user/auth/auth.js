@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl',['$window', '$state', 'authFactory', 'braintreeFactory', function ($window, $state, authFactory, braintreeFactory) {
+.controller('authCtrl',['$window', '$state', 'authFactory', 'braintreeFactory', 'alertService', function ($window, $state, authFactory, braintreeFactory, alertService) {
 
   var self = this;
 

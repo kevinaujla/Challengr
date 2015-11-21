@@ -1,13 +1,13 @@
 /*
 
-addAlertService.js
+alertService.js
 create a alert
 
 */
 
-angular.module('App.addAlertService', [])
+angular.module('App.alertService', [])
 
-.service('addAlertService', [function () {
+.service('alertService', ['socket', function (socket) {
 
   this.alerts = [
     // { type: 'danger', msg: 'Failed To Send Challenge' },
@@ -20,5 +20,9 @@ angular.module('App.addAlertService', [])
       msg: msg
     });
   };
-  
+
+  this.closeAlert = function (index) {
+    this.alerts.splice(index, 1);
+  };
+
 }]);

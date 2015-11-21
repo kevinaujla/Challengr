@@ -9,22 +9,27 @@ module.exports = function (app, express, db) {
   // serving static files from client folder
   app.use(express.static(__dirname + '/../../client'));
 
-  var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
+  // do not log static assets
+  // logging requests to the server
+  var morgan = require('morgan');
+  // set development mode for morgan regarding logging format
+  app.use(morgan('dev'));
 
+  var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
   // handling all authentication (signup, signin, route protection)
   var authRouter = express.Router();
   require(__dirname + '/../auth/authRouter.js')(authRouter, db, app);
   app.use('/api/auth', authRouter);
 
   //handling all fb authentication 
-  var fbAuthRouter = express.Router();
-  require(__dirname + '/../fbAuth/fbAuthRouter.js')(fbAuthRouter, db, app);
-  app.use('/auth/facebook', fbAuthRouter);
+  // var fbAuthRouter = express.Router();
+  // require(__dirname + '/../fbAuth/fbAuthRouter.js')(fbAuthRouter, db, app);
+  // app.use('/auth/facebook', fbAuthRouter);
 
   //handling all twitter authentication
-  var twtAuthRouter=express.Router();
-  require(__dirname + '/../twtAuth/twtAuthRouter.js')(twtAuthRouter, db, app);
-  app.use('/auth/twitter', twtAuthRouter);
+  // var twtAuthRouter=express.Router();
+  // require(__dirname + '/../twtAuth/twtAuthRouter.js')(twtAuthRouter, db, app);
+  // app.use('/auth/twitter', twtAuthRouter);
 
   // handling all braintree payment routes
   var braintreeRouter = express.Router();

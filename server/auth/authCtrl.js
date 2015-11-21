@@ -73,7 +73,6 @@ module.exports = function (db) {
                   })
                   .catch(function (err) {
                     console.log('error signing up user: ', err);
-                    return done(err);
                   });
               });
           }
@@ -141,7 +140,6 @@ module.exports = function (db) {
         })
         .catch(function (err) {
           console.log('error signing in user: ', err);
-          done(err);
         });
     },
 
@@ -186,7 +184,7 @@ module.exports = function (db) {
 
     authenticate: function (req, res, next) {
       // Console Log
-      console.log('authenticating user with body...');
+      console.log('authenticating user');
 
       // pull out token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -205,10 +203,10 @@ module.exports = function (db) {
               message: 'Failed decoding token'
             });
           } else {
-            // Console Log
-            console.log('Successfully authenticated token, access granted');
             // link user to request for further requests
             req.user = decoded;
+            // Console Log
+            console.log('Successfully authenticated token, access granted for user: ' + req.user.firstName);
             // console.log(decoded);
             // move on to next middleware
             next();

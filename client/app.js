@@ -13,6 +13,7 @@ angular.module('App', [
   'angularMoment',
   'angular-momentjs',
   'App.auth',
+  'App.socket',
   'App.profile',
   'App.personalChallenge',
   'App.charity',
@@ -28,7 +29,7 @@ angular.module('App', [
   'App.braintreeFactory',
   'App.charityFactory',
   'App.createChallengeService',
-  'App.addAlertService',
+  'App.alertService',
   'App.alertController',
   'angularSpinner',
   'App.loadingService',
@@ -153,7 +154,8 @@ angular.module('App', [
   });
 }])
 
-.run(function ($rootScope, $state, authFactory, $window) {
+.run(function ($rootScope, $state, authFactory, $window, socket) {
+  socket.configureSocket();
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     if (toState.url === '/signin' || toState.url === '/signup') {
