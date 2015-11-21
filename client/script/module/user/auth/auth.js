@@ -17,18 +17,20 @@ angular.module('App.auth', [])
     // factory function
     authFactory.signup(self)
       .then(function (data) {
-        // check if successful        
+        // check if successful
         if (data.success === true) {
           // console log
           console.log('signed up successfully... : ', data);
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
+          // add basic user info to localStorage
+          self.saveToLocalStorage(data.user);
           // Call Braintree create customer function
           self.createBraintreeCustomer();
           // redirect
           $state.go('home');
         } else {
-          // console log 
+          // console log
           console.log('sign up failure...');
           // show alert of failure with data.message
         }
@@ -36,6 +38,14 @@ angular.module('App.auth', [])
       .catch(function (err) {
         console.log('signup error:', err);
       });
+  };
+
+  self.saveToLocalStorage = function(user) {
+    // add basic user info to localStorage
+    console.log('saving basic user info to localStorage:', user);
+    $window.localStorage.setItem('com.challengr.firstName', user.firstName);
+    $window.localStorage.setItem('com.challengr.lastName', user.lastName);
+    $window.localStorage.setItem('com.challengr.email', user.email);
   };
 
   self.signin = function () {
@@ -50,12 +60,14 @@ angular.module('App.auth', [])
           console.log('signed in successfully... : ', data);
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
+          // add basic user info to localStorage
+          self.saveToLocalStorage(data.user);
           // Get Braintree token
           self.searchBraintreeCustomer();
           // redirect
           $state.go('home');
         } else {
-          // console log 
+          // console log
           console.log('sign in failure...');
           // show alert of failure with data.message
         }

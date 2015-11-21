@@ -1,6 +1,6 @@
-<!-- 
+<!--
 
-profile.html 
+profile.html
 manage payments, signout, manage user information
 
 -->
@@ -10,20 +10,24 @@ manage payments, signout, manage user information
 <uib-tabset id="profile">
 
   <uib-tab heading="Profile" ng-init="profileCtrl.getUser()" id="account">
+   <strong>First Name:</strong>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="first name">
+      <input type="text" class="form-control" value="{{profileCtrl.firstName}}">
     </div>
+   <strong>Last Name:</strong>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="last name">
+      <input type="text" class="form-control" value="{{profileCtrl.lastName}}">
     </div>
+   <strong>Email:</strong>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="email">
+      <input type="text" class="form-control" value="{{profileCtrl.email}}">
     </div>
-    <div class="input-group">
+<!--     <div class="input-group">
       <input type="text" class="form-control" placeholder="password">
-    </div>
+    </div> -->
+   <strong>Location:</strong>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="location">
+      <input type="text" class="form-control" value="{{profileCtrl.location}} ">
     </div>
     <button class="btn btn-warning" ng-click="profileCtrl.updateUser()">Update</button>
   </uib-tab>

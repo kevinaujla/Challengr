@@ -32,8 +32,7 @@ angular.module('App.authFactory', [])
   };
 
   var signout = function () {
-    $window.localStorage.removeItem('com.challengr');
-    $window.localStorage.removeItem('com.braintree');
+    localStorage.clear();
     $state.go('signin');
   };
 
