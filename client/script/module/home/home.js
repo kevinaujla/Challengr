@@ -14,23 +14,38 @@ angular.module('App.home', [])
   self.notLoggedIn = true;
   self.challenges = [];
 
-  self.getBraintreeCustomers = function(){
-    console.log('getting braintree customers...');
+  /*
+    Braintree Management
+  */
 
+  self.braintreeCustomers = [];
+
+  self.getBraintreeCustomers = function(){
     braintreeFactory.getAllBraintreeCustomers()
       .then(function(data){
         console.log('all braintree customers : ', data);
+        self.braintreeCustomers = data;
       })
       .catch(function(err){
         console.log('error getting all braintree customers : ', err);
       });
   };
 
+  self.deleteAllBraintreeCustomers = function(){
+    angular.forEach(self.braintreeCustomers, function(customer){
+      console.log('deleting customer : ', customer);
+      braintreeFactory.deleteBraintreeCustomer(customer)
+        .then(function(){
+          console.log('deleted braintree customer successfully...');
+        })
+        .catch(function(err){
+          console.log('error : ', err);
+        });
+    });
+  };
+
   /* Load All Challenges from DB */
   self.read = function(){
-    // console log
-    console.log('load all challenges...');
-
     // factory function
     challengeFactory.readAllChallenge()
       .then(function(data){

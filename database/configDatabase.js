@@ -45,7 +45,6 @@ module.exports = function (db) {
 
   db.sync()
     .then(function successCallback() {
-      console.log('database is up and running');
 
       // creating default charities
       db.Charity.findOrCreate({
@@ -76,9 +75,9 @@ module.exports = function (db) {
             imgUrl: 'image/charity/BitGiveLogo.png'
           }
         }).spread(function (charity, created) {
-          console.log('BitGive created');
+
         });
-        console.log('Action Against Hunger created');
+
       });
 
     }, function errorCallback(err) {

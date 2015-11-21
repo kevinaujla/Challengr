@@ -12,15 +12,13 @@ angular.module('App.auth', [])
   var self = this;
 
   self.signup = function () {
-    // console log
-    console.log('signup the user...');
     // factory function
     authFactory.signup(self)
       .then(function (data) {
         // check if successful
         if (data.success === true) {
           // console log
-          console.log('signed up successfully... : ', data);
+          console.log('signed up successfully...');
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -49,15 +47,13 @@ angular.module('App.auth', [])
   };
 
   self.signin = function () {
-    // console log
-    console.log('signin the user...');
     // factory function
     authFactory.signin(self)
       .then(function (data) {
         // check if successful
         if (data.success === true) {
           // console log
-          console.log('signed in successfully... : ', data);
+          console.log('signed in successfully...');
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -67,9 +63,9 @@ angular.module('App.auth', [])
           // redirect
           $state.go('home');
         } else {
-          // console log
-          console.log('sign in failure...');
           // show alert of failure with data.message
+          console.log('signin failure : ', data.message);
+          addAlertService.addAlert('danger', data.message);
         }
       })
       .catch(function (err) {
@@ -81,6 +77,7 @@ angular.module('App.auth', [])
     Braintree create customer account
   */
   self.createBraintreeCustomer = function(){
+    console.log('create braintree customer...');
     braintreeFactory.createCustomer(self)
       .then(function(data){
         // console log
@@ -97,6 +94,7 @@ angular.module('App.auth', [])
     Braintree create customer account
   */
   self.searchBraintreeCustomer = function(){
+    console.log('search for existing braintree customer.......');
     braintreeFactory.searchCustomer()
       .then(function(data){
         // console log

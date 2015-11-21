@@ -7,7 +7,7 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'alertService', '$state', function (createChallengeService, challengeFactory, braintreeFactory, alertService, $state, $scope) {
+.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function(createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
 
   var self = this;
 
@@ -36,6 +36,7 @@ angular.module('App.challenge', [])
   };
 
   /***
+<<<<<<< 51e19294697dbb820ad33bd24b0a9afd64065b00
     Challenge Methods
   ***/
 
@@ -56,18 +57,19 @@ angular.module('App.challenge', [])
   };
 
   /***
+=======
+>>>>>>> [refactor] : take out console logs and add alert service to login
     Braintree Methods
   ***/
 
   /* Braintree search if customer exists */
   self.searchCustomer = function () {
-    console.log('search braintree customer...');
     braintreeFactory.searchCustomer()
       .then(function (data) {
-        console.log('data : ', data);
+        console.log('found braintree customer : ', data);
       })
       .catch(function (err) {
-        console.log('err : ', err);
+        console.log('err searching for braintree customer: ', err);
       });
   };
 
@@ -81,15 +83,13 @@ angular.module('App.challenge', [])
     Load Users from DB
   */
   self.loadFriends = function () {
-    // console log
-    console.log('loading friends...');
     userFactory.getAllUsers()
       .then(function (users) {
-        console.log('users loaded : ', users);
+        console.log('users friends loaded : ', users);
         self.friends = users;
       })
       .catch(function (err) {
-        console.log('error loading user... ', err);
+        console.log('error loading your friends... ', err);
       });
   };
 
@@ -109,7 +109,6 @@ angular.module('App.challenge', [])
     Add selected friend to create challenge service
   */
   self.addFriend = function (friend) {
-    console.log('friend to challenge added to service object: ', friend.firstName);
     createChallengeService.challenge.challenged = friend;
   };
 
@@ -123,13 +122,11 @@ angular.module('App.challenge', [])
 
   /* Choose Charity to donate to */
   self.chooseCharity = function (charity) {
-    console.log('picked charity to add to service object...');
     createChallengeService.challenge.charity = charity;
   };
 
   /* Get all charities from DB */
-  self.getCharity = function () {
-    console.log('load all charities...');
+  self.getCharity = function(){
     charityFactory.load()
       .then(function (charities) {
         console.log('loaded all charities... : ', charities);
@@ -142,7 +139,7 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', 'alertService', 'loadingService', '$state', '$scope', 'braintreeFactory', 'socket', function (challengeFactory, createChallengeService, alertService, loadingService, $state, $scope, braintreeFactory, socket) {
+.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', '$state', '$scope', '$window', 'braintreeFactory', function (challengeFactory, createChallengeService, $state, $scope, $window, braintreeFactory) {
 
   var self = this;
 
@@ -152,8 +149,6 @@ angular.module('App.challenge', [])
 
   /* Create challenge */
   self.save = function () {
-    // console log
-    console.log('create challenge... : ', createChallengeService.challenge);
     loadingService.startSpin();
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
@@ -174,39 +169,44 @@ angular.module('App.challenge', [])
 
   /* Braintree get token from server to load drop-in UI */
   self.getToken = function () {
-    // console log
-    console.log('get braintree client token...');
-    braintreeFactory.getToken()
-      .then(function (token) {
-        // console log
-        console.log('successfully received braintree token...');
-        // initialize braintree dropin with client token
-        braintree.setup(token, 'dropin', {
-          container: 'payment-form',
-          onPaymentMethodReceived: function (payload) {
-            // attach the payment button amount to object
-            payload.charityAmount = createChallengeService.challenge.charityAmount;
-            // call checkout function
-            braintreeFactory.checkout(payload)
-              .then(function () {
-                console.log('completed checkout...');
-                // show success confirmation
 
-                // call the save/create challenge function
-                self.save();
+    var brainTreeUserID = $window.localStorage.getItem('com.braintree');
 
-                // redirect to home page
-                $state.go('home');
-              })
-              .catch(function (err) {
-                console.log('error making payment... ', err);
-              });
-          },
+    if (brainTreeUserID) {
+      braintreeFactory.getToken()
+        .then(function (token) {
+          console.log('successfully received braintree token...');
+          // initialize braintree dropin with client token
+          braintree.setup(token, 'dropin', {
+            container: 'payment-form',
+            onPaymentMethodReceived: function (payload) {
+              // attach the payment button amount to object
+              payload.charityAmount = createChallengeService.challenge.charityAmount;
+              // call checkout function
+              braintreeFactory.checkout(payload)
+                .then(function(){
+                  console.log('completed checkout...');
+                  // show success confirmation
+                  
+                  // call the save/create challenge function
+                  self.save();
+
+                  // redirect to home page
+                  $state.go('home');
+                })
+                .catch(function(err){
+                  console.log('error making payment... ', err);
+                });
+            },
+          });
+        })
+        .catch(function (err) {
+          console.log('error getting braintree token: ', err);
         });
-      })
-      .catch(function (err) {
-        console.log('error : ', err);
-      });
+    } else{
+      console.log('error getting braintree token from local storage...');
+    }
+
   };
 
 }]);

@@ -17,12 +17,12 @@ var gateway = braintree.connect({
   privateKey: process.env.privateKey
 });
 
-module.exports = function(db) {
+module.exports = function (db) {
 
   var braintreeObj = {
     generateToken: function (req, res) {
       // console log
-      console.log('Generate braintree client token and send back to user... with customer : ', req.body.id);
+      console.log('Generate braintree client token : ', req.body.id);
       // generate token
       gateway.clientToken.generate({
         customerId: req.body.id
@@ -33,17 +33,17 @@ module.exports = function(db) {
       });
     },
 
-    checkout: function(req, res){
+    checkout: function (req, res) {
       // console log
-      console.log('Receive payment method nonce from client : ', req.body.nonce, ' and generate a transaction...', req.body.charityAmount);
+      console.log('payment method nonce : ', req.body.nonce, ' generate transaction :', req.body.charityAmount);
       // create transaction
       gateway.transaction.sale({
-        amount : req.body.charityAmount,
+        amount: req.body.charityAmount,
         paymentMethodNonce: req.body.nonce,
-      }, function(err, result){
+      }, function (err, result) {
         if (err) {
           console.log('error searching for customer...', err);
-        } 
+        }
         // propogate result to client
         res.json(result);
       });
@@ -52,12 +52,12 @@ module.exports = function(db) {
     /*
       Create a new customer with a payment method (First time checkout)
     */
-    createCustomer: function(req, res){
+    createCustomer: function (req, res) {
       // console log
       console.log('create new braintree customer... ', req.body);
       // get user object
       var user = req.body.user;
-      
+
       // Check if the customer already exists or not
       // searchCustomer(req);
 
@@ -78,107 +78,115 @@ module.exports = function(db) {
 
     /*
       1:1 model of customer to credit card
-    */  
-    updateCustomer: function(req, res){
+    */
+    updateCustomer: function (req, res) {
       // console log
-      console.log('update customer...');
+      console.log('update customer');
       // get user object
       var user = req.body.user;
       gateway.customer.find(user.customer.id, function (err, customer) {
         var token = customer.creditCards[0].token;
       });
-    }, 
+    },
 
     /*
       Search if customer exists
     */
-    searchCustomer: function(req, res){
-      console.log('search for braintree customer...');
+    searchCustomer: function (req, res) {
+      console.log('search for braintree customer : ', req.user.email, req.user.firstName, req.user.lastName);
+
       var stream = gateway.customer.search(function (search) {
-        search.email().is(req.user.email);
-        search.firstName().is(req.user.firstName);
-        search.lastName().is(req.user.lastName);
+        search.email().is('jordanwink201@gmail.com');
+        search.firstName().is('jordan');
+        search.lastName().is('wink');
       }, function (err, response) {
 
         // will not work if doing response[0]
         response.each(function (err, customer) {
-          if(err){
+          if (err) {
             console.log('error searching braintree customer...', err);
             res.status(404).end(err);
           }
-          console.log(customer.firstName);
-          res.json({braintreeUser : customer});
+          console.log('braintree customer found : ', customer.firstName);
+          res.json({
+            braintreeUser: customer
+          });
         });
-      
+
       });
+
     },
 
-    transaction: function(req, res){
-      console.log('store transaction into database... user : ', req.user.email);
+    transaction: function (req, res) {
+      console.log('store transaction into database user : ', req.user.email);
       // query for user with email(unique)
       db.User.findOne({
           where: {
             email: req.user.email
           }
         })
-        .then(function(user){
+        .then(function (user) {
           console.log('found user : ', user.firstName);
           // store the transaction
           db.Transaction.create({
-            transactionId: req.body.transaction.id,
-            amount: req.body.transaction.amount,
-            created: req.body.transaction.createdAt,
-            last4: req.body.transaction.creditCard.last4,
-            imgUrl: req.body.transaction.creditCard.imageUrl,
-          })
-          .then(function(transaction){
-            user.addTransaction(transaction);
-            res.status(200).end();
-          })
-          .catch(function(err){
-            console.log('err : ', err);
-          });
+              transactionId: req.body.transaction.id,
+              amount: req.body.transaction.amount,
+              created: req.body.transaction.createdAt,
+              last4: req.body.transaction.creditCard.last4,
+              imgUrl: req.body.transaction.creditCard.imageUrl,
+            })
+            .then(function (transaction) {
+              user.addTransaction(transaction);
+              res.status(200).end();
+            })
+            .catch(function (err) {
+              console.log('err : ', err);
+            });
         });
     },
 
-    transactions : function(req, res){
-      console.log('get all transactions...');
+    transactions: function (req, res) {
       // query for user with email(unique)
       db.User.findOne({
           where: {
             email: req.user.email
           }
         })
-        .then(function(user){
-          console.log('found user...');
+        .then(function (user) {
           user.getTransactions()
-            .then(function(transactions){
-              console.log('retreived transactions...');
-              res.json({transactions : transactions});
+            .then(function (transactions) {
+              res.json({
+                transactions: transactions
+              });
             })
-            .catch(function(err){
+            .catch(function (err) {
               console.log('error finding transactions...', err);
             });
         })
-        .catch(function(err){
+        .catch(function (err) {
           console.log('error finding user...', err);
         });
     },
 
-    searchAllBraintreeCustomers : function(req, res){
+    searchAllBraintreeCustomers: function (req, res) {
       console.log('searching all braintree customers...');
       var today = new Date();
       var stream = gateway.customer.search(function (search) {
         search.createdAt().min(today.getDate() - 10);
-      }, function(err, response){
-        if (!err) {
-          res.json(response);
-        }
+      }, function (err, response) {
+        console.log('response : ', response.ids);
+        res.json(response.ids);
       });
     },
 
-    deleteBraintreeCustomer : function(req, res){
-      console.log('deleting all customers...');
+    deleteBraintreeCustomer: function (req, res) {
+      console.log('deleting customer : ', req.body.user_id);
+      gateway.customer.delete(req.body.user_id, function (err, response) {
+        err;
+        console.log('error deleting customer : ', err);
+        console.log('reponse : ', response);
+        res.status(200).end();
+      });
     },
 
   };

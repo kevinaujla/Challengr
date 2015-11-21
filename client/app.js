@@ -166,7 +166,6 @@ angular.module('App', [
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {
-      console.log('not authenticated, redirecting to signin');
       $state.go('signin');
       event.preventDefault();
     }

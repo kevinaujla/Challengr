@@ -26,11 +26,9 @@ angular.module('App.personalChallenge', [])
   self.challenges = [];
 
   self.load = function(){
-    console.log('load challenges for user...');
-
     challengeFactory.readAllChallengeForUser()
       .then(function(data){
-        console.log('data : ', data);
+        console.log('challenges for user : ', data);
         self.challenges = data;
 
         // go through each challenge and call factory function to retreive the image 

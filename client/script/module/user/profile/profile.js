@@ -29,11 +29,11 @@ angular.module('App.profile', [])
   self.getBilling = function(){
     braintreeFactory.getTransactions()
       .then(function(data){
-        console.log('Transactions : ', data.transactions);
+        console.log('users billing transactions : ', data.transactions);
         self.transactions = data.transactions;
       })
       .catch(function(err){
-        console.log('error retreiving transactions...', err);
+        console.log('error retreiving users billing transactions...', err);
       });
   };
 
