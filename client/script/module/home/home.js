@@ -7,49 +7,45 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', '$moment', 'createChallengeService', 'braintreeFactory', function (challengeFactory, $scope, $moment, createChallengeService, braintreeFactory) {
+.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', function (challengeFactory, $scope, braintreeFactory) {
 
   var self = this;
 
-  $scope.$on('$routeChangeSuccess', function() {
-    // var path = $location.path();
-    // console.log(path);
-    // $scope.carsVisible = false;
-    // $scope.bikesVisible = false;
-    // if(path === '/cars') {
-    //    $scope.carsVisible = true;
-    // } else if(path === '/bikes') {
-    //    $scope.bikesVisible = true;
-    // }
-    console.log('changing....');
-  });
-  
-
   self.notLoggedIn = true;
-
   self.challenges = [];
 
-  // If you set asyncLoading to true then angular-momentjs 
-  // will inject the script and return a promise 
-  $moment.then(function(moment) {
-    $scope.anotherTime = moment('20151118', 'YYYYMMDD').fromNow();
-  });
+  /*
+    Braintree Management
+  */
+
+  self.braintreeCustomers = [];
 
   self.getBraintreeCustomers = function(){
-    console.log('getting braintree customers...');
     braintreeFactory.getAllBraintreeCustomers()
       .then(function(data){
         console.log('all braintree customers : ', data);
+        self.braintreeCustomers = data;
       })
       .catch(function(err){
         console.log('error getting all braintree customers : ', err);
       });
   };
 
+  self.deleteAllBraintreeCustomers = function(){
+    angular.forEach(self.braintreeCustomers, function(customer){
+      console.log('deleting customer : ', customer);
+      braintreeFactory.deleteBraintreeCustomer(customer)
+        .then(function(){
+          console.log('deleted braintree customer successfully...');
+        })
+        .catch(function(err){
+          console.log('error : ', err);
+        });
+    });
+  };
+
   /* Load All Challenges from DB */
   self.read = function(){
-    // console log
-    console.log('load all challenges...');
     // factory function
     challengeFactory.readAllChallenge()
       .then(function(data){

@@ -21,3 +21,24 @@ ul.list-group.billings {
   }
 }
 
+.charityAmount{
+  padding: $padding 0;
+  label.btn-primary{
+    background-color: #EFF0F2;
+    border-color: #EFF0F2;
+    padding: 10px 0;
+    border: 1px solid #DDDDDD;
+    color: $darkV2;
+    transition: 0.3s;
+    &:hover{
+      background-color: $darkV2;
+      border-color: $darkV2;
+      color: $light;
+    }
+    &.active{
+      background-color: $darkV2;
+      border-color: $darkV2;
+      color: $light;
+    }
+  }
+}

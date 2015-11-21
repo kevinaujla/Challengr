@@ -9,7 +9,7 @@ angular.module('App.userFactory', [])
 
 .factory('userFactory', ['$http', '$state', '$window', function ($http, $state, $window) {
 
-  var getAllUsers = function(){
+  var getAllUsers = function () {
     return $http({
         method: 'GET',
         url: '/api/user',
@@ -19,23 +19,23 @@ angular.module('App.userFactory', [])
       });
   };
 
-  var getUserByID = function(userID){
-    console.log('get user by id : ', userID);
+  var getUserByID = function (userID) {
     return $http({
         method: 'GET',
         url: '/api/user/one',
-        params: {id : userID},
+        params: {
+          id: userID
+        },
       })
       .then(function (resp) {
         // return the image
-        console.log('resp : ', resp.data.photoURL);
         return resp.data.photoURL;
       });
   };
 
   return {
-    getAllUsers : getAllUsers,
-    getUserByID : getUserByID,
+    getAllUsers: getAllUsers,
+    getUserByID: getUserByID,
   };
 
 }]);

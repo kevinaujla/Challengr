@@ -9,7 +9,7 @@ module.exports = function (db) {
   return {
     create: function (req, res) {
       // console Log
-      console.log('/api/challenge/create is being called with body: ', req.body);
+      console.log('create challenge: ', req.user, req.body);
       // pull out data
       var challenger = req.user;
       var challenged = req.body.challenged;
@@ -58,8 +58,7 @@ module.exports = function (db) {
     },
 
     retrieveAll: function (req, res) {
-      // console Log 
-      console.log('api/challenge retrieving all challenges');
+      // console.log('api/challenge retrieving all challenges');
       // query for all challenges
       db.Challenge.findAll({
           attributes: ['id',
@@ -77,11 +76,11 @@ module.exports = function (db) {
           include: [{
             model: db.User,
             as: 'Challenger',
-            attributes: ['id', 'firstName', 'lastName', 'email']
+            attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
           }, {
             model: db.User,
             as: 'Challenged',
-            attributes: ['id', 'firstName', 'lastName', 'email']
+            attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
           }],
           order: 'issuedDate DESC'
         })

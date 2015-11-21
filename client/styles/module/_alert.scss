@@ -16,3 +16,17 @@
 i.icon-budicon-55 {
   font-size: 250%;
 }
+
+#authAlert{
+  .alert{
+    margin-bottom: 0px;
+  }
+  .alertIcon, .alertText{
+    display: inline-block;
+  }
+  .alertIcon{
+    padding-right: $padding;
+  }
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}

@@ -6,6 +6,18 @@ creates sign in view
 -->
 
 <div class="col-md-12 ">
+
+<div id="authAlert" ng-controller="alertController">
+  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+    <div class="alertIcon">
+      <i class="icon-bell-o"></i>
+    </div>
+    <div class="alertText">
+      {{alert.msg}}
+    </div>
+  </uib-alert>
+</div>
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">LOG IN</h3>

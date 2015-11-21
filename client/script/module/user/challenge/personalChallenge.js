@@ -26,18 +26,17 @@ angular.module('App.personalChallenge', [])
   self.challenges = [];
 
   self.load = function(){
-
-    console.log('load challenges for user...');
     challengeFactory.readAllChallengeForUser()
       .then(function(data){
-        console.log('data : ', data);
+        console.log('challenges for user : ', data);
         self.challenges = data;
 
         // go through each challenge and call factory function to retreive the image 
         angular.forEach(data, function(challenge){
           userFactory.getUserByID(challenge.ChallengedId)
             .then(function(image){
-              console.log('got image : ', image);
+              // add the image to the challenge
+              challenge.challengerImg = image;
             })
             .catch(function(err){
               console.log('error getting image : ', err);
@@ -46,7 +45,7 @@ angular.module('App.personalChallenge', [])
 
       })
       .catch(function(err){
-        console.log('error getting challenges for user... : ', err);
+        console.log('error getting personal challenges for user...');
       });
 
   };

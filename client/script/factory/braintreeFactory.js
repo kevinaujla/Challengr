@@ -9,10 +9,7 @@ angular.module('App.braintreeFactory', [] )
 
 .factory('braintreeFactory', ['$http', '$window', function($http, $window) {
 
-  var getToken = function(){
-    // // get braintree token to get customer id
-    var brainTreeUserID = $window.localStorage.getItem('com.braintree');
-    console.log('get token with braintree user : ', brainTreeUserID);
+  var getToken = function(brainTreeUserID){
     return $http({
       method : 'POST',
       url : '/api/braintree/clientToken',
@@ -46,7 +43,6 @@ angular.module('App.braintreeFactory', [] )
   };
 
   var checkout = function(payment){
-    console.log('PAYMENT : ', payment);
     return $http({
       method : 'POST',
       url : '/api/braintree/checkout',
@@ -54,7 +50,7 @@ angular.module('App.braintreeFactory', [] )
     })
     .then(function(resp){
       var transactionData = resp.data.transaction;
-      console.log('TRansaction : ', transactionData);
+      console.log('Transaction created : ', transactionData);
       // store transaction in database
       return $http({
         method : 'POST',
@@ -88,6 +84,18 @@ angular.module('App.braintreeFactory', [] )
     });
   };
 
+  var deleteBraintreeCustomer = function(id){
+    console.log('id : ', id);
+    return $http({
+      method : 'POST',
+      url : '/api/braintree/customerDelete',
+      data : {user_id: id}
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
   return {
     getToken : getToken,
     createCustomer : createCustomer,
@@ -95,6 +103,7 @@ angular.module('App.braintreeFactory', [] )
     checkout : checkout,
     getTransactions : getTransactions,
     getAllBraintreeCustomers : getAllBraintreeCustomers,
+    deleteBraintreeCustomer : deleteBraintreeCustomer,
   };
 
 }]);

@@ -13,13 +13,11 @@
 
 ***/
 
-div.challenge{
-
+div.challenge {
   border-radius: 4px;
   margin-top: $padding;
   margin-bottom: $padding;
-
-  .challenge--heading{
+  .challenge--heading {
     padding: $padding;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -27,127 +25,105 @@ div.challenge{
     color: $lightest;
     display: flex;
     flex-direction: row;
-    
-    div:first-child{
-    
+    div:first-child {
       display: flex;
       flex: 1;
       align-items: center;
-      span{
-    
-      }
-      i{
+      span {}
+      i {
         font-size: 150%;
         margin-right: 5px;
-    
       }
     }
-
-    div:nth-child(2){
-    
+    div:nth-child(2) {
       display: flex;
       flex: 1;
       align-items: center;
       justify-content: flex-end;
-      i{
+      i {
         font-size: 150%;
         margin-right: 5px;
-    
       }
     }
-
   }
-
-  .challenge--main{
+  .challenge--main {
     padding: $padding;
     border: 1px solid #DEE2E5;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     display: flex;
     flex-direction: row;
-
-    div:first-child{
-    
+    div:first-child {
       flex: 1;
-      img{
+      img {
         width: 50%;
         border-radius: 50%;
       }
     }
-
-    div:nth-child(2){
-    
+    div:nth-child(2) {
       flex: 3;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      span{
-        &:first-child{
+      span {
+        &:first-child {
           color: #7D8995;
           font-size: 18px;
         }
-        &:nth-child(2){
+        &:nth-child(2) {
           color: #D2D6D9;
           font-size: 14px;
         }
-    
       }
     }
-
-    div:last-child{
-    
+    div:last-child {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      a{
-    
+      a {
         font-size: 150%;
       }
     }
-
   }
-
 }
 
-.completed{
+.completed {
   display: flex;
   border: 1px solid #DEE2E5;
   border-radius: 4px;
   margin-top: $padding;
   margin-bottom: $padding;
-  
   align-items: center;
-  div:first-child{
-    
+  div:first-child {
     font-size: 100%;
     color: #66D3E2;
     font-size: 150%;
     padding-left: $padding;
-    .icon-close-delete{
+    .icon-close-delete {
       color: #FF7978;
     }
   }
-  div:nth-child(2){
-    
+  div:nth-child(2) {
     flex: 1;
     padding: $padding;
     color: #7D8995;
     font-size: 14px;
   }
-  div:nth-child(3){
+  div:nth-child(3) {
     display: flex;
     align-items: center;
     flex-direction: row;
-    
     padding: $padding;
     color: #D2D6D9;
   }
-  div:nth-child(4), div:last-child{
+  div:nth-child(4),
+  div:last-child {
     padding: $padding;
     border-left: 1px solid #DEE2E5;
     font-size: 100%;
     background-color: #F7F8FA;
   }
 }
+

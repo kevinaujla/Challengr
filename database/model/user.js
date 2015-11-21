@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     photoURL: {
       type: DataTypes.STRING,
-      defaultValue: '/client/image/placeholder.png'
+      defaultValue: '/image/placeholder.png'
     }
   }, {
     timestamps: false

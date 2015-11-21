@@ -131,7 +131,8 @@ module.exports = function (db) {
                     id: user.id,
                     email: user.email,
                     firstName: user.firstName,
-                    lastName: user.lastName
+                    lastName: user.lastName,
+                    photoURL: user.photoURL,
                   }
                 });
               }
@@ -165,7 +166,7 @@ module.exports = function (db) {
             });
           } else {
             // Console Log
-            console.log('Successfully authenticated token, access granted');
+            console.log('authenticated token, access granted');
             // move on to next middleware
             res.json({
               success: true,
@@ -183,17 +184,11 @@ module.exports = function (db) {
     },
 
     authenticate: function (req, res, next) {
-      // Console Log
-      console.log('authenticating user');
-
       // pull out token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
       // token exists in request body
       if (token) {
-        // Console Log
-        console.log('Token exists: ' + !!token);
-
         // decode and verify token
         jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
           if (err) {

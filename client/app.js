@@ -28,7 +28,6 @@ angular.module('App', [
   'App.challengeFactory',
   'App.braintreeFactory',
   'App.charityFactory',
-  'App.createChallengeService',
   'App.alertService',
   'App.alertController',
   'angularSpinner',
@@ -166,7 +165,6 @@ angular.module('App', [
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {
-      console.log('not authenticated, redirecting to signin');
       $state.go('signin');
       event.preventDefault();
     }

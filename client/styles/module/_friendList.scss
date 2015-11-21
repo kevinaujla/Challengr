@@ -4,11 +4,19 @@
 
 ***/
 
-ul.friendList{
-  li{
+ul.friendList {
+  padding-top: $padding;
+  li {
     padding: $padding;
     border-bottom: 1px solid #EFF0F4;
-    img{
+    &:hover {
+      background-color: rgba(50, 49, 51, 0.07);
+    }
+    &.selected {
+      border-left: 3px solid #88C057;
+      background-color: rgba(50, 49, 51, 0.07);
+    }
+    img {
       width: 10%;
       border-radius: 50%;
       display: inline-block;
@@ -16,9 +24,10 @@ ul.friendList{
       box-shadow: 1px 1px 1px #E6E6E6;
       margin-right: $padding;
     }
-    p{
+    p {
       display: inline-block;
       color: #70838D;
     }
   }
 }
+

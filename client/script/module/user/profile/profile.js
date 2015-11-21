@@ -12,12 +12,19 @@ angular.module('App.profile', [])
   var self = this;
   var transactions = [];
 
+  // on sign in, to get user name and photo
+  self.getUserInfo = function(){
+    self.username = localStorage.getItem('com.challengr.firstName');
+    self.photoURL = localStorage.getItem('com.challengr.photoURL');
+  };
+
   // Retreive user's information and display
   self.getUser = function () {
     self.firstName = localStorage.getItem('com.challengr.firstName');
     self.lastName = localStorage.getItem('com.challengr.lastName');
     self.email = localStorage.getItem('com.challengr.email');
-    self.location = "San Francisco"; // temp; to be replaced with database location in future
+    self.photoURL = localStorage.getItem('com.challengr.photoURL');
+    self.location = 'San Francisco'; // temp; to be replaced with database location in future
   };
 
   // Update user information
@@ -29,11 +36,11 @@ angular.module('App.profile', [])
   self.getBilling = function(){
     braintreeFactory.getTransactions()
       .then(function(data){
-        console.log('Transactions : ', data.transactions);
+        console.log('users billing transactions : ', data.transactions);
         self.transactions = data.transactions;
       })
       .catch(function(err){
-        console.log('error retreiving transactions...', err);
+        console.log('error retreiving users billing transactions...', err);
       });
   };
 
