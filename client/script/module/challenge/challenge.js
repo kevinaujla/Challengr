@@ -79,6 +79,8 @@ angular.module('App.challenge', [])
 
   var self = this;
 
+  self.selectedIndex = null;
+  
   /*
     Load Users from DB
   */
@@ -104,6 +106,11 @@ angular.module('App.challenge', [])
   $scope.$watch('description', function (val) {
     createChallengeService.challenge.description = val;
   });
+
+  self.setSelectedIndex = function(index){
+    console.log('selected index : ', index);
+    self.selectedIndex = index;
+  };
 
   /*
     Add selected friend to create challenge service

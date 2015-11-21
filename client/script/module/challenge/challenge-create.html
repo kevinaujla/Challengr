@@ -21,10 +21,12 @@ Parent Controller : challengeNC
             <span class="input-group-addon"><i class="icon-budicon-11"></i></span>
           </div>
           <ul class="friendList" ng-init="step1.loadFriends()">
-            <li ng-repeat="friend in step1.friends | filter : friendSearch | limitTo : 5" ng-click="step1.addFriend(friend)">
-              <img ng-src="image/placeholder.png">
-              <p>{{friend.firstName}} {{friend.lastName}}</p>
-            </li>
+            <a href="" ng-repeat="friend in step1.friends | filter : friendSearch | limitTo : 5">
+              <li ng-class="{ 'selected' : step1.selectedIndex === $index }" ng-click="step1.setSelectedIndex($index)">              
+                <img ng-src="image/placeholder.png">
+                <p>{{friend.firstName}} {{friend.lastName}}</p>
+              </li>
+            </a>
           </ul>
         </div>
       </div>
@@ -46,15 +48,17 @@ Parent Controller : challengeNC
     <div class="row" ng-controller="challengeStep2Ctrl as step2" ng-init="step2.getCharity()">
 
       <ul class="grid-testimonials">
-        <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(charity)">
-          <div>
-            <h1>{{charity.name}}</h1>
-            <p>{{charity.description}}</p>
-            <a href="{{charity.link}}">{{charity.link}}</a>
-            <span class="quote-arrow"></span>
-          </div>
-          <span class="grid-testimonials-citation"><img ng-src="{{charity.imgUrl}}" width="100%"></span>
-        </li>                                                      
+        <a href="">
+          <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(charity)">
+            <div>
+              <h1>{{charity.name}}</h1>
+              <p>{{charity.description}}</p>
+              <a href="{{charity.link}}">{{charity.link}}</a>
+              <span class="quote-arrow"></span>
+            </div>
+            <span class="grid-testimonials-citation"><img ng-src="{{charity.imgUrl}}" width="100%"></span>
+          </li>  
+        </a>                                                    
       </ul>
 
     </div>
@@ -65,6 +69,19 @@ Parent Controller : challengeNC
 
       <div class="col-md-6">
         <h1>OverView</h1>
+
+        <!-- Load Friend to Challenge -->
+        <div>
+          <li class="friend">              
+            <img ng-src="image/placeholder.png">
+            <p>{{friend.firstName}} {{friend.lastName}}</p>
+          </li>
+          <!-- Load Title and Description of Challenge -->
+          <p>{{title}}</p>
+          <p>{{description}}</p>
+          <!-- Load Charity Name to Donate too -->
+          <h1>{{charity.name}}</h1>
+        </div>
         
       </div>
       <div class="col-md-6">
@@ -73,7 +90,7 @@ Parent Controller : challengeNC
         <!-- Braintree Drop-In Payment UI -->
         <form id="checkout" ng-init="step3.getToken()">
           <div id="payment-form"></div>
-          <div class="btn-group">
+          <div class="btn-group btn-group-justified charityAmount">
             <label class="btn btn-primary" ng-model="amount" uib-btn-radio="'.25'">25&#162;</label>
             <label class="btn btn-primary" ng-model="amount" uib-btn-radio="'.50'">50&#162;</label>
             <label class="btn btn-primary" ng-model="amount" uib-btn-radio="'1.00'">100&#162;</label>

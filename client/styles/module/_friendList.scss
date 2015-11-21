@@ -5,9 +5,15 @@
 ***/
 
 ul.friendList {
+  padding-top: $padding;
+
   li {
     padding: $padding;
     border-bottom: 1px solid #EFF0F4;
+
+    &:hover{
+      background-color: rgba(50, 49, 51, 0.07);
+    }
     img {
       width: 10%;
       border-radius: 50%;
@@ -23,3 +29,7 @@ ul.friendList {
   }
 }
 
+.selected{
+  background-color: $lighter;
+  border-left: 3px rgba(50, 49, 51, 0.07) #88C057;
+}

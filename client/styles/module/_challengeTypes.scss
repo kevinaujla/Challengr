@@ -17,6 +17,14 @@ div.challengeTypes {
     border-radius: 50px;
     text-transform: uppercase;
     margin: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  label {
+    &:hover {
+      cursor: pointer;
+    }
   }
   input,
   textarea {

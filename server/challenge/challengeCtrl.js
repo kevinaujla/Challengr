@@ -9,7 +9,7 @@ module.exports = function (db) {
   return {
     create: function (req, res) {
       // console Log
-      console.log('create challenge: ', req.body);
+      console.log('create challenge: ', req.user, req.body);
       // pull out data
       var challenger = req.user;
       var challenged = req.body.challenged;
