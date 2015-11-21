@@ -30,6 +30,7 @@
     "angular-moment": "~0.10.3",
     "moment": "~2.10.6",
     "angular-momentjs": "~0.2.2",
-    "angular-spinner": "~0.8.0"
+    "angular-spinner": "~0.8.0",
+    "socket.io-client": "~1.3.7"
   }
 }
