@@ -17,7 +17,6 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-
       <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
         <div>
           <img id="profileImg" src="image/profileImg.jpg">
@@ -37,11 +36,8 @@
         </div>
       </div>
       <!-- Inject Views -->
-
       <div id="main" ng-class=" signupOrLoginPage ? 'col-xs-8 col-xs-offset-2' : 'col-xs-8' " ui-view></div>
-
       <div id="rightBar" class="col-xs-3" ng-if="!signupOrLoginPage">
-
         <div>
           <div ng-controller="alertController">
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
@@ -74,7 +70,8 @@
   <script src="lib/moment/min/moment.min.js"></script>
   <script src="lib/angular-moment/angular-moment.min.js"></script>
   <script src="lib/angular-momentjs/angular-momentjs.min.js"></script>
-
+  <script type="text/javascript" src="http://fgnass.github.io/spin.js/spin.min.js"></script>
+  <script src="angular-spinner.js"></script>
   <!-- Concatenated Scripts -->
   <script src="scripts.js"></script>
 
