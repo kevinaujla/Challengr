@@ -13,14 +13,14 @@ angular.module('App.loadingService', [])
     if (!this.spinneractive) {
       usSpinnerService.spin('spinner-1');
     }
-    this.spinneractive=true;
+    this.spinneractive = true;
   };
 
   this.stopSpin = function () {
     if (this.spinneractive) {
       usSpinnerService.stop('spinner-1');
     }
-    this.spinneractive=false;
+    this.spinneractive = false;
   };
 
   this.spinneractive = false;
