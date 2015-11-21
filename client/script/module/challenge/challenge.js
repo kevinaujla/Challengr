@@ -108,7 +108,6 @@ angular.module('App.challenge', [])
   });
 
   self.setSelectedIndex = function(index){
-    console.log('selected index : ', index);
     self.selectedIndex = index;
   };
 
@@ -126,10 +125,13 @@ angular.module('App.challenge', [])
   var self = this;
 
   self.charities = [];
+  self.selectedIndex = null;
 
   /* Choose Charity to donate to */
-  self.chooseCharity = function (charity) {
+  self.chooseCharity = function (charity, index) {
     createChallengeService.challenge.charity = charity;
+    // Set Selected Index
+    self.selectedIndex = index;
   };
 
   /* Get all charities from DB */

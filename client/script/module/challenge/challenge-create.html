@@ -49,7 +49,7 @@ Parent Controller : challengeNC
 
       <ul class="grid-testimonials">
         <a href="">
-          <li ng-repeat="charity in step2.charities" ng-click="step2.chooseCharity(charity)">
+          <li ng-repeat="charity in step2.charities" ng-class="{ 'selectedCharity' : step2.selectedIndex === $index }" ng-click="step2.chooseCharity(charity, $index)">
             <div>
               <h1>{{charity.name}}</h1>
               <p>{{charity.description}}</p>

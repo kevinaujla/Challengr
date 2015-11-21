@@ -81,3 +81,7 @@
   }
 }
 
+li.selectedCharity div, li.selectedCharity img{
+  transition: 0.3s;
+  box-shadow: 0px 2px 0px #EAEEF1, 0px 2px 4px rgba(0, 0, 0, 1);
+}
