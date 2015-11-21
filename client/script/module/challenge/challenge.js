@@ -7,7 +7,7 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function (createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
+.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'alertService', '$state', function (createChallengeService, challengeFactory, braintreeFactory, alertService, $state, $scope) {
 
   var self = this;
 
@@ -44,12 +44,11 @@ angular.module('App.challenge', [])
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
     // factory function
-    //load spinner start
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function (data) {
         console.log('created challenge : ', data);
         // create alert
-        //load spinner end
+        alertService.addAlert('success', 'Challenge created');
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
@@ -110,7 +109,7 @@ angular.module('App.challenge', [])
     Add selected friend to create challenge service
   */
   self.addFriend = function (friend) {
-    console.log('friend to challenge added to service object...');
+    console.log('friend to challenge added to service object: ', friend.firstName);
     createChallengeService.challenge.challenged = friend;
   };
 
@@ -143,7 +142,7 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', 'addAlertService', 'loadingService', '$state', '$scope', 'braintreeFactory', function (challengeFactory, createChallengeService, addAlertService, loadingService, $state, $scope, braintreeFactory) {
+.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', 'alertService', 'loadingService', '$state', '$scope', 'braintreeFactory', function (challengeFactory, createChallengeService, alertService, loadingService, $state, $scope, braintreeFactory) {
 
   var self = this;
 
@@ -160,8 +159,11 @@ angular.module('App.challenge', [])
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function (data) {
         console.log('created challenge : ', data);
-        addAlertService.addAlert('success', 'Challenge created');
-        loadingService.stopSpin();
+        alertService.addAlert('success', 'Challenge created');
+        alertService.alertUser({
+          title: createChallengeService.challenge.title,
+          challenged: createdChallengeService.challenge.challenged
+        });
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);

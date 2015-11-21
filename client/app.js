@@ -28,7 +28,7 @@ angular.module('App', [
   'App.braintreeFactory',
   'App.charityFactory',
   'App.createChallengeService',
-  'App.addAlertService',
+  'App.alertService',
   'App.alertController',
   'angularSpinner',
   'App.loadingService',

@@ -10,17 +10,58 @@ module.exports = function (server) {
   console.log('configuring socket.io');
   var io = require('socket.io')(server);
 
+  io.use(function (socket, next) {
+    // check if user was provided by client
+    if (socket.handshake.query.email) {
+      return next();
+    }
+    next(new Error('You did not pass the user'));
+  });
+
   var clients = [];
   io.on('connection', function (socket) {
-    console.log('new client connected: ' + socket.id);
-    clients.push(socket.id);
+    // console log
+    console.log('new client connected: ', socket.handshake.query.name);
+    // add connection to clients array
+    clients.push({
+      socket: socket,
+      user: {
+        firstName: socket.handshake.query.name,
+        email: socket.handshake.query.email
+      }
+    });
 
+    socket.on('newChallenge', function (challenge) {
+      var challenged;
+      var challenger;
+      // find challenged and challenger
+      for (var i = 0; i < clients.length; i++) {
+        if (clients[i].user.email === challenge.challenged.email) {
+          challenged = clients[i];
+        }
+        if (clients[i].socket.id === socked.id) {
+          challenger = clients[i];
+        }
+      }
+
+      if (challenged) {
+        var message = "You have got a new Challenge: " + challenge.title + "from: " + challenger.user.firstName;
+        challenged.socket.emit('gotChallenged', message);
+      } else {
+        console.log('challenged user is not currently online');
+      }
+    });
     // on disconnect remove socketId from list
     socket.on('disconnect', function () {
-      var index = clients.indexOf(socket.id);
-      if (index != -1) {
-        clients.splice(index, 1);
-        console.info('remove client with id: ' + socket.id);
+      var socketIndex;
+      for (var i = 0; i < clients.length; i++) {
+        if (clients[i].socket.id === socket.id) {
+          socketIndex = i;
+        }
+      }
+      if (socketIndex !== undefined) {
+        console.log('client disconnected: ' + clients[socketIndex].user.firstName);
+        clients.splice(socketIndex, 1);
       }
     });
   });
