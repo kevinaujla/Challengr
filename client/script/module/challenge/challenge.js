@@ -165,6 +165,7 @@ angular.module('App.challenge', [])
           challenged: createChallengeService.challenge.challenged
         };
         socket.emit('newChallenge', challenge);
+        loadingService.stopSpin();
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
