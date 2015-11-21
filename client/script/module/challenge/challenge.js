@@ -7,7 +7,7 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'charityFactory', 'braintreeFactory', '$window', '$state', '$scope', function(userFactory, challengeFactory, charityFactory, braintreeFactory, $window, $state, $scope) {
+.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'loadingService', 'alertService', 'charityFactory', 'braintreeFactory', '$window', '$state', 'socket', function(userFactory, challengeFactory, loadingService, alertService, charityFactory, braintreeFactory, $window, $state, socket) {
 
   var self = this;
 
@@ -96,8 +96,8 @@ angular.module('App.challenge', [])
         console.log('created challenge...');
         alertService.addAlert('success', 'Challenge created');
         var challenge = {
-          title: createChallengeService.challenge.title,
-          challenged: createChallengeService.challenge.challenged
+          title: self.info.title,
+          challenged: self.info.challenged
         };
         socket.emit('newChallenge', challenge);
         loadingService.stopSpin();
