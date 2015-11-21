@@ -64,7 +64,7 @@
     background-color: $unique;
   }
 
-  .btn-success:hover, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success{
+  .btn-success:hover, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success, .btn-success:focus, .btn-success.focus{
     background-color: $unique;
     border: 1px solid white;
   }

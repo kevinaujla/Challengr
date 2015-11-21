@@ -1,6 +1,20 @@
+div.friendToChallenge {
+  display: flex;
+  align-items: center;
+  img {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    display: inline;
+  }
+  div{
+    display: inline-block;
+    padding-left: $padding;
+  }
+}
+
 // /* Step Navigation
 // ------------------------------------------------------------------------- */
-  
 //   .stepNav {
 //     margin: 30px 20px;
 //     height: 43px;
@@ -8,9 +22,7 @@
 //     position: relative;
 //     z-index: 0;
 //     }
-  
 //   /* z-index to make sure the buttons stack from left to right */
-  
 //   .stepNav li {
 //     float: left;
 //     position: relative;
@@ -19,22 +31,16 @@
 //        -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.12);
 //             box-shadow: 0 1px 1px rgba(0,0,0,0.12);
 //     }
-    
 //   .stepNav li:first-child {
 //     -webkit-border-radius: 5px 0 0 5px;
 //        -moz-border-radius: 5px 0 0 5px;
 //             border-radius: 5px 0 0 5px;
 //     }
-    
 //   .stepNav li:nth-child(2) { z-index: 1; }
 //   .stepNav li:nth-child(3) { z-index: 0; }
-  
 //   /* different widths */
-  
 //   .stepNav.threeWide li { width: 33.33%; }
-  
 //      /* step links */
-  
 //   .stepNav a, .stepNav a:visited {
 //     width: 100%;
 //     height: 43px;
@@ -61,14 +67,12 @@
 //        -moz-box-sizing: border-box;
 //             box-sizing: border-box;
 //     }
-    
 //   .stepNav li:first-child a {
 //     padding-left: 12px;
 //     -webkit-border-radius: 5px 0 0 5px;
 //        -moz-border-radius: 5px 0 0 5px;
 //             border-radius: 5px 0 0 5px;
 //     }
-  
 //   .stepNav a:before {
 //     content: "";
 //     width: 29px;
@@ -91,7 +95,6 @@
 //          -o-transform: rotate(-45deg);
 //             transform: rotate(-45deg);
 //     }
-    
 //   .stepNav a:hover {
 //     color: #2e2e2e;
 //     background-color: #f5f5f5;
@@ -102,7 +105,6 @@
 //     background-image: -ms-linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
 //     background-image: linear-gradient(to top, rgb(242, 242, 242), rgb(217, 217, 217));
 //     }
-    
 //   .stepNav a:hover:before {
 //     background-image: -webkit-gradient(linear, right top, left bottom, from(rgb(242, 242, 242)), to(rgb(217, 217, 217)));
 //     background-image: -webkit-linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
@@ -111,26 +113,21 @@
 //     background-image: -ms-linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
 //     background-image: linear-gradient(to right top, rgb(242, 242, 242), rgb(217, 217, 217));
 //     }
-  
 //   /* selected */
-    
 //   .stepNav li.selected {
 //     -webkit-box-shadow: none;
 //        -moz-box-shadow: none;
 //             box-shadow: none;
 //     }
-                
 //   .stepNav li.selected a, .stepNav li.selected a:before {
 //     background: #ebebeb;
 //     }
-    
 //   .stepNav li.selected a {
 //     border-top-color: #bebebe;
 //     -webkit-box-shadow: inset 2px 1px 2px rgba(0,0,0,0.12);
 //        -moz-box-shadow: inset 2px 1px 2px rgba(0,0,0,0.12);
 //             box-shadow: inset 2px 1px 2px rgba(0,0,0,0.12);
 //     }
-    
 //   .stepNav li.selected a:before {
 //     border-right: 1px solid #bebebe;
 //     border-bottom: 1px solid #cbcbcb;
@@ -138,3 +135,7 @@
 //        -moz-box-shadow: inset -1px -1px 1px rgba(0,0,0,0.1);
 //             box-shadow: inset -1px -1px 1px rgba(0,0,0,0.1);
 //     }
+//     
+//     
+//
+
