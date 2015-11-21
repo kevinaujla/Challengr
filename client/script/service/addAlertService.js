@@ -20,5 +20,5 @@ angular.module('App.addAlertService', [])
       msg: msg
     });
   };
-
+  
 }]);

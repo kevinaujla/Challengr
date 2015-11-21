@@ -6,7 +6,7 @@ specifying routes for /auth/facebook
 */
 
 var passport = require('passport'); // auth via passport
-var FacebookStrategy = require('passport-facebook').Strategy; // FB auth via passport
+var facebookStrategy = require('passport-facebook').Strategy; // FB auth via passport
 var session = require('express-session'); // to enable user sessions
 var cookieParser = require('cookie-parser'); // parses cookies
 
@@ -47,7 +47,7 @@ module.exports = function (app, db, mainApp) {
       // function will not be called.
     });
 
-  passport.use(new FacebookStrategy({ // request fields from facebook
+  passport.use(new facebookStrategy({ // request fields from facebook
       profileFields: ['id', 'displayName', 'photos', 'email'],
       clientID: '1534819266808872',
       clientSecret: '7cb15159c731afe15686d596b633b20c',

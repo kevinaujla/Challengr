@@ -175,7 +175,6 @@ module.exports = function(db) {
         var ids = response.ids;
         console.log('response ids : ', ids);
         for(var i = 0; i < ids.length; i++){
-          console.log('THIS : ', this);
           // this.deleteAllBraintreeCustomers(ids[i]);
         }
 
