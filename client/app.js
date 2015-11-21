@@ -30,6 +30,9 @@ angular.module('App', [
   'App.createChallengeService',
   'App.addAlertService',
   'App.alertController',
+  'angularSpinner',
+  'App.loadingService',
+  'App.loadingController',
   'App.s3Factory'
 ])
 
@@ -156,7 +159,7 @@ angular.module('App', [
     if (toState.url === '/signin' || toState.url === '/signup') {
       $rootScope.signupOrLoginPage = true;
     }
-    if (toState.url !== '/signup' && toState.url !== '/signin'){
+    if (toState.url !== '/signup' && toState.url !== '/signin') {
       $rootScope.signupOrLoginPage = false;
     }
 
