@@ -7,18 +7,20 @@ create a alert
 
 angular.module('App.alertController', [])
 
-.controller('alertController', ['$scope', 'addAlertService', function ($scope, addAlertService) {
+.controller('alertController', ['$scope', 'alertService', 'socket', function ($scope, alertService, socket) {
 
-  $scope.alerts = addAlertService.alerts;
+  $scope.alerts = alertService.alerts;
 
-  $scope.addAlert = function (msg) {
-    addAlertService.alerts.push({
-      msg: msg
-    });
+  socket.on('got challenged', function (msg) {
+    alertService.addAlert('success', msg);
+  });
+  
+  $scope.addAlert = function (type, msg) {
+    alertService.addAlert(type, msg);
   };
 
   $scope.closeAlert = function (index) {
-    addAlertService.alerts.splice(index, 1);
+    alertService.closeAlert(index);
   };
 
 }]);

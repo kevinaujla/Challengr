@@ -129,7 +129,7 @@ module.exports = function (db) {
       }).then(function(user) {
         user.getMyChallenges()
         .then(function(challenges) {
-          console.log('received challenges for specific user from db: ' + challenges);
+          console.log('fetched all challenges for specific user from db');
           res.json(challenges);
         });
       });

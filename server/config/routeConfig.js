@@ -9,8 +9,13 @@ module.exports = function (app, express, db) {
   // serving static files from client folder
   app.use(express.static(__dirname + '/../../client'));
 
-  var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
+  // do not log static assets
+  // logging requests to the server
+  var morgan = require('morgan');
+  // set development mode for morgan regarding logging format
+  app.use(morgan('dev'));
 
+  var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
   // handling all authentication (signup, signin, route protection)
   var authRouter = express.Router();
   require(__dirname + '/../auth/authRouter.js')(authRouter, db, app);

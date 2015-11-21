@@ -8,6 +8,7 @@ working with socket.io
 module.exports = function (server) {
   // app === express app injected from server.js
   console.log('configuring socket.io');
+
   var io = require('socket.io')(server);
 
   io.use(function (socket, next) {
@@ -39,14 +40,14 @@ module.exports = function (server) {
         if (clients[i].user.email === challenge.challenged.email) {
           challenged = clients[i];
         }
-        if (clients[i].socket.id === socked.id) {
+        if (clients[i].socket.id === socket.id) {
           challenger = clients[i];
         }
       }
 
       if (challenged) {
-        var message = "You have got a new Challenge: " + challenge.title + "from: " + challenger.user.firstName;
-        challenged.socket.emit('gotChallenged', message);
+        var message = "You have got a new Challenge: " + challenge.title + " from " + challenger.user.firstName;
+        socket.to(challenged.socket.id).emit('got challenged', message);
       } else {
         console.log('challenged user is not currently online');
       }

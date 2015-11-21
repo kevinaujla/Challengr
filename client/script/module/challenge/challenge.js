@@ -142,7 +142,7 @@ angular.module('App.challenge', [])
 
 }])
 
-.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', 'alertService', 'loadingService', '$state', '$scope', 'braintreeFactory', function (challengeFactory, createChallengeService, alertService, loadingService, $state, $scope, braintreeFactory) {
+.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', 'alertService', 'loadingService', '$state', '$scope', 'braintreeFactory', 'socket', function (challengeFactory, createChallengeService, alertService, loadingService, $state, $scope, braintreeFactory, socket) {
 
   var self = this;
 
@@ -160,10 +160,11 @@ angular.module('App.challenge', [])
       .then(function (data) {
         console.log('created challenge : ', data);
         alertService.addAlert('success', 'Challenge created');
-        alertService.alertUser({
+        var challenge = {
           title: createChallengeService.challenge.title,
-          challenged: createdChallengeService.challenge.challenged
-        });
+          challenged: createChallengeService.challenge.challenged
+        };
+        socket.emit('newChallenge', challenge);
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
