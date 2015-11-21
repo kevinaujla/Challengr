@@ -7,10 +7,10 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', 'addAlertService','$state', function(createChallengeService, challengeFactory, braintreeFactory, addAlertService, $state, $scope) {
+.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function (createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
 
   var self = this;
-  
+
   /***
     Utility Methods
   ***/
@@ -44,11 +44,12 @@ angular.module('App.challenge', [])
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
     // factory function
+    //load spinner start
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function (data) {
         console.log('created challenge : ', data);
         // create alert
-        addAlertService.addAlert('success', 'Challenge created');
+        //load spinner end
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
@@ -93,7 +94,7 @@ angular.module('App.challenge', [])
       });
   };
 
-  $scope.$watch('type', function(val){
+  $scope.$watch('type', function (val) {
     createChallengeService.challenge.type = val;
   });
 
@@ -128,25 +129,25 @@ angular.module('App.challenge', [])
   };
 
   /* Get all charities from DB */
-  self.getCharity = function(){
+  self.getCharity = function () {
     console.log('load all charities...');
     charityFactory.load()
-      .then(function(charities){
+      .then(function (charities) {
         console.log('loaded all charities... : ', charities);
         self.charities = charities;
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('error loading charities : ', err);
       });
   };
 
 }])
 
-.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', '$state', '$scope', 'braintreeFactory', function (challengeFactory, createChallengeService, $state, $scope, braintreeFactory) {
+.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', 'addAlertService', 'loadingService', '$state', '$scope', 'braintreeFactory', function (challengeFactory, createChallengeService, addAlertService, loadingService, $state, $scope, braintreeFactory) {
 
   var self = this;
 
-  $scope.$watch('amount', function(val){
+  $scope.$watch('amount', function (val) {
     createChallengeService.challenge.charityAmount = val;
   });
 
@@ -154,10 +155,13 @@ angular.module('App.challenge', [])
   self.save = function () {
     // console log
     console.log('create challenge... : ', createChallengeService.challenge);
+    loadingService.startSpin();
     // factory function
     challengeFactory.createChallenge(createChallengeService.challenge)
       .then(function (data) {
         console.log('created challenge : ', data);
+        addAlertService.addAlert('success', 'Challenge created');
+        loadingService.stopSpin();
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
@@ -180,17 +184,17 @@ angular.module('App.challenge', [])
             payload.charityAmount = createChallengeService.challenge.charityAmount;
             // call checkout function
             braintreeFactory.checkout(payload)
-              .then(function(){
+              .then(function () {
                 console.log('completed checkout...');
                 // show success confirmation
-                
+
                 // call the save/create challenge function
                 self.save();
 
                 // redirect to home page
                 $state.go('home');
               })
-              .catch(function(err){
+              .catch(function (err) {
                 console.log('error making payment... ', err);
               });
           },
