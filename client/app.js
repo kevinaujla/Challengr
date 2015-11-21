@@ -28,8 +28,12 @@ angular.module('App', [
   'App.challengeFactory',
   'App.braintreeFactory',
   'App.charityFactory',
+<<<<<<< 0419da68ddf7d23b1b09bdf0f01ee192dcb5c9b1
   'App.createChallengeService',
   'App.alertService',
+=======
+  'App.addAlertService',
+>>>>>>> [refactor] : create challenge combined into one controller and removed create challenge service
   'App.alertController',
   'angularSpinner',
   'App.loadingService',

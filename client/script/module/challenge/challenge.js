@@ -7,13 +7,11 @@ CRUD for challenges
 
 angular.module('App.challenge', [])
 
-.controller('challengeNewCtrl', ['createChallengeService', 'challengeFactory', 'braintreeFactory', '$state', function(createChallengeService, challengeFactory, braintreeFactory, $state, $scope) {
+.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'charityFactory', 'braintreeFactory', '$window', '$state', '$scope', function(userFactory, challengeFactory, charityFactory, braintreeFactory, $window, $state, $scope) {
 
   var self = this;
 
-  /***
-    Utility Methods
-  ***/
+  self.info = {};
 
   /* Steps Tabs */
   self.tabs = [true, false, false];
@@ -35,33 +33,6 @@ angular.module('App.challenge', [])
     }
   };
 
-  /***
-<<<<<<< 51e19294697dbb820ad33bd24b0a9afd64065b00
-    Challenge Methods
-  ***/
-
-  /* Create challenge */
-  self.save = function () {
-    // console log
-    console.log('create challenge... : ', createChallengeService.challenge);
-    // factory function
-    challengeFactory.createChallenge(createChallengeService.challenge)
-      .then(function (data) {
-        console.log('created challenge : ', data);
-        // create alert
-        alertService.addAlert('success', 'Challenge created');
-      })
-      .catch(function (err) {
-        console.log('error creating challenge... : ', err);
-      });
-  };
-
-  /***
-=======
->>>>>>> [refactor] : take out console logs and add alert service to login
-    Braintree Methods
-  ***/
-
   /* Braintree search if customer exists */
   self.searchCustomer = function () {
     braintreeFactory.searchCustomer()
@@ -73,17 +44,10 @@ angular.module('App.challenge', [])
       });
   };
 
-}])
+  /*** Step1 ***/
+  self.selectedFriend = null;
 
-.controller('challengeStep1Ctrl', ['userFactory', 'createChallengeService', '$scope', function (userFactory, createChallengeService, $scope) {
-
-  var self = this;
-
-  self.selectedIndex = null;
-  
-  /*
-    Load Users from DB
-  */
+  /* Load Users from DB */
   self.loadFriends = function () {
     userFactory.getAllUsers()
       .then(function (users) {
@@ -95,42 +59,19 @@ angular.module('App.challenge', [])
       });
   };
 
-  $scope.$watch('type', function (val) {
-    createChallengeService.challenge.type = val;
-  });
-
-  $scope.$watch('title', function (val) {
-    createChallengeService.challenge.title = val;
-  });
-
-  $scope.$watch('description', function (val) {
-    createChallengeService.challenge.description = val;
-  });
-
-  self.setSelectedIndex = function(index){
-    self.selectedIndex = index;
+  /* Add selected friend to create challenge service */
+  self.addFriend = function (friend, index) {
+    self.info.challenged = friend;
+    self.selectedFriend = index;
   };
 
-  /*
-    Add selected friend to create challenge service
-  */
-  self.addFriend = function (friend) {
-    createChallengeService.challenge.challenged = friend;
-  };
-
-}])
-
-.controller('challengeStep2Ctrl', ['createChallengeService', 'charityFactory', function (createChallengeService, charityFactory) {
-
-  var self = this;
-
+  /*** Step 2 ***/
   self.charities = [];
   self.selectedIndex = null;
 
   /* Choose Charity to donate to */
   self.chooseCharity = function (charity, index) {
-    createChallengeService.challenge.charity = charity;
-    // Set Selected Index
+    self.info.charity = charity;
     self.selectedIndex = index;
   };
 
@@ -146,23 +87,13 @@ angular.module('App.challenge', [])
       });
   };
 
-}])
-
-.controller('challengeStep3Ctrl', ['challengeFactory', 'createChallengeService', '$state', '$scope', '$window', 'braintreeFactory', function (challengeFactory, createChallengeService, $state, $scope, $window, braintreeFactory) {
-
-  var self = this;
-
-  $scope.$watch('amount', function (val) {
-    createChallengeService.challenge.charityAmount = val;
-  });
-
   /* Create challenge */
   self.save = function () {
     loadingService.startSpin();
     // factory function
-    challengeFactory.createChallenge(createChallengeService.challenge)
+    challengeFactory.createChallenge(self.info)
       .then(function (data) {
-        console.log('created challenge : ', data);
+        console.log('created challenge...');
         alertService.addAlert('success', 'Challenge created');
         var challenge = {
           title: createChallengeService.challenge.title,
@@ -189,8 +120,10 @@ angular.module('App.challenge', [])
           braintree.setup(token, 'dropin', {
             container: 'payment-form',
             onPaymentMethodReceived: function (payload) {
-              // attach the payment button amount to object
-              payload.charityAmount = createChallengeService.challenge.charityAmount;
+
+              console.log('self.info : ', self.info);
+              payload.charityAmount = self.info.charityAmount;
+
               // call checkout function
               braintreeFactory.checkout(payload)
                 .then(function(){
@@ -215,7 +148,6 @@ angular.module('App.challenge', [])
     } else{
       console.log('error getting braintree token from local storage...');
     }
-
   };
 
 }]);

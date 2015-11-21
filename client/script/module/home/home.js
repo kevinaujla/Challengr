@@ -7,7 +7,7 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', 'createChallengeService', 'braintreeFactory', function (challengeFactory, $scope, createChallengeService, braintreeFactory) {
+.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', function (challengeFactory, $scope, braintreeFactory) {
 
   var self = this;
 

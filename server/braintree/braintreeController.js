@@ -118,7 +118,7 @@ module.exports = function (db) {
     },
 
     transaction: function (req, res) {
-      console.log('store transaction into database user : ', req.user.email);
+      console.log('store transaction into database user : ', req.user.email, req.body);
       // query for user with email(unique)
       db.User.findOne({
           where: {
