@@ -35,26 +35,21 @@ angular.module('App.profile', [])
   $scope.changeProfileImg = function(element){
     console.log('choose new profile image asdf...');
     $scope.$apply(function(scope) {
-        var photofile = element.files[0];
         var reader = new FileReader();
+        reader.readAsDataURL(element.files[0]);
         reader.onload = function(e) {
-           // handle onload
-           console.log('onload...');
+           // Factory Function
+           s3Factory.updatePicture(reader.result, 'profileImg')
+             .then(function(imgUrl){
+               // Console Log
+               console.log('successfully saved to S3...');
+               // Show Success
+             })
+             .catch(function(err){
+               console.log('error uploading image : ', err);
+             });
         };
-        reader.readAsDataURL(photofile);
-        // data:image/png is in reader.result
-        console.log('reader : ', reader.FileReader);
-
-        // Factory Function
-        s3Factory.updatePicture(reader.result, 'profileImg')
-          .then(function(imgUrl){
-            // Console Log
-            console.log('successfully saved to S3...');
-            // Show Success
-          })
-          .catch(function(err){
-            console.log('error uploading image : ', err);
-          });
+        
 
     });
   };

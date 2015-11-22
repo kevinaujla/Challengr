@@ -11,8 +11,9 @@ module.exports = function (app, express) {
 
   // parses application/x-www-form-urlencoded from html forms
   app.use(bodyParser.urlencoded({
-    extended: false
-  }))
+    extended: false,
+    limit : '50mb'
+  }));
   // parse json bodies
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({ limit : '50mb' }));
 };

@@ -16,10 +16,14 @@ Parent Controller : challengeNC
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter Challenger.." ng-model="friendSearch">
-            <span class="input-group-addon"><i class="icon-budicon-11"></i></span>
+        
+          <div id="searchBar" class="input-group">
+            <input type="text" class="form-control" placeholder="Enter Challenger..." ng-model="friendSearch">
+            <span class="input-group-addon" id="sizing-addon2">
+              <i class="icon-budicon-44"></i>
+            </span>
           </div>
+
           <ul class="friendList" ng-init="challengeNC.loadFriends()">
             <a href="" ng-repeat="friend in challengeNC.friends | filter : friendSearch | limitTo : 5">
               <li ng-class="{ 'selected' : challengeNC.selectedFriend === $index }" ng-click="challengeNC.addFriend(friend, $index)">              
