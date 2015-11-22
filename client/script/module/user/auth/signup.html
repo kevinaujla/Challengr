@@ -5,6 +5,19 @@ signup.html
 
 -->
 
+
+<div id="authAlert" ng-controller="alertController">
+  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+    <div class="alertIcon">
+      <i class="icon-bell-o"></i>
+    </div>
+    <div class="alertText">
+      {{alert.msg}}
+    </div>
+  </uib-alert>
+</div>
+
+
 <div class="col-md-12">
   <div class="panel panel-default">
 

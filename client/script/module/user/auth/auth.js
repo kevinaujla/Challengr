@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl', ['$window', '$state', 'authFactory', 'braintreeFactory', 'alertService', function ($window, $state, authFactory, braintreeFactory, alertService) {
+.controller('authCtrl', ['$window', '$timeout', '$state', 'authFactory', 'braintreeFactory', 'alertService', function ($window, $timeout, $state, authFactory, braintreeFactory, alertService) {
 
   var self = this;
 
@@ -29,7 +29,7 @@ angular.module('App.auth', [])
         } else {
           // console log
           console.log('sign up failure...');
-          // show alert of failure with data.message
+          alertService.addAlert('danger', data.message);
         }
       })
       .catch(function (err) {
@@ -62,7 +62,11 @@ angular.module('App.auth', [])
           $state.go('home');
         } else {
           // show alert of failure with data.message
-          addAlertService.addAlert('danger', data.message);
+          alertService.addAlert('danger', data.message);
+          $timeout(close, 3000);
+          function close(){
+            alertService.closeAlert();
+          };
         }
       })
       .catch(function (err) {
