@@ -30,6 +30,10 @@ angular.module('App.auth', [])
           // console log
           console.log('sign up failure...');
           alertService.addAlert('danger', data.message);
+          $timeout(close, 3000);
+          function close(){
+            alertService.closeAlert();
+          };
         }
       })
       .catch(function (err) {
