@@ -13,7 +13,7 @@ angular.module('App.personalChallenge', [])
 
   $scope.date = null;
 
-  $scope.$watch('date | json', function() {
+  $scope.$watch('date | json', function(date) {
     // console.log('date : ', $scope.date);
     // every minute do a check if the date has reached the expired date
     
@@ -21,7 +21,8 @@ angular.module('App.personalChallenge', [])
   
   $interval(function() {
     $scope.date = moment(new Date());
-  }, 60000);
+    // console.log('date : ', $scope.date);
+  }, 1000);
 
   self.challenges = [];
 

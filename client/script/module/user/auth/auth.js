@@ -17,7 +17,7 @@ angular.module('App.auth', [])
       .then(function (data) {
         // check if successful
         if (data.success === true) {
-          // console.log('signed up successfully...');
+          console.log('signed up successfully...');
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -67,10 +67,13 @@ angular.module('App.auth', [])
         } else {
           // show alert of failure with data.message
           alertService.addAlert('danger', data.message);
+<<<<<<< 987cb7ce41d2fafaf2721810f60981515d525a52
           $timeout(close, 3000);
           function close(){
             alertService.closeAlert();
           };
+=======
+>>>>>>> [fix] : create new account sends back photoURL
         }
       })
       .catch(function (err) {
@@ -78,9 +81,7 @@ angular.module('App.auth', [])
       });
   };
 
-  /*
-    Braintree create customer account
-  */
+  /* Braintree create customer account */
   self.createBraintreeCustomer = function () {
     braintreeFactory.createCustomer(self)
       .then(function (data) {
@@ -94,9 +95,7 @@ angular.module('App.auth', [])
       });
   };
 
-  /*
-    Braintree create customer account
-  */
+  /* Braintree create customer account */
   self.searchBraintreeCustomer = function () {
     console.log('search for existing braintree customer...');
     braintreeFactory.searchCustomer()
