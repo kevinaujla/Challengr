@@ -17,7 +17,7 @@ angular.module('App.auth', [])
       .then(function (data) {
         // check if successful
         if (data.success === true) {
-          // console.log('signed up successfully...');
+          console.log('signed up successfully...');
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -27,9 +27,8 @@ angular.module('App.auth', [])
           // redirect
           $state.go('home');
         } else {
-          // console log
-          console.log('sign up failure...');
           // show alert of failure with data.message
+          alertService.addAlert('danger', data.message);
         }
       })
       .catch(function (err) {
@@ -62,7 +61,7 @@ angular.module('App.auth', [])
           $state.go('home');
         } else {
           // show alert of failure with data.message
-          addAlertService.addAlert('danger', data.message);
+          alertService.addAlert('danger', data.message);
         }
       })
       .catch(function (err) {
@@ -70,9 +69,7 @@ angular.module('App.auth', [])
       });
   };
 
-  /*
-    Braintree create customer account
-  */
+  /* Braintree create customer account */
   self.createBraintreeCustomer = function () {
     braintreeFactory.createCustomer(self)
       .then(function (data) {
@@ -86,9 +83,7 @@ angular.module('App.auth', [])
       });
   };
 
-  /*
-    Braintree create customer account
-  */
+  /* Braintree create customer account */
   self.searchBraintreeCustomer = function () {
     console.log('search for existing braintree customer...');
     braintreeFactory.searchCustomer()
