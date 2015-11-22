@@ -12,4 +12,6 @@ module.exports = function (app, db) {
 
   // get temporarily signed s3 request for access to bucket
   app.get('/sign_s3', s3Ctrl.signRequest)(db);
+
+  app.post('/upload', s3Ctrl.upload)(db);
 };

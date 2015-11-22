@@ -10,25 +10,26 @@ manage payments, signout, manage user information
 <uib-tabset id="profile">
 
   <uib-tab heading="Profile" ng-init="profileCtrl.getUser()" id="account">
-   <strong>First Name:</strong>
-    <div class="input-group">
-      <input type="text" class="form-control" value="{{profileCtrl.firstName}}">
+    <h1>First Name:</h1> 
+    <p>{{profileCtrl.firstName}}</p>
+    <h1>Last Name:</h1>
+    <p>{{profileCtrl.lastName}}</p>
+    <h1>Email:</h1>
+    <p>{{profileCtrl.email}}</p>
+    <h1>Location:</h1>
+    <p>{{profileCtrl.location}}</p>
+
+    <div class="control-group">
+      <label class="control-label"> Upload new photo:</label>
+      <div class="controls">
+        <img style="border:1px solid gray;width:100px;" id="preview" src="image/profileImg.jpg"/>
+        <input id='file_input' type="file" name="img">
+        <input type="hidden" id="avatar_url" name="avatar_url" value="/images/default.png" />
+      </div>
     </div>
-   <strong>Last Name:</strong>
-    <div class="input-group">
-      <input type="text" class="form-control" value="{{profileCtrl.lastName}}">
-    </div>
-   <strong>Email:</strong>
-    <div class="input-group">
-      <input type="text" class="form-control" value="{{profileCtrl.email}}">
-    </div>
-<!--     <div class="input-group">
-      <input type="text" class="form-control" placeholder="password">
-    </div> -->
-   <strong>Location:</strong>
-    <div class="input-group">
-      <input type="text" class="form-control" value="{{profileCtrl.location}} ">
-    </div>
+
+    <button class="btn btn-primary address_submit" data-toggle="modal" ng-click="submit()">Submit</button>
+
     <button class="btn btn-warning" ng-click="profileCtrl.updateUser()">Update</button>
   </uib-tab>
 

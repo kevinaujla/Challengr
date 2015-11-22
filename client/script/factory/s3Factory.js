@@ -33,13 +33,12 @@ angular.module('App.s3Factory', [])
     });
   };
 
-  var updatePicture = function (url) {
+  var updatePicture = function (imageData, description) {
+    console.log('upload picture  : ', imageData, description);
     return $http({
-      method: 'PUT',
-      url: '/api/user/',
-      data: {
-        photoURL: url
-      }
+      method: 'POST',
+      url: '/api/s3/upload',
+      data : ({ imgName : description, imageData: imageData }),
     }).then(function (resp) {
       return resp.data;
     });
@@ -48,7 +47,7 @@ angular.module('App.s3Factory', [])
   return {
     getSignedRequest: getSignedRequest,
     uploadFile: uploadFile,
-    updatePicture: updatePicture
+    updatePicture: updatePicture,
   };
 
 }]);

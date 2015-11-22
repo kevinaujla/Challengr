@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.profile', [])
 
-.controller('profileCtrl', ['authFactory', 'braintreeFactory', function(authFactory, braintreeFactory) {
+.controller('profileCtrl', ['authFactory', 'braintreeFactory', '$scope', 's3Factory', function(authFactory, braintreeFactory, $scope, s3Factory) {
 
   var self = this;
   var transactions = [];
@@ -30,6 +30,33 @@ angular.module('App.profile', [])
   // Update user information
   self.updateUser = function(){
 
+  };
+
+  $scope.changeProfileImg = function(element){
+    console.log('choose new profile image asdf...');
+    $scope.$apply(function(scope) {
+        var photofile = element.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+           // handle onload
+           console.log('onload...');
+        };
+        reader.readAsDataURL(photofile);
+        // data:image/png is in reader.result
+        console.log('reader : ', reader.FileReader);
+
+        // Factory Function
+        s3Factory.updatePicture(reader.result, 'profileImg')
+          .then(function(imgUrl){
+            // Console Log
+            console.log('successfully saved to S3...');
+            // Show Success
+          })
+          .catch(function(err){
+            console.log('error uploading image : ', err);
+          });
+
+    });
   };
 
   // Get all transaction history for user

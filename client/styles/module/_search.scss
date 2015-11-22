@@ -1,0 +1,29 @@
+// Search Icon
+span#sizing-addon2 {
+    background-color: #F7F8FA;
+    border: 1px solid #DEE2E5;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 0px 20px;
+    padding-top: 2px;
+}
+input.form-control {
+    border: 1px solid #DEE2E5;
+    border-right: 0px;
+    border-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: transparent;
+    padding: 20px 15px;
+}
+i.icon-budicon-44 {
+    color: #D2D6D9;
+}
+
+// Input Placeholder Text
+::-webkit-input-placeholder {
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    color: #70838D;
+}

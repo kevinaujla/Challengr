@@ -1,18 +1,18 @@
 <div class="challenge">
   <div class="challenge--heading">
-    <div class="">
+    <div class="type">
       <i class="icon-budicon-52"></i>
       <span>{{type}} - {{title}}</span>
     </div>
-    <div class="">
-      <i class="icon-budicon-30"></i>
+    <div class="time">
+      <i class="icon-clock-o"></i>
       <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
     </div>
   </div>
   <div class="challenge--main">
     <div>
-      <img ng-src="{{challengechallenger.photoURL}}">
-      <img ng-src="{{challengechallenged.photoURL}}">
+      <img class="challengerImg" ng-src="{{challengechallenger.photoURL}}">
+      <img class="challengedImg" ng-src="{{challengechallenged.photoURL}}">
     </div>
     <div>
       <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} challenged {{challengechallenged.firstName}} {{challengechallenged.lastName}}</span>

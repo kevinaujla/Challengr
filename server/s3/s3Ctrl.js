@@ -8,6 +8,7 @@ configuring routes for s3Router
 var aws = require('aws-sdk');
 
 module.exports = {
+
   signRequest: function (req, res) {
     // console log
     console.log('/sign_s3 signing s3 request');
@@ -40,5 +41,54 @@ module.exports = {
         res.json(returnData);
       }
     });
+  },
+
+  /***
+    Uploading images to AWS S3
+  ***/
+  upload: function (req, res, next) {
+    // Console Log
+    console.log('Upload images to AWS... image data : ', req.body.imgName, req.body.imgData);
+    // AWS Config
+    aws.config.update({
+      accessKeyId: process.env.AWS_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_ACCESS_KEY
+    });
+    aws.config.update({
+      region: process.env.AWS_REGION
+    });
+    // Define AWS S3 Bucket
+    var s3Bucket = new aws.S3({
+      params: {
+        Bucket: process.env.S3_BUCKET
+      }
+    });
+    // Create Buffer
+    var imageBuffer = new Buffer(req.body.imageData.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+    // Define Upload Params
+    var data = {
+      Key: req.body.imgName + new Date() + '.png',
+      Body: imageBuffer,
+      ContentEncoding: 'base64',
+      ContentType: 'image/png'
+    };
+    // S3 Bucket Upload
+    s3Bucket.upload(data, function (err, data) {
+      if (err) {
+        // Propogate Error to Client
+        res.status(404).send({
+          error: err.message
+        });
+      } else {
+        // Console Log
+        console.log('S3 image url : ', data.Location);
+        var location = data.Location;
+        // Propogate Success to Client
+        res.json({
+          location
+        });
+      }
+    });
   }
+
 };
