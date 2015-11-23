@@ -110,7 +110,7 @@ angular.module('App', [
       url: '/challenge/:id',
       templateUrl: 'script/module/challenge/challenge-read.html',
       controller: 'challengeViewCtrl',
-      controllerAs: 'challengeVC',
+      controllerAs: 'challengeViewCtrl',
       data: {
         authenticate: true
       }
