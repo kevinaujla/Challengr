@@ -7,7 +7,7 @@ challengeDirective.js
 
 angular.module('App.challengeDirective', [])
 
-.directive('challenge', ['challengeFactory', function (challengeFactory) {
+.directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
 
   return {
     restrict: 'E',
@@ -28,6 +28,14 @@ angular.module('App.challengeDirective', [])
       type: '=',
     },
     link: function (scope, element, attrs) {
+
+      element.on('click', function(){
+        console.log('clicked...', element);
+
+        // open the detail view of the challenge...
+        $state.go('viewChallenge');
+
+      });
 
       scope.increaseLike = function () {
         // console log

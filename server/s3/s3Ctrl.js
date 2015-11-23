@@ -47,24 +47,18 @@ module.exports = function (db) {
       Uploading images to AWS S3
     ***/
     upload: function (req, res) {
-      // Console Log
-      console.log('Upload images to AWS... image data : ', req.body.imgName, req.body.imgData);
-      // AWS Config
+      
+      // console.log('Upload AWS Images : ', req.body);
+      
       aws.config.update({
         accessKeyId: process.env.AWS_ACCESS_KEY,
         secretAccessKey: process.env.AWS_ACCESS_KEY
       });
-      aws.config.update({
-        region: process.env.AWS_REGION
-      });
+      aws.config.update({ region: process.env.AWS_REGION });
       // Define AWS S3 Bucket
-      var s3Bucket = new aws.S3({
-        params: {
-          Bucket: process.env.S3_BUCKET
-        }
-      });
+      var s3Bucket = new aws.S3({ params: { Bucket: process.env.S3_BUCKET } });
       // Create Buffer
-      var imageBuffer = new Buffer(req.body.imageData.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+      var imageBuffer = new Buffer(req.body.imageData.replace(/^data:image\/\w+;base64,/, ''), 'base64');
       // Define Upload Params
       var data = {
         Key: req.body.imgName + new Date() + '.png',
@@ -72,21 +66,21 @@ module.exports = function (db) {
         ContentEncoding: 'base64',
         ContentType: 'image/png'
       };
-      // S3 Bucket Upload
+
+      // // S3 Bucket Upload
       s3Bucket.upload(data, function (err, data) {
         if (err) {
+          console.log('ERROR : ', err);
           // Propogate Error to Client
-          res.status(404).send({
-            error: err.message
-          });
+          // res.status(403).send({
+          //   error: err.message
+          // });
         } else {
           // Console Log
           console.log('S3 image url : ', data.Location);
           var location = data.Location;
           // Propogate Success to Client
-          res.json({
-            location
-          });
+          res.json({ imageURL : location });
         }
       });
     }

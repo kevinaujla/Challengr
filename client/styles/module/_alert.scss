@@ -30,3 +30,12 @@ i.icon-budicon-55 {
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
+
+div.alertIcon{
+  display: inline-block;
+  float: left;
+  margin-right: $padding;
+  i{
+    font-size: 140%;
+  }
+}

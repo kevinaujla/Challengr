@@ -28,15 +28,16 @@ angular.module('App.profile', [])
   };
 
   // Update user information
-  self.updateUser = function(){
+  // self.updateUser = function(){
 
-  };
+  // };
 
   $scope.changeProfileImg = function(element){
     console.log('choose new profile image asdf...');
     $scope.$apply(function(scope) {
         var reader = new FileReader();
         reader.readAsDataURL(element.files[0]);
+
         reader.onload = function(e) {
            // Factory Function
            s3Factory.updatePicture(reader.result, 'profileImg')

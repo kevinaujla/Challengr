@@ -46,7 +46,7 @@ module.exports = function (server) {
       }
 
       if (challenged) {
-        var message = "You have got a new Challenge: " + challenge.title + " from " + challenger.user.firstName;
+        var message = 'You have got a new Challenge: ' + challenge.title + ' from ' + challenger.user.firstName;
         socket.to(challenged.socket.id).emit('got challenged', message);
       } else {
         console.log('challenged user is not currently online');

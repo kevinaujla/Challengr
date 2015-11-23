@@ -34,7 +34,8 @@ angular.module('App.s3Factory', [])
   };
 
   var updatePicture = function (imageData, description) {
-    console.log('upload picture  : ', imageData, description);
+    console.log('imageData : ', imageData);
+    console.log('description : ', description);
     return $http({
       method: 'POST',
       url: '/api/s3/upload',
