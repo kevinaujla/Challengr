@@ -56,24 +56,21 @@ div#challengeDetail {
     }
   }
   .panel-body {
+    padding: 0px;
     .row{
       padding-left: 15px;
-      // border: 1px solid green;
       display: flex;
       .leftChallenge{
         padding: 15px;
         padding-left: 30px;
         display: flex;
         flex-direction: column;
-        // border: 1px solid blue;
-        // justify-content: space-between;
         flex: 1;
         div.type{
           display: flex;
           align-items: center;
           justify-content: center;
           i{
-            // border: 1px solid blue;
             padding-right: 15px;
             font-size: 150%;
             margin-top: 5px;
@@ -116,7 +113,6 @@ div#challengeDetail {
           margin-top: 5px;
           color: #66D3E2;
           padding-right: 5px;
-
         }
       }
       a:last-child{

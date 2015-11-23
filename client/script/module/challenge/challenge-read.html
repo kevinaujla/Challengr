@@ -35,9 +35,9 @@ view large details of single challenge
   </div>
 
   <div class="panel-footer">
-    <button class="btn btn-default">GO BACK</button>
+    <button class="btn btn-default" ui-sref="home">GO BACK</button>
     <div>
-      <a ng-click="increaseLike()">
+      <a href="" ng-click="challengeViewCtrl.increaseLike()">
         <i class="icon-heart-empty"></i>
         {{challengeViewCtrl.challenge.likes}}
       </a>
