@@ -57,11 +57,23 @@ angular.module('App.challengeFactory', [] )
     });
   };
 
+  var readChallengeByID = function(id){
+    return $http({
+      method : 'GET',
+      url : '/api/challenge/id',
+      params : {id : id},
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
+
   return {
     createChallenge : createChallenge,
     readAllChallenge : readAllChallenge,
     updateChallenge : updateChallenge,
     readAllChallengeForUser : readAllChallengeForUser,
+    readChallengeByID : readChallengeByID,
   };
 
 }]);

@@ -22,6 +22,7 @@ angular.module('App', [
   'App.challengeView',
   'App.challengeEdit',
   'App.challengeDirective',
+  'App.challengeService',
   'App.home',
   'App.authFactory',
   'App.userFactory',
@@ -106,7 +107,7 @@ angular.module('App', [
       }
     })
     .state('viewChallenge', {
-      url: '/challenge/:id/read',
+      url: '/challenge/:id',
       templateUrl: 'script/module/challenge/challenge-read.html',
       controller: 'challengeViewCtrl',
       controllerAs: 'challengeVC',

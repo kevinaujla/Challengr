@@ -30,10 +30,22 @@ angular.module('App.challengeDirective', [])
     link: function (scope, element, attrs) {
 
       element.on('click', function(){
-        console.log('clicked...', element);
+
+        // change the template url
+
+        console.log('challenge ID: ', scope.challengeid);
+        // challengeFactory.readChallengeByID(scope.challengeid)
+        //   .then(function(data){
+        //     console.log('data : ', data);
+        //   })
+        //   .catch(function(err){
+        //     console.log('error : ', err);
+        //   });
 
         // open the detail view of the challenge...
-        $state.go('viewChallenge');
+
+        // issue .get request given the id of the challenge
+        $state.go('viewChallenge', {id : scope.challengeid});
 
       });
 
