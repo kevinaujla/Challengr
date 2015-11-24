@@ -64,22 +64,11 @@ angular.module('App.auth', [])
           $state.go('home');
         } else {
           // show alert of failure with data.message
-<<<<<<< HEAD
-<<<<<<< 9d789ca6efeba4e627c617e40075aef477e56317
-          alertService.addAlert('danger', data.message);
-<<<<<<< 987cb7ce41d2fafaf2721810f60981515d525a52
+          alertService.addAlert('danger', data.message, 'icon-budicon-57');
           $timeout(close, 3000);
           function close(){
             alertService.closeAlert();
           };
-=======
->>>>>>> [fix] : create new account sends back photoURL
-=======
-          alertService.addAlert('danger', data.message, 'icon-budicon-57');
->>>>>>> [feat]: alert service has an icon parameter now
-=======
-          alertService.addAlert('danger', data.message);
->>>>>>> 6f633966903937d6f2111a76f393baea8c107be4
         }
       })
       .catch(function (err) {

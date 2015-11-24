@@ -122,6 +122,10 @@
   margin-top: $padding;
   margin-bottom: $padding;
   align-items: center;
+  &:hover {
+    box-shadow: 0px 0px 10px #AFAFAF;
+    cursor: pointer;
+  }
   div:first-child {
     font-size: 100%;
     color: #66D3E2;
