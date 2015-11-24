@@ -33,9 +33,21 @@ angular.module('App.userFactory', [])
       });
   };
 
+  var updateProfilePhoto = function(imgURL){
+    return $http({
+      method: 'PUT',
+      url: '/api/user/',
+      data: {photoURL : imgURL}
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
+
   return {
     getAllUsers: getAllUsers,
     getUserByID: getUserByID,
+    updateProfilePhoto: updateProfilePhoto,
   };
 
 }]);

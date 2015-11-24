@@ -18,6 +18,20 @@ ul.userChallenges {
     div {
       display: inline-block;
     }
+    div.social{
+      // border: 1px solid red;
+      i{
+        color: #D3D7DA;
+      }
+      span{
+        color: #D3D7DA;
+        text-transform: initial;
+      }
+      a{
+        padding-left: 15px;
+        color: #89DBE6;
+      }
+    }
   }
   .list-group-item:first-child {
     border-top-right-radius: 4px;

@@ -14,7 +14,7 @@ loads all challenge related to the user
       <div>
         <h1>{{challenge.title}}</h1>
         <p>{{challenge.description}}</p>
-        <div>
+        <div class="social">
           <i class="icon-clock-o"></i>
           <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
           <a href="" ng-click="personalChallengeC.increaseLike()">

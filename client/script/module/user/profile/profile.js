@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.profile', [])
 
-.controller('profileCtrl', ['authFactory', 'braintreeFactory', '$scope', 's3Factory', function(authFactory, braintreeFactory, $scope, s3Factory) {
+.controller('profileCtrl', ['alertService', 'authFactory', 'userFactory', 'braintreeFactory', '$scope', 's3Factory', function(alertService, authFactory, userFactory, braintreeFactory, $scope, s3Factory) {
 
   var self = this;
   var transactions = [];
@@ -33,22 +33,44 @@ angular.module('App.profile', [])
   // };
 
   $scope.changeProfileImg = function(element){
-    console.log('choose new profile image asdf...');
+
     $scope.$apply(function(scope) {
         var reader = new FileReader();
+        var file = element.files[0];
         reader.readAsDataURL(element.files[0]);
 
         reader.onload = function(e) {
-           // Factory Function
-           s3Factory.updatePicture(reader.result, 'profileImg')
-             .then(function(imgUrl){
-               // Console Log
-               console.log('successfully saved to S3...');
-               // Show Success
-             })
-             .catch(function(err){
-               console.log('error uploading image : ', err);
-             });
+
+          // s3Factory.getSignedRequest(file)
+          //   .then(function(data){
+          //     console.log('success : ', data);
+          //   })
+          //   .catch(function(err){
+          //     console.log('error : ', err);
+          //   });
+
+          var name = localStorage.getItem('com.challengr.firstName');
+          name += 'profileImg'; // firstNameprofileImg
+
+          s3Factory.updatePicture(reader.result, name)
+            .then(function(data){
+              // update user's information
+              userFactory.updateProfilePhoto(data.imageURL)
+                .then(function(data){
+                  console.log('successfully update profile image');
+                  // update the current photoURL from local storage
+                  localStorage.setItem('com.challengr.photoURL', data.photoURL);
+                  // run a digest cycle
+                  // $scope.$apply();
+                  alertService.addAlert('success', 'updated profile image', 'icon-checkbox');
+                })
+                .catch(function(err){
+                  console.log('error updating profile image: ', err);
+                });
+            })
+            .catch(function(err){
+              console.log('error uploading image : ', err);
+            });
         };
         
 

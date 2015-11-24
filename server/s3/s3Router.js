@@ -10,6 +10,7 @@ module.exports = function (app, db) {
 
   var s3Ctrl = require(__dirname + '/s3Ctrl.js')(db);
 
+  app.get('/sign', s3Ctrl.signRequest);
   // retrieve all charities
   app.post('/upload', s3Ctrl.upload);
 };

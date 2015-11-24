@@ -20,7 +20,7 @@ module.exports = function (db) {
     },
     update: function (req, res) {
       // console log
-      console.log('/api/user/ updating user');
+      console.log('updating user profile img');
       // pull out data
       var id = req.body.id;
       var updateModel = {
@@ -32,7 +32,7 @@ module.exports = function (db) {
       }).then(function (user) {
         user.update(updateModel)
           .then(function (user) {
-            res.status(200).end();
+            res.status(200).send(user);
           });
       });
     },
