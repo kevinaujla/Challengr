@@ -45,7 +45,7 @@
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
               {{alert.msg}}
               <div class="alertIcon">
-                <i class="icon-bell-o"></i>
+                <i class="{{alert.icon}}"></i>
               </div>
             </uib-alert>
           </div>

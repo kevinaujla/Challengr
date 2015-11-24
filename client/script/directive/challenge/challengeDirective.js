@@ -36,7 +36,7 @@ angular.module('App.challengeDirective', [])
 
       scope.increaseLike = function () {
         // console log
-        console.log('increase like...');
+        console.log('increase like... : ');
         // create object to update
         var updateObj = {
           id: scope.challengeid,

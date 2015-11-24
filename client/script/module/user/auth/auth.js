@@ -27,9 +27,7 @@ angular.module('App.auth', [])
           // redirect
           $state.go('home');
         } else {
-          // console log
-          console.log('sign up failure...');
-          alertService.addAlert('danger', data.message);
+          alertService.addAlert('danger', data.message, 'icon-budicon-57');
           $timeout(close, 3000);
           function close(){
             alertService.closeAlert();
@@ -66,6 +64,7 @@ angular.module('App.auth', [])
           $state.go('home');
         } else {
           // show alert of failure with data.message
+<<<<<<< 9d789ca6efeba4e627c617e40075aef477e56317
           alertService.addAlert('danger', data.message);
 <<<<<<< 987cb7ce41d2fafaf2721810f60981515d525a52
           $timeout(close, 3000);
@@ -74,6 +73,9 @@ angular.module('App.auth', [])
           };
 =======
 >>>>>>> [fix] : create new account sends back photoURL
+=======
+          alertService.addAlert('danger', data.message, 'icon-budicon-57');
+>>>>>>> [feat]: alert service has an icon parameter now
         }
       })
       .catch(function (err) {

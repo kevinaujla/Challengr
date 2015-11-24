@@ -111,6 +111,7 @@ module.exports = function (db) {
           res.json({
             braintreeUser: customer
           });
+          res.end();
         });
 
       });
