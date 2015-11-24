@@ -4,50 +4,38 @@
 
 ***/
 
-#rightBar{
+#rightBar {
   background-color: $lightBG;
   padding: ($padding * 2) ($padding * 2) $padding $padding;
-
-  .center{
+  .center {
     text-align: center;
   }
-
-  ul{
+  ul {
     display: flex;
     flex-direction: column;
-    li{
+    li {
       padding: $padding;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      img{
+      img {
         height: 20%;
         width: 20%;
       }
-      div{
+      div {
         flex: 1;
         padding-left: $padding;
-        h1{
+        h1 {
           color: #7D8995;
           text-transform: initial;
           margin-top: 0px;
         }
-        p{
+        p {
           text-transform: initial;
           color: #D2D6D9;
         }
       }
     }
   }
-  
-  div.alertIcon{
-    display: inline-block;
-    float: left;
-    margin-right: $padding;
-    i{
-      font-size: 200%;
-    }
-  }
-
 }
 

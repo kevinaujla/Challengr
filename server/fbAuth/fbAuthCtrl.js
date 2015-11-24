@@ -41,7 +41,7 @@ module.exports = function (db) {
         })
         .then(function (user) {
           if (!user) {
-            var nameArray = userInfo.fbUserName.split(" ");
+            var nameArray = userInfo.fbUserName.split(' ');
 
             db.User.create({
                 FBid: userInfo.fbId,
@@ -88,5 +88,5 @@ module.exports = function (db) {
         });
     }
     
-  }
-}
+  };
+};

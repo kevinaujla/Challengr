@@ -7,7 +7,7 @@ sets up launch controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', function (challengeFactory, $scope, braintreeFactory) {
+.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', 'challengeService', function (challengeFactory, $scope, braintreeFactory, challengeService) {
 
   var self = this;
 
@@ -53,6 +53,8 @@ angular.module('App.home', [])
         console.log('all challenges : ', data);
         // save to local array
         self.challenges = data;
+        // save to service object
+        challengeService.challenges = data;
       })
       .catch(function(err){
         console.log('error : ', err);

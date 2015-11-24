@@ -6,9 +6,17 @@ injects all views into home page
 -->
 
 <!-- Search -->
-<div class="input-group" ng-init="homeCtrl.read()">
+<!-- <div class="input-group" ng-init="homeCtrl.read()">
   <input type="text" class="form-control" placeholder="Search" ng-model="search">
   <span class="input-group-addon"><i class="icon-budicon-11"></i></span>
+</div> -->
+
+<!-- Search Bar -->
+<div id="searchBar" class="input-group" ng-init="homeCtrl.read()">
+  <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+  <span class="input-group-addon" id="sizing-addon2">
+    <i class="icon-budicon-44"></i>
+  </span>
 </div>
 
 <!-- Braintree Management -->

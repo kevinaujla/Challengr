@@ -5,24 +5,50 @@ view large details of single challenge
 
 -->
 
-<div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Challenge from </h3>
+<div id="challengeDetail" class="panel panel-default" ng-init="challengeViewCtrl.readChallenge()">
+
+  <div class="panel-heading">
+    <div>
+      <img class="challengerImg" ng-src="{{challengeViewCtrl.challenge.Challenger.photoURL}}">
+      <img class="challengedImg" ng-src="{{challengeViewCtrl.challenge.Challenged.photoURL}}">
     </div>
-    <div class="panel-body">
-      <div class="col-md-12">
+    <span class="panel-title">{{challengeViewCtrl.challenge.Challenger.firstName}} {{challengeViewCtrl.challenge.Challenger.lastName}} challenged {{challengeViewCtrl.challenge.Challenged.firstName}} {{challengeViewCtrl.challenge.Challenged.lastName}}</span>
+    <div class="time">
+      <i class="icon-clock-o"></i>
+      <span>{{challengeViewCtrl.challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+    </div>
+  </div>
 
-        <h4>{{title}}</h4>
-        <img src="image/profileImg.jpg">
-        <p>{{description}}</p>
-
-        <h5>
-          <i class="icon-dollar-bill"></i>{{charityamount*100}}
-        </h5>
-
-        <button class="btn btn-default">OK</button>
-        
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6 leftChallenge">
+        <div class="type">
+          <i class="icon-check-circle"></i>
+          <span>{{challengeViewCtrl.challenge.type}} - {{challengeViewCtrl.challenge.title}}</span>
+        </div>
+        <span class="description">{{challengeViewCtrl.challenge.description}}</span>
+      </div>
+      <div class="col-md-6 rightChallenge">
+        <img class="challengeImage" src="image/eventImg.jpg">
       </div>
     </div>
   </div>
+
+  <div class="panel-footer">
+    <button class="btn btn-default" ui-sref="home">
+      <span class="icon-arrow-circle-o-left"></span> BACK</button>
+    <div>
+      <a href="" ng-click="challengeViewCtrl.increaseLike()">
+        <i class="icon-heart-empty"></i>
+        {{challengeViewCtrl.challenge.likes}}
+      </a>
+      <a href="">
+        <i class="icon-dollar-bill"></i>
+        {{challengeViewCtrl.challenge.charityAmount*100}}
+      </a>
+    </div>
+  </div>
+
+</div>
+
+  

@@ -34,7 +34,7 @@ angular.module('App.socket', [])
               callback.apply(socket, args);
             }
           });
-        })
+        });
       }
     };
   });

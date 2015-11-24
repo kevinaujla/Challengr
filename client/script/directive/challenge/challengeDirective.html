@@ -1,18 +1,27 @@
-<div class="challenge">
+<!-- 
+
+  challengeDirect.html
+  active and complete/incomplete challenges
+
+-->
+
+<!-- Active Challenges -->
+<div class="challenge" ng-if="!completed">
   <div class="challenge--heading">
-    <div class="">
+    <div class="type">
       <i class="icon-budicon-52"></i>
-      <span>{{type}} - {{title}}</span>
+      <span>{{type}} - {{title}} {{completed}}</span>
+      <span>
     </div>
-    <div class="">
-      <i class="icon-budicon-30"></i>
+    <div class="time">
+      <i class="icon-clock-o"></i>
       <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
     </div>
   </div>
   <div class="challenge--main">
     <div>
-      <img ng-src="{{challengechallenger.photoURL}}">
-      <img ng-src="{{challengechallenged.photoURL}}">
+      <img class="challengerImg" ng-src="{{challengechallenger.photoURL}}">
+      <img class="challengedImg" ng-src="{{challengechallenged.photoURL}}">
     </div>
     <div>
       <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} challenged {{challengechallenged.firstName}} {{challengechallenged.lastName}}</span>
@@ -31,3 +40,28 @@
   </div>
 </div>
 
+<!-- Completed and Incompleted Challenges -->
+<div class="completed" ng-if="completed">
+  <div>
+    <i ng-class="completed ? 'icon-check-mark-circle' : 'icon-close-delete'"></i>    
+  </div>
+  <div>
+    <span>{{description}}</span>
+  </div>
+  <div>
+    <i class="icon-clock-o"></i>
+    <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
+  </div>
+  <div>
+    <a href="">
+      <i class="icon-heart-empty"></i>
+      {{likes}}
+    </a>
+  </div>
+  <div>
+    <a href="">
+      <i class="icon-dollar-bill"></i>
+      {{charityamount*100}}
+    </a>
+  </div>    
+</div>

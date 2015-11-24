@@ -5,67 +5,41 @@ signup.html
 
 -->
 
+<div ng-include=" 'partial/alert.html' "></div>
 
-<div id="authAlert" ng-controller="alertController">
-  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
-    <div class="alertIcon">
-      <i class="icon-bell-o"></i>
-    </div>
-    <div class="alertText">
-      {{alert.msg}}
-    </div>
-  </uib-alert>
-</div>
-
-
-<div class="col-md-12">
-  <div class="panel panel-default">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">SIGN UP</h3>
-    </div>
-
-    <div class="panel-body">
-      <form name="signupForm" ng-submit="authCtrl.signup()">
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <input type="text" ng-model="authCtrl.firstName" class="form-control" placeholder="First Name">
-            </div>
-            <div class="form-group">
-              <input type="text" ng-model="authCtrl.lastName" class="form-control" placeholder="Last Name">
-            </div>
-            <div class="checkbox">
-              <label class="terms">
-                <input type="checkbox">I agree to the <a href="">terms of use</a> and <a href="">privacy policy</a>
-              </label>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <input type="text" ng-model="authCtrl.email" class="form-control" placeholder="E-mail">
-            </div>
-            <div class="form-group">
-              <input type="password" ng-model="authCtrl.password" class="form-control" placeholder="Password">
-            </div>
-<!--             <div class="form-group">
-              <label for="country" class="control-label">Country</label>
-              <select name="country" id="country">
-                <option value="US">United States</option>
-              </select>
-            </div> -->
-          </div>
-
-        </div>
-
-        <div class="row">
-          <button type="submit" class="btn btn-success">CREATE ACCOUNT</button>
-        </div>
-
-      </form>
-    </div>
+<div id="signup" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">SIGN UP</h3>
   </div>
-  <a ui-sref="signin">Already a member? Sign In</a>
+  <div class="panel-body">
+    <form name="signupForm" ng-submit="authCtrl.signup()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" ng-model="authCtrl.firstName" class="form-control" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <input type="text" ng-model="authCtrl.lastName" class="form-control" placeholder="Last Name">
+          </div>
+          <div class="checkbox">
+            <label class="terms">
+              <input type="checkbox">I agree to the <a href="">terms of use</a> and <a href="">privacy policy</a>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" ng-model="authCtrl.email" class="form-control" placeholder="E-mail">
+          </div>
+          <div class="form-group">
+            <input type="password" ng-model="authCtrl.password" class="form-control" placeholder="Password">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-success">CREATE ACCOUNT</button>
+      </div>
+    </form>
+  </div>
 </div>
+<a ui-sref="signin">Already a member? Sign In</a>

@@ -1,0 +1,17 @@
+<!--
+
+authAlert.html
+creates auth alert
+
+-->
+
+<div id="authAlert" ng-controller="alertController">
+  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+    <div class="alertIcon">
+      <i class="{{alert.icon}}"></i>
+    </div>
+    <div class="alertText">
+      {{alert.msg}}
+    </div>
+  </uib-alert>
+</div>

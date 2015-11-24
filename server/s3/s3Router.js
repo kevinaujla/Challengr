@@ -1,15 +1,15 @@
 /*
 
-s3Router.js
-specifying routes for /api/s3
+charityRouter.js
+specifying routes for /api/charity
 
- */
+*/
 
 module.exports = function (app, db) {
-  // app === s3Router injected from server.js
+  // app === charityRouter injected from server.js
 
-  var s3Ctrl = require(__dirname + '/s3Ctrl');
+  var s3Ctrl = require(__dirname + '/s3Ctrl.js')(db);
 
-  // get temporarily signed s3 request for access to bucket
-  app.get('/sign_s3', s3Ctrl.signRequest)(db);
+  // retrieve all charities
+  app.post('/upload', s3Ctrl.upload);
 };

@@ -15,8 +15,8 @@ angular.module('App.alertController', [])
     alertService.addAlert('success', msg);
   });
   
-  $scope.addAlert = function (type, msg) {
-    alertService.addAlert(type, msg);
+  $scope.addAlert = function (type, msg, icon) {
+    alertService.addAlert(type, msg, icon);
   };
 
   $scope.closeAlert = function (index) {

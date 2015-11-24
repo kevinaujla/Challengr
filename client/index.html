@@ -9,6 +9,7 @@
   <!-- User Styles -->
   <link rel="stylesheet" href="./main.css" />
   <!-- Font -->
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <!-- Font Icons -->
   <link href="https://file.myfontastic.com/YfFMzw2YZywiXrAN4mSf8h/icons.css" rel="stylesheet">
@@ -20,6 +21,7 @@
       <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
         <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
           <img id="profileImg" ng-src="{{profileCtrl.photoURL}}">
+          <input ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
           <h5>{{profileCtrl.username}}</h5>
           <span class="bar"></span>
         </div>
@@ -43,7 +45,7 @@
             <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
               {{alert.msg}}
               <div class="alertIcon">
-                <i class="icon-bell-o"></i>
+                <i class="{{alert.icon}}"></i>
               </div>
             </uib-alert>
           </div>

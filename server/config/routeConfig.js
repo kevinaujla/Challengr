@@ -59,8 +59,8 @@ module.exports = function (app, express, db) {
 
   // handling all s3 routes for storing images
   var s3Router = express.Router();
-  // protect s3 routes
+  // protect charity routes
   s3Router.use(authCtrl.authenticate);
-  require(__dirname + '/../s3/s3Router.js');
+  require(__dirname + '/../s3/s3Router.js')(s3Router, db);
   app.use('/api/s3', s3Router);
 };

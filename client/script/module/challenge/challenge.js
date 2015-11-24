@@ -84,6 +84,7 @@ angular.module('App.challenge', [])
       })
       .catch(function(err){
         console.log('error loading charities...');
+        alertService.addAlert('danger', 'error loading charities', 'icon-budicon-57');
       });
   };
 
@@ -93,17 +94,18 @@ angular.module('App.challenge', [])
     // factory function
     challengeFactory.createChallenge(self.info)
       .then(function (data) {
-        console.log('created challenge...');
-        alertService.addAlert('success', 'Challenge created');
+        console.log('created challenge : ', data);
         var challenge = {
           title: self.info.title,
           challenged: self.info.challenged
         };
         socket.emit('newChallenge', challenge);
         loadingService.stopSpin();
+        alertService.addAlert('success', 'Challenge created', 'icon-checkbox');
       })
       .catch(function (err) {
         console.log('error creating challenge... : ', err);
+        alertService.addAlert('danger', err, 'icon-budicon-57');
       });
   };
 
@@ -121,32 +123,31 @@ angular.module('App.challenge', [])
             container: 'payment-form',
             onPaymentMethodReceived: function (payload) {
 
-              console.log('self.info : ', self.info);
               payload.charityAmount = self.info.charityAmount;
 
               // call checkout function
               braintreeFactory.checkout(payload)
                 .then(function(){
-                  console.log('completed checkout...');
-                  // show success confirmation
-                  
+                  console.log('completed braintree checkout');
                   // call the save/create challenge function
                   self.save();
-
                   // redirect to home page
                   $state.go('home');
                 })
                 .catch(function(err){
                   console.log('error making payment... ', err);
+                  alertService.addAlert('danger', 'error making payment', 'icon-budicon-57');
                 });
             },
           });
         })
         .catch(function (err) {
           console.log('error getting braintree token: ', err);
+          alertService.addAlert('danger', err, 'icon-budicon-57');
         });
     } else{
       console.log('error getting braintree token from local storage...');
+      alertService.addAlert('danger', 'error getting braintree token from local storage', 'icon-budicon-57');
     }
   };
 

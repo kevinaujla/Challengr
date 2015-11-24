@@ -5,51 +5,40 @@ creates sign in view
 
 -->
 
-<div id="authAlert" ng-controller="alertController">
-  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
-    <div class="alertIcon">
-      <i class="icon-bell-o"></i>
-    </div>
-    <div class="alertText">
-      {{alert.msg}}
-    </div>
-  </uib-alert>
-</div>
+<div ng-include=" 'partial/alert.html' "></div>
 
-<div class="col-md-12 ">
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">LOG IN</h3>
+<div id="signin" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">LOG IN</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-6">
+      <form name="signinForm" ng-submit="authCtrl.signin()">
+        <div class="form-group">
+          <h5>Please enter your basic credentials</h5>
+          <label>Email Address</label>
+          <input name="email" type="email" ng-model="authCtrl.email" class="form-control" required>
+          <ng-messages for="signinForm.email.$error">
+            <ng-message when="required">
+              You forgot to enter your email address...
+            </ng-message>
+            <ng-message when="email">
+              You did not enter your email address correctly...
+            </ng-message>
+          </ng-messages>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" ng-model="authCtrl.password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-default">LOGIN</button>
+      </form>
     </div>
-    <div class="panel-body">
-      <div class="col-md-6">
-        <form name="signinForm" ng-submit="authCtrl.signin()">
-          <div class="form-group">
-            <h5>Please enter your basic credentials</h5>
-            <label>Email Address</label>
-            <input name="email" type="email" ng-model="authCtrl.email" class="form-control" required>
-            <ng-messages for="signinForm.email.$error">
-              <ng-message when="required">
-                You forgot to enter your email address...
-              </ng-message>
-              <ng-message when="email">
-                You did not enter your email address correctly...
-              </ng-message>
-            </ng-messages>
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" ng-model="authCtrl.password" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-default">LOGIN</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <h5>Log in through one of the following social services:</h5>
-        <a id="facebook" class="btn btn-default" href="#" role="button">FACEBOOK</a>
-        <a id="twitter" class="btn btn-default" href="#" role="button">TWITTER</a>
-      </div>
+    <div class="col-md-6">
+      <h5>Log in through one of the following social services:</h5>
+      <a id="facebook" class="btn btn-default" href="#" role="button">FACEBOOK</a>
+      <a id="twitter" class="btn btn-default" href="#" role="button">TWITTER</a>
     </div>
   </div>
-  <a ui-sref="signup">Sign up</a>
+</div>
+<a ui-sref="signup">Sign up</a>

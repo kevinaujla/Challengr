@@ -132,6 +132,21 @@ module.exports = function (db) {
           res.json(challenges);
         });
       });
+    },
+
+    getChallengeByID: function(req, res){
+      console.log('PARAMS : ', req.query.id);
+      var id = req.query.id;
+      db.Challenge.find({
+        where: {
+          id: id
+        }
+      })
+      .then(function(challenge) {
+        console.log('FOUND Challenge : ', challenge);
+        res.json({challenge : challenge});
+      });
     }
+
   };
 };

@@ -22,7 +22,7 @@ ensureAuthenticated: function (req, res, next) { // make sure user auth is valid
 
     fetchUserInfoFromTWT: function (req, res) { // Get User info from FB
 
-      console.log("info from twitter:",res.req);
+      console.log('info from twitter: ', res.req);
       var twtUserInfo = {
         'twtId': res.req.user.id,
         'twtUserName': res.req.user.displayName,
@@ -43,7 +43,7 @@ ensureAuthenticated: function (req, res, next) { // make sure user auth is valid
         })
         .then(function (user) {
           if (!user) {
-            var nameArray = userInfo.fbUserName.split(" ");
+            var nameArray = userInfo.fbUserName.split(' ');
 
             db.User.create({
                 FBid: userInfo.twtId,
@@ -87,5 +87,5 @@ ensureAuthenticated: function (req, res, next) { // make sure user auth is valid
           }
         });
     }
-  }
-}
+  };
+};

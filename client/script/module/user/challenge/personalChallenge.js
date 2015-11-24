@@ -7,23 +7,16 @@ personalChallenge.js
 
 angular.module('App.personalChallenge', [])
 
-.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$interval', 'braintreeFactory', function(challengeFactory, userFactory, $scope, $interval, braintreeFactory) {
+.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', 'braintreeFactory', function(challengeFactory, userFactory, $scope, $state, braintreeFactory) {
 
   var self = this;
 
-  $scope.date = null;
-
-  $scope.$watch('date | json', function() {
-    // console.log('date : ', $scope.date);
-    // every minute do a check if the date has reached the expired date
-    
-  });
-  
-  $interval(function() {
-    $scope.date = moment(new Date());
-  }, 60000);
-
   self.challenges = [];
+
+  self.showDetail = function(challenge){
+    // open the detail view of the challenge...
+    $state.go('viewChallenge', {id : challenge.id});
+  };
 
   self.load = function(){
     challengeFactory.readAllChallengeForUser()

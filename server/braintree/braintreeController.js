@@ -111,6 +111,7 @@ module.exports = function (db) {
           res.json({
             braintreeUser: customer
           });
+          res.end();
         });
 
       });
@@ -182,7 +183,7 @@ module.exports = function (db) {
     deleteBraintreeCustomer: function (req, res) {
       console.log('deleting customer : ', req.body.user_id);
       gateway.customer.delete(req.body.user_id, function (err, response) {
-        err;
+        // err;
         console.log('error deleting customer : ', err);
         console.log('reponse : ', response);
         res.status(200).end();
