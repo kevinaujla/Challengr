@@ -9,7 +9,7 @@ loads all challenge related to the user
   <h2 class="center" ng-show="personalChallengeC.challenges.length !== 0">Your Challenges</h2>
   <h2 class="center" ng-show="personalChallengeC.challenges.length === 0">You Have No Challenges</h2>
   <ul class="list-group userChallenges" ng-init="personalChallengeC.load()">
-    <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges">
+    <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges" ng-click="personalChallengeC.showDetail(challenge)">
       <img ng-src="{{challenge.challengerImg}}">
       <div>
         <h1>{{challenge.title}}</h1>

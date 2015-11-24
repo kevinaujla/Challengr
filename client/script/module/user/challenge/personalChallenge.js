@@ -7,7 +7,7 @@ personalChallenge.js
 
 angular.module('App.personalChallenge', [])
 
-.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$interval', 'braintreeFactory', function(challengeFactory, userFactory, $scope, $interval, braintreeFactory) {
+.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$interval', '$state', 'braintreeFactory', function(challengeFactory, userFactory, $scope, $interval, $state, braintreeFactory) {
 
   var self = this;
 
@@ -25,6 +25,12 @@ angular.module('App.personalChallenge', [])
   }, 1000);
 
   self.challenges = [];
+
+  self.showDetail = function(challenge){
+    console.log('show detail view of challenge: ', challenge);
+    // open the detail view of the challenge...
+    $state.go('viewChallenge', {id : challenge.id});
+  };
 
   self.load = function(){
     challengeFactory.readAllChallengeForUser()
