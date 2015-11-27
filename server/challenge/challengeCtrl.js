@@ -118,7 +118,7 @@ module.exports = function (db) {
 
     getMyChallenges: function (req, res) {
       // console log
-      console.log('/api/challenge retrieving challenges for user: ' + req.user.firstName);
+      console.log('/api/challenge/ retrieving challenges for user: ' + req.user.firstName);
       // pull out data
       var id = req.user.id;
       db.User.find({
