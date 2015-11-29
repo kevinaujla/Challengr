@@ -77,13 +77,10 @@ There are two main branches in the repo, `master` and `deploy`. All pull request
 ####13. **Make pull request on github.com**
   Title the request so the reviewer can see what the pull request does.
 
-####14. **Make pull request on github.com**
-  Title the request so the reviewer can see what the pull request does.
+####14. **Let someon check out your pull request**
+  If everyhing is fine the person will merge it, otherwise she will let you know what needs to be fixed and you can discuss it. NEVER MERGE YOUR OWN PULL REQUESTS!
 
-####15. **Let someon check out your pull request**
-  If everyhing is fine the person will merge it, otherwise he will let you know what needs to be fixed and you can discuss it. NEVER MERGE YOUR OWN PULL REQUESTS!
-
-####16. **Repeat cycle from step 4**
+####15. **Repeat cycle from step 4**
 
 ####Extra. **Squashing**
   Q: But what if I have 3 commits that are really similar?
