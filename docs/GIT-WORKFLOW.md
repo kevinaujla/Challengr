@@ -14,8 +14,10 @@ There are two main branches in the repo, `master` and `deploy`. All pull request
 
 ####4. **Create a new branch**
   Make sure you have the newest code at this point.
-  `$ git checkout master`
-  `$ git pull --rebase upstream master`
+  ```sh
+  $ git checkout master
+  $ git pull --rebase upstream master
+  ```
 
   Then create new branch.
   `$ git checkout -b newBranchName`
@@ -43,8 +45,10 @@ There are two main branches in the repo, `master` and `deploy`. All pull request
   - squash your commits if necessary.
 
 ####7. **Checkout master and pull from upstream**
-  `$ git checkout master`
-  `$ git pull --rebase upstream master`
+  ```sh
+  $ git checkout master
+  $ git pull --rebase upstream master
+  ```
 
 ####8. **Checkout your branch and rebase master**
   ```sh
@@ -73,23 +77,13 @@ There are two main branches in the repo, `master` and `deploy`. All pull request
 ####13. **Make pull request on github.com**
   Title the request so the reviewer can see what the pull request does.
 
-
-####14. **Fix all merge conflicts**
-  ##merge conflicts
-  `$ git rebase continue`
-
-
-####15. **Push the changes to you github repo**
-  `$ git push origin chatDatabaseQuery`
-
-####16. **Make pull request on github.com**
+####14. **Make pull request on github.com**
   Title the request so the reviewer can see what the pull request does.
 
-####17. **Let someon check out your pull request**
+####15. **Let someon check out your pull request**
   If everyhing is fine the person will merge it, otherwise he will let you know what needs to be fixed and you can discuss it. NEVER MERGE YOUR OWN PULL REQUESTS!
 
-####18. **Repeat cycle from step 4**
-
+####16. **Repeat cycle from step 4**
 
 ####Extra. **Squashing**
   Q: But what if I have 3 commits that are really similar?
@@ -100,6 +94,6 @@ There are two main branches in the repo, `master` and `deploy`. All pull request
   $ git rebase -i HEAD~3
   ```
 
-  select 2 of the commits to be squashed ('squash'), and 1 commit to receive those changes ('pick')
+  Select 2 of the commits to be squashed ('squash'), and 1 commit to receive those changes ('pick').
   
-  Read more about squashing [here](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
+  Read more about squashing [here](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
