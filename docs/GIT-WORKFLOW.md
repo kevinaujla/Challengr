@@ -64,31 +64,31 @@ There are two main branches in the repo, `master` and `deploy`. All pull request
   $ git merge yourBranch
   ```
 
-####9. **Check your code again**
+####11. **Check your code again**
   And check it again. And make sure it does not break anything.
 
-####10. **Push to your fork**
+####12. **Push to your fork**
   `$ git push origin master`
 
-####11. **Make pull request on github.com**
+####13. **Make pull request on github.com**
   Title the request so the reviewer can see what the pull request does.
 
 
-####9. **Fix all merge conflicts**
+####14. **Fix all merge conflicts**
   ##merge conflicts
   `$ git rebase continue`
 
 
-####9. **Push the changes to you github repo**
+####15. **Push the changes to you github repo**
   `$ git push origin chatDatabaseQuery`
 
-####10. **Make pull request on github.com**
+####16. **Make pull request on github.com**
   Title the request so the reviewer can see what the pull request does.
 
-####11. **Let someon check out your pull request**
+####17. **Let someon check out your pull request**
   If everyhing is fine the person will merge it, otherwise he will let you know what needs to be fixed and you can discuss it. NEVER MERGE YOUR OWN PULL REQUESTS!
 
-####12. **Repeat cycle from step 4**
+####18. **Repeat cycle from step 4**
 
 
 ####Extra. **Squashing**
