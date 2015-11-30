@@ -12,7 +12,8 @@ angular.module('App.s3Factory', [])
   var getSignedRequest = function (file) {
     return $http({
       method: 'GET',
-      url: ('/api/s3/sign_s3?file_name=' + file.name + '&file_type' + file.type),
+      url: '/api/s3/sign',
+      params: {file_name : file.name, file_type: file.type}
     }).then(function (resp) {
       console.log('receiving from getSignedRequest: ' + resp.data);
       return resp.data;
@@ -34,8 +35,6 @@ angular.module('App.s3Factory', [])
   };
 
   var updatePicture = function (imageData, description) {
-    console.log('imageData : ', imageData);
-    console.log('description : ', description);
     return $http({
       method: 'POST',
       url: '/api/s3/upload',

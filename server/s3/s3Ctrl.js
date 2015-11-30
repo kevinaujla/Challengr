@@ -11,10 +11,10 @@ module.exports = function (db) {
   return {
     signRequest: function (req, res) {
       // console log
-      console.log('/sign_s3 signing s3 request');
+      console.log('/sign_s3 signing s3 request : ', req.query);
       // set config variables
       aws.config.update({
-        accessKeyId: process.env.AWS_ACESS_KEY,
+        accessKeyId: process.env.AWS_ACCESS_KEY,
         secretAccessKey: process.env.AWS_SECRET_KEY
       });
       aws.config.update({
@@ -52,7 +52,7 @@ module.exports = function (db) {
       
       aws.config.update({
         accessKeyId: process.env.AWS_ACCESS_KEY,
-        secretAccessKey: process.env.AWS_ACCESS_KEY
+        secretAccessKey: process.env.AWS_SECRET_KEY
       });
       aws.config.update({ region: process.env.AWS_REGION });
       // Define AWS S3 Bucket
