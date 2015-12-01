@@ -4,35 +4,33 @@ profile.html
 manage payments, signout, manage user information
 
 -->
-
 <h1>My Account</h1>
-
 <uib-tabset id="profile">
-
   <uib-tab heading="Profile" ng-init="profileCtrl.getUser()" id="account">
-    <h1>First Name:</h1> 
-    <p>{{profileCtrl.firstName}}</p>
-    <h1>Last Name:</h1>
-    <p>{{profileCtrl.lastName}}</p>
-    <h1>Email:</h1>
-    <p>{{profileCtrl.email}}</p>
-    <h1>Location:</h1>
-    <p>{{profileCtrl.location}}</p>
-
-    <div class="control-group">
-      <label class="control-label"> Upload new photo:</label>
+    <div class="col-md-4">
+      <h1>First Name:</h1>
+      <p>{{profileCtrl.firstName}}</p>
+      <h1>Last Name:</h1>
+      <p>{{profileCtrl.lastName}}</p>
+      <h1>Email:</h1>
+      <p>{{profileCtrl.email}}</p>
+      <h1>Location:</h1>
+      <p>{{profileCtrl.location}}</p>
+    </div>
+    <div class="col-md-4">
+      <!-- <label class="control-label">Current profile photo:</label> -->
       <div class="controls">
-        <img style="border:1px solid gray;width:100px;" id="preview" src="image/profileImg.jpg"/>
-        <input id='file_input' type="file" name="img">
-        <input type="hidden" id="avatar_url" name="avatar_url" value="/images/default.png" />
+        <h1>Profile pic:</h1>
+        <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
+          <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
+          <span class="bar"></span>
+        </div>
+        <br>
+        <input class="hidden" id="photoUpload" ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
+        <label for="photoUpload" class="btn btn-default">Change pic</label>
       </div>
     </div>
-
-<!--     <button class="btn btn-primary address_submit" data-toggle="modal" ng-click="submit()">Submit</button> -->
-
-<!--     <button class="btn btn-warning" ng-click="profileCtrl.updateUser()">Update</button> -->
   </uib-tab>
-
   <uib-tab heading="Billing Info" ng-init="profileCtrl.getBilling()">
     <ul class="list-group billings">
       <li class="list-group-item" ng-repeat="transaction in profileCtrl.transactions">
@@ -40,19 +38,12 @@ manage payments, signout, manage user information
         <span class="amount">${{transaction.amount}}</span>
         <span class="creditCard">{{transaction.last4}}</span>
         <img ng-src="{{transaction.imgUrl}}">
-         <!-- to <span class="charity">red cross foundation</span> -->
+        <!-- to <span class="charity">red cross foundation</span> -->
       </li>
     </ul>
   </uib-tab>
-
   <uib-tab heading="Settings">
     <!-- Sign Out -->
     <button class="btn btn-danger" ng-click="profileCtrl.signout()">Sign Out</button>
   </uib-tab>
-
 </uib-tabset>
-
-
-
-
-

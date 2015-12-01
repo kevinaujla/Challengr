@@ -20,9 +20,10 @@
     <div class="row">
       <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
         <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
-          <img id="profileImg" ng-src="{{profileCtrl.photoURL}}">
-          <input ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
-          <h5>{{profileCtrl.username}}</h5>
+          <a ui-sref="profile">
+            <img id="profileImg" ng-src="{{profileCtrl.photoURL}}">
+            <h5>{{profileCtrl.username}}</h5>
+          </a>
           <span class="bar"></span>
         </div>
         <div>
