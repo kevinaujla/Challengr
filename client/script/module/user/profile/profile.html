@@ -5,8 +5,12 @@ manage payments, signout, manage user information
 
 -->
 <h1>My Account</h1>
+
 <uib-tabset id="profile">
   <uib-tab heading="Profile" ng-init="profileCtrl.getUser()" id="account">
+
+<div class="col-md-4">
+
     <h1>First Name:</h1>
     <p>{{profileCtrl.firstName}}</p>
     <h1>Last Name:</h1>
@@ -15,10 +19,11 @@ manage payments, signout, manage user information
     <p>{{profileCtrl.email}}</p>
     <h1>Location:</h1>
     <p>{{profileCtrl.location}}</p>
-    <h1>Profile pic:</h1>
-    <div class="control-group">
+    </div>
+<div class="col-md-4">
       <!-- <label class="control-label">Current profile photo:</label> -->
       <div class="controls">
+      <h1>Profile pic:</h1>
         <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
           <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
           <span class="bar"></span>
