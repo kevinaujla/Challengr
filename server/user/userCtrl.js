@@ -9,9 +9,8 @@ module.exports = function (db) {
   return {
     retrieveAll: function (req, res) {
       // console Log
-      console.log('api/user/ retrieving all users');
-      // query for all users
-      console.log(req.user.email);
+      console.log('api/user/ retrieving users');
+      // query for all users but the currently logged in user
       db.User.findAll({
         attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL'],
         where: {
