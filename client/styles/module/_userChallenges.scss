@@ -6,6 +6,7 @@
 
 ul.userChallenges {
   li {
+    word-wrap: break-word;
     &:hover {
       cursor: pointer;
       border-left: 2px solid #34495E;

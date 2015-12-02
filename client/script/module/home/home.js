@@ -1,7 +1,7 @@
 /*
 
-launch.js
-sets up launch controller
+home.js
+home view controller
 
 */
 
@@ -18,6 +18,8 @@ angular.module('App.home', [])
     Braintree Management
   */
 
+  // only used for convenience purposes for deleting braintree customers
+  // not actually integrated into application workflow
   self.braintreeCustomers = [];
 
   self.getBraintreeCustomers = function(){
@@ -45,13 +47,11 @@ angular.module('App.home', [])
   };
 
   /* Load All Challenges from DB */
+
   self.read = function(){
-    // factory function
     challengeFactory.readAllChallenge()
       .then(function(data){
-        // console log
-        console.log('all challenges : ', data);
-        // save to local array
+        // store challanges in challenges model
         self.challenges = data;
         // save to service object
         challengeService.challenges = data;

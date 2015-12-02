@@ -9,22 +9,22 @@ angular.module('App.challengeDirective', [])
 
 .directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
 
-  var controller = ['$scope', function($scope){
+  var controller = ['$scope', function ($scope) {
 
     var issue = moment($scope.issueddate);
     var expire = moment($scope.expiresDate);
 
-    var difference = issue.from(expire)
+    var difference = issue.diff(expire)
 
-    if (difference === 'a day ago') {
+    if (difference > 86400000) {
 
-      if ($scope.completed === false) {
+      if ($scope.notCompleted === false) {
         // set the challenge to be completed
         var updateObj = {
           id: $scope.challengeid,
           likes: $scope.likes,
-          completed: true,
-          notCompleted: $scope.notcompleted,
+          completed: $scope.completed,
+          notCompleted: true,
         };
         // call factory function to update challenge values
         challengeFactory.updateChallenge(updateObj)
@@ -62,9 +62,13 @@ angular.module('App.challengeDirective', [])
 
     link: function (scope, element, attrs) {
 
-      element.on('click', function(){
-        // open the detail view of the challenge...
-        $state.go('viewChallenge', {id : scope.challengeid});
+      element.on('click', function (event) {
+        if (event.toElement.classList[0] !== "noViewChange") {
+          // open the detail view of the challenge...
+          $state.go('viewChallenge', {
+            id: scope.challengeid
+          });
+        }
       });
 
       scope.increaseLike = function () {
