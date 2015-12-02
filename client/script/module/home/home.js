@@ -7,12 +7,19 @@ home view controller
 
 angular.module('App.home', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', 'challengeService', function (challengeFactory, $scope, braintreeFactory, challengeService) {
+.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', 'challengeService', '$timeout', function (challengeFactory, $scope, braintreeFactory, challengeService, $timeout) {
 
   var self = this;
 
   self.notLoggedIn = true;
   self.challenges = [];
+  self.getChallengeTimer;
+
+  // when changing views cancel the timer to reload challenges
+  $scope.$on('$destroy',
+    function (event) {
+      $timeout.cancel(getChallengeTimer);
+    });
 
   /*
     Braintree Management
@@ -22,25 +29,25 @@ angular.module('App.home', [])
   // not actually integrated into application workflow
   self.braintreeCustomers = [];
 
-  self.getBraintreeCustomers = function(){
+  self.getBraintreeCustomers = function () {
     braintreeFactory.getAllBraintreeCustomers()
-      .then(function(data){
+      .then(function (data) {
         console.log('all braintree customers : ', data);
         self.braintreeCustomers = data;
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('error getting all braintree customers : ', err);
       });
   };
 
-  self.deleteAllBraintreeCustomers = function(){
-    angular.forEach(self.braintreeCustomers, function(customer){
+  self.deleteAllBraintreeCustomers = function () {
+    angular.forEach(self.braintreeCustomers, function (customer) {
       console.log('deleting customer : ', customer);
       braintreeFactory.deleteBraintreeCustomer(customer)
-        .then(function(){
+        .then(function () {
           console.log('deleted braintree customer successfully...');
         })
-        .catch(function(err){
+        .catch(function (err) {
           console.log('error : ', err);
         });
     });
@@ -48,17 +55,18 @@ angular.module('App.home', [])
 
   /* Load All Challenges from DB */
 
-  self.read = function(){
-    challengeFactory.readAllChallenge()
-      .then(function(data){
-        // store challanges in challenges model
-        self.challenges = data;
-        // save to service object
-        challengeService.challenges = data;
-      })
-      .catch(function(err){
-        console.log('error : ', err);
-      });
+  self.read = function () {
+    (function tick() {
+      challengeFactory.readAllChallenge()
+        .then(function (challenges) {
+          self.challenges = challenges;
+          challengeService.challenges = challenges;
+          getChallengeTimer = $timeout(tick, 10000);
+        })
+        .catch(function (err) {
+          console.log('error : ', err);
+        });
+    })();
   };
 
 }]);
