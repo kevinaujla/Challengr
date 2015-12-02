@@ -8,8 +8,9 @@ configuring routes for challengeRouter
 module.exports = function (db) {
   return {
     create: function (req, res) {
-      // console Log
+      // console log
       console.log('create challenge: ', req.user, req.body);
+
       // pull out data
       var challenger = req.user;
       var challenged = req.body.challenged;
@@ -49,7 +50,7 @@ module.exports = function (db) {
               challenged.addMyChallenge(challenge);
               challenge.setChallenger(challenger);
               challenge.setChallenged(challenged);
-              // Console Log
+              // console log
               console.log('successfully created challenge');
               res.status(201).end();
             });
@@ -58,7 +59,9 @@ module.exports = function (db) {
     },
 
     retrieveAll: function (req, res) {
-      // console.log('api/challenge retrieving all challenges');
+      // console log
+      console.log('api/challenge retrieving all challenges');
+
       // query for all challenges
       db.Challenge.findAll({
           attributes: ['id',
@@ -118,34 +121,55 @@ module.exports = function (db) {
 
     getMyChallenges: function (req, res) {
       // console log
-      console.log('/api/challenge/ retrieving challenges for user: ' + req.user.firstName);
-      // pull out data
+      console.log('/api/challenge/user retrieving challenges for user: ' + req.user.firstName);
+      // pull current user id
       var id = req.user.id;
-      db.User.find({
+      db.User.findOne({
         where: {
           id: id
         }
-      }).then(function(user) {
+      }).then(function (user) {
         user.getMyChallenges()
-        .then(function(challenges) {
-          console.log('fetched all challenges for specific user from db');
-          res.json(challenges);
-        });
+          .then(function (challenges) {
+            console.log('successfully fetched all challenges from db for user: ' + user.firstName);
+            res.json(challenges);
+          });
       });
     },
 
-    getChallengeByID: function(req, res){
-      console.log('PARAMS : ', req.query.id);
-      var id = req.query.id;
-      db.Challenge.find({
+    getImposedChallenges: function (req, res) {
+      // console log
+      console.log('/api/challenge/imposed retrieving all imposed challenges for user: ' + req.user.firstName);
+      // pull out current user id
+      var id = req.user.id
+      db.User.findOne({
         where: {
           id: id
         }
-      })
-      .then(function(challenge) {
-        console.log('FOUND Challenge : ', challenge);
-        res.json({challenge : challenge});
+      }).then(function (user) {
+        user.getImposedChallenges()
+          .then(function (challenges) {
+            console.log('successfully fetched all imposed challenges for user: ' + req.user.firstName);
+            res.json(challenges);
+          });
       });
+    },
+
+    getChallengeByID: function (req, res) {
+      // console log
+      console.log('/api/challenge/:id retrieving specific challenge')
+      var id = req.query.id;
+      db.Challenge.findOne({
+          where: {
+            id: id
+          }
+        })
+        .then(function (challenge) {
+          console.log('successfully retrieved challenge from db : ', challenge);
+          res.json({
+            challenge: challenge
+          });
+        });
     }
 
   };

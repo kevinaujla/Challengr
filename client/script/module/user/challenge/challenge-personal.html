@@ -6,26 +6,44 @@ loads all challenge related to the user
 -->
 
 <div ng-controller="personalChallengeCtrl as personalChallengeC">
-  <h2 class="center" ng-show="personalChallengeC.challenges.length !== 0">Your Challenges</h2>
-  <h2 class="center" ng-show="personalChallengeC.challenges.length === 0">You Have No Challenges</h2>
-  <ul class="list-group userChallenges" ng-init="personalChallengeC.load()">
-    <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges" ng-click="personalChallengeC.showDetail(challenge, $event)">
-      <img ng-src="{{challenge.challengerImg}}">
-      <div>
-        <h1>{{challenge.title}}</h1>
-        <p>{{challenge.description}}</p>
-        <div class="social">
-          <i class="icon-clock-o"></i>
-          <span am-time-ago="challenge.issuedDate"><!-- {{challenge.issuedDate | amDifference : null : 'minute' }} min ago --></span>
-          <a class="noViewChange" ng-click="personalChallengeC.increaseLike()">
-            <i class="noViewChange icon-heart-empty"></i>
-            {{challenge.likes}}
-          </a>
-          <a href="">
-            <i class="icon-dollar-bill"></i> {{challenge.charityAmount*100}}&#162;
-          </a>
+  <!-- challenges for currently logged in user -->
+  <div class="myChallenges">
+    <h2 class="center" ng-show="personalChallengeC.myChallenges.length !== 0">You Got Challenged</h2>
+    <h2 class="center" ng-show="personalChallengeC.myChallenges.length === 0">No Currently Running Challenges for You</h2>
+    <ul class="list-group userChallenges" ng-init="personalChallengeC.readMyChallenges()">
+      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)">
+        <img ng-src="{{challenge.challengerImg}}">
+        <div>
+          <h1>{{challenge.title}}</h1>
+          <div class="social">
+            <i class="icon-clock-o"></i>
+            <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+            <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
+              <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
+            </a>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- challenges imposed by currently logged in user -->
+  <div class="imposedChallenges">
+    <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length !== 0">You Challenged</h2>
+    <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length === 0">There Is Currently No One You Challenged</h2>
+    <ul class="list-group userChallenges" ng-init="personalChallengeC.readImposedChallenges()">
+      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)">
+        <img ng-src="{{challenge.challengerImg}}">
+        <div>
+          <h1>{{challenge.title}}</h1>
+          <div class="social">
+            <i class="icon-clock-o"></i>
+            <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+            <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
+              <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
