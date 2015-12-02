@@ -11,8 +11,14 @@ module.exports = function (db) {
       // console Log
       console.log('api/user/ retrieving all users');
       // query for all users
+      console.log(req.user.email);
       db.User.findAll({
         attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL'],
+        where: {
+          email: {
+            $ne: req.user.email
+          }
+        },
         raw: true
       }).then(function (users) {
         res.json(users);
