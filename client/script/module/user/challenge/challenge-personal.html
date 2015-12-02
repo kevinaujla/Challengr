@@ -9,7 +9,7 @@ loads all challenge related to the user
   <h2 class="center" ng-show="personalChallengeC.challenges.length !== 0">Your Challenges</h2>
   <h2 class="center" ng-show="personalChallengeC.challenges.length === 0">You Have No Challenges</h2>
   <ul class="list-group userChallenges" ng-init="personalChallengeC.load()">
-    <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges" ng-click="personalChallengeC.showDetail(challenge)">
+    <li class="list-group-item" ng-repeat="challenge in personalChallengeC.challenges" ng-click="personalChallengeC.showDetail(challenge, $event)">
       <img ng-src="{{challenge.challengerImg}}">
       <div>
         <h1>{{challenge.title}}</h1>
@@ -17,8 +17,8 @@ loads all challenge related to the user
         <div class="social">
           <i class="icon-clock-o"></i>
           <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
-          <a href="" ng-click="personalChallengeC.increaseLike()">
-            <i class="icon-heart-empty"></i>
+          <a class="noViewChange" ng-click="personalChallengeC.increaseLike()">
+            <i class="noViewChange icon-heart-empty"></i>
             {{challenge.likes}}
           </a>
         </div>
