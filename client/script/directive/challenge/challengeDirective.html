@@ -1,17 +1,15 @@
 <!-- 
 
-  challengeDirect.html
+  challengeDirective.html
   active and complete/incomplete challenges
 
 -->
-
 <!-- Active Challenges -->
-<div class="challenge" ng-if="!completed">
+<div class="challenge" ng-if="!completed&&!notCompleted">
   <div class="challenge--heading">
     <div class="type">
-      <i class="icon-budicon-52"></i>
-      <span>{{type}} - {{title}} {{completed}}</span>
-      <span>
+      <!--       <i class="icon-budicon-52"></i> -->
+      <span>{{type}} - {{title}}</span>
     </div>
     <div class="time">
       <i class="icon-clock-o"></i>
@@ -29,39 +27,58 @@
     </div>
     <div>
       <a ng-click="increaseLike()">
-        <i class="icon-heart-empty"></i>
-        {{likes}}
+        <i class="icon-heart-empty"></i> {{likes}}
       </a>
       <a href="">
-        <i class="icon-dollar-bill"></i>
-        {{charityamount*100}}
+        <i class="icon-dollar-bill"></i> {{charityamount*100}}
       </a>
-    </div>    
+    </div>
   </div>
 </div>
-
-<!-- Completed and Incompleted Challenges -->
+<!-- Completed Challenge-->
 <div class="completed" ng-if="completed">
   <div>
-    <i ng-class="completed ? 'icon-check-mark-circle' : 'icon-close-delete'"></i>    
+    <i class="icon-check-mark-circle"></i>
   </div>
   <div>
-    <span>{{description}}</span>
+    <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} successfully completed a challenge: {{title}}</span>
   </div>
   <div>
     <i class="icon-clock-o"></i>
     <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
   </div>
   <div>
-    <a href="">
-      <i class="icon-heart-empty"></i>
-      {{likes}}
+    <a ng-click="increaseLike()">
+      <i class="icon-heart-empty"></i> {{likes}}
     </a>
   </div>
   <div>
     <a href="">
-      <i class="icon-dollar-bill"></i>
-      {{charityamount*100}}
+      <i class="icon-dollar-bill"></i> {{charityamount*100}}
     </a>
-  </div>    
+  </div>
+</div>
+
+<!-- Not Completed Challenge -->
+<div class="completed" ng-if="notcompleted">
+  <div>
+    <i class="icon-close-delete"></i>
+  </div>
+  <div>
+    <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} failed completing a challenge: {{title}}</span>
+  </div>
+  <div>
+    <i class="icon-clock-o"></i>
+    <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
+  </div>
+  <div>
+    <a ng-click="increaseLike()">
+      <i class="icon-heart-empty"></i> {{likes}}
+    </a>
+  </div>
+  <div>
+    <a href="">
+      <i class="icon-dollar-bill"></i> {{charityamount*100}}
+    </a>
+  </div>
 </div>
