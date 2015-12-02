@@ -40,7 +40,7 @@ angular.module('App.userFactory', [])
       data: {photoURL : imgURL}
     })
     .then(function(resp){
-      return resp.data;
+      return resp;
     })
   }
 
