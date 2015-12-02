@@ -55,10 +55,10 @@ angular.module('App.profile', [])
             .then(function(data){
               // update user's information
               userFactory.updateProfilePhoto(data.imageURL)
-                .then(function(data){
+                .then(function(){
                   console.log('successfully update profile image');
                   // update the current photoURL from local storage
-                  localStorage.setItem('com.challengr.photoURL', data.photoURL);
+                  localStorage.setItem('com.challengr.photoURL', data.imageURL);
                   // run a digest cycle
                   // $scope.$apply();
                   alertService.addAlert('success', 'updated profile image', 'icon-checkbox');
@@ -71,8 +71,6 @@ angular.module('App.profile', [])
               console.log('error uploading image : ', err);
             });
         };
-        
-
     });
   };
 

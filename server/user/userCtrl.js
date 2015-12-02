@@ -37,7 +37,7 @@ module.exports = function (db) {
       }).then(function (user) {
         user.update(updateModel)
           .then(function (user) {
-            res.status(200).send(user);
+            res.status(200).end();
           });
       });
     },
