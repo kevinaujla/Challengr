@@ -1,15 +1,9 @@
 <!-- 
 
 home.html 
-injects all views into home page
+Newsfeed in home 
 
 -->
-
-<!-- Search -->
-<!-- <div class="input-group" ng-init="homeCtrl.read()">
-  <input type="text" class="form-control" placeholder="Search" ng-model="search">
-  <span class="input-group-addon"><i class="icon-budicon-11"></i></span>
-</div> -->
 
 <!-- Search Bar -->
 <div id="searchBar" class="input-group" ng-init="homeCtrl.read()">
@@ -22,12 +16,7 @@ injects all views into home page
 <!-- Braintree Management -->
 <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
 
-<!-- 
-  Active Challenge
-  Send the challenger
-  Send the challenge
--->
-
+<!-- Challenges -->
 <challenge ng-repeat="challenge in homeCtrl.challenges | filter : search"
   challengeid = 'challenge.id',
   challengechallenged = 'challenge.Challenged',
@@ -43,20 +32,3 @@ injects all views into home page
   notcompleted = 'challenge.notCompleted',
   type = 'challenge.type'>
 </challenge>
-
-
-<!-- InCompleted Challenge -->
-<!-- <incomplete ng-repeat="challenge in homeCtrl.challenges | filter : search"
-  challengeid = 'challenge.id',
-  charityamount = 'challenge.charityAmount',
-  title = 'challenge.title',
-  description = 'challenge.description',
-  challenged = '',
-  likes = 'challenge.likes',
-  completeddate = 'challenge.completed',
-  expiresdate = 'challenge.expiresDate',
-  issueddate = 'challenge.issuedDate',
-  completed = 'challenge.completed',
-  notcompleted = 'challenge.notCompleted',
-  type = 'challenge.type'>
-</incomplete> -->
