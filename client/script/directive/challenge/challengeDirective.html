@@ -13,7 +13,7 @@
     </div>
     <div class="time">
       <i class="icon-clock-o"></i>
-      <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
+      <span am-time-ago="issueddate"><!-- {{issueddate | amDifference : null : 'minute' }} min ago --></span>
     </div>
   </div>
   <div class="challenge--main">
@@ -30,7 +30,7 @@
         <i class="noViewChange icon-heart-empty"></i> {{likes}}
       </a>
       <a class="noViewChange">
-        <i class="noViewChange icon-dollar-bill"></i> {{charityamount*100}}
+        <i class="noViewChange icon-dollar-bill"></i> {{charityamount*100}}&#162;
       </a>
     </div>
   </div>
@@ -45,7 +45,7 @@
   </div>
   <div>
     <i class="icon-clock-o"></i>
-    <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
+    <span am-time-ago="issueddate"></span>
   </div>
   <div>
     <a class="noViewChange" ng-click="increaseLike()">
@@ -54,7 +54,7 @@
   </div>
   <div>
     <a href="">
-      <i class="icon-dollar-bill"></i> {{charityamount*100}}
+      <i class="icon-dollar-bill"></i> {{charityamount*100}}&#162;
     </a>
   </div>
 </div>
@@ -69,7 +69,7 @@
   </div>
   <div>
     <i class="icon-clock-o"></i>
-    <span>{{issueddate | amDifference : null : 'minute' }} min ago</span>
+    <span am-time-ago="issueddate"></span>
   </div>
   <div>
     <a class="noViewChange" ng-click="increaseLike()">
@@ -78,7 +78,7 @@
   </div>
   <div>
     <a href="">
-      <i class="icon-dollar-bill"></i> {{charityamount*100}}
+      <i class="icon-dollar-bill"></i> {{charityamount*100}}&#162;
     </a>
   </div>
 </div>
