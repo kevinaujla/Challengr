@@ -88,11 +88,10 @@ module.exports = function (db) {
           order: 'issuedDate DESC'
         })
         .then(function (challenges) {
-          allChallenges = [];
           for (var i = 0; i < challenges.length; i++) {
-            allChallenges.push(challenges[i].dataValues);
+            challenges[i] = challenges[i].toJSON();
           }
-          res.json(allChallenges);
+          res.json(challenges);
         });
     },
 
@@ -129,7 +128,29 @@ module.exports = function (db) {
           id: id
         }
       }).then(function (user) {
-        user.getMyChallenges()
+        user.getMyChallenges({
+            attributes: ['id',
+              'title',
+              'type',
+              'description',
+              'charityAmount',
+              'completed',
+              'notCompleted',
+              'likes',
+              'expiresDate',
+              'issuedDate',
+              'completedDate'
+            ],
+            include: [{
+              model: db.User,
+              as: 'Challenger',
+              attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
+            }, {
+              model: db.User,
+              as: 'Challenged',
+              attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
+            }]
+          })
           .then(function (challenges) {
             console.log('successfully fetched all challenges from db for user: ' + user.firstName);
             res.json(challenges);
@@ -147,7 +168,29 @@ module.exports = function (db) {
           id: id
         }
       }).then(function (user) {
-        user.getImposedChallenges()
+        user.getImposedChallenges({
+            attributes: ['id',
+              'title',
+              'type',
+              'description',
+              'charityAmount',
+              'completed',
+              'notCompleted',
+              'likes',
+              'expiresDate',
+              'issuedDate',
+              'completedDate'
+            ],
+            include: [{
+              model: db.User,
+              as: 'Challenger',
+              attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
+            }, {
+              model: db.User,
+              as: 'Challenged',
+              attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
+            }]
+          })
           .then(function (challenges) {
             console.log('successfully fetched all imposed challenges for user: ' + req.user.firstName);
             res.json(challenges);

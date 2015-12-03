@@ -12,7 +12,7 @@ loads all challenge related to the user
     <h2 class="center" ng-show="personalChallengeC.myChallenges.length === 0">No Currently Running Challenges for You</h2>
     <ul class="list-group userChallenges" ng-init="personalChallengeC.readMyChallenges()">
       <li class="list-group-item" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
-        <img ng-src="{{challenge.challengerImg}}">
+        <img ng-src="{{challenge.Challenger.photoURL}}">
         <div>
           <h1>{{challenge.title}}</h1>
           <div class="social">
@@ -32,7 +32,7 @@ loads all challenge related to the user
     <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length === 0">There Is Currently No One You Challenged</h2>
     <ul class="list-group userChallenges" ng-init="personalChallengeC.readImposedChallenges()">
       <li class="list-group-item" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
-        <img ng-src="{{challenge.challengerImg}}">
+        <img ng-src="{{challenge.Challenged.photoURL}}">
         <div>
           <h1>{{challenge.title}}</h1>
           <div class="social">

@@ -35,17 +35,7 @@ angular.module('App.personalChallenge', [])
       challengeFactory.readMyChallenges()
         .then(function (myChallenges) {
           self.myChallenges = myChallenges;
-          // go through each challenge and retrieve image belonging to challenger
-          angular.forEach(myChallenges, function (challenge) {
-            userFactory.getUserByID(challenge.ChallengerId)
-              .then(function (challenger) {
-                challenge.challengerImg = challenger.photoURL;
-              })
-              .catch(function (err) {
-                console.log('error getting image : ', err);
-              });
-          });
-          self.getMyChallengeTimer = $timeout(tick, 20000);
+          self.getMyChallengeTimer = $timeout(tick, 10000);
         })
         .catch(function (err) {
           console.log('error getting myChallenges for current user');
@@ -58,17 +48,7 @@ angular.module('App.personalChallenge', [])
       challengeFactory.readImposedChallenges()
         .then(function (imposedChallenges) {
           self.imposedChallenges = imposedChallenges;
-          // go through each challenge and retrieve image belonging to challenges 
-          angular.forEach(imposedChallenges, function (challenge) {
-            userFactory.getUserByID(challenge.ChallengedId)
-              .then(function (challenged) {
-                challenge.challengerImg = challenged.photoURL;
-              })
-              .catch(function (err) {
-                console.log('error getting image for personalChallenge view: ', err);
-              });
-          });
-          self.getImposedChallangeTimer = $timeout(tick, 20000);
+          self.getImposedChallangeTimer = $timeout(tick, 10000);
         })
         .catch(function (err) {
           console.log('error getting imposedChallenges for current user');
