@@ -8,7 +8,6 @@ module dependency injections and route configurations
 angular.module('App', [
   'ui.router',
   'ui.bootstrap',
-  'ngResource',
   'ngMessages',
   'angularMoment',
   'angular-momentjs',
@@ -16,14 +15,11 @@ angular.module('App', [
   'App.socket',
   'App.profile',
   'App.personalChallenge',
-  'App.charity',
-  'App.challenge',
-  'App.challengeList',
+  'App.newChallenge',
   'App.challengeView',
-  'App.challengeEdit',
   'App.challengeDirective',
   'App.challengeService',
-  'App.home',
+  'App.newsfeed',
   'App.authFactory',
   'App.userFactory',
   'App.challengeFactory',
@@ -128,9 +124,9 @@ angular.module('App', [
   // Home Page
   .state('home', {
     url: '/',
-    templateUrl: 'script/module/home/home.html',
-    controller: 'homeCtrl',
-    controllerAs: 'homeCtrl',
+    templateUrl: 'script/module/newsfeed/newsfeed.html',
+    controller: 'newsfeedCtrl',
+    controllerAs: 'newsfeedCtrl',
     data: {
       authenticate: true
     }

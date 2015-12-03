@@ -15,7 +15,7 @@ angular.module('App.personalChallenge', [])
   self.imposedChallenges = [];
 
   self.showDetail = function (challenge, event) {
-    if (event.toElement.classList[0] !== "noViewChange") {
+    if (event.toElement.classList[0] !== 'noViewChange') {
       $state.go('viewChallenge', {
         id: challenge.id
       });

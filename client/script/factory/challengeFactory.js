@@ -7,7 +7,7 @@ handles http request for challenges
 
 angular.module('App.challengeFactory', [])
 
-.factory('challengeFactory', ['$resource', '$http', function ($resource, $http) {
+.factory('challengeFactory', ['$http', function ($http) {
 
   var createChallenge = function (challenge) {
     return $http({

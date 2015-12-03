@@ -5,7 +5,7 @@ CRUD for challenges
 
 */
 
-angular.module('App.challenge', [])
+angular.module('App.newChallenge', [])
 
 .controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'loadingService', 'alertService', 'charityFactory', 'braintreeFactory', '$window', '$state', 'socket', function(userFactory, challengeFactory, loadingService, alertService, charityFactory, braintreeFactory, $window, $state, socket) {
 

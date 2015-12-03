@@ -141,7 +141,7 @@ module.exports = function (db) {
       // console log
       console.log('/api/challenge/imposed retrieving all imposed challenges for user: ' + req.user.firstName);
       // pull out current user id
-      var id = req.user.id
+      var id = req.user.id;
       db.User.findOne({
         where: {
           id: id
@@ -157,7 +157,7 @@ module.exports = function (db) {
 
     getChallengeByID: function (req, res) {
       // console log
-      console.log('/api/challenge/:id retrieving specific challenge')
+      console.log('/api/challenge/:id retrieving specific challenge');
       var id = req.query.id;
       db.Challenge.findOne({
           where: {

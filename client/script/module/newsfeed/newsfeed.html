@@ -1,12 +1,12 @@
 <!-- 
 
-home.html 
-Newsfeed in home 
+newsfeed.html 
+Newsfeed in main view 
 
 -->
 
 <!-- Search Bar -->
-<div id="searchBar" class="input-group" ng-init="homeCtrl.read()">
+<div id="searchBar" class="input-group" ng-init="newsfeedCtrl.read()">
   <input type="text" class="form-control" placeholder="Search..." ng-model="search">
   <span class="input-group-addon" id="sizing-addon2">
     <i class="icon-budicon-44"></i>
@@ -17,7 +17,7 @@ Newsfeed in home
 <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
 
 <!-- Challenges -->
-<challenge ng-repeat="challenge in homeCtrl.challenges | filter : search"
+<challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
   challengeid = 'challenge.id',
   challengechallenged = 'challenge.Challenged',
   challengechallenger = 'challenge.Challenger',

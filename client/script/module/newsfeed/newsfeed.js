@@ -1,13 +1,13 @@
 /*
 
-home.js
-home view controller
+newsfeed.js
+newsfeed controller
 
 */
 
-angular.module('App.home', [])
+angular.module('App.newsfeed', [])
 
-.controller('homeCtrl', ['challengeFactory', '$scope', 'braintreeFactory', 'challengeService', '$timeout', function (challengeFactory, $scope, braintreeFactory, challengeService, $timeout) {
+.controller('newsfeedCtrl', ['challengeFactory', '$scope', 'braintreeFactory', 'challengeService', '$timeout', function (challengeFactory, $scope, braintreeFactory, challengeService, $timeout) {
 
   var self = this;
 
