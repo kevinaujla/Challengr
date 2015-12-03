@@ -12,26 +12,20 @@ angular.module('App.auth', [])
   var self = this;
 
   self.signup = function () {
-    // factory function
     authFactory.signup(self)
       .then(function (data) {
-        // check if successful
         if (data.success === true) {
           console.log('signed up successfully...');
-          // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
           self.saveToLocalStorage(data.user);
-          // Call Braintree create customer function
           self.createBraintreeCustomer();
-          // redirect
           $state.go('home');
         } else {
           alertService.addAlert('danger', data.message, 'icon-budicon-57');
-          $timeout(close, 3000);
-          function close(){
+          $timeout(function close() {
             alertService.closeAlert();
-          };
+          }, 3000);
         }
       })
       .catch(function (err) {
@@ -65,10 +59,9 @@ angular.module('App.auth', [])
         } else {
           // show alert of failure with data.message
           alertService.addAlert('danger', data.message, 'icon-budicon-57');
-          $timeout(close, 3000);
-          function close(){
+          $timeout(function close() {
             alertService.closeAlert();
-          };
+          }, 3000);
         }
       })
       .catch(function (err) {

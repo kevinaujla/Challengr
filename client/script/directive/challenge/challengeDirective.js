@@ -7,14 +7,14 @@ challengeDirective.js
 
 angular.module('App.challengeDirective', [])
 
-.directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
+.directive('challenge', ['challengeFactory', '$state', '$moment', function (challengeFactory, $state, $moment) {
 
   var controller = ['$scope', function ($scope) {
 
     var issue = moment($scope.issueddate);
     var expire = moment($scope.expiresDate);
 
-    var difference = issue.diff(expire)
+    var difference = issue.diff(expire);
 
     if (difference > 86400000) {
 
@@ -63,7 +63,7 @@ angular.module('App.challengeDirective', [])
     link: function (scope, element, attrs) {
 
       element.on('click', function (event) {
-        if (event.toElement.classList[0] !== "noViewChange") {
+        if (event.toElement.classList[0] !== 'noViewChange') {
           // open the detail view of the challenge...
           $state.go('viewChallenge', {
             id: scope.challengeid
