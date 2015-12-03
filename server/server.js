@@ -29,4 +29,4 @@ var port = process.env.PORT || 3000;
 
 // start server to listen on localhost:port
 server.listen(port);
-console.log('Challengr is listening on port ', port);
+console.log('Listening on port ', port);

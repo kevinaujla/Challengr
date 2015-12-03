@@ -3,7 +3,7 @@
 challengeCtrl.js
 configuring routes for challengeRouter
 
- */
+*/
 
 module.exports = function (db) {
   return {
@@ -59,9 +59,6 @@ module.exports = function (db) {
     },
 
     retrieveAll: function (req, res) {
-      // console log
-      console.log('api/challenge retrieving all challenges');
-
       // query for all challenges
       db.Challenge.findAll({
           attributes: ['id',
@@ -129,9 +126,9 @@ module.exports = function (db) {
           id: id
         }
       }).then(function (user) {
-        user.getMyChallenges()
+        return user.getMyChallenges()
           .then(function (challenges) {
-            console.log('successfully fetched all challenges from db for user: ' + user.firstName);
+            // console.log('successfully fetched all challenges from db for user: ' + user.firstName);
             res.json(challenges);
           });
       });
@@ -147,9 +144,9 @@ module.exports = function (db) {
           id: id
         }
       }).then(function (user) {
-        user.getImposedChallenges()
+        return user.getImposedChallenges()
           .then(function (challenges) {
-            console.log('successfully fetched all imposed challenges for user: ' + req.user.firstName);
+            // console.log('successfully fetched all imposed challenges for user: ' + req.user.firstName);
             res.json(challenges);
           });
       });

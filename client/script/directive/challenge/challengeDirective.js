@@ -16,7 +16,7 @@ angular.module('App.challengeDirective', [])
 
     var difference = issue.diff(expire);
 
-    if (difference > 86400000) {
+    if (difference > 86400000) { // 86400000 === 24 hours
 
       if ($scope.notCompleted === false) {
         // set the challenge to be completed

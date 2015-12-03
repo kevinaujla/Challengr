@@ -47,7 +47,7 @@ module.exports = function (db) {
     .then(function successCallback() {
 
       // creating default charities
-      db.Charity.findOrCreate({
+      return db.Charity.findOrCreate({
         where: {
           name: 'Action Against Hunger'
         },
@@ -60,7 +60,7 @@ module.exports = function (db) {
           imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/ActionAgainstHungerLogo.jpg'
         }
       }).spread(function (charity, created) {
-        db.Charity.findOrCreate({
+        return db.Charity.findOrCreate({
           where: {
             name: 'BitGive Foundation'
           },

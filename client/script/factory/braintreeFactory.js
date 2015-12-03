@@ -21,7 +21,6 @@ angular.module('App.braintreeFactory', [] )
   };
 
   var createCustomer = function(user){
-    console.log('create braintree customer...', user);
     return $http({
       method : 'POST',
       url : '/api/braintree/createCustomer',
