@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     photoURL: {
       type: DataTypes.STRING,
-      defaultValue: '/image/placeholder.png'
+      defaultValue: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/placeholder.png'
     }
   }, {
     timestamps: false
