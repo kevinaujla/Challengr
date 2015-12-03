@@ -113,7 +113,7 @@ angular.module('App.newChallenge', [])
     if (brainTreeUserID) {
       braintreeFactory.getToken(brainTreeUserID)
         .then(function (token) {
-          console.log('successfully received braintree token');
+          // console.log('successfully received braintree token');
           // initialize braintree dropin with client token
           braintree.setup(token, 'dropin', {
             container: 'payment-form',

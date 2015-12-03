@@ -16,7 +16,7 @@ module.exports = function (db) {
   return {
     signup: function (req, res) {
       // console Log
-      console.log('/api/user/signup is being called with body: ', req.body);
+      // console.log('/api/user/signup is being called with body: ', req.body);
       // pull out user data
       var email = req.body.email;
       var firstName = req.body.firstName;
@@ -30,7 +30,7 @@ module.exports = function (db) {
         })
         .then(function (user) {
           // console Log
-          console.log('user with email: ' + email + ' exists: ' + !!user);
+          // console.log('user with email: ' + email + ' exists: ' + !!user);
           if (user) {
             // respond to client
             res.json({
@@ -41,7 +41,7 @@ module.exports = function (db) {
             var hashing = Promise.promisify(bcrypt.hash);
 
             // hash password and save user to the database
-            hashing(password, null, null)
+            return hashing(password, null, null)
               .then(function (hash) {
                 // create user in db
                 db.User.create({
@@ -82,7 +82,7 @@ module.exports = function (db) {
 
     signin: function (req, res) {
       // Console Log
-      console.log('/api/user/signin is being called with body: ', req.body);
+      // console.log('/api/user/signin is being called with body: ', req.body);
       // pull out user data
       var email = req.body.email;
       var password = req.body.password;
@@ -93,7 +93,7 @@ module.exports = function (db) {
           }
         })
         .then(function (user) {
-          console.log('user with email: ' + email + ' exists: ' + !!user);
+          // console.log('user with email: ' + email + ' exists: ' + !!user);
           if (!user) {
             // respond to client
             res.json({
@@ -117,7 +117,7 @@ module.exports = function (db) {
                 });
               } else {
                 // Console Log
-                console.log('User with email: ' + email + ' supplied correct credentials');
+                // console.log('User with email: ' + email + ' supplied correct credentials');
                 // create token
                 var token = jwt.sign(user, process.env.TOKEN_SECRET, {
                   expiresIn: '1h'
@@ -147,7 +147,7 @@ module.exports = function (db) {
 
     checkUser: function (req, res) {
       // Console Log
-      console.log('checking if user is allowed to access');
+      // console.log('checking if user is allowed to access');
 
       // pull out token
       var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -155,7 +155,7 @@ module.exports = function (db) {
       // token exists in request body
       if (token) {
         // Console Log
-        console.log('Token exists: ' + !!token);
+        // console.log('Token exists: ' + !!token);
 
         // decode and verify token
         jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
@@ -201,8 +201,6 @@ module.exports = function (db) {
           } else {
             // link user to request for further requests
             req.user = decoded;
-            // Console Log
-            console.log('Successfully authenticated token, access granted for user: ' + req.user.firstName);
             // console.log(decoded);
             // move on to next middleware
             next();

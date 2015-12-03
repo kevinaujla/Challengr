@@ -16,10 +16,9 @@ angular.module('App.newsfeed', [])
   self.getChallengeTimer;
 
   // when changing views cancel the timer to reload challenges
-  $scope.$on('$destroy',
-    function (event) {
-      $timeout.cancel(getChallengeTimer);
-    });
+  $scope.$on('$destroy', function (event) {
+    $timeout.cancel(getChallengeTimer);
+  });
 
   /*
     Braintree Management

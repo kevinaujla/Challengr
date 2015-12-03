@@ -11,7 +11,6 @@ module.exports = function (db) {
       db.Charity.findAll({
         raw: true
       }).then(function (charities) {
-        console.log(charities);
         res.json(charities);
       });
     }
