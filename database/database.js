@@ -21,13 +21,10 @@ var db = new sequelize(
     pool: {
       max: 10,
       min: 2,
-      // milliseconds being idle before released
       idle: 100000
     },
-    storage: __dirname + '/data/db.sqlite',
-    logging : false,
+    logging: false
   });
-
 require(__dirname + '/configDatabase.js')(db);
 
 module.exports = db;

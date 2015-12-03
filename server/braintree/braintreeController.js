@@ -107,11 +107,8 @@ module.exports = function (db) {
             console.log('error searching braintree customer...', err);
             res.status(404).end(err);
           }
-          console.log('braintree customer found : ', customer.firstName);
-          res.json({
-            braintreeUser: customer
-          });
-          res.end();
+          console.log('this message should appear once, braintree customer found, : ', customer.firstName);
+          res.json({ braintreeUser: customer }).end();
         });
 
       });
@@ -173,7 +170,7 @@ module.exports = function (db) {
       console.log('searching all braintree customers...');
       var today = new Date();
       var stream = gateway.customer.search(function (search) {
-        search.createdAt().min(today.getDate() - 10);
+        search.createdAt().min(today.getDate() - 30);
       }, function (err, response) {
         console.log('response : ', response.ids);
         res.json(response.ids);

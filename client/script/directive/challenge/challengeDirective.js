@@ -7,7 +7,7 @@ challengeDirective.js
 
 angular.module('App.challengeDirective', [])
 
-.directive('challenge', ['challengeFactory', '$state', '$moment', function (challengeFactory, $state, $moment) {
+.directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
 
   var controller = ['$scope', function ($scope) {
 
