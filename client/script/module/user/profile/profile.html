@@ -14,16 +14,15 @@ manage payments, signout, manage user information
     <h1>Email:</h1>
     <p>{{profileCtrl.email}}</p>
     <div class="control-group">
-      <label class="control-label"> Upload new photo:</label>
       <div class="controls">
-        <h1>Profile pic:</h1>
+        <h1>Profile picture:</h1>
         <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
           <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
           <span class="bar"></span>
         </div>
         <br>
         <input class="hidden" id="photoUpload" ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
-        <label for="photoUpload" class="btn btn-default">Change pic</label>
+        <label for="photoUpload" class="btn btn-default">Upload a new picture</label>
       </div>
     </div>
     <!--     <button class="btn btn-primary address_submit" data-toggle="modal" ng-click="submit()">Submit</button> -->
