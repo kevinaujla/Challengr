@@ -7,7 +7,9 @@ create a alert
 
 angular.module('App.alertService', [])
 
-.service('alertService', ['socket', function (socket) {
+.service('alertService', ['socket','$timeout', function (socket, $timeout) {
+
+  var self=this;
 
   this.alerts = [
     // { type: 'danger', msg: 'Failed To Send Challenge', icon : 'icon-budicon-57' },
@@ -21,6 +23,10 @@ angular.module('App.alertService', [])
       msg: msg,
       icon: icon,
     });
+    $timeout(close, 3000);
+    function close(){
+      self.closeAlert();
+    };
   };
 
   this.closeAlert = function (index) {
