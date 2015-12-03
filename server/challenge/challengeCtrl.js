@@ -162,6 +162,12 @@ module.exports = function (db) {
       db.Challenge.findOne({
           where: {
             id: id
+          },
+          attributes: {
+            exclude: [
+              'challengedUser',
+              'challengerUser'
+            ]
           }
         })
         .then(function (challenge) {

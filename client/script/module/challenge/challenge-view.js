@@ -26,9 +26,7 @@ angular.module('App.challengeView', [])
     // create object to update
     var updateObj = {
       id: self.challenge.id,
-      likes: ++self.challenge.likes,
-      completed: self.challenge.completed,
-      notCompleted: self.challenge.notCompleted,
+      likes: ++self.challenge.likes
     };
     // call factory function to update challenge values
     challengeFactory.updateChallenge(updateObj)
