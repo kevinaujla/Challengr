@@ -16,10 +16,13 @@ loads all challenge related to the user
         <p>{{challenge.description}}</p>
         <div class="social">
           <i class="icon-clock-o"></i>
-          <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+          <span am-time-ago="challenge.issuedDate"><!-- {{challenge.issuedDate | amDifference : null : 'minute' }} min ago --></span>
           <a class="noViewChange" ng-click="personalChallengeC.increaseLike()">
             <i class="noViewChange icon-heart-empty"></i>
             {{challenge.likes}}
+          </a>
+          <a href="">
+            <i class="icon-dollar-bill"></i> {{challenge.charityAmount*100}}&#162;
           </a>
         </div>
       </div>

@@ -15,7 +15,7 @@ view large details of single challenge
     <span class="panel-title">{{challengeViewCtrl.challenge.Challenger.firstName}} {{challengeViewCtrl.challenge.Challenger.lastName}} challenged {{challengeViewCtrl.challenge.Challenged.firstName}} {{challengeViewCtrl.challenge.Challenged.lastName}}</span>
     <div class="time">
       <i class="icon-clock-o"></i>
-      <span>{{challengeViewCtrl.challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+      <span>{{challengeViewCtrl.challenge.issuedDate | amDifference : null : 'minute' }} min ago</span>
     </div>
   </div>
 
@@ -44,7 +44,7 @@ view large details of single challenge
       </a>
       <a href="">
         <i class="icon-dollar-bill"></i>
-        {{challengeViewCtrl.challenge.charityAmount*100}}
+        {{challengeViewCtrl.challenge.charityAmount*100}}&#162;
       </a>
     </div>
   </div>
