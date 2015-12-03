@@ -17,7 +17,7 @@ loads all challenge related to the user
           <h1>{{challenge.title}}</h1>
           <div class="social">
             <i class="icon-clock-o"></i>
-            <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+            <span am-time-ago="challenge.issuedDate"></span>
             <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
               <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
             </a>
@@ -37,7 +37,7 @@ loads all challenge related to the user
           <h1>{{challenge.title}}</h1>
           <div class="social">
             <i class="icon-clock-o"></i>
-            <span>{{challenge.issueddate | amDifference : null : 'minute' }} min ago</span>
+            <span am-time-ago="challenge.issuedDate"></span>
             <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
               <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
             </a>

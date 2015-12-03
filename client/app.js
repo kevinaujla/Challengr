@@ -104,7 +104,7 @@ angular.module('App', [
     })
     .state('viewChallenge', {
       url: '/challenge/:id',
-      templateUrl: 'script/module/challenge/challenge-read.html',
+      templateUrl: 'script/module/challenge/challenge-view.html',
       controller: 'challengeViewCtrl',
       controllerAs: 'challengeViewCtrl',
       data: {
