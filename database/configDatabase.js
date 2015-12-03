@@ -57,7 +57,7 @@ module.exports = function (db) {
             ' global humanitarian organization committed to ending world hunger,' +
             ' works to save the lives of malnourished children while providing communities' +
             ' with access to safe water and sustainable solutions to hunger.',
-          imgUrl: 'image/charity/ActionAgainstHungerLogo.jpg'
+          imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/ActionAgainstHungerLogo.jpg'
         }
       }).spread(function (charity, created) {
         db.Charity.findOrCreate({
@@ -69,7 +69,7 @@ module.exports = function (db) {
             description: 'BitGive is the first 501(c)(3) Bitcoin nonprofit charity representing' +
               ' the Bitcoin community.  Our mission is to leverage the power of the Bitcoin community' +
               ' to improve public health and the environment worldwide.',
-            imgUrl: 'image/charity/BitGiveLogo.png'
+            imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/BitGiveLogo.png'
           }
         }).spread(function (charity, created) {
 
