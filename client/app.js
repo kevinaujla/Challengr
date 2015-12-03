@@ -43,7 +43,6 @@ angular.module('App', [
     .otherwise('/');
 
   $stateProvider
-  // User
     .state('signin', {
       url: '/signin',
       templateUrl: 'script/module/user/auth/signin.html',
@@ -71,20 +70,16 @@ angular.module('App', [
         authenticate: true
       }
     })
-
-  // Charities
-  .state('charity', {
-    url: '/charity',
-    templateUrl: 'script/module/charity/charity.html',
-    controller: 'charityCtrl',
-    controllerAs: 'charityCtrl',
-    data: {
-      authenticate: true
-    }
-  })
-
-  // Challenges
-  .state('challenges', {
+    .state('charity', {
+      url: '/charity',
+      templateUrl: 'script/module/charity/charity.html',
+      controller: 'charityCtrl',
+      controllerAs: 'charityCtrl',
+      data: {
+        authenticate: true
+      }
+    })
+    .state('challenges', {
       url: '/challenges',
       templateUrl: 'script/module/challenge/challenges.html',
       controller: 'challengeListCtrl',
@@ -111,26 +106,15 @@ angular.module('App', [
         authenticate: true
       }
     })
-    .state('editChallenge', {
-      url: '/challenge/:id/edit',
-      templateUrl: 'script/module/challenge/challenge-edit.html',
-      controller: 'challengeEditCtrl',
-      controllerAs: 'challengeEC',
+    .state('home', {
+      url: '/',
+      templateUrl: 'script/module/newsfeed/newsfeed.html',
+      controller: 'newsfeedCtrl',
+      controllerAs: 'newsfeedCtrl',
       data: {
         authenticate: true
       }
-    })
-
-  // Home Page
-  .state('home', {
-    url: '/',
-    templateUrl: 'script/module/newsfeed/newsfeed.html',
-    controller: 'newsfeedCtrl',
-    controllerAs: 'newsfeedCtrl',
-    data: {
-      authenticate: true
-    }
-  });
+    });
 
   $httpProvider.interceptors.push(function ($window) {
     return {

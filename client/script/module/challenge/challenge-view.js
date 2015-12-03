@@ -30,9 +30,6 @@ angular.module('App.challengeView', [])
     };
     // call factory function to update challenge values
     challengeFactory.updateChallenge(updateObj)
-      .then(function () {
-        console.log('succesfully increased like...');
-      })
       .catch(function (err) {
         console.log('error increasing like : ', err);
       });

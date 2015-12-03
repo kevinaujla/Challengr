@@ -4,9 +4,7 @@ challenge-read.html
 view large details of single challenge
 
 -->
-
 <div id="challengeDetail" class="panel panel-default" ng-init="challengeViewCtrl.readChallenge()">
-
   <div class="panel-heading">
     <div>
       <img class="challengerImg" ng-src="{{challengeViewCtrl.challenge.Challenger.photoURL}}">
@@ -15,10 +13,9 @@ view large details of single challenge
     <span class="panel-title">{{challengeViewCtrl.challenge.Challenger.firstName}} {{challengeViewCtrl.challenge.Challenger.lastName}} challenged {{challengeViewCtrl.challenge.Challenged.firstName}} {{challengeViewCtrl.challenge.Challenged.lastName}}</span>
     <div class="time">
       <i class="icon-clock-o"></i>
-      <span>{{challengeViewCtrl.challenge.issuedDate | amDifference : null : 'minute' }} min ago</span>
+      <span am-time-ago="challengeViewCtrl.challenge.issuedDate"></span>
     </div>
   </div>
-
   <div class="panel-body">
     <div class="row">
       <div class="col-md-6 leftChallenge">
@@ -28,27 +25,22 @@ view large details of single challenge
         </div>
         <span class="description">{{challengeViewCtrl.challenge.description}}</span>
       </div>
-      <div class="col-md-6 rightChallenge">
+      <!--       <div class="col-md-6 rightChallenge">
         <img class="challengeImage" src="image/eventImg.jpg">
-      </div>
+      </div> -->
     </div>
   </div>
-
   <div class="panel-footer">
     <button class="btn btn-default" ui-sref="home">
-      <span class="icon-arrow-circle-o-left"></span> BACK</button>
+      <span class="icon-arrow-circle-o-left"></span> BACK
+    </button>
     <div>
       <a href="" ng-click="challengeViewCtrl.increaseLike()">
-        <i class="icon-heart-empty"></i>
-        {{challengeViewCtrl.challenge.likes}}
+        <i class="icon-heart-empty"></i> {{challengeViewCtrl.challenge.likes}}
       </a>
       <a href="">
-        <i class="icon-dollar-bill"></i>
-        {{challengeViewCtrl.challenge.charityAmount*100}}&#162;
+        <i class="icon-dollar-bill"></i> {{challengeViewCtrl.challenge.charityAmount*100}}&#162;
       </a>
     </div>
   </div>
-
 </div>
-
-  
