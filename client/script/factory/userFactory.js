@@ -28,20 +28,21 @@ angular.module('App.userFactory', [])
         },
       })
       .then(function (resp) {
-        // return the image
-        return resp.data.photoURL;
+        return resp.data;
       });
   };
 
-  var updateProfilePhoto = function(imgURL){
+  var updateProfilePhoto = function (photoURL) {
     return $http({
-      method: 'PUT',
-      url: '/api/user/',
-      data: {photoURL : imgURL}
-    })
-    .then(function(resp){
-      return resp;
-    })
+        method: 'PUT',
+        url: '/api/user/',
+        data: {
+          photoURL: photoURL
+        }
+      })
+      .then(function (resp) {
+        return resp.data;
+      })
   }
 
   return {

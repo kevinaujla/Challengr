@@ -7,7 +7,7 @@ CRUD for challenges
 
 angular.module('App.newChallenge', [])
 
-.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'loadingService', 'alertService', 'charityFactory', 'braintreeFactory', '$window', '$state', 'socket', function(userFactory, challengeFactory, loadingService, alertService, charityFactory, braintreeFactory, $window, $state, socket) {
+.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'loadingService', 'alertService', 'charityFactory', 'braintreeFactory', '$window', '$state', 'socket', function (userFactory, challengeFactory, loadingService, alertService, charityFactory, braintreeFactory, $window, $state, socket) {
 
   var self = this;
 
@@ -16,6 +16,7 @@ angular.module('App.newChallenge', [])
   /* Steps Tabs */
   self.tabs = [true, false, false];
   self.currentTab = 0;
+
   /* Next Step */
   self.nextTab = function () {
     if (self.currentTab < 2) {
@@ -24,6 +25,7 @@ angular.module('App.newChallenge', [])
       self.tabs[self.currentTab] = true;
     }
   };
+
   /* Previous Step */
   self.prevTab = function () {
     if (self.currentTab > 0) {
@@ -36,9 +38,6 @@ angular.module('App.newChallenge', [])
   /* Braintree search if customer exists */
   self.searchCustomer = function () {
     braintreeFactory.searchCustomer()
-      .then(function (data) {
-        console.log('found braintree customer : ', data);
-      })
       .catch(function (err) {
         console.log('err searching for braintree customer: ', err);
       });
@@ -51,7 +50,6 @@ angular.module('App.newChallenge', [])
   self.loadFriends = function () {
     userFactory.getAllUsers()
       .then(function (users) {
-        console.log('users friends loaded : ', users);
         self.friends = users;
       })
       .catch(function (err) {
@@ -76,13 +74,12 @@ angular.module('App.newChallenge', [])
   };
 
   /* Get all charities from DB */
-  self.getCharity = function(){
+  self.getCharity = function () {
     charityFactory.load()
-      .then(function(charities){
-        console.log('loaded all charities : ', charities);
+      .then(function (charities) {
         self.charities = charities;
       })
-      .catch(function(err){
+      .catch(function (err) {
         console.log('error loading charities...');
         alertService.addAlert('danger', 'error loading charities', 'icon-budicon-57');
       });
@@ -94,7 +91,6 @@ angular.module('App.newChallenge', [])
     // factory function
     challengeFactory.createChallenge(self.info)
       .then(function (data) {
-        console.log('created challenge : ', data);
         var challenge = {
           title: self.info.title,
           challenged: self.info.challenged
@@ -127,14 +123,14 @@ angular.module('App.newChallenge', [])
 
               // call checkout function
               braintreeFactory.checkout(payload)
-                .then(function(){
+                .then(function () {
                   console.log('completed braintree checkout');
                   // call the save/create challenge function
                   self.save();
                   // redirect to home page
                   $state.go('home');
                 })
-                .catch(function(err){
+                .catch(function (err) {
                   console.log('error making payment... ', err);
                   alertService.addAlert('danger', 'error making payment', 'icon-budicon-57');
                 });
@@ -145,7 +141,7 @@ angular.module('App.newChallenge', [])
           console.log('error getting braintree token: ', err);
           alertService.addAlert('danger', err, 'icon-budicon-57');
         });
-    } else{
+    } else {
       console.log('error getting braintree token from local storage...');
       alertService.addAlert('danger', 'error getting braintree token from local storage', 'icon-budicon-57');
     }

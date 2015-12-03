@@ -7,12 +7,20 @@ personalChallenge.js
 
 angular.module('App.personalChallenge', [])
 
-.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', function (challengeFactory, userFactory, $scope, $state) {
+.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', '$timeout', function (challengeFactory, userFactory, $scope, $state, $timeout) {
 
   var self = this;
 
   self.myChallenges = [];
   self.imposedChallenges = [];
+  self.getMyChallengeTimer;
+  self.getImposedChallangeTimer;
+
+  $scope.$on('$destroy',
+    function (event) {
+      $timeout.cancel(getMyChallengeTimer);
+      $timeout.cancel(getImposedChallangeTimer);
+    });
 
   self.showDetail = function (challenge, event) {
     if (event.toElement.classList[0] !== 'noViewChange') {
@@ -23,56 +31,56 @@ angular.module('App.personalChallenge', [])
   };
 
   self.readMyChallenges = function () {
-    challengeFactory.readMyChallenges()
-      .then(function (myChallenges) {
-        self.myChallenges = myChallenges;
-        // go through each challenge and retrieve image belonging to challenger
-        angular.forEach(myChallenges, function (challenge) {
-          userFactory.getUserByID(challenge.ChallengedId)
-            .then(function (image) {
-              // add the image to the challenge
-              challenge.challengerImg = image;
-            })
-            .catch(function (err) {
-              console.log('error getting image : ', err);
-            });
+    (function tick() {
+      challengeFactory.readMyChallenges()
+        .then(function (myChallenges) {
+          self.myChallenges = myChallenges;
+          // go through each challenge and retrieve image belonging to challenger
+          angular.forEach(myChallenges, function (challenge) {
+            userFactory.getUserByID(challenge.ChallengerId)
+              .then(function (challenger) {
+                challenge.challengerImg = challenger.photoURL;
+              })
+              .catch(function (err) {
+                console.log('error getting image : ', err);
+              });
+          });
+          self.getMyChallengeTimer = $timeout(tick, 20000);
+        })
+        .catch(function (err) {
+          console.log('error getting myChallenges for current user');
         });
-
-      })
-      .catch(function (err) {
-        console.log('error getting myChallenges for current user');
-      });
-
+    })();
   };
 
   self.readImposedChallenges = function () {
-    challengeFactory.readImposedChallenges()
-      .then(function (imposedChallenges) {
-        self.imposedChallenges = imposedChallenges;
-        // go through each challenge and retrieve image belonging to challenges 
-        angular.forEach(imposedChallenges, function (challenge) {
-          userFactory.getUserByID(challenge.ChallengedId)
-            .then(function (image) {
-              // add image to the challenge
-              challenge.challengerImg = image;
-            })
-            .catch(function (err) {
-              console.log('error getting image for personalChallenge view: ', err);
-            });
+    (function tick() {
+      challengeFactory.readImposedChallenges()
+        .then(function (imposedChallenges) {
+          self.imposedChallenges = imposedChallenges;
+          // go through each challenge and retrieve image belonging to challenges 
+          angular.forEach(imposedChallenges, function (challenge) {
+            userFactory.getUserByID(challenge.ChallengedId)
+              .then(function (challenged) {
+                challenge.challengerImg = challenged.photoURL;
+              })
+              .catch(function (err) {
+                console.log('error getting image for personalChallenge view: ', err);
+              });
+          });
+          self.getImposedChallangeTimer = $timeout(tick, 20000);
+        })
+        .catch(function (err) {
+          console.log('error getting imposedChallenges for current user');
         });
-      })
-      .catch(function (err) {
-        console.log('error getting imposedChallenges for current user');
-      });
+    })();
   };
 
   self.increaseLike = function (challenge) {
-    // create object to update
     var updateObj = {
       id: challenge.id,
       likes: ++challenge.likes
     };
-    // call factory function to update challenge values
     challengeFactory.updateChallenge(updateObj)
       .catch(function (err) {
         console.log('error increasing like : ', err);

@@ -10,7 +10,7 @@ var sequelize = require('sequelize');
 
 // instantiates a new Sequelize database
 var db = new sequelize(
-  // databasa username and password do not matter for sqlite
+  // database username and password do not matter for sqlite
   'database',
   'username',
   'password', {
