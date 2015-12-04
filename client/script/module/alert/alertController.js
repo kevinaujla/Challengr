@@ -12,9 +12,9 @@ angular.module('App.alertController', [])
   $scope.alerts = alertService.alerts;
 
   socket.on('got challenged', function (msg) {
-    alertService.addAlert('success', msg);
+    $scope.addAlert('notification', msg, 'icon-bell-o');
   });
-  
+
   $scope.addAlert = function (type, msg, icon) {
     alertService.addAlert(type, msg, icon);
   };

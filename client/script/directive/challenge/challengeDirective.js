@@ -10,16 +10,18 @@ angular.module('App.challengeDirective', [])
 .directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
 
   var controller = ['$scope', function ($scope) {
-
+    
     var issue = moment($scope.issueddate);
-    var expire = moment($scope.expiresDate);
+    var now = moment();
 
-    var difference = issue.diff(expire);
+    var difference = now.diff(issue, 'hours');
 
-    if (difference > 86400000) { // 86400000 === 24 hours
+    if (difference > 24) {
 
-      if ($scope.notCompleted === false) {
+      if ($scope.notcompleted === false && $scope.completed === false) {
         // set the challenge to be completed
+        $scope.notcompleted = true;
+
         var updateObj = {
           id: $scope.challengeid,
           likes: $scope.likes,
