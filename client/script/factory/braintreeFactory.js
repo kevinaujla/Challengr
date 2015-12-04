@@ -49,7 +49,7 @@ angular.module('App.braintreeFactory', [] )
     })
     .then(function(resp){
       var transactionData = resp.data.transaction;
-      console.log('Transaction created : ', transactionData);
+      // console.log('Transaction created : ', transactionData);
       // store transaction in database
       return $http({
         method : 'POST',

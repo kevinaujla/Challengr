@@ -56,9 +56,6 @@ angular.module('App.auth', [])
         } else {
           // show alert of failure with data.message
           alertService.addAlert('danger', data.message, 'icon-budicon-57');
-          $timeout(function close() {
-            alertService.closeAlert();
-          }, 3000);
         }
       })
       .catch(function (err) {
@@ -69,11 +66,11 @@ angular.module('App.auth', [])
   /* Braintree create customer account */
   self.createBraintreeCustomer = function () {
     braintreeFactory.createCustomer(self)
-      .then(function (customer) {
+      .then(function (data) {
         // console log
-        console.log('braintree customer : ', customer);
+        console.log('BRAINTr customer : ', data.braintreeUser);
         // set token
-        $window.localStorage.setItem('com.braintree', customer.id);
+        $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function (err) {
         console.log('error creating new braintree customer...');

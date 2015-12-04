@@ -123,8 +123,13 @@ angular.module('App.newChallenge', [])
 
               // call checkout function
               braintreeFactory.checkout(payload)
+<<<<<<< d990b4822bc39c914755d4d9ea87852b4eef5841
                 .then(function () {
                   console.log('completed braintree checkout');
+=======
+                .then(function(){
+                  // console.log('completed braintree checkout');
+>>>>>>> [fix]: braintree customer id gets set into local storage properly
                   // call the save/create challenge function
                   self.save();
                   // redirect to home page

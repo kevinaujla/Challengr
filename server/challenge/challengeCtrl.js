@@ -165,7 +165,6 @@ module.exports = function (db) {
           id: id
         }
       }).then(function (user) {
-<<<<<<< 499e5068313f29a7c5f118b67090a973da8dd401
         user.getImposedChallenges({
             attributes: ['id',
               'title',
@@ -189,9 +188,6 @@ module.exports = function (db) {
               attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL']
             }]
           })
-=======
-        return user.getImposedChallenges()
->>>>>>> [fix]: braintree customers are not created if the customer already exists
           .then(function (challenges) {
             // console.log('successfully fetched all imposed challenges for user: ' + req.user.firstName);
             res.json(challenges);

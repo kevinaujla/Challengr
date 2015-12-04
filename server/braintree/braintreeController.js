@@ -71,14 +71,15 @@ module.exports = function (db) {
             if (err) {
               console.log('error creating customer : ', err);
             }
-            res.json(result);
+            res.json({ braintreeUser: result.customer });
           });
         } else {
           response.each(function (err, customer) {
             if (err) {
               console.log('error looping through braintree customers');
             }
-            res.json(customer).end();
+            // customer is the object
+            res.json({ braintreeUser: customer }).end();
           });
         }
 
@@ -163,9 +164,7 @@ module.exports = function (db) {
         .then(function (user) {
           return user.getTransactions()
             .then(function (transactions) {
-              res.json({
-                transactions: transactions
-              });
+              res.json({ transactions: transactions });
             })
             .catch(function (err) {
               console.log('error finding transactions...', err);
@@ -196,7 +195,6 @@ module.exports = function (db) {
       gateway.customer.delete(req.body.user_id, function (err, response) {
         // err;
         console.log('error deleting customer : ', err);
-        console.log('reponse : ', response);
         res.status(200).end();
       });
     },
