@@ -7,7 +7,7 @@ sets up authorization controller
 
 angular.module('App.auth', [])
 
-.controller('authCtrl', ['$window', '$state', 'authFactory', 'braintreeFactory', 'alertService', function ($window, $state, authFactory, braintreeFactory, alertService) {
+.controller('authCtrl', ['$window', '$state', 'authFactory', 'braintreeFactory', 'alertService', 'socket', function ($window, $state, authFactory, braintreeFactory, alertService, socket) {
 
   var self = this;
 
@@ -15,11 +15,11 @@ angular.module('App.auth', [])
     authFactory.signup(self)
       .then(function (data) {
         if (data.success === true) {
-          console.log('signed up successfully...');
           $window.localStorage.setItem('com.challengr', data.token);
-          // add basic user info to localStorage
           self.saveToLocalStorage(data.user);
           self.createBraintreeCustomer();
+          // connect socket on signup
+          socket.configureSocket();
           $state.go('home');
         } else {
           alertService.addAlert('danger', data.message, 'icon-budicon-57');
@@ -39,22 +39,16 @@ angular.module('App.auth', [])
   };
 
   self.signin = function () {
-    // factory function
     authFactory.signin(self)
       .then(function (data) {
-        // check if successful
         if (data.success === true) {
-          // console.log('signed in successfully');
-          // set token
           $window.localStorage.setItem('com.challengr', data.token);
-          // add basic user info to localStorage
           self.saveToLocalStorage(data.user);
-          // Get Braintree token
           self.searchBraintreeCustomer();
-          // redirect
+          // connect socket on signin
+          socket.configureSocket();
           $state.go('home');
         } else {
-          // show alert of failure with data.message
           alertService.addAlert('danger', data.message, 'icon-budicon-57');
         }
       })
@@ -67,9 +61,7 @@ angular.module('App.auth', [])
   self.createBraintreeCustomer = function () {
     braintreeFactory.createCustomer(self)
       .then(function (data) {
-        // console log
         console.log('braintree customer : ', data.braintreeUser);
-        // set token
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function (err) {
@@ -81,9 +73,7 @@ angular.module('App.auth', [])
   self.searchBraintreeCustomer = function () {
     braintreeFactory.searchCustomer()
       .then(function (data) {
-        // console log
         console.log('got existing braintree customer', data.braintreeUser.id);
-        // local storage
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function (err) {

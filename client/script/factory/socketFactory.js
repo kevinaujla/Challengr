@@ -8,7 +8,11 @@ wraps used socket functionalities for global access
 angular.module('App.socket', [])
   .factory('socket', function ($rootScope) {
     // socket instance
-    var socket;
+    var socket = {
+      on: function () {},
+      emit: function () {}
+    };
+    
     var configureSocket = function () {
       var firstName = localStorage.getItem('com.challengr.firstName');
       var email = localStorage.getItem('com.challengr.email');
@@ -16,6 +20,7 @@ angular.module('App.socket', [])
         query: 'name=' + firstName + '&email=' + email
       });
     };
+
     return {
       configureSocket: configureSocket,
       on: function (eventName, callback) {

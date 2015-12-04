@@ -10,7 +10,7 @@ angular.module('App.challengeDirective', [])
 .directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
 
   var controller = ['$scope', function ($scope) {
-
+    
     var issue = moment($scope.issueddate);
     var now = moment();
 
@@ -20,6 +20,8 @@ angular.module('App.challengeDirective', [])
 
       if ($scope.notcompleted === false && $scope.completed === false) {
         // set the challenge to be completed
+        $scope.notcompleted = true;
+
         var updateObj = {
           id: $scope.challengeid,
           likes: $scope.likes,

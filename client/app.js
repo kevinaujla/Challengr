@@ -130,7 +130,11 @@ angular.module('App', [
 }])
 
 .run(function ($rootScope, $state, authFactory, $window, socket) {
-  socket.configureSocket();
+  // only configure socket when the user is already logged in otherwise the needed
+  // data to identify him on the server does not exist
+  if (authFactory.isAuth()) {
+    socket.configureSocket();
+  }
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     if (toState.url === '/signin' || toState.url === '/signup') {
