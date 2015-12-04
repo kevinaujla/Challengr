@@ -66,9 +66,9 @@ angular.module('App.auth', [])
   /* Braintree create customer account */
   self.createBraintreeCustomer = function () {
     braintreeFactory.createCustomer(self)
-      .then(function (data) {
+      .then(function (customer) {
         // console log
-        console.log('BRAINTr customer : ', data.braintreeUser);
+        console.log('braintree customer : ', data.braintreeUser);
         // set token
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
