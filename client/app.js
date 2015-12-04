@@ -10,7 +10,6 @@ angular.module('App', [
   'ui.bootstrap',
   'ngMessages',
   'angularMoment',
-  'angular-momentjs',
   'App.auth',
   'App.socket',
   'App.profile',
@@ -33,11 +32,7 @@ angular.module('App', [
   'App.s3Factory'
 ])
 
-.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$momentProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $momentProvider) {
-
-  $momentProvider
-    .asyncLoading(true)
-    .scriptUrl('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js');
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $urlRouterProvider
     .otherwise('/');

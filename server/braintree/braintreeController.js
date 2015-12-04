@@ -28,7 +28,7 @@ module.exports = function (db) {
         customerId: req.body.id
       }, function (err, response) {
         // propogate token to client
-        console.log('generated token...');
+        console.log('generated braintree client token...');
         res.send(response.clientToken);
       });
     },
@@ -53,27 +53,38 @@ module.exports = function (db) {
       Create a new customer with a payment method (First time checkout)
     */
     createCustomer: function (req, res) {
-      // console log
-      console.log('create new braintree customer... ', req.body);
       // get user object
       var user = req.body.user;
-
       // Check if the customer already exists or not
-      // searchCustomer(req);
-
-      // create new customer
-      gateway.customer.create({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        // company: "Braintree",
-        email: user.email
-      }, function (err, result) {
-        if (err) {
-          console.log('error creating customer : ', err);
+      var stream = gateway.customer.search(function (search) {
+        search.email().is(user.email);
+        search.firstName().is(user.firstName);
+        search.lastName().is(user.lastName);
+      }, function (err, response) {
+        // create new customer
+        if (response.ids.length === 0) {
+          gateway.customer.create({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email
+          }, function (err, result) {
+            if (err) {
+              console.log('error creating customer : ', err);
+            }
+            res.json({ braintreeUser: result.customer });
+          });
+        } else {
+          response.each(function (err, customer) {
+            if (err) {
+              console.log('error looping through braintree customers');
+            }
+            // customer is the object
+            res.json({ braintreeUser: customer }).end();
+          });
         }
-        // propogate result to client
-        res.json(result);
+
       });
+
     },
 
     /*
@@ -107,11 +118,8 @@ module.exports = function (db) {
             console.log('error searching braintree customer...', err);
             res.status(404).end(err);
           }
-          console.log('braintree customer found : ', customer.firstName);
-          res.json({
-            braintreeUser: customer
-          });
-          res.end();
+          console.log('this message should appear once, braintree customer found, : ', customer.firstName);
+          res.json({ braintreeUser: customer }).end();
         });
 
       });
@@ -154,11 +162,9 @@ module.exports = function (db) {
           }
         })
         .then(function (user) {
-          user.getTransactions()
+          return user.getTransactions()
             .then(function (transactions) {
-              res.json({
-                transactions: transactions
-              });
+              res.json({ transactions: transactions });
             })
             .catch(function (err) {
               console.log('error finding transactions...', err);
@@ -173,10 +179,14 @@ module.exports = function (db) {
       console.log('searching all braintree customers...');
       var today = new Date();
       var stream = gateway.customer.search(function (search) {
-        search.createdAt().min(today.getDate() - 10);
+        search.createdAt().min(today.getDate() - 30);
       }, function (err, response) {
-        console.log('response : ', response.ids);
-        res.json(response.ids);
+        if (err) {
+          console.log('ERROR retreiving all braintree customers : ', err);
+        } else {
+          console.log('BRAINTREE CUSTOMERS : ', response.ids);
+          res.json(response.ids);
+        }
       });
     },
 
@@ -185,7 +195,6 @@ module.exports = function (db) {
       gateway.customer.delete(req.body.user_id, function (err, response) {
         // err;
         console.log('error deleting customer : ', err);
-        console.log('reponse : ', response);
         res.status(200).end();
       });
     },

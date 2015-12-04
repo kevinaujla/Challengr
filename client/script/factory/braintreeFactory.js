@@ -21,7 +21,6 @@ angular.module('App.braintreeFactory', [] )
   };
 
   var createCustomer = function(user){
-    console.log('create braintree customer...', user);
     return $http({
       method : 'POST',
       url : '/api/braintree/createCustomer',
@@ -50,7 +49,7 @@ angular.module('App.braintreeFactory', [] )
     })
     .then(function(resp){
       var transactionData = resp.data.transaction;
-      console.log('Transaction created : ', transactionData);
+      // console.log('Transaction created : ', transactionData);
       // store transaction in database
       return $http({
         method : 'POST',

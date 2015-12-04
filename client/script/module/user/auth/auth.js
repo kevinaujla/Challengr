@@ -44,7 +44,7 @@ angular.module('App.auth', [])
       .then(function (data) {
         // check if successful
         if (data.success === true) {
-          console.log('signed in successfully');
+          // console.log('signed in successfully');
           // set token
           $window.localStorage.setItem('com.challengr', data.token);
           // add basic user info to localStorage
@@ -56,9 +56,6 @@ angular.module('App.auth', [])
         } else {
           // show alert of failure with data.message
           alertService.addAlert('danger', data.message, 'icon-budicon-57');
-          $timeout(function close() {
-            alertService.closeAlert();
-          }, 3000);
         }
       })
       .catch(function (err) {
@@ -71,18 +68,17 @@ angular.module('App.auth', [])
     braintreeFactory.createCustomer(self)
       .then(function (data) {
         // console log
-        console.log('created new braintree customer');
+        console.log('braintree customer : ', data.braintreeUser);
         // set token
-        $window.localStorage.setItem('com.braintree', data.customer.id);
+        $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function (err) {
         console.log('error creating new braintree customer...');
       });
   };
 
-  /* Braintree create customer account */
+  /* Braintree search customer account */
   self.searchBraintreeCustomer = function () {
-    console.log('search for existing braintree customer...');
     braintreeFactory.searchCustomer()
       .then(function (data) {
         // console log

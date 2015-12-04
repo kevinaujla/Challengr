@@ -7,8 +7,6 @@ working with socket.io
 
 module.exports = function (server) {
   // app === express app injected from server.js
-  console.log('configuring socket.io');
-
   var io = require('socket.io')(server);
 
   io.use(function (socket, next) {

@@ -113,7 +113,7 @@ angular.module('App.newChallenge', [])
     if (brainTreeUserID) {
       braintreeFactory.getToken(brainTreeUserID)
         .then(function (token) {
-          console.log('successfully received braintree token');
+          // console.log('successfully received braintree token');
           // initialize braintree dropin with client token
           braintree.setup(token, 'dropin', {
             container: 'payment-form',
@@ -123,8 +123,8 @@ angular.module('App.newChallenge', [])
 
               // call checkout function
               braintreeFactory.checkout(payload)
-                .then(function () {
-                  console.log('completed braintree checkout');
+                .then(function(){
+                  // console.log('completed braintree checkout');
                   // call the save/create challenge function
                   self.save();
                   // redirect to home page

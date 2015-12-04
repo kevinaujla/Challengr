@@ -18,8 +18,8 @@ angular.module('App.personalChallenge', [])
 
   $scope.$on('$destroy',
     function (event) {
-      $timeout.cancel(getMyChallengeTimer);
-      $timeout.cancel(getImposedChallangeTimer);
+      $timeout.cancel(self.getMyChallengeTimer);
+      $timeout.cancel(self.getImposedChallangeTimer);
     });
 
   self.showDetail = function (challenge, event) {
