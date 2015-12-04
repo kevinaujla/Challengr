@@ -9,11 +9,10 @@ module.exports = function (app, express, db) {
   // serving static files from client folder
   app.use(express.static(__dirname + '/../../client'));
 
-  // do not log static assets
   // logging requests to the server
-  var morgan = require('morgan');
+  // var morgan = require('morgan');
   // set development mode for morgan regarding logging format
-  app.use(morgan('dev'));
+  // app.use(morgan('dev'));
 
   var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
   // handling all authentication (signup, signin, route protection)
@@ -36,14 +35,14 @@ module.exports = function (app, express, db) {
   require(__dirname + '/../braintree/braintreeRouter.js')(braintreeRouter, db);
   app.use('/api/braintree', braintreeRouter);
 
-  // handling all challenge related operations (create, retrieveAll)
+  // handling all challenge related operations (create, retrieveAll, update)
   var challengeRouter = express.Router();
   // protect challenge routes
   challengeRouter.use(authCtrl.authenticate);
   require(__dirname + '/../challenge/challengeRouter.js')(challengeRouter, db);
   app.use('/api/challenge', challengeRouter);
 
-  // handling all user related routes (retrieveAll)
+  // handling all user related routes (retrieveAll, update, retrieve specific)
   var userRouter = express.Router();
   // protect user routes
   userRouter.use(authCtrl.authenticate);
