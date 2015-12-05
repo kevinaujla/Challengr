@@ -8,8 +8,7 @@ configuring routes for challengeRouter
 module.exports = function (db) {
   return {
     create: function (req, res) {
-      // console log
-      console.log('create challenge: ', req.user, req.body);
+      // console.log('create challenge: ', req.user, req.body);
 
       // pull out data
       var challenger = req.user;
@@ -50,8 +49,7 @@ module.exports = function (db) {
               challenged.addMyChallenge(challenge);
               challenge.setChallenger(challenger);
               challenge.setChallenged(challenged);
-              // console log
-              console.log('successfully created challenge');
+              // console.log('successfully created challenge');
               res.status(201).end();
             });
           });
@@ -59,7 +57,7 @@ module.exports = function (db) {
     },
 
     retrieveAll: function (req, res) {
-      // query for all challenges
+      // console.log('retrieving all challenges');
       db.Challenge.findAll({
           attributes: ['id',
             'title',
@@ -93,8 +91,7 @@ module.exports = function (db) {
     },
 
     update: function (req, res) {
-      // console log
-      console.log('/api/challenge updating model');
+      // console.log('/api/challenge updating model');
       // pull out necessary data
       var id = req.body.id;
       var updateModel = {
@@ -102,7 +99,7 @@ module.exports = function (db) {
         notCompleted: req.body.notCompleted,
         likes: req.body.likes
       };
-      // query for model to update
+      // query for challenge to update
       db.Challenge.findOne({
         where: {
           id: id
@@ -116,8 +113,7 @@ module.exports = function (db) {
     },
 
     getMyChallenges: function (req, res) {
-      // console log
-      console.log('/api/challenge/user retrieving challenges for user: ' + req.user.firstName);
+      // console.log('/api/challenge/user retrieving challenges for user: ' + req.user.firstName);
       // pull current user id
       var id = req.user.id;
       db.User.findOne({
@@ -156,8 +152,7 @@ module.exports = function (db) {
     },
 
     getImposedChallenges: function (req, res) {
-      // console log
-      console.log('/api/challenge/imposed retrieving all imposed challenges for user: ' + req.user.firstName);
+      // console.log('/api/challenge/imposed retrieving all imposed challenges for user: ' + req.user.firstName);
       // pull out current user id
       var id = req.user.id;
       db.User.findOne({
@@ -196,8 +191,7 @@ module.exports = function (db) {
     },
 
     getChallengeByID: function (req, res) {
-      // console log
-      console.log('/api/challenge/:id retrieving specific challenge');
+      // console.log('/api/challenge/:id retrieving specific challenge');
       var id = req.query.id;
       db.Challenge.findOne({
           where: {
@@ -211,7 +205,7 @@ module.exports = function (db) {
           }
         })
         .then(function (challenge) {
-          console.log('successfully retrieved challenge from db : ', challenge);
+          // console.log('successfully retrieved challenge from db : ', challenge);
           res.json({
             challenge: challenge
           });

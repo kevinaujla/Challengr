@@ -53,14 +53,10 @@ angular.module('App.profile', [])
 
         s3Factory.updatePicture(reader.result, name)
           .then(function (data) {
-            // update user's information
             userFactory.updateProfilePhoto(data.imageURL)
               .then(function () {
-                console.log('successfully update profile image');
-                // update the current photoURL from local storage
+                // console.log('successfully update profile image');
                 localStorage.setItem('com.challengr.photoURL', data.imageURL);
-                // run a digest cycle
-                // $scope.$apply();
                 alertService.addAlert('success', 'updated profile image', 'icon-checkbox');
               })
               .catch(function (err) {
@@ -78,7 +74,7 @@ angular.module('App.profile', [])
   self.getBilling = function () {
     braintreeFactory.getTransactions()
       .then(function (data) {
-        console.log('users billing transactions : ', data.transactions);
+        // console.log('users billing transactions : ', data.transactions);
         self.transactions = data.transactions;
       })
       .catch(function (err) {

@@ -41,7 +41,7 @@
     <i class="icon-check-mark-circle"></i>
   </div>
   <div>
-    <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} successfully completed a challenge: {{title}}</span>
+    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} successfully completed a challenge: {{title}}</span>
   </div>
   <div>
     <i class="icon-clock-o"></i>
@@ -58,14 +58,13 @@
     </a>
   </div>
 </div>
-
 <!-- Not Completed Challenge -->
 <div class="completed" ng-if="notcompleted">
   <div>
     <i class="icon-close-delete"></i>
   </div>
   <div>
-    <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} failed completing a challenge: {{title}}</span>
+    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} failed completing a challenge: {{title}}</span>
   </div>
   <div>
     <i class="icon-clock-o"></i>

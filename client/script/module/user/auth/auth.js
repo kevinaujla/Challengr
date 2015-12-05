@@ -61,7 +61,7 @@ angular.module('App.auth', [])
   self.createBraintreeCustomer = function () {
     braintreeFactory.createCustomer(self)
       .then(function (data) {
-        console.log('braintree customer : ', data.braintreeUser);
+        // console.log('braintree customer : ', data.braintreeUser);
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function (err) {
@@ -73,7 +73,7 @@ angular.module('App.auth', [])
   self.searchBraintreeCustomer = function () {
     braintreeFactory.searchCustomer()
       .then(function (data) {
-        console.log('got existing braintree customer', data.braintreeUser.id);
+        // console.log('got existing braintree customer', data.braintreeUser.id);
         $window.localStorage.setItem('com.braintree', data.braintreeUser.id);
       })
       .catch(function (err) {

@@ -21,20 +21,18 @@ module.exports = function (db) {
 
   var braintreeObj = {
     generateToken: function (req, res) {
-      // console log
       console.log('Generate braintree client token : ', req.body.id);
       // generate token
       gateway.clientToken.generate({
         customerId: req.body.id
       }, function (err, response) {
         // propogate token to client
-        console.log('generated braintree client token...');
+        // console.log('generated braintree client token...');
         res.send(response.clientToken);
       });
     },
 
     checkout: function (req, res) {
-      // console log
       console.log('payment method nonce : ', req.body.nonce, ' generate transaction :', req.body.charityAmount);
       // create transaction
       gateway.transaction.sale({
@@ -91,7 +89,6 @@ module.exports = function (db) {
       1:1 model of customer to credit card
     */
     updateCustomer: function (req, res) {
-      // console log
       console.log('update customer');
       // get user object
       var user = req.body.user;

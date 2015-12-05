@@ -14,6 +14,7 @@ module.exports = function (app, express) {
     extended: false,
     limit : '50mb'
   }));
+  
   // parse json bodies
   app.use(bodyParser.json({ limit : '50mb' }));
 };

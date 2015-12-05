@@ -8,8 +8,7 @@ configuring routes for userRouter
 module.exports = function (db) {
   return {
     retrieveAll: function (req, res) {
-      // console Log
-      console.log('api/user/ retrieving users');
+      // console.log('api/user/ retrieving users');
       // query for all users but the currently logged in user
       db.User.findAll({
         attributes: ['id', 'firstName', 'lastName', 'email', 'photoURL'],
@@ -24,8 +23,7 @@ module.exports = function (db) {
       });
     },
     update: function (req, res) {
-      // console log
-      console.log('updating user profile img');
+      // console.log('updating user profile img');
       // pull out data
       var id = req.body.id;
       var updateModel = {
@@ -42,8 +40,7 @@ module.exports = function (db) {
       });
     },
     retrieveUser: function (req, res) {
-      // console log
-      console.log('/api/user/one');
+      // console.log('/api/user/one');
       // pull out data
       var id = req.query.id;
       db.User.find({
