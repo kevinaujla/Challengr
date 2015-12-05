@@ -7,7 +7,7 @@ personalChallenge.js
 
 angular.module('App.personalChallenge', [])
 
-.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', '$timeout', function (challengeFactory, userFactory, $scope, $state, $timeout) {
+.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', '$timeout', 'authFactory', function (challengeFactory, userFactory, $scope, $state, $timeout, authFactory) {
 
   var self = this;
 
@@ -31,29 +31,33 @@ angular.module('App.personalChallenge', [])
   };
 
   self.readMyChallenges = function () {
-    (function tick() {
-      challengeFactory.readMyChallenges()
-        .then(function (myChallenges) {
-          self.myChallenges = myChallenges;
-          self.getMyChallengeTimer = $timeout(tick, 5000);
-        })
-        .catch(function (err) {
-          console.log('error getting myChallenges for current user');
-        });
-    })();
+    if (authFactory.isAuth()) {
+      (function tick() {
+        challengeFactory.readMyChallenges()
+          .then(function (myChallenges) {
+            self.myChallenges = myChallenges;
+            self.getMyChallengeTimer = $timeout(tick, 5000);
+          })
+          .catch(function (err) {
+            console.log('error getting myChallenges for current user');
+          });
+      })();
+    }
   };
 
   self.readImposedChallenges = function () {
-    (function tick() {
-      challengeFactory.readImposedChallenges()
-        .then(function (imposedChallenges) {
-          self.imposedChallenges = imposedChallenges;
-          self.getImposedChallangeTimer = $timeout(tick, 5000);
-        })
-        .catch(function (err) {
-          console.log('error getting imposedChallenges for current user');
-        });
-    })();
+    if (authFactory.isAuth()) {
+      (function tick() {
+        challengeFactory.readImposedChallenges()
+          .then(function (imposedChallenges) {
+            self.imposedChallenges = imposedChallenges;
+            self.getImposedChallangeTimer = $timeout(tick, 5000);
+          })
+          .catch(function (err) {
+            console.log('error getting imposedChallenges for current user');
+          });
+      })();
+    }
   };
 
   self.increaseLike = function (challenge) {
