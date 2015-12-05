@@ -14,12 +14,11 @@ module.exports = function (server) {
     if (socket.handshake.query.email) {
       return next();
     }
-    next(new Error('You did not pass the user'));
+    throw new Error('User information was not passed on socket handshake');
   });
 
   var clients = [];
   io.on('connection', function (socket) {
-    // console log
     console.log('new client connected: ', socket.handshake.query.name);
     // add connection to clients array
     clients.push({

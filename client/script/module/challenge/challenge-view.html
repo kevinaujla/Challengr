@@ -20,14 +20,16 @@ view large details of single challenge
     <div class="row">
       <div class="col-md-6 leftChallenge">
         <div class="type">
-          <i class="icon-check-circle"></i>
           <span>{{challengeViewCtrl.challenge.type}} - {{challengeViewCtrl.challenge.title}}</span>
         </div>
         <span class="description">{{challengeViewCtrl.challenge.description}}</span>
       </div>
-      <!--       <div class="col-md-6 rightChallenge">
-        <img class="challengeImage" src="image/eventImg.jpg">
-      </div> -->
+      <div class="col-md-6 rightChallenge">
+        <span ng-if="challengeViewCtrl.isCurrentUserChallenge">
+          <i class="icon-check-circle"></i>
+          <a ng-click="challengeViewCtrl.completed()">Mark Completed</a>
+        </span>
+      </div>
     </div>
   </div>
   <div class="panel-footer">
