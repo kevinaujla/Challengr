@@ -4,20 +4,19 @@ challenge-personal.html
 loads all challenge related to the user
 
 -->
-
 <div ng-controller="personalChallengeCtrl as personalChallengeC">
   <!-- challenges for currently logged in user -->
   <div class="myChallenges">
     <h2 class="center" ng-show="personalChallengeC.myChallenges.length !== 0">You Got Challenged</h2>
     <h2 class="center" ng-show="personalChallengeC.myChallenges.length === 0">No Currently Running Challenges for You</h2>
     <ul class="list-group userChallenges" ng-init="personalChallengeC.readMyChallenges()">
-      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed" ng-init="personalChallengeC.initializeChallenge(challenge);">
         <img ng-src="{{challenge.Challenger.photoURL}}">
         <div>
           <h1>{{challenge.title}}</h1>
           <div class="social">
             <i class="icon-clock-o"></i>
-            <span am-time-ago="challenge.issuedDate"></span>
+            <span>{{challenge.remaining}}</span>
             <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
               <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
             </a>
@@ -31,13 +30,13 @@ loads all challenge related to the user
     <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length !== 0">You Challenged</h2>
     <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length === 0">There Is Currently No One You Challenged</h2>
     <ul class="list-group userChallenges" ng-init="personalChallengeC.readImposedChallenges()">
-      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed" ng-init="personalChallengeC.initializeChallenge(challenge);">
         <img ng-src="{{challenge.Challenged.photoURL}}">
         <div>
           <h1>{{challenge.title}}</h1>
           <div class="social">
             <i class="icon-clock-o"></i>
-            <span am-time-ago="challenge.issuedDate"></span>
+            <span>{{challenge.remaining}}</span>
             <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
               <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
             </a>

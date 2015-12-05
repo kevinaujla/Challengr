@@ -39,9 +39,6 @@ angular.module('App.challengeDirective', [])
           };
           // call factory function to update challenge values
           challengeFactory.updateChallenge(updateObj)
-            // .then(function () {
-            //   console.log('succesfully changed challenges status to be completed');
-            // })
             .catch(function (err) {
               console.log('error changing status to completed : ', err);
             });
@@ -49,12 +46,12 @@ angular.module('App.challengeDirective', [])
       }
     }
 
-    function createCountdown() {  
+    function createCountdown() {
       var expire = moment($scope.expiresdate);
       var now = moment();
       var interval = -1;
       var counter = moment.duration(expire.diff(now), 'ms');
-      
+
       (function tick() {
         counter = moment.duration(counter.asMinutes() + interval, 'minutes');
         if (Math.floor(counter.minutes()) === 0) {
