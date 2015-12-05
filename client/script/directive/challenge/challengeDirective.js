@@ -92,7 +92,6 @@ angular.module('App.challengeDirective', [])
     controller: controller,
 
     link: function (scope, element, attrs) {
-
       element.on('click', function (event) {
         if (event.toElement.classList[0] !== 'noViewChange') {
           // open the detail view of the challenge...
@@ -119,8 +118,6 @@ angular.module('App.challengeDirective', [])
             console.log('error increasing like : ', err);
           });
       };
-
     }
   };
-
 }]);
