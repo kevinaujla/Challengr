@@ -17,14 +17,14 @@ module.exports = function (app, express, db) {
   app.use('/api/auth', authRouter);
 
   //handling all fb authentication 
-  // var fbAuthRouter = express.Router();
-  // require(__dirname + '/../fbAuth/fbAuthRouter.js')(fbAuthRouter, db, app);
-  // app.use('/auth/facebook', fbAuthRouter);
+  var fbAuthRouter = express.Router();
+  require(__dirname + '/../fbAuth/fbAuthRouter.js')(fbAuthRouter, db, app);
+  app.use('/auth/facebook', fbAuthRouter);
 
   //handling all twitter authentication
-  // var twtAuthRouter=express.Router();
-  // require(__dirname + '/../twtAuth/twtAuthRouter.js')(twtAuthRouter, db, app);
-  // app.use('/auth/twitter', twtAuthRouter);
+  var twtAuthRouter=express.Router();
+  require(__dirname + '/../twtAuth/twtAuthRouter.js')(twtAuthRouter, db, app);
+  app.use('/auth/twitter', twtAuthRouter);
 
   var braintreeRouter = express.Router();
   braintreeRouter.use(authCtrl.authenticate);
