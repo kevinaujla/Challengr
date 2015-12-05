@@ -9,34 +9,63 @@ angular.module('App.challengeDirective', [])
 
 .directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
 
-  var controller = ['$scope', function ($scope) {
-    
-    var issue = moment($scope.issueddate);
-    var now = moment();
+  var controller = ['$scope', '$timeout', function ($scope, $timeout) {
 
-    var difference = now.diff(issue, 'hours');
+    var countdownTimeout;
+    $scope.remaining;
 
-    if (difference > 24) {
+    $scope.$on('$destroy', function (event) {
+      $timeout.cancel(countdownTimeout);
+    });
 
-      if ($scope.notcompleted === false && $scope.completed === false) {
-        // set the challenge to be completed
-        $scope.notcompleted = true;
+    $scope.configureDirective = function () {
+      createCountdown();
+      checkCompletedStatus();
+    };
 
-        var updateObj = {
-          id: $scope.challengeid,
-          likes: $scope.likes,
-          completed: $scope.completed,
-          notCompleted: true,
-        };
-        // call factory function to update challenge values
-        challengeFactory.updateChallenge(updateObj)
-          .then(function () {
-            console.log('succesfully changed challenges status to be completed');
-          })
-          .catch(function (err) {
-            console.log('error changing status to completed : ', err);
-          });
+    function checkCompletedStatus() {
+      var issue = moment($scope.issueddate);
+      var now = moment();
+      var difference = now.diff(issue, 'hours');
+
+      if (difference > 24) {
+        if ($scope.notcompleted === false && $scope.completed === false) {
+          // set the challenge to be completed
+          $scope.notcompleted = true;
+
+          var updateObj = {
+            id: $scope.challengeid,
+            notCompleted: true
+          };
+          // call factory function to update challenge values
+          challengeFactory.updateChallenge(updateObj)
+            // .then(function () {
+            //   console.log('succesfully changed challenges status to be completed');
+            // })
+            .catch(function (err) {
+              console.log('error changing status to completed : ', err);
+            });
+        }
       }
+    }
+
+    function createCountdown() {  
+      var expire = moment($scope.expiresdate);
+      var now = moment();
+      var interval = -1;
+      var counter = moment.duration(expire.diff(now), 'ms');
+      
+      (function tick() {
+        counter = moment.duration(counter.asMinutes() + interval, 'minutes');
+        if (Math.floor(counter.minutes()) === 0) {
+          checkCompletedStatus();
+        } else {
+          var minutes = counter.minutes();
+          minutes = minutes < 10 ? '0' + minutes : minutes;
+          $scope.remaining = counter.hours() + ' h ' + minutes + ' m remaining';
+          countdownTimeout = $timeout(tick, 60000);
+        }
+      })();
     }
 
   }];
