@@ -5,30 +5,42 @@ Newsfeed in main view
 
 -->
 
-<!-- Search Bar -->
-<div id="searchBar" class="input-group" ng-init="newsfeedCtrl.read()">
-  <input type="text" class="form-control" placeholder="Search..." ng-model="search">
-  <span class="input-group-addon" id="sizing-addon2">
-    <i class="icon-budicon-44"></i>
-  </span>
-</div>
+  <h1>All Challenges</h1>
 
-<!-- Braintree Management -->
-<!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
+  <!-- Search -->
+  <div ng-init="newsfeedCtrl.read()">
+    <i class="icon-budicon-44"></i>  
+  </div>
+  
 
-<!-- Challenges -->
-<challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
-  challengeid = 'challenge.id',
-  challengechallenged = 'challenge.Challenged',
-  challengechallenger = 'challenge.Challenger',
-  charityamount = 'challenge.charityAmount',
-  title = 'challenge.title',
-  description = 'challenge.description',
-  likes = 'challenge.likes',
-  completeddate = 'challenge.completed',
-  expiresdate = 'challenge.expiresDate',
-  issueddate = 'challenge.issuedDate',
-  completed = 'challenge.completed',
-  notcompleted = 'challenge.notCompleted',
-  type = 'challenge.type'>
-</challenge>
+  <!--  -->
+  
+  <!-- Search Bar -->
+<!--   <div id="searchBar" class="input-group" ng-init="newsfeedCtrl.read()">
+    <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+    <span class="input-group-addon" id="sizing-addon2">
+      <i class="icon-budicon-44"></i>
+    </span>
+  </div> -->
+
+  <!-- Braintree Management -->
+  <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
+
+  <!-- Challenges -->
+  <challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
+    challengeid = 'challenge.id',
+    challengechallenged = 'challenge.Challenged',
+    challengechallenger = 'challenge.Challenger',
+    charityamount = 'challenge.charityAmount',
+    title = 'challenge.title',
+    description = 'challenge.description',
+    likes = 'challenge.likes',
+    completeddate = 'challenge.completed',
+    expiresdate = 'challenge.expiresDate',
+    issueddate = 'challenge.issuedDate',
+    completed = 'challenge.completed',
+    notcompleted = 'challenge.notCompleted',
+    type = 'challenge.type'>
+  </challenge>
+
+

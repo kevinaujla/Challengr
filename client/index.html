@@ -7,16 +7,24 @@
   <!-- Bower Component Styles -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- User Styles -->
-  <link rel="stylesheet" href="./main.css" />
+  <link rel="stylesheet" href="styles/main.css" />
   <!-- Font -->
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,700'>
+  
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700' rel='stylesheet' type='text/css'>
   <!-- Font Icons -->
   <link rel="stylesheet" href="https://file.myfontastic.com/YfFMzw2YZywiXrAN4mSf8h/icons.css">
 </head>
 <script src="lib/socket.io-client/socket.io.js"></script>
 <body>
-  <div class="container-fluid">
+
+    <div id="leftBar" ui-view="leftPane"></div>
+
+    <div id="rightBar" ui-view="rightPane"></div>
+
+<!--   <div class="container-fluid">
     <div class="row">
       <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
         <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
@@ -37,9 +45,11 @@
             <i class="icon-budicon-51"></i>
           </a>
         </div>
-      </div>
-      <!-- Inject Views -->
-      <div id="main" ng-class=" signupOrLoginPage ? 'col-xs-8 col-xs-offset-2' : 'col-xs-8' " ui-view></div>
+      </div> -->
+      
+
+      <!-- <div ng-class=" signupOrLoginPage ? '' : 'col-xs-8' " ui-view></div> -->
+<!--       
       <div id="rightBar" class="col-xs-3" ng-if="!signupOrLoginPage">
         <div>
           <div ng-controller="alertController">
@@ -51,7 +61,8 @@
             </uib-alert>
           </div>
         </div>
-        <!-- Display challenges received -->
+
+        
         <div ng-include="'script/module/user/challenge/challenge-personal.html'"></div>
 
       </div>
@@ -62,7 +73,7 @@
       <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
     </div>
 
-  </div>
+  </div> -->
 
   <!-- Bower Component Scripts -->
   <script src="lib/jquery/dist/jquery.min.js"></script>

@@ -1,0 +1,28 @@
+body{
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100vh;
+}
+
+  div#searchBar{
+    
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    input#searchInput{
+      border-bottom: 2px solid black;
+      color: #4f5362;
+      text-align: center;
+      border-radius: 0px;
+      padding: 10px;
+      width: 250px;
+      background-color: transparent;
+    }
+    i{
+      float: left;
+      color: blue;
+      border: 1px solid green;
+    }
+  }

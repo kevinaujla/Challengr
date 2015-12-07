@@ -9,6 +9,7 @@ Parent Controller : challengeNC
   Child 3 Controller : challengechallengeNCCtrl
 
 -->
+
 <uib-tabset class="stepNav" justified="true">
   <uib-tab heading="Create Challenge" active="challengeNC.tabs[0]">
     <div class="row">
@@ -67,7 +68,7 @@ Parent Controller : challengeNC
   <uib-tab heading="Submit" active="challengeNC.tabs[2]">
     <div class="row">
       <div class="col-md-6">
-        <!-- Load Friend to Challenge -->
+        
         <div>
           <div class="friendToChallenge">
             <img ng-src="{{challengeNC.info.challenged.photoURL}}">
@@ -76,18 +77,18 @@ Parent Controller : challengeNC
               <p>{{challengeNC.info.challenged.firstName}} {{challengeNC.info.challenged.lastName}}</p>
             </div>
           </div>
-          <!-- Load Title and Description of Challenge -->
+          
           <h1>Challenge Info</h1>
           <p>{{challengeNC.info.title}}</p>
           <p>{{challengeNC.info.description}}</p>
-          <!-- Load Charity Name to Donate too -->
+          
           <h1>Donating to:</h1>
           <p>{{challengeNC.info.charity.name}}</p>
         </div>
       </div>
       <div class="col-md-6">
         <h1>Select Payment Info</h1>
-        <!-- Braintree Drop-In Payment UI -->
+        
         <form id="checkout" ng-init="challengeNC.getToken()">
           <div id="payment-form"></div>
           <div class="btn-group btn-group-justified charityAmount">
@@ -101,7 +102,7 @@ Parent Controller : challengeNC
     </div>
   </uib-tab>
 </uib-tabset>
-<!-- Steps Footer -->
+
 <div class="row tab--footer">
   <button type="button" class="btn btn-default dropdown-toggle pull-left" ng-click="challengeNC.prevTab()" ng-if="challengeNC.currentTab > 0" data-toggle="dropdown">
     <span class="icon-arrow-circle-o-left"></span> Back
