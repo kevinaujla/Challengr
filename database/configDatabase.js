@@ -49,26 +49,21 @@ module.exports = function (db) {
       // creating default charities
       return db.Charity.findOrCreate({
         where: {
-          name: 'Action Against Hunger'
+          name: 'United Way of the Bay Area'
         },
         defaults: {
-          link: 'http://www.actionagainsthunger.org/',
-          description: 'Action Against Hunger | ACF International, a' +
-            ' global humanitarian organization committed to ending world hunger,' +
-            ' works to save the lives of malnourished children while providing communities' +
-            ' with access to safe water and sustainable solutions to hunger.',
+          link: 'https://uwba.org/',
+          description: 'Together we are making great strides to help the 1 in 4 Bay Area families living in poverty. Thanks to your support, we helped connect more than 250,000 people with services like food pantry access, financial coaching, education support and more last year.',
           imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/ActionAgainstHungerLogo.jpg'
         }
       }).spread(function (charity, created) {
         return db.Charity.findOrCreate({
           where: {
-            name: 'BitGive Foundation'
+            name: 'Swords to Plowshares'
           },
           defaults: {
-            link: 'http://bitgivefoundation.org/',
-            description: 'BitGive is the first 501(c)(3) Bitcoin nonprofit charity representing' +
-              ' the Bitcoin community.  Our mission is to leverage the power of the Bitcoin community' +
-              ' to improve public health and the environment worldwide.',
+            link: 'http://www.swords-to-plowshares.org/',
+            description: 'All veterans will have access to the care and services they need to rebuild their lives. War causes wounds and suffering that last beyond the battlefield. Swords to Plowshares’ mission is to heal the wounds, to restore dignity, hope, and self-sufficiency to all veterans in need, and to prevent and end homelessness and poverty among veterans.',
             imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/BitGiveLogo.png'
           }
         }).spread(function (charity, created) {
