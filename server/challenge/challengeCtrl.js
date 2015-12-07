@@ -107,7 +107,9 @@ module.exports = function (db) {
       }).then(function (challenge) {
         challenge.update(updateModel)
           .then(function (challenge) {
-            res.status(200).end();
+            res.status(200).json({
+              success: true
+            });
           });
       });
     },
@@ -146,7 +148,7 @@ module.exports = function (db) {
           })
           .then(function (challenges) {
             // console.log('successfully fetched all challenges from db for user: ' + user.firstName);
-            res.json(challenges);
+            res.status(200).json(challenges);
           });
       });
     },
@@ -185,7 +187,7 @@ module.exports = function (db) {
           })
           .then(function (challenges) {
             // console.log('successfully fetched all imposed challenges for user: ' + req.user.firstName);
-            res.json(challenges);
+            res.status(200).json(challenges);
           });
       });
     },
@@ -206,7 +208,7 @@ module.exports = function (db) {
         })
         .then(function (challenge) {
           // console.log('successfully retrieved challenge from db : ', challenge);
-          res.json({
+          res.status(200).json({
             challenge: challenge
           });
         });
