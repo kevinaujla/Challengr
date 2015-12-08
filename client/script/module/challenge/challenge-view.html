@@ -12,7 +12,7 @@ view large details of single challenge
     </div>
     <span class="panel-title">{{challengeViewCtrl.challenge.Challenger.firstName}} {{challengeViewCtrl.challenge.Challenger.lastName}} challenged {{challengeViewCtrl.challenge.Challenged.firstName}} {{challengeViewCtrl.challenge.Challenged.lastName}}</span>
     <div class="time">
-      <i class="icon-clock-o"></i>
+      <i class="mk icon-clock-o"></i>
       <span am-time-ago="challengeViewCtrl.challenge.issuedDate"></span>
     </div>
   </div>
@@ -38,11 +38,11 @@ view large details of single challenge
     </button>
     <div>
       <a href="" ng-click="challengeViewCtrl.increaseLike()">
-        <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
+        <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
 
       </a>
       <a href="">
-        <i class="icon-dollar-bill"></i> {{challengeViewCtrl.challenge.charityAmount*100}}&#162;
+        {{charityamount*100}}<span class="linkBlue"> &#162</span> 
       </a>
     </div>
   </div>
