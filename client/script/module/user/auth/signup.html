@@ -9,27 +9,27 @@ signup.html
 
 <!-- RE-DESIGN -->
 
-  <h1 class="mk">Sign Up</h1>
+  <h1 class="mk white shadow">Sign Up</h1>
 
-  <form class="mk" name="signupForm" ng-submit="authCtrl.signup()">
+  <form class="mk" name= "signupForm" ng-submit="authCtrl.signup()">
 
     <div class="column">
-      <label class="mk">First Name</label>
+      <label class="mk shadow">First Name</label>
       <input class="mk active" ng-model="authCtrl.firstName" type="text" required>
     </div>
 
     <div class="column">
-      <label class="mk">Last Name</label>
+      <label class="mk shadow">Last Name</label>
       <input class="mk" ng-model="authCtrl.lastName" type="text" required>
     </div>
 
     <div class="column">
-      <label class="mk">Your Email</label>
+      <label class="mk shadow">Your Email</label>
       <input  class="mk"ng-model="authCtrl.email" type="text" required>
     </div>
 
     <div class="column">
-      <label class="mk">Password</label>
+      <label class="mk shadow">Password</label>
       <input  class="mk"ng-model="authCtrl.password" type="password" required>
     </div>
 
@@ -39,7 +39,7 @@ signup.html
     </div>  
   </form>
 
-  <span class="mk">
+  <span class="mk white">
     Have an account? 
     <a class="mk" ui-sref="signin">Sign In</a>
   </span>

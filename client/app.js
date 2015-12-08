@@ -42,7 +42,9 @@ angular.module('App', [
       url: '/signin',
       // templateUrl: 'script/module/user/auth/signin.html',
       views: {
-        'leftPane': { template: '' },
+        'leftPane': { 
+          templateUrl: 'partial/signinPane.html', 
+        },
         'rightPane': { 
           templateUrl: 'script/module/user/auth/signin.html',
           controller: 'authCtrl',
@@ -58,11 +60,13 @@ angular.module('App', [
       // templateUrl: 'script/module/user/auth/signup.html',
       views: {
         'leftPane': { 
+          templateUrl: 'partial/signinPane.html', 
+        },
+        'rightPane': { 
           templateUrl: 'script/module/user/auth/signup.html',
           controller: 'authCtrl',
-          controllerAs: 'authCtrl',
-        },
-        'rightPane': { template: '' }
+          controllerAs: 'authCtrl', 
+        }
       },
       data: {
         authenticate: false

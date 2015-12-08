@@ -9,17 +9,17 @@ creates sign in view
 
 <!-- RE-DESIGN -->
 
-  <h1 class="mk">Sign In</h1>
+  <h1 class="mk above white shadow">Sign In</h1>
 
-  <form class="mk" name="signinForm" ng-submit="authCtrl.signin()">
+  <form class="mk above" name="signinForm" ng-submit="authCtrl.signin()">
 
     <div class="column">
-      <label class="mk">Your Email</label>
+      <label class="mk shadow">Your Email</label>
       <input class="mk active" ng-model="authCtrl.email" type="text">
     </div>
 
     <div class="column">
-      <label class="mk">Password</label>
+      <label class="mk shadow">Password</label>
       <input class="mk" ng-model="authCtrl.password" type="password">
     </div>
 
@@ -28,7 +28,7 @@ creates sign in view
     </div>  
   </form>
 
-  <span class="mk">
+  <span class="mk white">
     Need an account? 
     <a class="mk" ui-sref="signup">Sign Up</a>
   </span>
