@@ -17,33 +17,29 @@ view large details of single challenge
     </div>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-md-6 leftChallenge">
-        <div class="type">
-          <span>{{challengeViewCtrl.challenge.type}} - {{challengeViewCtrl.challenge.title}}</span>
-        </div>
-        <span class="description">{{challengeViewCtrl.challenge.description}}</span>
-      </div>
-      <div class="col-md-6 rightChallenge">
-        <span ng-if="challengeViewCtrl.isCurrentUserChallenge">
-          <i class="icon-check-circle"></i>
-          <a ng-click="challengeViewCtrl.completed()">Mark Completed</a>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="panel-footer">
-    <button class="btn btn-default" ui-sref="home">
-      View All
-    </button>
-    <div>
-      <a href="" ng-click="challengeViewCtrl.increaseLike()">
-        <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
 
+    <div class="social">
+      <a href="" ng-click="challengeViewCtrl.increaseLike()">
+        <i ng-class=" challengeViewCtrl.challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
       </a>
       <a href="">
-        {{charityamount*100}}<span class="linkBlue"> &#162</span> 
+        {{challengeViewCtrl.challenge.charityAmount*100}}<span class="linkBlue"> &#162</span> 
       </a>
     </div>
+
+    <div class="type">
+      <i class="icon-check-circle"></i>
+      <span>{{challengeViewCtrl.challenge.type}} - {{challengeViewCtrl.challenge.title}}</span>
+    </div>
+    <span class="description">{{challengeViewCtrl.challenge.description}}</span>
+
   </div>
 </div>
+
+<button ng-if="challengeViewCtrl.isCurrentUserChallenge" class="mk-complete" ng-click="challengeViewCtrl.completed()">
+  Completed ?
+</button> 
+
+<button class="mk" ui-sref="home">
+  View All
+</button>

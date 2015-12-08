@@ -108,21 +108,6 @@ angular.module('App', [
         authenticate: true
       }
     })
-    
-    // .state('newChallenge', {
-    //   url: '/challenge/create',
-    //   views: {
-    //     'leftPane': { 
-    //       templateUrl: 'script/module/challenge/challenge-create.html',
-    //       controller: 'challengeNewCtrl',
-    //       controllerAs: 'challengeNC',
-    //     },
-    //     'rightPane': { template: '' }
-    //   },
-    //   data: {
-    //     authenticate: true
-    //   }
-    // })
 
     .state('newChallenge', {
       url: '/challenge/create/friend',
@@ -215,7 +200,7 @@ angular.module('App', [
     })
 
     .state('viewChallengePersonal', {
-      url: '/challenge/detial/:id',
+      url: '/challenge/detail/:id',
       // templateUrl: 'script/module/newsfeed/newsfeed.html',
       views: {
         'leftPane': { 
@@ -276,6 +261,29 @@ angular.module('App', [
   }
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
+    // Left Detail View
+    if (toState.url === '/challenge/:id') {
+      $rootScope.rightDetailView = true;
+    } else {
+      $rootScope.rightDetailView = false;
+    }
+
+    // Right Detail View
+    if (toState.url === '/challenge/detail/:id') {
+      $rootScope.leftDetailView = true;
+    } else {
+      $rootScope.leftDetailView = false;
+    }
+
+    // Profile
+    if (toState.url === '/profile') {
+      $rootScope.topPadding = true;
+    } else {
+      $rootScope.topPadding = false;
+    }
+
+
+    // Signin and Signup
     if (toState.url === '/signin' || toState.url === '/signup') {
       $rootScope.signupOrLoginPage = true;
     }

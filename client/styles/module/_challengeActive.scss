@@ -16,14 +16,17 @@
 // Challenge
 
 challenge{
-  width: 95%;
+  width: 100%;
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
 }
 
 .challenge {
+
   margin: 5px 0;
-  border: 1px solid #DEE2E5;
+  border: 1px solid rgba(222, 226, 229, 0.32);
   border-radius: 3px;
-  /* padding: 15px; */
+  /* padding: $padding; */
   &:hover {
     box-shadow: 0px 0px 10px #AFAFAF;
     cursor: pointer;
@@ -31,17 +34,18 @@ challenge{
 }
 
 .challenge--heading {
-  background-color: #34495E;
-  padding: 15px;
-  color: #D2D6D9;
+  background-color: #FFFFFF;
+  padding: $padding;
+  color: #757575;
   display: flex;
   flex-direction: row !important;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  border-bottom: 1px solid #F5F6F7;
   .type {
     text-align: initial !important;
     flex: 1;
-    color: white;
+    color: #586169;
     font-weight: 300;
     i {}
     span {
@@ -63,13 +67,13 @@ challenge{
 }
 
 .challenge--main {
-  padding: 15px;
+  padding: $padding;
   display: flex;
   flex-direction: row !important;
   div:first-child {
     flex: 1;
     position: relative;
-    margin-right: 15px;
+    margin-right: $padding;
   }
   div:nth-child(2) {
     flex: 6;
@@ -100,14 +104,14 @@ challenge{
       font-weight: 300;
       cursor: pointer;
       &:last-child {
-        padding-left: 15px;
+        padding-left: $padding;
       }
       i {
         padding: 0 3px;
         cursor: pointer;
       }
       &:hover {
-        color: #66D3E2;
+  
         text-decoration: none;
         cursor: pointer;
       }

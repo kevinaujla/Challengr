@@ -6,21 +6,28 @@
 
 div#challengeDetail {
   font-family: 'Ubuntu', sans-serif;
-  border: 1px solid #DEE2E5;
+  border: 1px solid #F5F6F7;
   border-radius: 3px;
+  width: 90%;
+  a{
+    color: #7D8995 !important;
+    &:hover{
+      text-decoration: none !important;
+    }
+  }
   .panel-heading {
     // border: 1px solid green;
-    background-color: #34495E;
-    color: white;
+    background-color: #FFFFFF;
+    color: #586169;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
     display: flex;
-    border-bottom: 1px solid #DEE2E5;
+    border-bottom: 1px solid #F5F6F7;
     align-items: center;
     div:first-child {
       flex: 1;
       position: relative;
-      margin-right: 15px;
+      margin-right: $padding;
       img.challengerImg,
       img.challengedImg {
         border-radius: 50%;
@@ -45,9 +52,9 @@ div#challengeDetail {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 0; 
+      padding: $padding 0; 
       font-weight: 400;
-      color: #D2D6D9;
+      color: #757575;
       i{
         margin-top: 5px;
         padding-right: 5px;
@@ -55,72 +62,17 @@ div#challengeDetail {
     }
   }
   .panel-body {
-    padding: 0px;
-    .row{
-      padding-left: 15px;
-      display: flex;
-      .leftChallenge{
-        padding: 15px;
-        padding-left: 30px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        div.type{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          i{
-            padding-right: 15px;
-            font-size: 150%;
-            margin-top: 5px;
-          }
-          span{
-            font-weight: 400;
-            color: #7D8995;
-          }
-        }
-        span.description{
-          font-weight: 300;
-          color: #7D8995;
-          padding: 15px 0;
-          display: flex;
-        }
-      }
-      .rightChallenge{
-        img{
-          width: 100%;
-        }
-      }
-    }
-  }
-  .panel-footer{
-    border-top: 1px solid #DEE2E5;
-    padding: 15px;
+    padding: $padding;
+    flex: 1;
     display: flex;
-    button{
-      flex: 1;
-    }
-    div{
-      flex: 3;
-      display: flex;
+    flex-direction: column;
+    .social{
+      // border: 1px solid blue;
       align-items: center;
       justify-content: flex-end;
+      display: flex;
       a:first-child{
-        color: #7D8995;
-        padding-right: 15px;
-        i{
-          margin-top: 5px;
-          color: #66D3E2;
-          padding-right: 5px;
-        }
-      }
-      a:last-child{
-        color: #7D8995;
-        i{
-          margin-top: 5px;
-          color: #66D3E2;
-          padding-right: 5px;
-        }
+        padding-right: $padding;
       }
     }
   }

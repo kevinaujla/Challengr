@@ -40,8 +40,33 @@ body {
   text-align: center;
 }
 
+.marginTop{
+  margin-top: 12px;
+}
+
+.leftSidePadding{
+  padding-left: $padding * 2;
+  padding-right: $padding;
+}
+
+.justifyCenter{
+  justify-content: center !important;
+}
+
+.alignCenter{
+  align-items: center !important;
+}
+
+.noPadding{
+  padding-top: 0px !important;
+}
+
 .shadow{
   text-shadow: 1px 1px 1px black;
+}
+
+.dark{
+  background-color: #182227 !important;
 }
 
 div.flexContainer{

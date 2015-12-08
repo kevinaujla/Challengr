@@ -6,22 +6,13 @@ Newsfeed in main view
 -->
 
 
-  <h1 class="mk">All Challenges</h1>  
-  <!-- Search -->
-  <div ng-init="newsfeedCtrl.read()">
-    <i class="mk icon-budicon-44"></i>  
-  </div>
-  
-  <!-- Search Bar -->
-<!--   <div id="searchBar" class="input-group" ng-init="newsfeedCtrl.read()">
-    <input type="text" class="form-control" placeholder="Search..." ng-model="search">
-    <span class="input-group-addon" id="sizing-addon2">
-      <i class="icon-budicon-44"></i>
-    </span>
-  </div> -->
+  <label class="mk bottomPadding centerTxt">All Challenges</label>  
 
-  <!-- Braintree Management -->
-  <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
+  <!-- Search Bar -->
+  <div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding">
+    <i class="mk icon-budicon-44"></i>  
+    <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+  </div>
 
   <!-- Challenges -->
   <challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
@@ -40,4 +31,5 @@ Newsfeed in main view
     type = 'challenge.type'>
   </challenge>
 
-
+  <!-- Braintree Management -->
+  <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->

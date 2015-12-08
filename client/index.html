@@ -21,75 +21,25 @@
 <body>
 
   <header ng-if="!signupOrLoginPage">
-    <div id="leftMenu">
-      <a ui-sref="home">
-        <i class="icon-budicon-14"></i>
-      </a>
-      <a ui-sref="newChallenge">
-        <i class="icon-budicon-48"></i>
-      </a>
-    </div>
-    <div id="rightMenu">
-      <a ui-sref="profile">
-        <i class="icon-budicon-21"></i>
-      </a>
-    </div>
+    <a ui-sref="home">
+      <i class="icon-budicon-14"></i>
+    </a>
+<!--     <a ui-sref="newChallenge">
+      <i class="icon-budicon-48"></i>
+    </a>
+    <a ui-sref="profile">
+      <i class="icon-budicon-21"></i>
+    </a> -->
   </header>
 
-  <div id="leftBar" class="above" ui-view="leftPane"></div>
+  <div id="leftBar" class="above" ng-class=" leftDetailView ? 'dark justifyCenter alignCenter' : '' " ui-view="leftPane"></div>
 
-  <div id="rightBar" class="above" ui-view="rightPane"></div>
+  <div id="rightBar" class="above" ng-class=" rightDetailView ? 'dark justifyCenter' : '' " ui-view="rightPane"></div>
 
-<!--   <div class="container-fluid">
-    <div class="row">
-      <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
-        <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
-          <a ui-sref="profile">
-            <img id="profileImg" ng-src="{{profileCtrl.photoURL}}">
-            <h5>{{profileCtrl.username}}</h5>
-          </a>
-          <span class="bar"></span>
-        </div>
-        <div>
-          <a ui-sref="newChallenge">
-            <i class="icon-budicon-47"></i>
-          </a>
-          <a ui-sref="home">
-            <i class="icon-home"></i>
-          </a>
-          <a ui-sref="profile">
-            <i class="icon-budicon-51"></i>
-          </a>
-        </div>
-      </div> -->
-      
-
-      <!-- <div ng-class=" signupOrLoginPage ? '' : 'col-xs-8' " ui-view></div> -->
-<!--       
-      <div id="rightBar" class="col-xs-3" ng-if="!signupOrLoginPage">
-        <div>
-          <div ng-controller="alertController">
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
-              {{alert.msg}}
-              <div class="alertIcon">
-                <i class="{{alert.icon}}"></i>
-              </div>
-            </uib-alert>
-          </div>
-        </div>
-
-        
-        <div ng-include="'script/module/user/challenge/challenge-personal.html'"></div>
-
-      </div>
-
-    </div>
-
-    <div ng-controller="loadingController as loadingController">
-      <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
-    </div>
-
-  </div> -->
+  <!-- Spinner -->
+  <div ng-controller="loadingController as loadingController">
+    <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+  </div>
 
   <!-- Bower Component Scripts -->
   <script src="lib/jquery/dist/jquery.min.js"></script>

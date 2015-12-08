@@ -5,9 +5,18 @@ loads all challenge related to the user
 
 -->
 
-<uib-tabset>
+<uib-tabset id="seg">
 
   <uib-tab heading="Your Challenges" active="challengeNC.tabs[1]">
+
+  <!-- Search Bar -->
+  <div id="searchBar">
+    <i class="mk icon-budicon-44"></i>  
+    <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+  </div>
+
+    <!-- challenges for currently logged in user -->
+    <div class="myChallenges" ng-init="personalChallengeC.readMyChallenges()">
 
     <p class="mk" ng-show="personalChallengeC.myChallenges.length === 0">Currently, no challenges to complete</p>
     <h1 class="mk" ng-show="personalChallengeC.myChallenges.length !== 0">You Got Challenged</h1>
@@ -36,7 +45,7 @@ loads all challenge related to the user
               <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challenge.likes}}
             </a>
             <a class="noViewChange">
-              {{charityamount*100}}<span class="linkBlue"> &#162</span>
+              {{challenge.charityAmount*100}}<span class="linkBlue"> &#162</span>
             </a>
           </div>
         </div>
