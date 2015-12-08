@@ -197,7 +197,9 @@ angular.module('App', [
       // templateUrl: 'script/module/newsfeed/newsfeed.html',
       views: {
         'leftPane': { 
-          template: ''
+          templateUrl: 'script/module/newsfeed/newsfeed.html',
+          controller: 'newsfeedCtrl',
+          controllerAs: 'newsfeedCtrl',
         },
         'rightPane': { 
           templateUrl: 'script/module/challenge/challenge-view.html',
@@ -207,6 +209,25 @@ angular.module('App', [
       },
       data: { authenticate: true }
     })
+
+    .state('viewChallengePersonal', {
+      url: '/challenge/detial/:id',
+      // templateUrl: 'script/module/newsfeed/newsfeed.html',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/challenge/challenge-view.html',
+          controller: 'challengeViewCtrl',
+          controllerAs: 'challengeViewCtrl', 
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/user/challenge/challenge-personal.html',
+          controller: 'personalChallengeCtrl',
+          controllerAs: 'personalChallengeC',
+        }
+      },
+      data: { authenticate: true }
+    })
+
     .state('home', {
       url: '/',
       // templateUrl: 'script/module/newsfeed/newsfeed.html',

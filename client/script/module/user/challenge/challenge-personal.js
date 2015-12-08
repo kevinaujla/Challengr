@@ -30,7 +30,7 @@ angular.module('App.personalChallenge', [])
 
   self.showDetail = function (challenge, event) {
     if (event.toElement.classList[0] !== 'noViewChange') {
-      $state.go('viewChallenge', {
+      $state.go('viewChallengePersonal', {
         id: challenge.id
       });
     }

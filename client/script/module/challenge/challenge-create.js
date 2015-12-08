@@ -77,8 +77,10 @@ angular.module('App.newChallenge', [])
   self.save = function () {
     loadingService.startSpin();
     // factory function
+    console.log('before creating challenge : ', challengeService.challenge);
     challengeFactory.createChallenge(challengeService.challenge)
       .then(function (data) {
+        console.log('data : ', data);
         var challenge = {
           title: challengeService.challenge.title,
           challenged: challengeService.challenge.challenged
@@ -95,9 +97,7 @@ angular.module('App.newChallenge', [])
 
   /* Braintree get token from server to load drop-in UI */
   self.getToken = function () {
-
     var brainTreeUserID = $window.localStorage.getItem('com.braintree');
-
     if (brainTreeUserID) {
       braintreeFactory.getToken(brainTreeUserID)
         .then(function (token) {
@@ -107,8 +107,11 @@ angular.module('App.newChallenge', [])
             container: 'payment-form',
             onPaymentMethodReceived: function (payload) {
 
-              payload.charityAmount = challengeService.challenge.charityAmount;
+              console.log('self.info : ', self.info);
 
+              payload.charityAmount = self.info.info.charityAmount;
+              challengeService.challenge.info.charityAmount = self.info.info.charityAmount;
+              console.log('charity amount : ', payload.charityAmount);
               // call checkout function
               braintreeFactory.checkout(payload)
                 .then(function(){
