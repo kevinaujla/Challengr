@@ -5,31 +5,30 @@ Newsfeed in main view
 
 -->
 
+<label class="mk bottomPadding centerTxt">All Challenges</label>  
 
-  <label class="mk bottomPadding centerTxt">All Challenges</label>  
+<!-- Search Bar -->
+<div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding">
+  <i class="mk icon-budicon-44"></i>  
+  <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+</div>
 
-  <!-- Search Bar -->
-  <div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding">
-    <i class="mk icon-budicon-44"></i>  
-    <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
-  </div>
+<!-- Challenges -->
+<challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
+  challengeid = 'challenge.id',
+  challengechallenged = 'challenge.Challenged',
+  challengechallenger = 'challenge.Challenger',
+  charityamount = 'challenge.charityAmount',
+  title = 'challenge.title',
+  description = 'challenge.description',
+  likes = 'challenge.likes',
+  completeddate = 'challenge.completed',
+  expiresdate = 'challenge.expiresDate',
+  issueddate = 'challenge.issuedDate',
+  completed = 'challenge.completed',
+  notcompleted = 'challenge.notCompleted',
+  type = 'challenge.type'>
+</challenge>
 
-  <!-- Challenges -->
-  <challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
-    challengeid = 'challenge.id',
-    challengechallenged = 'challenge.Challenged',
-    challengechallenger = 'challenge.Challenger',
-    charityamount = 'challenge.charityAmount',
-    title = 'challenge.title',
-    description = 'challenge.description',
-    likes = 'challenge.likes',
-    completeddate = 'challenge.completed',
-    expiresdate = 'challenge.expiresDate',
-    issueddate = 'challenge.issuedDate',
-    completed = 'challenge.completed',
-    notcompleted = 'challenge.notCompleted',
-    type = 'challenge.type'>
-  </challenge>
-
-  <!-- Braintree Management -->
-  <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
+<!-- Braintree Management -->
+<!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->

@@ -54,6 +54,16 @@ loads all challenge related to the user
     </div>
 
   </uib-tab>
+  <uib-tab heading="Challenges to Complete" active="challengeNC.tabs[2]">
+
+    <!-- Search Bar -->
+    <div id="searchBar">
+      <i class="mk icon-budicon-44"></i>  
+      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+    </div>
+
+    <!-- challenges imposed by currently logged in user -->
+    <div class="imposedChallenges" ng-init="personalChallengeC.readImposedChallenges()">
 
   <uib-tab heading="Challenges to Complete" active="challengeNC.tabs[2]" ng-init="personalChallengeC.readImposedChallenges()">
 

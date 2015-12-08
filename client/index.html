@@ -24,17 +24,18 @@
     <a ui-sref="home">
       <i class="icon-budicon-14"></i>
     </a>
-<!--     <a ui-sref="newChallenge">
+    <a ui-sref="newChallenge">
       <i class="icon-budicon-48"></i>
     </a>
     <a ui-sref="profile">
       <i class="icon-budicon-21"></i>
-    </a> -->
+    </a>
   </header>
 
+  <!-- <div id="leftBar" class="above" ng-class="{ leftDetailView ? 'dark justifyCenter alignCenter' : '' || topPadding ? 'noTopPadding' : '' }" ui-view="leftPane"></div> -->
   <div id="leftBar" class="above" ng-class=" leftDetailView ? 'dark justifyCenter alignCenter' : '' " ui-view="leftPane"></div>
 
-  <div id="rightBar" class="above" ng-class=" rightDetailView ? 'dark justifyCenter' : '' " ui-view="rightPane"></div>
+  <div id="rightBar" class="above" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
 
   <!-- Spinner -->
   <div ng-controller="loadingController as loadingController">

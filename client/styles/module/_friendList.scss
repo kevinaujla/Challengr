@@ -4,13 +4,40 @@
 
 ***/
 
+#friendDetail{
+  display: flex;
+  img{
+    border-radius: 50%;
+    margin-bottom: $padding;
+  }
+  // align-items: center;
+  // justify-content: center;
+  flex-direction: column;
+}
+
+#fullPane{
+  background: url('../image/cliff.jpg') no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  &:after{
+    background-color: rgba(0,0,0, 0.5);
+  }
+}
+
 ul.friendList {
-  padding-top: $padding;
+  list-style-type: none;
+  margin-top: $padding;
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
+  font-size: 18px;
   li {
     padding: $padding;
     border-bottom: 1px solid #EFF0F4;
     &:hover {
-      background-color: rgba(50, 49, 51, 0.07);
+      // background-color: rgba(50, 49, 51, 0.07);
+      box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.08);
+      text-decoration: none !important;
     }
     &.selected {
       border-left: 3px solid #88C057;
@@ -27,6 +54,9 @@ ul.friendList {
     p {
       display: inline-block;
       color: #70838D;
+      &:hover{
+        text-decoration: none !important;
+      }
     }
   }
 }

@@ -29,7 +29,8 @@ angular.module('App', [
   'angularSpinner',
   'App.loadingService',
   'App.loadingController',
-  'App.s3Factory'
+  'App.s3Factory',
+  'App.customFilter',
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -119,7 +120,7 @@ angular.module('App', [
 
         },
         'rightPane': { 
-          template: '' 
+          templateUrl: 'partial/challengePane.html' 
         }
       },
       data: {
@@ -130,7 +131,9 @@ angular.module('App', [
       url: '/challenge/create/detail',
       views: {
         'leftPane': { 
-          template: '' 
+          templateUrl: 'partial/friendDetail.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
         },
         'rightPane': { 
           templateUrl: 'script/module/challenge/steps/detail.html',
@@ -269,7 +272,7 @@ angular.module('App', [
     }
 
     // Right Detail View
-    if (toState.url === '/challenge/detail/:id') {
+    if (toState.url === '/challenge/detail/:id' || toState.url === '/challenge/create/detail') {
       $rootScope.leftDetailView = true;
     } else {
       $rootScope.leftDetailView = false;
