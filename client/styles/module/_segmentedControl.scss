@@ -1,0 +1,48 @@
+ul.nav.nav-tabs {
+  border: 1px solid #337AB7;
+  border-radius: 4px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: 0px solid transparent;
+  background-color: #337AB7;
+  color: white;
+  border-radius: 0px;
+  margin-right: 0px;
+}
+
+.nav-tabs > li {
+  width: 50%;
+  text-align: center;
+  &:first-child{
+    border-right: 1px solid #337AB7;
+    border-bottom: none;
+    margin-bottom: -1px;
+  }
+}
+
+.nav-tabs > li > a{
+  padding: 9px;
+  margin-bottom: -1px;
+  border-bottom: none;
+  margin-right: 0px;
+}
+
+
+.nav-tabs > li > a:first-child{
+  border-bottom-left-radius: 4px;
+}
+
+.nav-tabs > li > a:nth-child(2){
+  border-bottom-right-radius: 4px;
+}
+
+.nav-tabs > li > a:hover {
+  background-color: #337AB7;
+  border-radius: 0;
+  border: 0px solid #337AB7;
+  color: white;
+  &:last-child{
+    border-bottom-right-radius: 4px;
+  }
+}
