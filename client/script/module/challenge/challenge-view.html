@@ -38,7 +38,8 @@ view large details of single challenge
     </button>
     <div>
       <a href="" ng-click="challengeViewCtrl.increaseLike()">
-        <i class="icon-heart-empty"></i> {{challengeViewCtrl.challenge.likes}}
+        <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
+
       </a>
       <a href="">
         <i class="icon-dollar-bill"></i> {{challengeViewCtrl.challenge.charityAmount*100}}&#162;

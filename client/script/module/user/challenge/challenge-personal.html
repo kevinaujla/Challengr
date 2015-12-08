@@ -30,13 +30,22 @@ loads all challenge related to the user
           <span>{{challenge.title}}</span>
           <span>{{challenge.description}}</span>
         </div>
-        <div>
-          <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
-            <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
-          </a>
-          <a class="noViewChange">
-            <i class="noViewChange icon-dollar-bill"></i> {{charityamount*100}}&#162;
-          </a>
+        <div class="challenge--main">
+          <div>
+            <img class="challengedImage" ng-src="{{challenge.Challenger.photoURL}}">
+          </div>
+          <div>
+            <span>{{challenge.title}}</span>
+            <span>{{challenge.description}}</span>
+          </div>
+          <div>
+            <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
+              <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange"></i> {{challenge.likes}}
+            </a>
+            <a class="noViewChange">
+              <i class="noViewChange icon-dollar-bill"></i> {{charityamount*100}}&#162;
+            </a>
+          </div>
         </div>
       </div>
 
@@ -66,7 +75,7 @@ loads all challenge related to the user
         </div>
         <div>
           <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
-            <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
+            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange"></i> {{challenge.likes}}
           </a>
           <a class="noViewChange">
             {{charityamount*100}}&#162;
