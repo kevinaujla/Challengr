@@ -4,8 +4,37 @@ profile.html
 manage payments, signout, manage user information
 
 -->
-<h1>My Account</h1>
-<uib-tabset id="profile">
+<h1 class="mk">My Account</h1>
+
+<div ng-init="profileCtrl.getUser()">
+
+  <label class="mk">First Name</label>
+  <p class="mk">{{profileCtrl.firstName}}</p>
+
+  <label class="mk">Last Name</label>
+  <p class="mk">{{profileCtrl.lastName}}</p>
+
+  <label class="mk">Email</label>
+  <p class="mk">{{profileCtrl.email}}</p>
+
+  <div class="control-group">
+    <div class="controls">
+      <label class="mk">Profile Picture</label>
+      <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
+        <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
+        <span class="bar"></span>
+      </div>
+      <br>
+      <input class="hidden" id="photoUpload" ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
+      <label for="photoUpload" class="btn btn-default">Upload a new picture</label>
+    </div>
+  </div>
+
+</div>
+
+<button class="mk" ng-click="profileCtrl.signout()">Sign Out</button>
+
+<!-- <uib-tabset id="profile">
   <uib-tab heading="Profile" ng-init="profileCtrl.getUser()" id="account">
     <h1>First Name:</h1>
     <p>{{profileCtrl.firstName}}</p>
@@ -25,21 +54,7 @@ manage payments, signout, manage user information
         <label for="photoUpload" class="btn btn-default">Upload a new picture</label>
       </div>
     </div>
-    <!--     <button class="btn btn-primary address_submit" data-toggle="modal" ng-click="submit()">Submit</button> -->
-    <!--     <button class="btn btn-warning" ng-click="profileCtrl.updateUser()">Update</button> -->
+    <button class="btn btn-primary address_submit" data-toggle="modal" ng-click="submit()">Submit</button>
   </uib-tab>
-  <uib-tab heading="Billing Info" ng-init="profileCtrl.getBilling()">
-    <ul class="list-group billings">
-      <li class="list-group-item" ng-repeat="transaction in profileCtrl.transactions">
-        <span class="date">{{transaction.created | date : fullDate}}</span>
-        <span class="amount">${{transaction.amount}}</span>
-        <span class="creditCard">{{transaction.last4}}</span>
-        <img ng-src="{{transaction.imgUrl}}">
-      </li>
-    </ul>
-  </uib-tab>
-  <uib-tab heading="Settings">
-    <!-- Sign Out -->
-    <button class="btn btn-danger" ng-click="profileCtrl.signout()">Sign Out</button>
-  </uib-tab>
-</uib-tabset>
+
+</uib-tabset> -->

@@ -20,6 +20,22 @@
 <script src="lib/socket.io-client/socket.io.js"></script>
 <body>
 
+    <header ng-if="!signupOrLoginPage">
+      <div id="leftMenu">
+        <a ui-sref="home">
+          <i class="icon-budicon-14"></i>
+        </a>
+        <a ui-sref="newChallenge">
+          <i class="icon-budicon-48"></i>
+        </a>
+      </div>
+      <div id="rightMenu">
+        <a ui-sref="profile">
+          <i class="icon-budicon-21"></i>
+        </a>
+      </div>
+    </header>
+
     <div id="leftBar" ui-view="leftPane"></div>
 
     <div id="rightBar" ui-view="rightPane"></div>

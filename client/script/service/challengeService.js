@@ -11,4 +11,6 @@ angular.module('App.challengeService', [])
 
   this.challenges = [];
 
+  this.challenge = {};
+
 }]);

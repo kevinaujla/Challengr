@@ -1,25 +1,27 @@
-<h1>Create Challenge</h1>
+<h1 class="mk">Challenge Details</h1>
 
-<div>
-  <label>Challenge Type</label>
-  <input type="text">
-</div>
+<form class="mk" name="challengeForm" ng-submit="challengeNC.submitChallengeDetail()">
 
-<div>
-  <label>Title</label>
-  <input type="text">
-</div>
+  <div class="column">
+    <label class="mk">Type</label>
+    <input class="mk active" type="text" ng-model="challengeNC.info.type" required>
+  </div>
 
-<div>
-  <label>Description</label>
-  <input class="active" type="text">
-</div>
+  <div class="column">
+    <label class="mk">Title</label>
+    <input class="mk" type="text" ng-model="challengeNC.info.title" required>
+  </div>
 
-<div>
-  <button>Next</button>
-</div>  
+  <div class="column">
+    <label class="mk">Description</label>
+    <input class="mk" type="text" ng-model="challengeNC.info.description" required>
+  </div>
 
-<span>
-  Need an account? 
-  <a href="#">Sign Up</a>
+  <button class="mk" type="submit">Next</button>
+
+</form>
+
+<span class="mk">
+  Choose a different friend to challenge? 
+  <a ui-sref="newChallenge">Back</a>
 </span>

@@ -1,0 +1,37 @@
+header{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  div#leftMenu{
+    flex: 1;
+    height: 100px;
+    display: flex;
+    // background-color: blue;
+    justify-content: flex-start;
+    align-items: center;
+    // padding-top: $padding * 1;
+    padding-left: $padding * 2;
+    i{
+      font-size: 300%;
+      // border: 1px solid red;
+    }   
+  }
+  div#rightMenu{
+    flex: 1;
+    height: 100px;
+    // background-color: red;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    // padding-top: $padding * 1;
+    padding-right: $padding * 2;
+    i{
+      font-size: 300%;
+      // border: 1px solid red;
+    } 
+
+  }
+}

@@ -1,1 +1,12 @@
-<h1>Choose Friend</h1>
+<h1 class="mk">Choose Friend</h1>
+
+<div>
+  <ul class="friendList" ng-init="challengeNC.loadFriends()">
+    <a ui-sref="createChallengeDetail" ng-repeat="friend in challengeNC.friends | filter : friendSearch | limitTo : 5">
+      <li ng-class="{ 'selected' : challengeNC.selectedFriend === $index }" ng-click="challengeNC.addFriend(friend, $index)">
+        <img ng-src="image/placeholder.png">
+        <p>{{friend.firstName}} {{friend.lastName}}</p>
+      </li>
+    </a>
+  </ul>
+</div>

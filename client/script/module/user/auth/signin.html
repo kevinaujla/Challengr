@@ -9,28 +9,28 @@ creates sign in view
 
 <!-- RE-DESIGN -->
 
-  <h1>Sign In</h1>
+  <h1 class="mk">Sign In</h1>
 
-  <form class="spread" name="signinForm" ng-submit="authCtrl.signin()">
-  
+  <form class="mk" name="signinForm" ng-submit="authCtrl.signin()">
+
     <div class="column">
-      <label>Your Email</label>
-      <input ng-model="authCtrl.email" class="active" type="text">
+      <label class="mk">Your Email</label>
+      <input class="mk active" ng-model="authCtrl.email" type="text">
     </div>
 
     <div class="column">
-      <label>Password</label>
-      <input ng-model="authCtrl.password" type="password">
+      <label class="mk">Password</label>
+      <input class="mk" ng-model="authCtrl.password" type="password">
     </div>
 
     <div class="column">
-      <button type="submit">Sign In</button>
+      <button class="mk" type="submit">Sign In</button>
     </div>  
   </form>
 
-  <span>
+  <span class="mk">
     Need an account? 
-    <a ui-sref="signup">Sign Up</a>
+    <a class="mk" ui-sref="signup">Sign Up</a>
   </span>
 
 

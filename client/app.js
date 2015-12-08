@@ -70,9 +70,18 @@ angular.module('App', [
     })
     .state('profile', {
       url: '/profile',
-      templateUrl: 'script/module/user/profile/profile.html',
-      controller: 'profileCtrl',
-      controllerAs: 'profileCtrl',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/user/profile/profile.html',
+          controller: 'profileCtrl',
+          controllerAs: 'profileCtrl',
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/user/profile/billing.html',
+          controller: 'profileCtrl',
+          controllerAs: 'profileCtrl',
+        }
+      },
       data: {
         authenticate: true
       }
@@ -118,8 +127,11 @@ angular.module('App', [
           templateUrl: 'script/module/challenge/steps/friend.html',
           controller: 'challengeNewCtrl',
           controllerAs: 'challengeNC',
+
         },
-        'rightPane': { template: '' }
+        'rightPane': { 
+          template: '' 
+        }
       },
       data: {
         authenticate: true
@@ -145,12 +157,14 @@ angular.module('App', [
       url: '/challenge/create/charity',
       views: {
         'leftPane': { 
-          templateUrl: 'script/module/challenge/steps/charity.html',
+          templateUrl: 'script/module/challenge/steps/charity1.html',
           controller: 'challengeNewCtrl',
           controllerAs: 'challengeNC',
         },
         'rightPane': { 
-          template: '' 
+          templateUrl: 'script/module/challenge/steps/charity2.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
         }
       },
       data: {
@@ -161,28 +175,14 @@ angular.module('App', [
       url: '/challenge/create/payment',
       views: {
         'leftPane': { 
-          template: '' 
-        },
-        'rightPane': { 
-          templateUrl: 'script/module/challenge/steps/payment.html',
-          controller: 'challengeNewCtrl',
-          controllerAs: 'challengeNC',
-        }
-      },
-      data: {
-        authenticate: true
-      }
-    })
-    .state('createChallengeFinal', {
-      url: '/challenge/create/final',
-      views: {
-        'leftPane': { 
           templateUrl: 'script/module/challenge/steps/final.html',
           controller: 'challengeNewCtrl',
           controllerAs: 'challengeNC',
         },
         'rightPane': { 
-          template: '' 
+          templateUrl: 'script/module/challenge/steps/payment.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
         }
       },
       data: {
@@ -216,7 +216,11 @@ angular.module('App', [
           controller: 'newsfeedCtrl',
           controllerAs: 'newsfeedCtrl',
         },
-        'rightPane': { template: '' }
+        'rightPane': { 
+          templateUrl: 'script/module/user/challenge/challenge-personal.html',
+          controller: 'personalChallengeCtrl',
+          controllerAs: 'personalChallengeC',
+        }
       },
       data: { authenticate: true }
     });

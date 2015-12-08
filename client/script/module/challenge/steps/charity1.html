@@ -1,0 +1,39 @@
+<a ng-click="challengeNC.chooseCharity(challengeNC.charities[0])">
+  <div class="column" ng-init="challengeNC.getCharity()">
+    
+    <h1 class="mk">{{challengeNC.charities[0].name}}</h1>
+
+    <label class="mk">{{challengeNC.charities[0].description}}</label>
+        
+    <a class="mk" href="{{challengeNC.charities[0].link}}">
+      {{challengeNC.charities[0].link}}
+    </a>    
+
+  </div>
+</a>
+
+<span class="mk">
+  Edit Challenge? 
+  <a ui-sref="createChallengeDetail">Back</a>
+</span>
+
+<!-- Background Image -->
+<!-- <img ng-src="{{challengeNC.charities[0].imgUrl}}" width="100%"> -->
+
+<!-- <uib-tab heading="Pick Charity" active="challengeNC.tabs[1]">
+  <div class="row" ng-init="challengeNC.getCharity()">
+    <ul class="grid-testimonials">
+      <a href="">
+        <li ng-repeat="charity in challengeNC.charities" ng-class="{ 'selectedCharity' : challengeNC.selectedIndex === $index }" ng-click="challengeNC.chooseCharity(charity, $index)">
+          <div>
+            <h1>{{charity.name}}</h1>
+            <p>{{charity.description}}</p>
+            <a href="{{charity.link}}">{{charity.link}}</a>
+            <span class="quote-arrow"></span>
+          </div>
+          <span class="grid-testimonials-citation"><img ng-src="{{charity.imgUrl}}" width="100%"></span>
+        </li>
+      </a>
+    </ul>
+  </div>
+</uib-tab> -->

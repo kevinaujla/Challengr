@@ -9,39 +9,39 @@ signup.html
 
 <!-- RE-DESIGN -->
 
-  <h1>Sign Up</h1>
+  <h1 class="mk">Sign Up</h1>
 
-  <form class="spread" name="signupForm" ng-submit="authCtrl.signup()">
-
-    <div class="column">
-      <label>Full Name</label>
-      <input ng-model="authCtrl.firstName" class="active" type="text" required>
-    </div>
-
-<!--     <div class="column">
-      <label>Last Name</label>
-      <input ng-model="authCtrl.lastName" type="text" required>
-    </div> -->
+  <form class="mk" name="signupForm" ng-submit="authCtrl.signup()">
 
     <div class="column">
-      <label>Your Email</label>
-      <input ng-model="authCtrl.email" type="text" required>
+      <label class="mk">First Name</label>
+      <input class="mk active" ng-model="authCtrl.firstName" type="text" required>
     </div>
 
     <div class="column">
-      <label>Password</label>
-      <input ng-model="authCtrl.password" type="password" required>
+      <label class="mk">Last Name</label>
+      <input class="mk" ng-model="authCtrl.lastName" type="text" required>
     </div>
 
     <div class="column">
-      <p>I agree to the <br><a href="">terms of use</a> and <a href="">privacy policy</a></p>
-      <button type="submit">Sign Up</button>
+      <label class="mk">Your Email</label>
+      <input  class="mk"ng-model="authCtrl.email" type="text" required>
+    </div>
+
+    <div class="column">
+      <label class="mk">Password</label>
+      <input  class="mk"ng-model="authCtrl.password" type="password" required>
+    </div>
+
+    <div class="column">
+      <p class="mk">I agree to the <br><a href="">terms of use</a> and <a href="">privacy policy</a></p>
+      <button  class="mk"type="submit">Sign Up</button>
     </div>  
   </form>
 
-  <span>
+  <span class="mk">
     Have an account? 
-    <a ui-sref="signin">Sign In</a>
+    <a class="mk" ui-sref="signin">Sign In</a>
   </span>
 
 

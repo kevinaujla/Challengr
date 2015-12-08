@@ -1,0 +1,14 @@
+<a ng-click="challengeNC.chooseCharity(challengeNC.charities[1])">
+  <div class="column" ng-init="challengeNC.getCharity()">
+    
+    <h1 class="mk">{{challengeNC.charities[1].name}}</h1>
+
+    <label class="mk">{{challengeNC.charities[1].description}}</label>
+        
+    <a class="mk" href="{{challengeNC.charities[1].link}}">
+      {{challengeNC.charities[1].link}}
+    </a>    
+
+  </div>
+</a>
+

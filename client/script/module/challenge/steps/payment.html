@@ -1,1 +1,15 @@
-<h1>Payment</h1>
+<h1 class="mk">Payment</h1>
+
+<form class="mk" id="checkout" ng-init="challengeNC.getToken()">
+  
+  <div id="payment-form"></div>
+
+  <div class="btn-group btn-group-justified charityAmount">
+    <label class="btn btn-primary" ng-model="challengeNC.info.charityAmount" uib-btn-radio="'.25'">25&#162;</label>
+    <label class="btn btn-primary" ng-model="challengeNC.info.charityAmount" uib-btn-radio="'.50'">50&#162;</label>
+    <label class="btn btn-primary" ng-model="challengeNC.info.charityAmount" uib-btn-radio="'1.00'">100&#162;</label>
+  </div>
+  
+  <button class="mk" type="submit">Create Challenge</button>
+
+</form>

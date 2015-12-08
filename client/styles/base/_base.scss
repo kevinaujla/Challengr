@@ -18,13 +18,13 @@
 
 body {
   /*** Headers ***/
-  @include headersDark();
+  // @include headersDark();
 
-  /*** Lists ***/
-  @include lists();
+  // /*** Lists ***/
+  // @include lists();
 
-  /*** Links ***/
-  @include links(); 
+  // /*** Links ***/
+  // @include links(); 
 
   /*** Font ***/
   font-family: $font;

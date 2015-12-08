@@ -7,33 +7,9 @@ CRUD for challenges
 
 angular.module('App.newChallenge', [])
 
-.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'loadingService', 'alertService', 'charityFactory', 'braintreeFactory', '$window', '$state', 'socket', function (userFactory, challengeFactory, loadingService, alertService, charityFactory, braintreeFactory, $window, $state, socket) {
+.controller('challengeNewCtrl', ['userFactory', 'challengeFactory', 'loadingService', 'alertService', 'challengeService', 'charityFactory', 'braintreeFactory', '$window', '$state', 'socket', function (userFactory, challengeFactory, loadingService, alertService, challengeService, charityFactory, braintreeFactory, $window, $state, socket) {
 
   var self = this;
-
-  self.info = {};
-
-  /* Steps Tabs */
-  self.tabs = [true, false, false];
-  self.currentTab = 0;
-
-  /* Next Step */
-  self.nextTab = function () {
-    if (self.currentTab < 2) {
-      self.tabs[self.currentTab] = false;
-      self.currentTab++;
-      self.tabs[self.currentTab] = true;
-    }
-  };
-
-  /* Previous Step */
-  self.prevTab = function () {
-    if (self.currentTab > 0) {
-      self.tabs[self.currentTab] = false;
-      self.currentTab--;
-      self.tabs[self.currentTab] = true;
-    }
-  };
 
   /* Braintree search if customer exists */
   self.searchCustomer = function () {
@@ -43,8 +19,7 @@ angular.module('App.newChallenge', [])
       });
   };
 
-  /*** Step1 ***/
-  self.selectedFriend = null;
+  /*** Step1 Choose Friend ***/
 
   /* Load Users from DB */
   self.loadFriends = function () {
@@ -59,18 +34,25 @@ angular.module('App.newChallenge', [])
 
   /* Add selected friend to create challenge service */
   self.addFriend = function (friend, index) {
-    self.info.challenged = friend;
-    self.selectedFriend = index;
+    challengeService.challenge.challenged = friend;
   };
 
-  /*** Step 2 ***/
+  /*** Step 2 Create Challenge Details ***/
+  self.info = {}
+
+  self.submitChallengeDetail = function(){
+    // check if everything has been filled out and go to pick a charity step
+    challengeService.challenge.info = self.info;
+    $state.go('createChallengeCharity');
+  }
+
+  /*** Step 3 Choose Charity ***/
   self.charities = [];
-  self.selectedIndex = null;
 
   /* Choose Charity to donate to */
   self.chooseCharity = function (charity, index) {
-    self.info.charity = charity;
-    self.selectedIndex = index;
+    challengeService.challenge.charity = charity;
+    $state.go('createChallengePayment');
   };
 
   /* Get all charities from DB */
@@ -85,15 +67,21 @@ angular.module('App.newChallenge', [])
       });
   };
 
+  /*** Step 4 Payment and Overview ***/
+
+  self.loadFromServiceObj = function(){
+    self.info = challengeService.challenge;
+  };
+
   /* Create challenge */
   self.save = function () {
     loadingService.startSpin();
     // factory function
-    challengeFactory.createChallenge(self.info)
+    challengeFactory.createChallenge(challengeService.challenge)
       .then(function (data) {
         var challenge = {
-          title: self.info.title,
-          challenged: self.info.challenged
+          title: challengeService.challenge.title,
+          challenged: challengeService.challenge.challenged
         };
         socket.emit('newChallenge', challenge);
         loadingService.stopSpin();
@@ -119,7 +107,7 @@ angular.module('App.newChallenge', [])
             container: 'payment-form',
             onPaymentMethodReceived: function (payload) {
 
-              payload.charityAmount = self.info.charityAmount;
+              payload.charityAmount = challengeService.challenge.charityAmount;
 
               // call checkout function
               braintreeFactory.checkout(payload)
