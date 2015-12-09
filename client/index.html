@@ -21,15 +21,31 @@
 <body>
 
   <header ng-if="!signupOrLoginPage">
-    <a ui-sref="home">
-      <i class="icon-budicon-14"></i>
-    </a>
-    <a ui-sref="newChallenge">
-      <i class="icon-budicon-48"></i>
-    </a>
-    <a ui-sref="profile">
-      <i class="icon-budicon-21"></i>
-    </a>
+
+    <ul id="dropDownMenu">
+      <li class="drop">
+        <a href="#">
+          <i class="300 icon-budicon-14"></i>
+        </a>
+        <div class="dropdownContain">
+          <div class="dropOut">
+            <div class="triangle"></div>
+            <ul id="innerDropDown">
+              <li ui-sref="newChallenge">
+                <i class="smaller icon-budicon-48 smallMargin"></i>
+                Create
+              </li>
+              <li ui-sref="home">
+                <i class="smaller icon-home"></i>
+              </li>
+              <li ui-sref="profile">
+                <i class="smaller icon-budicon-20"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
   </header>
 
 
