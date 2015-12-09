@@ -127,6 +127,10 @@ input.mk{
     background-color: white;
     box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.17);
   }
+  &.activeFront{
+    background-color: white;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 1);
+  }
 } 
 
 h1.mk{
