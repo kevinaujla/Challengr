@@ -10,7 +10,7 @@
     <label class="btn btn-primary" ng-model="challengeNC.info.info.charityAmount" uib-btn-radio="'1.00'">100&#162;</label>
   </div>
   
-  <button class="mk marginTop" type="submit">Create Challenge</button>
+  <button class="mk marginTop" type="submit" ng-disabled="!challengeNC.info.info.charityAmount ? true : false">Create Challenge</button>
 
   <span class="mk column alignCenter marginTop3 white">
     Choose a different charity to donate too?  
