@@ -10,12 +10,12 @@ loads all challenge related to the user
 
     <div id="searchBar">
       <i class="mk icon-budicon-44"></i>  
-      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="myChallengesSearch">
     </div>
 
     <p class="mk" ng-show="personalChallengeC.myChallenges.length === 0">Currently, no challenges to complete</p>
 
-    <div class="challenge" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+    <div class="challenge" ng-repeat="challenge in personalChallengeC.myChallenges | filter : myChallengesSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
 
       <div class="challenge--heading">
         <div class="type">
@@ -52,14 +52,14 @@ loads all challenge related to the user
 
     <div id="searchBar">
       <i class="mk icon-budicon-44"></i>  
-      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="imposedChallengeSearch">
     </div>
 
     <p class="mk" ng-show="personalChallengeC.imposedChallenges.length === 0">You haven't challenged anyone lately...
     </p>
     <button class="mk center marginTop3" ui-sref="newChallenge">Challenge Someone</button>
 
-    <div class="challenge" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+    <div class="challenge" ng-repeat="challenge in personalChallengeC.imposedChallenges | filter : imposedChallengeSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
 
       <div class="challenge--heading">
         <div class="type">
