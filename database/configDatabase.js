@@ -54,7 +54,7 @@ module.exports = function (db) {
         defaults: {
           link: 'https://uwba.org/',
           description: 'Together we are making great strides to help the 1 in 4 Bay Area families living in poverty. Thanks to your support, we helped connect more than 250,000 people with services like food pantry access, financial coaching, education support and more last year.',
-          imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/ActionAgainstHungerLogo.jpg'
+          imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/uwba.jpg',
         }
       }).spread(function (charity, created) {
         return db.Charity.findOrCreate({
@@ -64,7 +64,7 @@ module.exports = function (db) {
           defaults: {
             link: 'http://www.swords-to-plowshares.org/',
             description: 'All veterans will have access to the care and services they need to rebuild their lives. War causes wounds and suffering that last beyond the battlefield. Swords to Plowshares’ mission is to heal the wounds, to restore dignity, hope, and self-sufficiency to all veterans in need, and to prevent and end homelessness and poverty among veterans.',
-            imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/BitGiveLogo.png'
+            imgUrl: 'https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/swords.png',
           }
         }).spread(function (charity, created) {
 

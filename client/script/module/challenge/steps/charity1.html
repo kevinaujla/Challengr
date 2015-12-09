@@ -11,7 +11,7 @@
       </a>    
 
       <span class="column alignCenter">
-        <img class="circle" src="image/uwba.jpg" width="10%">  
+        <img class="circle" src="{{challengeNC.charities[0].imgUrl}}" width="10%">  
       </span>
       
 
@@ -23,24 +23,3 @@
     <button class="mk-complete2 marginTop" ui-sref="createChallengeDetail">Back</button>
   </span> -->
 </div>
-
-<!-- Background Image -->
-<!-- <img ng-src="{{challengeNC.charities[0].imgUrl}}" width="100%"> -->
-
-<!-- <uib-tab heading="Pick Charity" active="challengeNC.tabs[1]">
-  <div class="row" ng-init="challengeNC.getCharity()">
-    <ul class="grid-testimonials">
-      <a href="">
-        <li ng-repeat="charity in challengeNC.charities" ng-class="{ 'selectedCharity' : challengeNC.selectedIndex === $index }" ng-click="challengeNC.chooseCharity(charity, $index)">
-          <div>
-            <h1>{{charity.name}}</h1>
-            <p>{{charity.description}}</p>
-            <a href="{{charity.link}}">{{charity.link}}</a>
-            <span class="quote-arrow"></span>
-          </div>
-          <span class="grid-testimonials-citation"><img ng-src="{{charity.imgUrl}}" width="100%"></span>
-        </li>
-      </a>
-    </ul>
-  </div>
-</uib-tab> -->
