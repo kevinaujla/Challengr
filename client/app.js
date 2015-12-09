@@ -285,6 +285,13 @@ angular.module('App', [
       $rootScope.topPadding = false;
     }
 
+    // Menu Bar
+    if (toState.url === '/profile' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/payment') {
+      $rootScope.lightStyle = true;
+    } else {
+      $rootScope.lightStyle = false;
+    }
+
 
     // Signin and Signup
     if (toState.url === '/signin' || toState.url === '/signup') {
