@@ -49,7 +49,6 @@ angular.module('App.profile', [])
         //   });
 
         var name = localStorage.getItem('com.challengr.firstName');
-        name += 'profileImg'; // firstNameprofileImg
 
         s3Factory.updatePicture(reader.result, name)
           .then(function (data) {

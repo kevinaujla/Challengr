@@ -55,6 +55,10 @@ loads all challenge related to the user
       <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
     </div>
 
+    <p class="mk" ng-show="personalChallengeC.imposedChallenges.length === 0">You haven't challenged anyone lately...
+    </p>
+    <button class="mk center marginTop3" ui-sref="newChallenge">Challenge Someone</button>
+
     <div class="challenge" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
 
       <div class="challenge--heading">
