@@ -15,13 +15,11 @@
 
 </div>
 
-<p class="mk">{{challengeNC.info.info.title | capitalize}}</p>
+<p class="mk">{{challengeNC.info.info.type | capitalize}} - {{challengeNC.info.info.title | capitalize}}</p>
 <p class="mk">{{challengeNC.info.info.description | capitalize}}</p>
 
 <label class="mk">Donating to</label>
 <p class="mk">{{challengeNC.info.charity.name}}</p>
-
-<span class="mk column alignCenter">
-  Choose a different charity to donate too?  
-  <button class="mk-complete2 marginTop" ui-sref="createChallengeCharity">Back</button>
+<span class="column alignCenter">
+  <img class="circle" src="image/uwba.jpg" width="10%">  
 </span>

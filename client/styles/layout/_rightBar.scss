@@ -4,6 +4,16 @@
 
 ***/
 
+div#rightBarFront{
+  // border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
 div#rightBar{
   // border: 2px solid blue;
   display: flex;

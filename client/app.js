@@ -44,12 +44,12 @@ angular.module('App', [
       // templateUrl: 'script/module/user/auth/signin.html',
       views: {
         'leftPane': { 
-          templateUrl: 'partial/signinPane.html', 
-        },
-        'rightPane': { 
           templateUrl: 'script/module/user/auth/signin.html',
           controller: 'authCtrl',
           controllerAs: 'authCtrl',
+        },
+        'rightPane': { 
+          templateUrl: 'partial/signinPane.html', 
         }
       },
       data: {
@@ -61,12 +61,12 @@ angular.module('App', [
       // templateUrl: 'script/module/user/auth/signup.html',
       views: {
         'leftPane': { 
-          templateUrl: 'partial/signinPane.html', 
-        },
-        'rightPane': { 
           templateUrl: 'script/module/user/auth/signup.html',
           controller: 'authCtrl',
           controllerAs: 'authCtrl', 
+        },
+        'rightPane': { 
+          templateUrl: 'partial/signinPane.html', 
         }
       },
       data: {
@@ -167,12 +167,12 @@ angular.module('App', [
       url: '/challenge/create/payment',
       views: {
         'leftPane': { 
-          templateUrl: 'partial/reviewDetail.html',
+          templateUrl: 'script/module/challenge/steps/payment.html',
           controller: 'challengeNewCtrl',
           controllerAs: 'challengeNC',
         },
         'rightPane': { 
-          templateUrl: 'script/module/challenge/steps/payment.html',
+          templateUrl: 'partial/reviewDetail.html',
           controller: 'challengeNewCtrl',
           controllerAs: 'challengeNC',
         }

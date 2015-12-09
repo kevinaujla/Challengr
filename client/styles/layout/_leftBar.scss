@@ -4,6 +4,17 @@
 
 ***/
 
+div#leftBarFront{
+  // border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
 div#leftBar{
   // border: 2px solid green;
   display: flex;
