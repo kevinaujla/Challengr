@@ -22,10 +22,11 @@ challenge{
 }
 
 .challenge {
-
-  margin: 5px 0;
+  margin: 0;
+  margin-bottom: 10px;
   border: 1px solid rgba(222, 226, 229, 0.32);
   border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   /* padding: $padding; */
   &:hover {
     box-shadow: 0px 0px 10px #AFAFAF;
@@ -137,13 +138,29 @@ challenge{
   }
 }
 
+.notCompleted{
+  border: 1px solid rgba(255, 0, 0, 0.05) !important;
+}
+.completeSuccess{
+  border: 1px solid rgba(67, 203, 131, 0.12) !important;
+  div:nth-child(3),
+  div:nth-child(4),
+  div:last-child {
+    border-left: 1px solid rgba(90, 209, 146, 0.1) !important;
+  }
+}
+
 .completed {
   display: flex;
   border: 1px solid #DEE2E5;
   border-radius: 4px;
-  margin-top: $padding;
-  margin-bottom: $padding;
+  margin-bottom: 10px;
   align-items: center;
+  a{
+    &:hover{
+      text-decoration: none;
+    }
+  }
   &:hover {
     box-shadow: 0px 0px 10px #AFAFAF;
     cursor: pointer;
@@ -153,8 +170,23 @@ challenge{
     color: #66D3E2;
     font-size: 150%;
     padding-left: $padding;
-    .icon-close-delete {
+    .icon-checkbox{
+      color: #43CB83;
+      &:before{
+        position: absolute;
+        margin-top: -13px;
+        font-size: 130%;
+        margin-left: -4px;
+      }
+    }
+    .icon-budicon-57{
       color: #FF7978;
+      &:before{
+        position: absolute;
+        margin-top: -13px;
+        font-size: 130%;
+        margin-left: -4px;
+      }
     }
   }
   div:nth-child(2) {
@@ -162,20 +194,18 @@ challenge{
     padding: $padding;
     color: #7D8995;
     font-size: 14px;
+    padding-left: $padding * 2 + 2;
   }
   div:nth-child(3) {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding: $padding;
-    color: #D2D6D9;
+    color: #A8ACB9;
   }
+  div:nth-child(3),
   div:nth-child(4),
   div:last-child {
     padding: $padding;
-    border-left: 1px solid #DEE2E5;
+    border-left: 1px solid rgba(255, 121, 120, 0.1);
     font-size: 100%;
-    background-color: #F7F8FA;
+    background-color: rgba(247, 248, 250, 0.2);
   }
 }
 

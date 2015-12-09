@@ -8,7 +8,9 @@
   display: flex;
   img{
     border-radius: 50%;
-    margin-bottom: $padding;
+    margin-bottom: 15px;
+    max-width: 35%;
+    margin: auto;
   }
   // align-items: center;
   // justify-content: center;
