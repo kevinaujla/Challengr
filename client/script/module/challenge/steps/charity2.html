@@ -1,14 +1,19 @@
-<a ng-click="challengeNC.chooseCharity(challengeNC.charities[1])">
-  <div class="column" ng-init="challengeNC.getCharity()">
-    
-    <h1 class="mk">{{challengeNC.charities[1].name}}</h1>
+<div id="charityBG2" ng-click="challengeNC.chooseCharity(challengeNC.charities[1])">
+  <a>
+    <div class="column" ng-init="challengeNC.getCharity()">
+      
+      <label class="mk marginTop4">{{challengeNC.charities[1].name}}</label>
 
-    <label class="mk">{{challengeNC.charities[1].description}}</label>
-        
-    <a class="mk" href="{{challengeNC.charities[1].link}}">
-      {{challengeNC.charities[1].link}}
-    </a>    
+      <p class="mk">{{challengeNC.charities[1].description}}</p>
+          
+      <a class="mk white" target="_blank" href="{{challengeNC.charities[1].link}}">
+        {{challengeNC.charities[1].link}}
+      </a>    
 
-  </div>
-</a>
+      <span class="column alignCenter">
+        <img class="circle" src="image/swords.png" width="10%">  
+      </span>
 
+    </div>
+  </a>
+</div>

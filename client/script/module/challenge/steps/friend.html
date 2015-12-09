@@ -1,5 +1,4 @@
-
-<label class="mk centerTxt">Choose Friend</label>  
+<label class="mk centerTxt marginTop4">Choose Friend</label>  
 
 <!-- Search Bar -->
 <div id="searchBar" class="marginTop leftSidePadding">
@@ -10,7 +9,7 @@
 <ul class="friendList" ng-init="challengeNC.loadFriends()">
   <a ui-sref="createChallengeDetail" ng-repeat="friend in challengeNC.friends | filter : friendSearch | limitTo : 5">
     <li ng-class="{ 'selected' : challengeNC.selectedFriend === $index }" ng-click="challengeNC.addFriend(friend, $index)">
-      <img ng-src="image/placeholder.png">
+      <img ng-src="{{friend.photoURL}}">
       <p>{{friend.firstName | capitalize}} {{friend.lastName | capitalize}}</p>
     </li>
   </a>

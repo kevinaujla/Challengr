@@ -1,28 +1,32 @@
 
-<label class="mk centerTxt">Challenge Details</label>  
+<label class="mk centerTxt marginTop4">Challenge Details</label>  
 
-<form class="mk" name="challengeForm" ng-submit="challengeNC.submitChallengeDetail()">
+<div id="challengeDetailStep">
+  <form class="mk" name="challengeForm" ng-submit="challengeNC.submitChallengeDetail()">
 
-  <div class="column">
-    <label class="mk">Type</label>
-    <input class="mk active" type="text" ng-model="challengeNC.info.type" required>
-  </div>
+    <div class="column">
+      <label class="mk">Type</label>
+      <input class="mk active" type="text" ng-model="challengeNC.info.type" required>
+    </div>
 
-  <div class="column">
-    <label class="mk">Title</label>
-    <input class="mk" type="text" ng-model="challengeNC.info.title" required>
-  </div>
+    <div class="column">
+      <label class="mk">Title</label>
+      <input class="mk" type="text" ng-model="challengeNC.info.title" required>
+    </div>
 
-  <div class="column">
-    <label class="mk">Description</label>
-    <input class="mk" type="text" ng-model="challengeNC.info.description" required>
-  </div>
+    <div class="column">
+      <label class="mk">Description</label>
+      <input class="mk" type="text" ng-model="challengeNC.info.description" required>
+    </div>
 
-  <button class="mk" type="submit">Next</button>
+    <div class="column marginTop2">
+      <button class="mk" type="submit">Next</button>  
+    </div>
 
-</form>
+  </form>
 
-<span class="mk">
-  Choose a different friend to challenge? 
-  <a ui-sref="newChallenge">Back</a>
-</span>
+  <span class="mk column alignCenter">
+    Choose a different friend to challenge? 
+    <button class="mk-complete2 marginTop" ui-sref="newChallenge">Back</button>
+  </span>
+</div>

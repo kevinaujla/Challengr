@@ -167,7 +167,7 @@ angular.module('App', [
       url: '/challenge/create/payment',
       views: {
         'leftPane': { 
-          templateUrl: 'script/module/challenge/steps/final.html',
+          templateUrl: 'partial/reviewDetail.html',
           controller: 'challengeNewCtrl',
           controllerAs: 'challengeNC',
         },
@@ -272,7 +272,7 @@ angular.module('App', [
     }
 
     // Right Detail View
-    if (toState.url === '/challenge/detail/:id' || toState.url === '/challenge/create/detail') {
+    if (toState.url === '/challenge/detail/:id' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment') {
       $rootScope.leftDetailView = true;
     } else {
       $rootScope.leftDetailView = false;

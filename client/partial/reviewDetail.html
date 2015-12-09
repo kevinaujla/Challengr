@@ -1,0 +1,27 @@
+<!-- <div id="reviewDetail" >
+  <img ng-src="{{challengeNC.info.challenged.photoURL}}">
+  <label class="mk centerTxt">{{challengeNC.info.challenged.firstName}} {{challengeNC.info.challenged.lastName}}</label>
+</div> -->
+
+<label class="mk centerTxt marginTop4">Challenge</label>  
+
+<div class="friendToChallenge" ng-init="challengeNC.loadFromServiceObj()">
+
+  <img ng-src="{{challengeNC.info.challenged.photoURL}}">
+
+  <div>
+    <p class="mk">{{challengeNC.info.challenged.firstName | capitalize}} {{challengeNC.info.challenged.lastName | capitalize}}</p>
+  </div>
+
+</div>
+
+<p class="mk">{{challengeNC.info.info.title | capitalize}}</p>
+<p class="mk">{{challengeNC.info.info.description | capitalize}}</p>
+
+<label class="mk">Donating to</label>
+<p class="mk">{{challengeNC.info.charity.name}}</p>
+
+<span class="mk column alignCenter">
+  Choose a different charity to donate too?  
+  <button class="mk-complete2 marginTop" ui-sref="createChallengeCharity">Back</button>
+</span>

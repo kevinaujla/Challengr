@@ -44,9 +44,26 @@ body {
   margin-top: 12px;
 }
 
+.marginTop2{
+  margin-top: $padding * 2;
+}
+
+.marginTop3{
+  margin-top: 2em;
+}
+
+.marginTop4{
+  margin-top: 1em;
+}
+
 .leftSidePadding{
   padding-left: $padding * 2;
   padding-right: $padding;
+}
+
+.sidePadding{
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
 }
 
 .justifyCenter{
@@ -63,6 +80,10 @@ body {
 
 .shadow{
   text-shadow: 1px 1px 1px black;
+}
+
+.circle{
+  border-radius: 50%;
 }
 
 .dark{

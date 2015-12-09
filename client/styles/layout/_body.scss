@@ -52,7 +52,7 @@ form.mk{
   align-items: center;
 }
 
-div.column{
+.column{
   display: flex;
   flex-direction: column;
   // background-color: red;
@@ -79,6 +79,22 @@ button.mk-complete {
   border: 1px solid #E21E1E;
   transition: 0.3s;
   box-shadow: 0px 2px 40px rgb(0, 0, 0);
+  &:hover{
+    background: #E21E1E;
+    color: white;
+  }
+}
+
+button.mk-complete2 {
+  background: #FFFFFF;
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 1em;
+  width: 200px;
+  color: #586169;
+  border: 1px solid #E21E1E;
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   &:hover{
     background: #E21E1E;
     color: white;
