@@ -6,10 +6,8 @@ loads all challenge related to the user
 -->
 
 <uib-tabset id="seg" class="marginTop3">
+  <uib-tab heading="My Challenges" active="challengeNC.tabs[1]" ng-init="personalChallengeC.readMyChallenges()">
 
-  <uib-tab heading="Your Challenges" active="challengeNC.tabs[1]" ng-init="personalChallengeC.readMyChallenges()">
-
-    <!-- Search Bar -->
     <div id="searchBar">
       <i class="mk icon-budicon-44"></i>  
       <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
@@ -50,10 +48,8 @@ loads all challenge related to the user
     </div>
 
   </uib-tab>
+  <uib-tab heading="Initiated Challenges" active="challengeNC.tabs[2]" ng-init="personalChallengeC.readImposedChallenges()">
 
-  <uib-tab heading="Challenges to Complete" active="challengeNC.tabs[2]" ng-init="personalChallengeC.readImposedChallenges()">
-
-    <!-- Search Bar -->
     <div id="searchBar">
       <i class="mk icon-budicon-44"></i>  
       <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
@@ -63,7 +59,6 @@ loads all challenge related to the user
 
       <div class="challenge--heading">
         <div class="type">
-          <!--       <i class="icon-budicon-52"></i> -->
           <span>{{challenge.type}} - {{challenge.Challenger.firstName}} {{challenge.Challenger.lastName}}</span>
         </div>
         <div class="time">
@@ -93,5 +88,4 @@ loads all challenge related to the user
     </div>
 
   </uib-tab>
-  
 </uib-tabset>
