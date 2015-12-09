@@ -13,8 +13,10 @@ Newsfeed in main view
 <!-- Search Bar -->
 <div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding">
   <i class="mk icon-budicon-44"></i>  
-  <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+  <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="challengeSearch">
 </div>
+
+<p class="mk" ng-show="newsfeedCtrl.challenges.length === 0">Currently, no challenges have been made</p>
 
 <!-- Challenges -->
 <div class="wow bounceInLeft">
