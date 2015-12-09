@@ -11,7 +11,7 @@ div#challengeDetail {
   width: 90%;
   a{
     color: #7D8995 !important;
-    &:hover{
+    &:hover, &:active, &:visited, &:focus{
       text-decoration: none !important;
     }
   }
@@ -71,9 +71,22 @@ div#challengeDetail {
       align-items: center;
       justify-content: flex-end;
       display: flex;
+      .socialLeft{
+        flex: 1;
+      }
       a:first-child{
         padding-right: $padding;
       }
+    }
+    .type{
+      font-size: 22px;
+      text-align: center;
+    }
+    span.description{
+      font-size: 18px;
+      padding-top: $padding;
+      padding-bottom: $padding;
+      text-align: center;
     }
   }
 }

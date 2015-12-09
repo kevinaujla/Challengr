@@ -19,17 +19,21 @@ view large details of single challenge
   <div class="panel-body">
 
     <div class="social">
-      <a href="" ng-click="challengeViewCtrl.increaseLike()">
-        <i ng-class=" challengeViewCtrl.challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
-      </a>
-      <a href="">
-        {{challengeViewCtrl.challenge.charityAmount*100}}<span class="linkBlue"> &#162</span> 
-      </a>
+      <div class="socialLeft">
+        {{challengeViewCtrl.challenge.type}}
+      </div>
+      <div class="socialRight">
+        <a href="" ng-click="challengeViewCtrl.increaseLike()">
+          <i ng-class=" challengeViewCtrl.challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
+        </a>
+        <a href="">
+          {{challengeViewCtrl.challenge.charityAmount*100}}<span class="linkBlue"> &#162</span> 
+        </a>
+      </div>
     </div>
 
     <div class="type">
-      <i class="icon-check-circle"></i>
-      <span>{{challengeViewCtrl.challenge.type}} - {{challengeViewCtrl.challenge.title}}</span>
+      <span>{{challengeViewCtrl.challenge.title}}</span>
     </div>
     <span class="description">{{challengeViewCtrl.challenge.description}}</span>
 
