@@ -16,6 +16,7 @@ angular.module('App.profile', [])
   self.getUserInfo = function () {
     self.username = localStorage.getItem('com.challengr.firstName');
     self.photoURL = localStorage.getItem('com.challengr.photoURL');
+    console.log('GET USER INFO, self.photoURL : ', self.photoURL);
   };
 
   // Retreive user's information and display
@@ -48,15 +49,19 @@ angular.module('App.profile', [])
         //     console.log('error : ', err);
         //   });
 
-        var name = localStorage.getItem('com.challengr.firstName');
-
-        s3Factory.updatePicture(reader.result, name)
+        s3Factory.updatePicture(reader.result)
           .then(function (data) {
             userFactory.updateProfilePhoto(data.imageURL)
               .then(function () {
-                // console.log('successfully update profile image');
+                // Add the location to the user
+                console.log('NEW IMAGEEEEE : ', data.imageURL);
                 localStorage.setItem('com.challengr.photoURL', data.imageURL);
                 alertService.addAlert('success', 'updated profile image', 'icon-checkbox');
+                console.log('new image : ', data.imageURL);
+                
+                self.photoURL = data.imageURL;
+                
+                self.getUserInfo();
               })
               .catch(function (err) {
                 console.log('error updating profile image: ', err);
@@ -73,7 +78,7 @@ angular.module('App.profile', [])
   self.getBilling = function () {
     braintreeFactory.getTransactions()
       .then(function (data) {
-        // console.log('users billing transactions : ', data.transactions);
+        console.log('users billing transactions : ', data);
         self.transactions = data.transactions;
       })
       .catch(function (err) {
