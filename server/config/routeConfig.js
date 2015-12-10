@@ -10,9 +10,9 @@ module.exports = function (app, express, db) {
   app.use(express.static(__dirname + '/../../client'));
 
   // logging requests to the server
-  var morgan = require('morgan');
+  // var morgan = require('morgan');
   // set development mode for morgan regarding logging format
-  app.use(morgan('dev'));
+  // app.use(morgan('dev'));
 
   var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
   // handling all authentication (signup, signin, route protection)
