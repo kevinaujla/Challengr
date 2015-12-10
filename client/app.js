@@ -265,7 +265,7 @@ angular.module('App', [
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     // Left Detail View
-    if (toState.url === '/challenge/:id') {
+    if (toState.url === '/challenge/:id' || toState.url === '/') {
       $rootScope.rightDetailView = true;
     } else {
       $rootScope.rightDetailView = false;
@@ -286,7 +286,7 @@ angular.module('App', [
     }
 
     // Menu Bar
-    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id') {
+    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id') {
       $rootScope.lightStyle = true;
     } else {
       $rootScope.lightStyle = false;
