@@ -162,43 +162,6 @@ angular.module('App', [
       }
     })
 
-
-
-    .state('viewChallenge', {
-      url: '/challenge/:id',
-      // templateUrl: 'script/module/newsfeed/newsfeed.html',
-      views: {
-        'leftPane': { 
-          templateUrl: 'script/module/newsfeed/newsfeed.html',
-          controller: 'newsfeedCtrl',
-          controllerAs: 'newsfeedCtrl',
-        },
-        'rightPane': { 
-          templateUrl: 'script/module/challenge/challenge-view.html',
-          controller: 'challengeViewCtrl',
-          controllerAs: 'challengeViewCtrl', 
-        }
-      },
-      data: { authenticate: true }
-    })
-
-    .state('viewChallengePersonal', {
-      url: '/challenge/detail/:id',
-      views: {
-        'leftPane': { 
-          templateUrl: 'script/module/challenge/challenge-view.html',
-          controller: 'challengeViewCtrl',
-          controllerAs: 'challengeViewCtrl', 
-        },
-        'rightPane': { 
-          templateUrl: 'script/module/user/challenge/challenge-personal.html',
-          controller: 'personalChallengeCtrl',
-          controllerAs: 'personalChallengeC',
-        }
-      },
-      data: { authenticate: true }
-    })
-
     .state('home', {
       url: '/',
       views: {
@@ -214,7 +177,31 @@ angular.module('App', [
         }
       },
       data: { authenticate: true }
-    });
+    })
+
+      .state('home.viewChallenge', {
+        url: '/challenge/:id',
+        views: {
+          'challengeDetail': { 
+            templateUrl: 'script/module/challenge/challenge-view.html',
+            controller: 'challengeViewCtrl',
+            controllerAs: 'challengeViewCtrl', 
+          }
+        },
+        data: { authenticate: true }
+      })
+
+      .state('home.viewChallengePersonal', {
+        url: '/challenge/detail/:id',
+        views: {
+          'challengeDetailPersonal': { 
+            templateUrl: 'script/module/challenge/challenge-view.html',
+            controller: 'challengeViewCtrl',
+            controllerAs: 'challengeViewCtrl', 
+          }
+        },
+        data: { authenticate: true }
+      })
 
   $httpProvider.interceptors.push(function ($window) {
     return {
@@ -243,14 +230,14 @@ angular.module('App', [
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     // Left Detail View
-    if (toState.url === '/challenge/:id' || toState.url === '/') {
+    if (toState.url === '/challenge/:id' || toState.url === '/' || toState.url === '/challenge/detail/:id') {
       $rootScope.rightDetailView = true;
     } else {
       $rootScope.rightDetailView = false;
     }
 
     // Right Detail View
-    if (toState.url === '/challenge/detail/:id' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment') {
+    if (toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment') {
       $rootScope.leftDetailView = true;
     } else {
       $rootScope.leftDetailView = false;
@@ -264,7 +251,7 @@ angular.module('App', [
     }
 
     // Menu Bar Light and Dark Style
-    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id' || toState.url === '/challenge/detail/:id') {
+    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id') {
       $rootScope.lightStyle = true;
     } else {
       $rootScope.lightStyle = false;

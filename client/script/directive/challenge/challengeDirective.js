@@ -93,7 +93,7 @@ angular.module('App.challengeDirective', [])
       element.on('click', function (event) {
         if (event.toElement.classList[0] !== 'noViewChange') {
           // open the detail view of the challenge...
-          $state.go('viewChallenge', {
+          $state.go('home.viewChallenge', {
             id: scope.challengeid
           });
         }
