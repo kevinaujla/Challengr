@@ -35,11 +35,11 @@ ul.list-group.billings {
 .charityAmount{
   padding: $padding 0;
   label.btn-primary{
-    background-color: #EFF0F2;
-    border-color: #EFF0F2;
+    background-color: rgba(239, 240, 242, 0);
+    border-color: white;
     padding: 10px 0;
-    border: 1px solid #DDDDDD;
-    color: $darkV2;
+    border: 1px solid white;
+    color: white;
     transition: 0.3s;
     &:hover{
       background-color: #1779B2;
@@ -48,7 +48,7 @@ ul.list-group.billings {
     }
     &.active{
       background-color: #1779B2;
-      border-color: #1779B2;
+      border: 1px solid #1779B2;
       color: white;
     }
   }

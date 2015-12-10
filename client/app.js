@@ -41,7 +41,6 @@ angular.module('App', [
   $stateProvider
     .state('signin', {
       url: '/signin',
-      // templateUrl: 'script/module/user/auth/signin.html',
       views: {
         'leftPane': { 
           templateUrl: 'script/module/user/auth/signin.html',
@@ -58,7 +57,6 @@ angular.module('App', [
     })
     .state('signup', {
       url: '/signup',
-      // templateUrl: 'script/module/user/auth/signup.html',
       views: {
         'leftPane': { 
           templateUrl: 'script/module/user/auth/signup.html',
@@ -87,24 +85,6 @@ angular.module('App', [
           controllerAs: 'profileCtrl',
         }
       },
-      data: {
-        authenticate: true
-      }
-    })
-    .state('charity', {
-      url: '/charity',
-      templateUrl: 'script/module/charity/charity.html',
-      controller: 'charityCtrl',
-      controllerAs: 'charityCtrl',
-      data: {
-        authenticate: true
-      }
-    })
-    .state('challenges', {
-      url: '/challenges',
-      templateUrl: 'script/module/challenge/challenges.html',
-      controller: 'challengeListCtrl',
-      controllerAs: 'challengeLC',
       data: {
         authenticate: true
       }
@@ -204,7 +184,6 @@ angular.module('App', [
 
     .state('viewChallengePersonal', {
       url: '/challenge/detail/:id',
-      // templateUrl: 'script/module/newsfeed/newsfeed.html',
       views: {
         'leftPane': { 
           templateUrl: 'script/module/challenge/challenge-view.html',
@@ -222,7 +201,6 @@ angular.module('App', [
 
     .state('home', {
       url: '/',
-      // templateUrl: 'script/module/newsfeed/newsfeed.html',
       views: {
         'leftPane': { 
           templateUrl: 'script/module/newsfeed/newsfeed.html',
@@ -285,8 +263,8 @@ angular.module('App', [
       $rootScope.topPadding = false;
     }
 
-    // Menu Bar
-    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id') {
+    // Menu Bar Light and Dark Style
+    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id' || toState.url === '/challenge/detail/:id') {
       $rootScope.lightStyle = true;
     } else {
       $rootScope.lightStyle = false;
@@ -298,6 +276,13 @@ angular.module('App', [
     }
     if (toState.url !== '/signup' && toState.url !== '/signin') {
       $rootScope.signupOrLoginPage = false;
+    }
+
+    // On Refresh of steps of creating a challenge or being in the detail view of a challenge, go back home
+    if (toState.url === '/challenge/create/detail' && fromState.abstract === true || toState.url === 'challenge/create/charity' && fromState.abstract === true || toState.url === 'challenge/create/payment' && fromState.abstract === true || toState.url === '/challenge/:id' && fromState.abstract === true || toState.url === '/challenge/detail/:id' && fromState.abstract === true) {
+      $state.go('home');
+      event.preventDefault();
+      $rootScope.leftDetailView = false;
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {
