@@ -13,13 +13,15 @@ manage payments, signout, manage user information
 
   <div class="control-group center marginTop">
     <div class="controls">
-      <div ng-init="profileCtrl.getUserInfo()">
+      <div id="profile" ng-init="profileCtrl.getUserInfo()">
         <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
-        <span class="bar"></span>
+        <label class="overlay white" for="photoUpload">
+          <i class="icon-budicon-50"></i>
+        </label>
       </div>
       <br>
       <input class="hidden" id="photoUpload" ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
-      <label class="white" for="photoUpload" >Upload a new picture</label>
+      
     </div>
   </div>
 
