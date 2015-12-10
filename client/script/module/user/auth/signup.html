@@ -13,26 +13,26 @@ signup.html
 
     <div class="column">
       <label class="mk shadow">First Name</label>
-      <input class="mk activeFront" ng-model="authCtrl.firstName" type="text" required>
+      <input class="mk" ng-class="{ activeFront: focus }" ng-focus="focus = true" ng-blur="focus = false" ng-model="authCtrl.firstName" type="text" required>
     </div>
 
     <div class="column">
       <label class="mk shadow">Last Name</label>
-      <input class="mk" ng-model="authCtrl.lastName" type="text" required>
+      <input class="mk" ng-class="{ activeFront: focus1 }" ng-focus="focus1 = true" ng-blur="focus1 = false" ng-model="authCtrl.lastName" type="text" required>
     </div>
 
     <div class="column">
       <label class="mk shadow">Your Email</label>
-      <input  class="mk" ng-model="authCtrl.email" type="text" required>
+      <input  class="mk" ng-class="{ activeFront: focus2 }" ng-focus="focus2 = true" ng-blur="focus2 = false" ng-model="authCtrl.email" type="text" required>
     </div>
 
     <div class="column">
       <label class="mk shadow">Password</label>
-      <input  class="mk" ng-model="authCtrl.password" type="password" required>
+      <input  class="mk" ng-class="{ activeFront: focus3 }" ng-focus="focus3 = true" ng-blur="focus3 = false" ng-model="authCtrl.password" type="password" required>
     </div>
 
     <div class="column">
-      <button  class="mk" type="submit">Sign Up</button>
+      <button class="mk hoverShadow" type="submit">Sign Up</button>
     </div>  
   </form>
 

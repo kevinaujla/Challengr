@@ -133,6 +133,18 @@ input.mk{
   }
 } 
 
+.hoverShadow{
+  &:hover{
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 1); 
+  }
+}
+
+.hoverShadow2{
+  &:hover{
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.17); 
+  }
+}
+
 h1.mk{
   font-size: 52px;
   font-weight: bold;
