@@ -1,4 +1,4 @@
 <div id="friendDetail" ng-init="challengeNC.loadFromServiceObj()">
   <img ng-src="{{challengeNC.info.challenged.photoURL}}">
-  <label class="mk centerTxt marginTop">{{challengeNC.info.challenged.firstName}} {{challengeNC.info.challenged.lastName}}</label>
+  <label class="mk centerTxt marginTop">{{challengeNC.info.challenged.firstName | capitalize}} {{challengeNC.info.challenged.lastName | capitalize}}</label>
 </div>
