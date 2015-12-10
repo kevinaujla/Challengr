@@ -169,12 +169,18 @@ angular.module('App', [
           templateUrl: 'script/module/newsfeed/newsfeed.html',
           controller: 'newsfeedCtrl',
           controllerAs: 'newsfeedCtrl',
-        },
+          data : { 
+            showNewsFeed : true 
+          }
+        }, 
         'rightPane': { 
           templateUrl: 'script/module/user/challenge/challenge-personal.html',
           controller: 'personalChallengeCtrl',
           controllerAs: 'personalChallengeC',
-        }
+          data : { 
+            showUserChallenges : true
+          }
+        }, 
       },
       data: { authenticate: true }
     })
@@ -296,8 +302,17 @@ angular.module('App', [
       event.preventDefault();
     }
 
+    if (toState.url === '/challenge/' || toState.url === '/'){
+      console.log('TO STATE : ', toState);
+      console.log('TO STATE VIEWS : ', toState.views);
+      console.log('FROM STATE : ', fromState);
+      console.log('TO Params : ', toParams);
+      console.log('From Params : ', fromParams);
+      console.log('Event : ', event);
+    }
+
     if (toState.data.authenticate && !authFactory.isAuth()) {
-      $state.go('signin');
+      $state.transitionTo('signin');
       event.preventDefault();
     }
   });

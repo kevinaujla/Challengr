@@ -6,19 +6,19 @@ div#seg {
 }
 
 ul.nav.nav-tabs {
-  border: 1px solid #177DB5;
+  border: 1px solid $blue;
   border-radius: 4px;
 }
 
 .nav > li > a:hover, .nav > li > a:focus{
   text-decoration: none;
-  background-color: #177DB5;
+  background-color: $blue;
   border-top-left-radius: 0px;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   border: 0px solid transparent;
-  background-color: #177DB5;
+  background-color: $blue;
   color: white;
   border-radius: 0px;
   margin-right: 0px;
@@ -28,7 +28,7 @@ ul.nav.nav-tabs {
   width: 50%;
   text-align: center;
   &:first-child{
-    border-right: 1px solid #177DB5;
+    border-right: 1px solid $blue;
     border-bottom: none;
     margin-bottom: -1px;
   }
@@ -45,7 +45,7 @@ ul.nav.nav-tabs {
 .nav-tabs > li > a:hover {
   background-color: rgba(51, 122, 183, 0.8);
   border-radius: 0;
-  border: 0px solid #177DB5;
+  border: 0px solid $blue;
   color: white;
   margin-bottom: 1px;
 }

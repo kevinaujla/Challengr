@@ -1,5 +1,5 @@
 body{
-  // border: 1px solid red;
+  // border: 1px solid $red;
   display: flex;
   flex-direction: row;
   flex: 1;
@@ -10,7 +10,7 @@ div#searchBar{
   
   display: flex;
   flex-direction: row;
-  // border: 1px solid red;
+  // border: 1px solid $red;
   align-items: center;
   i{
     font-size: 200%;
@@ -33,16 +33,16 @@ div#searchBar{
 // Elements
 
 i.mk{
-  color: #0075FF;
+  color: $blue;
   // border: 1px solid green;
 }
 
 .icon-heart-1{
-  color: red !important;
+  color: $red !important;
 }
 
 span.linkBlue{
-  color: #0075FF !important;
+  color: $blue !important;
 }
 
 form.mk{
@@ -55,7 +55,7 @@ form.mk{
 .column{
   display: flex;
   flex-direction: column;
-  // background-color: red;
+  // background-color: $red;
   text-align: center;   
   padding: 1em 0;  
 }
