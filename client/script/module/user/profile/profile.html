@@ -5,7 +5,7 @@ manage payments, signout, manage user information
 
 -->
 
-<div ng-init="profileCtrl.getUser()" class="flexContainer darkContainer">
+<div ng-init="profileCtrl.getUser()">
 
   <h1 class="mk marginTop">{{profileCtrl.firstName | capitalize}} {{profileCtrl.lastName | capitalize}}</h1>
 
@@ -25,6 +25,6 @@ manage payments, signout, manage user information
     </div>
   </div>
 
-  <button class="mk" ng-click="profileCtrl.signout()">Sign Out</button>
+  <button class="mk center" ng-click="profileCtrl.signout()">Sign Out</button>
 
 </div>
