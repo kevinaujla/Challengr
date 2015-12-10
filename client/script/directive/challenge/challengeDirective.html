@@ -5,11 +5,10 @@
 
 -->
 <!-- Active Challenges -->
-<div class="challenge" ng-if="!completed&&!notcompleted" ng-init="configureDirective()">
+<div class="challenge" ng-if="!completed && !notcompleted" ng-init="configureDirective()">
   <div class="challenge--heading">
     <div class="type">
-      <!--       <i class="icon-budicon-52"></i> -->
-      <span>{{type}} - {{title}}</span>
+      <span>{{type | capitalize}} - {{title | capitalize}}</span>
     </div>
     <div class="time">
       <i class="icon-budicon-58"></i>
@@ -22,8 +21,8 @@
       <img class="challengedImg" ng-src="{{challengechallenged.photoURL}}">
     </div>
     <div>
-      <span>{{challengechallenger.firstName}} {{challengechallenger.lastName}} challenged {{challengechallenged.firstName}} {{challengechallenged.lastName}}</span>
-      <span>{{description}}</span>
+      <span>{{challengechallenger.firstName | capitalize}} {{challengechallenger.lastName | capitalize}} challenged {{challengechallenged.firstName | capitalize}} {{challengechallenged.lastName | capitalize}}</span>
+      <span>{{description | capitalize}}</span>
     </div>
     <div>
       <a class="noViewChange" ng-click="increaseLike()">
@@ -42,7 +41,7 @@
     <i class="icon-checkbox"></i>
   </div>
   <div>
-    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} completed challenge</span>
+    <span>{{challengechallenged.firstName | capitalize}} {{challengechallenged.lastName | capitalize}} completed challenge</span>
     <span>{{title}}</span>
   </div>
   <div>
@@ -67,7 +66,7 @@
     <i class="icon-budicon-57"></i>
   </div>
   <div>
-    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} failed the challenge</span>
+    <span>{{challengechallenged.firstName | capitalize}} {{challengechallenged.lastName | capitalize}} failed the challenge</span>
     <span>{{title}}</span>
   </div>
   <div>

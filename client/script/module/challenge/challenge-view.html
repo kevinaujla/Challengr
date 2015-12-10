@@ -4,13 +4,32 @@ challenge-read.html
 view large details of single challenge
 
 -->
+
 <div id="challengeDetail" class="panel panel-default" ng-init="challengeViewCtrl.readChallenge()">
   <div class="panel-heading">
     <div>
       <img class="challengerImg" ng-src="{{challengeViewCtrl.challenge.Challenger.photoURL}}">
       <img class="challengedImg" ng-src="{{challengeViewCtrl.challenge.Challenged.photoURL}}">
     </div>
-    <span class="panel-title">{{challengeViewCtrl.challenge.Challenger.firstName}} {{challengeViewCtrl.challenge.Challenger.lastName}} challenged {{challengeViewCtrl.challenge.Challenged.firstName}} {{challengeViewCtrl.challenge.Challenged.lastName}}</span>
+
+    <!-- {{challengeViewCtrl.challenge}} -->
+    <!-- Active -->
+    <span class="panel-title" ng-show="{{!challengeViewCtrl.challenge.completed && !challengeViewCtrl.challenge.notCompleted}}">
+      {{challengeViewCtrl.challenge.Challenger.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenger.lastName | capitalize}} challenged {{challengeViewCtrl.challenge.Challenged.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenged.lastName | capitalize}}
+    </span>
+
+    <!-- Not Completed -->
+    <span class="panel-title" ng-show="challengeViewCtrl.challenge.notCompleted">
+      <i class="icon-budicon-57 xmark"></i>
+      {{challengeViewCtrl.challenge.Challenger.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenger.lastName | capitalize}} failed {{challengeViewCtrl.challenge.Challenged.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenged.lastName | capitalize}} challenge
+    </span>
+
+    <!-- Completed -->
+    <span class="panel-title" ng-show="challengeViewCtrl.challenge.completed">
+      <i class="icon-checkbox xmarkCheck"></i>
+      {{challengeViewCtrl.challenge.Challenger.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenger.lastName | capitalize}} completed {{challengeViewCtrl.challenge.Challenged.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenged.lastName | capitalize}} challenge
+    </span>
+
     <div class="time">
       <i class="mk icon-budicon-58"></i>
       <span am-time-ago="challengeViewCtrl.challenge.issuedDate"></span>
@@ -20,7 +39,7 @@ view large details of single challenge
 
     <div class="social">
       <div class="socialLeft">
-        {{challengeViewCtrl.challenge.type}}
+        {{challengeViewCtrl.challenge.type | capitalize}}
       </div>
       <div class="socialRight">
         <a href="" ng-click="challengeViewCtrl.increaseLike()">
@@ -33,9 +52,9 @@ view large details of single challenge
     </div>
 
     <div class="type">
-      <span>{{challengeViewCtrl.challenge.title}}</span>
+      <span>{{challengeViewCtrl.challenge.title | capitalize}}</span>
     </div>
-    <span class="description">{{challengeViewCtrl.challenge.description}}</span>
+    <span class="description">{{challengeViewCtrl.challenge.description | capitalize}}</span>
 
   </div>
 </div>
