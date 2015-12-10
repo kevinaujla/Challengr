@@ -59,9 +59,14 @@ module.exports = function (db) {
       var s3Bucket = new aws.S3({ params: { Bucket: process.env.S3_BUCKET } });
       // Create Buffer
       var imageBuffer = new Buffer(req.body.imageData.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+
+      // user
+      var userURL = 'profileImages/' + req.body.imgName + '/profileImg.png';
+      console.log('USER URL : ', userURL);        
+
       // Define Upload Params
       var data = {
-        Key: req.body.imgName + new Date() + '.png',
+        Key: userURL,
         Body: imageBuffer,
         ContentEncoding: 'base64',
         ContentType: 'image/png'

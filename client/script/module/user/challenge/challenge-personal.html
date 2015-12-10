@@ -4,45 +4,92 @@ challenge-personal.html
 loads all challenge related to the user
 
 -->
-<div ng-controller="personalChallengeCtrl as personalChallengeC">
-  <!-- challenges for currently logged in user -->
-  <div class="myChallenges">
-    <h2 class="center" ng-show="personalChallengeC.myChallenges.length !== 0">You Got Challenged</h2>
-    <h2 class="center" ng-show="personalChallengeC.myChallenges.length === 0">No Currently Running Challenges for You</h2>
-    <ul class="list-group userChallenges" ng-init="personalChallengeC.readMyChallenges()">
-      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed" ng-init="personalChallengeC.initializeChallenge(challenge);">
-        <img ng-src="{{challenge.Challenger.photoURL}}">
-        <div>
-          <h1>{{challenge.title}}</h1>
-          <div class="social">
-            <i class="icon-clock-o"></i>
-            <span>{{challenge.remaining}}</span>
-            <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
-              <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
-            </a>
-          </div>
+
+<uib-tabset id="seg" class="marginTop3">
+  <uib-tab heading="My Challenges" active="challengeNC.tabs[1]" ng-init="personalChallengeC.readMyChallenges()">
+
+    <div id="searchBar">
+      <i class="mk icon-budicon-44"></i>  
+      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+    </div>
+
+    <p class="mk" ng-show="personalChallengeC.myChallenges.length === 0">Currently, no challenges to complete</p>
+
+    <div class="challenge" ng-repeat="challenge in personalChallengeC.myChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+
+      <div class="challenge--heading">
+        <div class="type">
+          <span>{{challenge.type}} - {{challenge.Challenger.firstName}} {{challenge.Challenger.lastName}}</span>
         </div>
-      </li>
-    </ul>
-  </div>
-  <!-- challenges imposed by currently logged in user -->
-  <div class="imposedChallenges">
-    <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length !== 0">You Challenged</h2>
-    <h2 class="center" ng-show="personalChallengeC.imposedChallenges.length === 0">There Is Currently No One You Challenged</h2>
-    <ul class="list-group userChallenges" ng-init="personalChallengeC.readImposedChallenges()">
-      <li class="list-group-item" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed" ng-init="personalChallengeC.initializeChallenge(challenge);">
-        <img ng-src="{{challenge.Challenged.photoURL}}">
-        <div>
-          <h1>{{challenge.title}}</h1>
-          <div class="social">
-            <i class="icon-clock-o"></i>
-            <span>{{challenge.remaining}}</span>
-            <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
-              <i class="noViewChange icon-heart-empty"></i> {{challenge.likes}}
-            </a>
-          </div>
+        <div class="time">
+          <i class="mk icon-budicon-58"></i>
+          <span am-time-ago="challenge.issuedDate"></span>
         </div>
-      </li>
-    </ul>
-  </div>
-</div>
+      </div>
+
+      <div class="challenge--main">
+        <div>
+          <img class="challengedImage" ng-src="{{challenge.Challenger.photoURL}}">
+        </div>
+        <div>
+          <span>{{challenge.title}}</span>
+          <span>{{challenge.description}}</span>
+        </div>
+        <div>
+          <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
+            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challenge.likes}}
+          </a>
+          <a class="noViewChange">
+            {{challenge.charityAmount*100}}<span class="linkBlue"> &#162</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </uib-tab>
+  <uib-tab heading="Initiated Challenges" active="challengeNC.tabs[2]" ng-init="personalChallengeC.readImposedChallenges()">
+
+    <div id="searchBar">
+      <i class="mk icon-budicon-44"></i>  
+      <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="search">
+    </div>
+
+    <p class="mk" ng-show="personalChallengeC.imposedChallenges.length === 0">You haven't challenged anyone lately...
+    </p>
+    <button class="mk center marginTop3" ui-sref="newChallenge">Challenge Someone</button>
+
+    <div class="challenge" ng-repeat="challenge in personalChallengeC.imposedChallenges" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+
+      <div class="challenge--heading">
+        <div class="type">
+          <span>{{challenge.type}} - {{challenge.Challenger.firstName}} {{challenge.Challenger.lastName}}</span>
+        </div>
+        <div class="time">
+          <i class="mk icon-budicon-58"></i>
+          <span>{{challenge.remaining}}</span>
+        </div>
+      </div>
+
+      <div class="challenge--main">
+        <div>
+          <img class="challengedImage" ng-src="{{challenge.Challenged.photoURL}}">
+        </div>
+        <div>
+          <span>{{challenge.title}}</span>
+          <span>{{challenge.description}}</span>
+        </div>
+        <div>
+          <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
+            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challenge.likes}}
+          </a>
+          <a class="noViewChange">
+            {{charityamount*100}}<span class="linkBlue"> &#162</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </uib-tab>
+</uib-tabset>

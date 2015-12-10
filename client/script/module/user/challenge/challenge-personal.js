@@ -30,7 +30,7 @@ angular.module('App.personalChallenge', [])
 
   self.showDetail = function (challenge, event) {
     if (event.toElement.classList[0] !== 'noViewChange') {
-      $state.go('viewChallenge', {
+      $state.go('viewChallengePersonal', {
         id: challenge.id
       });
     }
@@ -87,7 +87,7 @@ angular.module('App.personalChallenge', [])
     var now = moment();
     var difference = now.diff(issue, 'hours');
 
-    if (difference > 24) {
+    if (difference >= 1) {
       if (challenge.notCompleted === false && challenge.completed === false) {
         // set the challenge to be completed
         challenge.notCompleted = true;

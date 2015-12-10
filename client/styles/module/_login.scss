@@ -4,6 +4,19 @@
 
 ***/
 
+video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.above{
+  
+  z-index: 999;
+}
+
 #signup.panel {
   border: 0px solid white !important;
   .panel-heading {

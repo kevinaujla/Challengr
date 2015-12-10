@@ -12,7 +12,7 @@
       <span>{{type}} - {{title}}</span>
     </div>
     <div class="time">
-      <i class="icon-clock-o"></i>
+      <i class="icon-budicon-58"></i>
       <span>{{remaining}}</span>
     </div>
   </div>
@@ -27,57 +27,61 @@
     </div>
     <div>
       <a class="noViewChange" ng-click="increaseLike()">
-        <i class="noViewChange icon-heart-empty"></i> {{likes}}
+        <i ng-class=" likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{likes}}
       </a>
       <a class="noViewChange">
-        <i class="noViewChange icon-dollar-bill"></i> {{charityamount*100}}&#162;
+        {{charityamount*100}}<span class="linkBlue"> &#162</span>
       </a>
     </div>
   </div>
 </div>
+
 <!-- Completed Challenge-->
-<div class="completed" ng-if="completed">
+<div class="completed completeSuccess" ng-if="completed">
   <div>
-    <i class="icon-check-mark-circle"></i>
+    <i class="icon-checkbox"></i>
   </div>
   <div>
-    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} successfully completed a challenge: {{title}}</span>
+    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} completed challenge</span>
+    <span>{{title}}</span>
   </div>
   <div>
-    <i class="icon-clock-o"></i>
+    <i class="mk icon-budicon-58"></i>
     <span am-time-ago="issueddate"></span>
   </div>
   <div>
     <a class="noViewChange" ng-click="increaseLike()">
-      <i class="noViewChange icon-heart-empty"></i> {{likes}}
+      <i ng-class=" likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{likes}}
     </a>
   </div>
   <div>
     <a href="">
-      <i class="icon-dollar-bill"></i> {{charityamount*100}}&#162;
+      {{charityamount*100}}<span class="linkBlue"> &#162</span>
     </a>
   </div>
 </div>
+
 <!-- Not Completed Challenge -->
-<div class="completed" ng-if="notcompleted">
+<div class="completed notCompleted" ng-if="notcompleted">
   <div>
-    <i class="icon-close-delete"></i>
+    <i class="icon-budicon-57"></i>
   </div>
   <div>
-    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} failed completing a challenge: {{title}}</span>
+    <span>{{challengechallenged.firstName}} {{challengechallenged.lastName}} failed the challenge</span>
+    <span>{{title}}</span>
   </div>
   <div>
-    <i class="icon-clock-o"></i>
+    <i class="mk icon-budicon-58"></i>
     <span am-time-ago="issueddate"></span>
   </div>
   <div>
     <a class="noViewChange" ng-click="increaseLike()">
-      <i class="noViewChange icon-heart-empty"></i> {{likes}}
+      <i ng-class=" likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{likes}}
     </a>
   </div>
   <div>
     <a href="">
-      <i class="icon-dollar-bill"></i> {{charityamount*100}}&#162;
+      {{charityamount*100}}<span class="linkBlue"> &#162</span>
     </a>
   </div>
 </div>

@@ -1,0 +1,140 @@
+body{
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100vh;
+}
+
+div#searchBar{
+  
+  display: flex;
+  flex-direction: row;
+  // border: 1px solid red;
+  align-items: center;
+  i{
+    font-size: 200%;
+  }
+  input#searchInput{
+    color: #4f5362;
+    text-align: center;
+    border-radius: 0px;
+    padding: 10px;
+    width: 250px;
+    background-color: transparent;
+    border: 0px;
+    /* border-bottom: 1px solid black; */
+    box-shadow: 0px 0px 0px transparent;
+    text-align: left;
+  }
+
+}
+
+// Elements
+
+i.mk{
+  color: #0075FF;
+  // border: 1px solid green;
+}
+
+.icon-heart-1{
+  color: red !important;
+}
+
+span.linkBlue{
+  color: #0075FF !important;
+}
+
+form.mk{
+  // background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  // background-color: red;
+  text-align: center;   
+  padding: 1em 0;  
+}
+
+button.mk {
+  background: #e21e1e;
+  border-radius: 50px;
+  padding: 10px;
+  border: 1px solid transparent;
+  width: 200px;
+  color: white;
+}
+
+button.mk-complete {
+  background: #FFFFFF;
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 1em;
+  width: 200px;
+  color: #586169;
+  border: 1px solid #E21E1E;
+  transition: 0.3s;
+  box-shadow: 0px 2px 40px rgb(0, 0, 0);
+  &:hover{
+    background: #E21E1E;
+    color: white;
+  }
+}
+
+button.mk-complete2 {
+  background: #FFFFFF;
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 1em;
+  width: 200px;
+  color: #586169;
+  border: 1px solid #E21E1E;
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  &:hover{
+    background: #E21E1E;
+    color: white;
+  }
+}
+
+p.mk{
+  color: #a8acb9;
+  font-size: 18px;
+   text-align: center;
+}
+span.mk{
+  color: #4f5362;
+  font-size: 18px;
+}
+label.mk{
+  color: #a8acb9;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+input.mk{
+  border: 1px solid transparent;
+  background-color: #eff0f4;
+  color: #4f5362;
+  text-align: center;
+  border-radius: 50px;
+  padding: 10px;
+  width: 250px;
+  &.active{
+    background-color: white;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.17);
+  }
+  &.activeFront{
+    background-color: white;
+    box-shadow: 0px 8px 40px rgba(0, 0, 0, 1);
+  }
+} 
+
+h1.mk{
+  font-size: 52px;
+  font-weight: bold;
+  color: #222328;
+}  

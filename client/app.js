@@ -29,7 +29,8 @@ angular.module('App', [
   'angularSpinner',
   'App.loadingService',
   'App.loadingController',
-  'App.s3Factory'
+  'App.s3Factory',
+  'App.customFilter',
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -40,27 +41,52 @@ angular.module('App', [
   $stateProvider
     .state('signin', {
       url: '/signin',
-      templateUrl: 'script/module/user/auth/signin.html',
-      controller: 'authCtrl',
-      controllerAs: 'authCtrl',
+      // templateUrl: 'script/module/user/auth/signin.html',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/user/auth/signin.html',
+          controller: 'authCtrl',
+          controllerAs: 'authCtrl',
+        },
+        'rightPane': { 
+          templateUrl: 'partial/signinPane.html', 
+        }
+      },
       data: {
         authenticate: false
       }
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: 'script/module/user/auth/signup.html',
-      controller: 'authCtrl',
-      controllerAs: 'authCtrl',
+      // templateUrl: 'script/module/user/auth/signup.html',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/user/auth/signup.html',
+          controller: 'authCtrl',
+          controllerAs: 'authCtrl', 
+        },
+        'rightPane': { 
+          templateUrl: 'partial/signinPane.html', 
+        }
+      },
       data: {
         authenticate: false
       }
     })
     .state('profile', {
       url: '/profile',
-      templateUrl: 'script/module/user/profile/profile.html',
-      controller: 'profileCtrl',
-      controllerAs: 'profileCtrl',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/user/profile/profile.html',
+          controller: 'profileCtrl',
+          controllerAs: 'profileCtrl',
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/user/profile/billing.html',
+          controller: 'profileCtrl',
+          controllerAs: 'profileCtrl',
+        }
+      },
       data: {
         authenticate: true
       }
@@ -83,32 +109,133 @@ angular.module('App', [
         authenticate: true
       }
     })
+
     .state('newChallenge', {
-      url: '/challenge/create',
-      templateUrl: 'script/module/challenge/challenge-create.html',
-      controller: 'challengeNewCtrl',
-      controllerAs: 'challengeNC',
+      url: '/challenge/create/friend',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/challenge/steps/friend.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+
+        },
+        'rightPane': { 
+          templateUrl: 'partial/challengePane.html' 
+        }
+      },
       data: {
         authenticate: true
       }
     })
+    .state('createChallengeDetail', {
+      url: '/challenge/create/detail',
+      views: {
+        'leftPane': { 
+          templateUrl: 'partial/friendDetail.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/challenge/steps/detail.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+        }
+      },
+      data: {
+        authenticate: true
+      }
+    })
+    .state('createChallengeCharity', {
+      url: '/challenge/create/charity',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/challenge/steps/charity1.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/challenge/steps/charity2.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+        }
+      },
+      data: {
+        authenticate: true
+      }
+    })
+    .state('createChallengePayment', {
+      url: '/challenge/create/payment',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/challenge/steps/payment.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+        },
+        'rightPane': { 
+          templateUrl: 'partial/reviewDetail.html',
+          controller: 'challengeNewCtrl',
+          controllerAs: 'challengeNC',
+        }
+      },
+      data: {
+        authenticate: true
+      }
+    })
+
+
+
     .state('viewChallenge', {
       url: '/challenge/:id',
-      templateUrl: 'script/module/challenge/challenge-view.html',
-      controller: 'challengeViewCtrl',
-      controllerAs: 'challengeViewCtrl',
-      data: {
-        authenticate: true
-      }
+      // templateUrl: 'script/module/newsfeed/newsfeed.html',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/newsfeed/newsfeed.html',
+          controller: 'newsfeedCtrl',
+          controllerAs: 'newsfeedCtrl',
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/challenge/challenge-view.html',
+          controller: 'challengeViewCtrl',
+          controllerAs: 'challengeViewCtrl', 
+        }
+      },
+      data: { authenticate: true }
     })
+
+    .state('viewChallengePersonal', {
+      url: '/challenge/detail/:id',
+      // templateUrl: 'script/module/newsfeed/newsfeed.html',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/challenge/challenge-view.html',
+          controller: 'challengeViewCtrl',
+          controllerAs: 'challengeViewCtrl', 
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/user/challenge/challenge-personal.html',
+          controller: 'personalChallengeCtrl',
+          controllerAs: 'personalChallengeC',
+        }
+      },
+      data: { authenticate: true }
+    })
+
     .state('home', {
       url: '/',
-      templateUrl: 'script/module/newsfeed/newsfeed.html',
-      controller: 'newsfeedCtrl',
-      controllerAs: 'newsfeedCtrl',
-      data: {
-        authenticate: true
-      }
+      // templateUrl: 'script/module/newsfeed/newsfeed.html',
+      views: {
+        'leftPane': { 
+          templateUrl: 'script/module/newsfeed/newsfeed.html',
+          controller: 'newsfeedCtrl',
+          controllerAs: 'newsfeedCtrl',
+        },
+        'rightPane': { 
+          templateUrl: 'script/module/user/challenge/challenge-personal.html',
+          controller: 'personalChallengeCtrl',
+          controllerAs: 'personalChallengeC',
+        }
+      },
+      data: { authenticate: true }
     });
 
   $httpProvider.interceptors.push(function ($window) {
@@ -137,6 +264,36 @@ angular.module('App', [
   }
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
+    // Left Detail View
+    if (toState.url === '/challenge/:id') {
+      $rootScope.rightDetailView = true;
+    } else {
+      $rootScope.rightDetailView = false;
+    }
+
+    // Right Detail View
+    if (toState.url === '/challenge/detail/:id' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment') {
+      $rootScope.leftDetailView = true;
+    } else {
+      $rootScope.leftDetailView = false;
+    }
+
+    // Profile
+    if (toState.url === '/profile') {
+      $rootScope.topPadding = true;
+    } else {
+      $rootScope.topPadding = false;
+    }
+
+    // Menu Bar
+    if (toState.url === '/profile' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/payment') {
+      $rootScope.lightStyle = true;
+    } else {
+      $rootScope.lightStyle = false;
+    }
+
+
+    // Signin and Signup
     if (toState.url === '/signin' || toState.url === '/signup') {
       $rootScope.signupOrLoginPage = true;
     }

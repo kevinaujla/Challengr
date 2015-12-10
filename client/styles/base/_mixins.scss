@@ -6,70 +6,70 @@
 
 @import 'variables';
 
-@mixin headersDark(){
-  h1, h2, h3, h4, h5, h6 {
-    text-transform: uppercase;
-    color: $dark;
-    font-size: $lgFont;
-    font-weight: bold;
-  }
-}
+// @mixin headersDark(){
+//   h1, h2, h3, h4, h5, h6 {
+//     text-transform: uppercase;
+//     color: $dark;
+//     font-size: $lgFont;
+//     font-weight: bold;
+//   }
+// }
 
-@mixin headersLight(){
-  h1, h2, h3, h4, h5, h6 {
-    text-transform: uppercase;
-    color: $light;
-    font-size: $lgFont;
-    font-weight: bold;
-  }
-}
+// @mixin headersLight(){
+//   h1, h2, h3, h4, h5, h6 {
+//     text-transform: uppercase;
+//     color: $light;
+//     font-size: $lgFont;
+//     font-weight: bold;
+//   }
+// }
 
-@mixin textDark(){
-  span, p {
-    color: $darkV2;
-    font-size: $smFont;
-    font-weight: normal;
-  }
-}
+// @mixin textDark(){
+//   span, p {
+//     color: $darkV2;
+//     font-size: $smFont;
+//     font-weight: normal;
+//   }
+// }
 
-@mixin textLight(){
-  span, p {
-    color: $light;
-    font-size: $smFont;
-    font-weight: normal;
-  }
-}
+// @mixin textLight(){
+//   span, p {
+//     color: $light;
+//     font-size: $smFont;
+//     font-weight: normal;
+//   }
+// }
 
-@mixin lists(){
-  ul{
-    padding-left: 0px;
-    margin-bottom: 0px;
-    text-transform: uppercase;
-    list-style-type: none;
-  }
-}
+// @mixin lists(){
+//   ul{
+//     padding-left: 0px;
+//     margin-bottom: 0px;
+//     text-transform: uppercase;
+//     list-style-type: none;
+//   }
+// }
 
-@mixin links(){
+// @mixin links(){
 
-  a:hover, a:focus{
-    text-decoration: none;
-  }
+//   a:hover, a:focus{
+//     text-decoration: none;
+//   }
 
-  .btn-default:hover{
-    background-color: $unique;
-    border: 1px solid white;
-  }
+//   .btn-default:hover{
+//     background-color: $unique;
+//     border: 1px solid white;
+//   }
 
-  .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus{
-    background-color: $unique;
-  }
+//   .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus{
+//     background-color: $unique;
+//   }
 
-  .btn-success:hover, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success, .btn-success:focus, .btn-success.focus{
-    background-color: $unique;
-    border: 1px solid white;
-  }
+//   .btn-success:hover, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success, .btn-success:focus, .btn-success.focus{
+//     background-color: $unique;
+//     border: 1px solid white;
+//   }
 
-  .btn-success:active:hover, .btn-success.active:hover, .open > .dropdown-toggle.btn-success:hover, .btn-success:active:focus, .btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus{
-    background-color: $unique;
-  }
-}
+//   .btn-success:active:hover, .btn-success.active:hover, .open > .dropdown-toggle.btn-success:hover, .btn-success:active:focus, .btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus{
+//     background-color: $unique;
+//   }
+// }

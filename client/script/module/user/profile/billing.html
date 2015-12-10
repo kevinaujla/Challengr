@@ -1,0 +1,19 @@
+
+<div class="flexContainer">
+  <h1 class="mk">Billing Info</h1>
+
+  <div ng-init="profileCtrl.getBilling()" class="flex column">
+
+    <p class="mk" ng-show="profileCtrl.transactions.length === 0">Currently, no transactions have been made</p>
+
+    <ul class="list-group billings">
+      <li class="list-group-item" ng-repeat="transaction in profileCtrl.transactions">
+        <span class="date">{{transaction.created | date : fullDate}}</span>
+        <span class="amount">${{transaction.amount}}</span>
+        <span class="creditCard">{{transaction.last4}}</span>
+        <img ng-src="{{transaction.imgUrl}}">
+      </li>
+    </ul>
+
+  </div>
+</div>

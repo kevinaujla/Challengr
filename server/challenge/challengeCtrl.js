@@ -8,17 +8,25 @@ configuring routes for challengeRouter
 module.exports = function (db) {
   return {
     create: function (req, res) {
-      // console.log('create challenge: ', req.user, req.body);
+      // console log
+      console.log('create challenge: ', req.body);
 
       // pull out data
       var challenger = req.user;
       var challenged = req.body.challenged;
-      var title = req.body.title;
-      var description = req.body.description;
-      var type = req.body.type;
-      var charityAmount = req.body.charityAmount;
+      var title = req.body.info.title;
+      var description = req.body.info.description;
+      var type = req.body.info.type;
+      var charityAmount = req.body.info.charityAmount;
       var issuedDate = new Date();
       var expiresDate = new Date();
+
+      console.log('challenged : ', challenged);
+      console.log('title : ', title);
+      console.log('description : ', description);
+      console.log('type : ', type);
+      console.log('charityAmount : ', charityAmount);
+
       // expires in 24 hours from issue date
       expiresDate.setDate(expiresDate.getDate() + 1);
 

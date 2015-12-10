@@ -14,11 +14,20 @@
 ***/
 
 // Challenge
+
+challenge{
+  width: 100%;
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
+}
+
 .challenge {
-  margin: 15px 0;
-  border: 1px solid #DEE2E5;
+  margin: 0;
+  margin-bottom: 10px;
+  border: 1px solid rgba(222, 226, 229, 0.32);
   border-radius: 3px;
-  /* padding: 15px; */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  /* padding: $padding; */
   &:hover {
     box-shadow: 0px 0px 10px #AFAFAF;
     cursor: pointer;
@@ -26,25 +35,32 @@
 }
 
 .challenge--heading {
-  background-color: #34495E;
-  padding: 15px;
-  color: #D2D6D9;
+  background-color: #FFFFFF;
+  padding: $padding;
+  color: #757575;
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  border-bottom: 1px solid #F5F6F7;
   .type {
+    text-align: initial !important;
     flex: 1;
-    color: white;
+    color: #586169;
     font-weight: 300;
     i {}
     span {
+      font-size: 16px !important;
       padding-left: 10px;
     }
   }
   .time {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
     font-weight: 300;
     span {
+      font-size: 14px !important;
       font-size: 85%;
       padding-left: 5px;
     }
@@ -52,12 +68,13 @@
 }
 
 .challenge--main {
-  padding: 15px;
+  padding: $padding;
   display: flex;
+  flex-direction: row !important;
   div:first-child {
     flex: 1;
     position: relative;
-    margin-right: 15px;
+    margin-right: $padding;
   }
   div:nth-child(2) {
     flex: 6;
@@ -68,16 +85,18 @@
     span:first-child {
       font-weight: 400;
       color: #7D8995;
+      font-size: 16px !important;
     }
     span:last-child {
       color: #D2D6D9;
       font-weight: 300;
-      font-size: 14px;
+      font-size: 14px !important;
     }
   }
   div:last-child {
     flex: 1;
     display: flex;
+    flex-direction: row !important;
     align-items: center;
     justify-content: flex-end;
     flex-grow: 2;
@@ -86,14 +105,14 @@
       font-weight: 300;
       cursor: pointer;
       &:last-child {
-        padding-left: 15px;
+        padding-left: $padding;
       }
       i {
         padding: 0 3px;
         cursor: pointer;
       }
       &:hover {
-        color: #66D3E2;
+  
         text-decoration: none;
         cursor: pointer;
       }
@@ -107,11 +126,27 @@
     position: absolute;
     bottom: 0;
     left: 0px;
-    width: 30%;
+    width: 40%;
   }
   img.challengerImg {
-    width: 50%;
+    width: 70%;
     margin-left: 10px;
+  }
+  img.challengedImage{
+    width: 100%;
+    
+  }
+}
+
+.notCompleted{
+  border: 1px solid rgba(255, 0, 0, 0.05) !important;
+}
+.completeSuccess{
+  border: 1px solid rgba(67, 203, 131, 0.12) !important;
+  div:nth-child(3),
+  div:nth-child(4),
+  div:last-child {
+    border-left: 1px solid rgba(90, 209, 146, 0.1) !important;
   }
 }
 
@@ -119,9 +154,13 @@
   display: flex;
   border: 1px solid #DEE2E5;
   border-radius: 4px;
-  margin-top: $padding;
-  margin-bottom: $padding;
+  margin-bottom: 10px;
   align-items: center;
+  a{
+    &:hover{
+      text-decoration: none;
+    }
+  }
   &:hover {
     box-shadow: 0px 0px 10px #AFAFAF;
     cursor: pointer;
@@ -131,8 +170,23 @@
     color: #66D3E2;
     font-size: 150%;
     padding-left: $padding;
-    .icon-close-delete {
+    .icon-checkbox{
+      color: #43CB83;
+      &:before{
+        position: absolute;
+        margin-top: -13px;
+        font-size: 130%;
+        margin-left: -4px;
+      }
+    }
+    .icon-budicon-57{
       color: #FF7978;
+      &:before{
+        position: absolute;
+        margin-top: -13px;
+        font-size: 130%;
+        margin-left: -4px;
+      }
     }
   }
   div:nth-child(2) {
@@ -140,20 +194,18 @@
     padding: $padding;
     color: #7D8995;
     font-size: 14px;
+    padding-left: $padding * 2 + 2;
   }
   div:nth-child(3) {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding: $padding;
-    color: #D2D6D9;
+    color: #A8ACB9;
   }
+  div:nth-child(3),
   div:nth-child(4),
   div:last-child {
     padding: $padding;
-    border-left: 1px solid #DEE2E5;
+    border-left: 1px solid rgba(255, 121, 120, 0.1);
     font-size: 100%;
-    background-color: #F7F8FA;
+    background-color: rgba(247, 248, 250, 0.2);
   }
 }
 

@@ -4,6 +4,13 @@
 
 ***/
 
+div.darkContainer{
+  background-color: #1a2227;
+  h1, h2, h3, h4, h5, h6{
+    color: white;
+  }
+}
+
 .tab-content {
   margin-top: $padding;
 }
@@ -48,5 +55,9 @@
   max-width: 250px;
   border-color: #EFF0F2;
   border: 2px solid #DDDDDD;
+  border-radius: 50%;
+  &:hover{
+    background-color: black !important;
+  }
 }
 

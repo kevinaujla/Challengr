@@ -7,61 +7,59 @@
   <!-- Bower Component Styles -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <!-- User Styles -->
-  <link rel="stylesheet" href="./main.css" />
+  <link rel="stylesheet" href="styles/main.css" />
   <!-- Font -->
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,700'>
+  
+<!--   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700' rel='stylesheet' type='text/css'> -->
   <!-- Font Icons -->
   <link rel="stylesheet" href="https://file.myfontastic.com/YfFMzw2YZywiXrAN4mSf8h/icons.css">
 </head>
 <script src="lib/socket.io-client/socket.io.js"></script>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div id="leftBar" class="col-xs-1" ng-if="!signupOrLoginPage">
-        <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
-          <a ui-sref="profile">
-            <img id="profileImg" ng-src="{{profileCtrl.photoURL}}">
-            <h5>{{profileCtrl.username}}</h5>
-          </a>
-          <span class="bar"></span>
-        </div>
-        <div>
-          <a ui-sref="newChallenge">
-            <i class="icon-budicon-47"></i>
-          </a>
-          <a ui-sref="home">
-            <i class="icon-home"></i>
-          </a>
-          <a ui-sref="profile">
-            <i class="icon-budicon-51"></i>
-          </a>
-        </div>
-      </div>
-      <!-- Inject Views -->
-      <div id="main" ng-class=" signupOrLoginPage ? 'col-xs-8 col-xs-offset-2' : 'col-xs-8' " ui-view></div>
-      <div id="rightBar" class="col-xs-3" ng-if="!signupOrLoginPage">
-        <div>
-          <div ng-controller="alertController">
-            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
-              {{alert.msg}}
-              <div class="alertIcon">
-                <i class="{{alert.icon}}"></i>
-              </div>
-            </uib-alert>
+
+  <header ng-if="!signupOrLoginPage">
+
+    <ul id="dropDownMenu">
+      <li class="drop">
+        <a href="#" ng-class=" lightStyle ? 'white' : '' ">
+          <i class="300 icon-budicon-14"></i>
+        </a>
+        <div class="dropdownContain">
+          <div class="dropOut">
+            <div class="triangle"></div>
+            <ul id="innerDropDown">
+              <li ui-sref="newChallenge">
+                <i class="smaller icon-budicon-48 smallMargin"></i>
+                Create
+              </li>
+              <li ui-sref="home">
+                <i class="smaller icon-home"></i>
+              </li>
+              <li ui-sref="profile">
+                <i class="smaller icon-budicon-20"></i>
+              </li>
+            </ul>
           </div>
         </div>
-        <!-- Display challenges received -->
-        <div ng-include="'script/module/user/challenge/challenge-personal.html'"></div>
+      </li>
+    </ul>
+    
+  </header>
 
-      </div>
+  <!-- For Sign In and Sign Up -->
+  <div id="leftBarFront" class="above" ng-if="signupOrLoginPage" ng-class=" leftDetailView ? 'dark justifyCenter alignCenter' : '' " ui-view="leftPane"></div>
+  <div id="rightBarFront" class="above" ng-if="signupOrLoginPage" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
 
-    </div>
+  <!-- For Rest of Application -->
+  <div id="leftBar" class="above" ng-if="!signupOrLoginPage" ng-class=" leftDetailView ? 'dark justifyCenter alignCenter' : '' " ui-view="leftPane"></div>
+  <div id="rightBar" class="above" ng-if="!signupOrLoginPage" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
 
-    <div ng-controller="loadingController as loadingController">
-      <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
-    </div>
-
+  <!-- Spinner -->
+  <div ng-controller="loadingController as loadingController">
+    <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
   </div>
 
   <!-- Bower Component Scripts -->
