@@ -32,7 +32,12 @@ body {
 
 // GLOBAL
 
+.dark{
+  background-color: #192227;
+}
+
 .centerTxt{ text-align: center; }
+.noCenterTxt{ text-align: initial !important; }
 
 .marginTop{
   margin-top: 12px;
@@ -40,6 +45,12 @@ body {
 
 .marginTop2{
   margin-top: $padding * 2;
+}
+
+a.noDecoration{
+  &:hover{
+    text-decoration: none !important;
+  }
 }
 
 .marginTop3{

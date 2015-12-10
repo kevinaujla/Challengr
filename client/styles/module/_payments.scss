@@ -10,6 +10,7 @@ ul.list-group.billings {
   flex-direction: column;
   // border: 1px solid green;
   height: 100%;
+  width: 100%;
   
   li.list-group-item {
     display: flex;
@@ -41,14 +42,14 @@ ul.list-group.billings {
     color: $darkV2;
     transition: 0.3s;
     &:hover{
-      background-color: $darkV2;
-      border-color: $darkV2;
-      color: $light;
+      background-color: #1779B2;
+      border-color: #1779B2;
+      color: white;
     }
     &.active{
-      background-color: $darkV2;
-      border-color: $darkV2;
-      color: $light;
+      background-color: #1779B2;
+      border-color: #1779B2;
+      color: white;
     }
   }
 }
