@@ -180,7 +180,7 @@ challenge{
     font-size: 150%;
     padding-left: $padding;
     .icon-checkbox{
-      color: #43CB83;
+      color: $green;
       &:before{
         position: absolute;
         margin-top: -13px;
@@ -217,5 +217,12 @@ challenge{
     font-size: 100%;
     background-color: rgba(247, 248, 250, 0.2);
   }
+}
+
+.failedClock{
+  color: $red !important;
+}
+.completedClock{
+  color: $green !important;
 }
 

@@ -31,7 +31,7 @@
 }
 
 div.darkContainer{
-  background-color: #1a2227 !important;
+  background-color: $darkBG !important;
   h1, h2, h3, h4, h5, h6{
     color: white;
   }
@@ -62,7 +62,6 @@ div.darkContainer{
   button {
     border-radius: 50px;
     padding: 10px $padding*2;
-    background-color: $unique;
     color: white;
     font-weight: bold;
     border: 0px solid white;

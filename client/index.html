@@ -23,7 +23,7 @@
     <ul id="dropDownMenu">
       <li class="drop">
         <a href="#" ng-class=" lightStyle ? 'white' : '' ">
-          <i class="300 icon-budicon-14"></i>
+          <i class="300 icon-navicon-round"></i>
         </a>
         <div class="dropdownContain">
           <div class="dropOut">
@@ -53,6 +53,7 @@
 
   <!-- For Rest of Application -->
   <div id="leftBar" class="above" ng-if="!signupOrLoginPage" ng-class="{ flexContainer : justifyCenterLeftBar, darkContainer : darkThemeLeftBar }" ui-view="leftPane"></div>
+  
   <div id="rightBar" class="above" ng-if="!signupOrLoginPage" ng-class="{ flexContainer : justifyCenterRightBar, darkContainer : darkThemeRightBar }" ui-view="rightPane"></div>
 
   <!-- Spinner -->
