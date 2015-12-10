@@ -59,7 +59,8 @@ angular.module('App.challengeDirective', [])
         } else {
           var minutes = counter.minutes();
           minutes = minutes < 10 ? '0' + minutes : minutes;
-          $scope.remaining = counter.hours() + ' h ' + minutes + ' m remaining';
+          // $scope.remaining = counter.hours() + ' h ' + minutes + ' m remaining';
+          $scope.remaining = counter.hours() + 'h ' + minutes + ' m';
           countdownTimeout = $timeout(tick, 60000);
         }
       })();
