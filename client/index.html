@@ -53,8 +53,8 @@
   <div id="rightBarFront" class="above" ng-if="signupOrLoginPage" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
 
   <!-- For Rest of Application -->
-  <div id="leftBar" class="above" ng-if="!signupOrLoginPage" ng-class=" leftDetailView ? 'dark justifyCenter alignCenter' : '' " ui-view="leftPane"></div>
-  <div id="rightBar" class="above" ng-if="!signupOrLoginPage" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
+  <div id="leftBar" class="above" ng-if="!signupOrLoginPage" ng-class="{ flexContainer : justifyCenterLeftBar, darkContainer : darkThemeLeftBar }" ui-view="leftPane"></div>
+  <div id="rightBar" class="above" ng-if="!signupOrLoginPage" ng-class="{ flexContainer : justifyCenterRightBar, darkContainer : darkThemeRightBar }" ui-view="rightPane"></div>
 
   <!-- Spinner -->
   <div ng-controller="loadingController as loadingController">

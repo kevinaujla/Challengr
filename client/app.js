@@ -180,7 +180,7 @@ angular.module('App', [
     })
 
       .state('home.viewChallenge', {
-        url: '/challenge/:id',
+        url: 'challenge/:id',
         views: {
           'challengeDetail': { 
             templateUrl: 'script/module/challenge/challenge-view.html',
@@ -192,7 +192,7 @@ angular.module('App', [
       })
 
       .state('home.viewChallengePersonal', {
-        url: '/challenge/detail/:id',
+        url: 'challenge/detail/:id',
         views: {
           'challengeDetailPersonal': { 
             templateUrl: 'script/module/challenge/challenge-view.html',
@@ -229,29 +229,49 @@ angular.module('App', [
   }
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
-    // Left Detail View
-    if (toState.url === '/challenge/:id' || toState.url === '/' || toState.url === '/challenge/detail/:id') {
-      $rootScope.rightDetailView = true;
+    // Justify Content Center Left Bar
+    if (toState.url === '/challenge/create/detail' ||
+        toState.url === '/challenge/create/payment' ||
+        toState.url === '/profile')
+    {
+      $rootScope.justifyCenterLeftBar = true;
     } else {
-      $rootScope.rightDetailView = false;
+      $rootScope.justifyCenterLeftBar = false;
     }
 
-    // Right Detail View
-    if (toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment') {
-      $rootScope.leftDetailView = true;
+    // Justify Content Center Right Bar
+    if (toState.url === '/challenge/create/payment'){
+      $rootScope.justifyCenterRightBar = true;
     } else {
-      $rootScope.leftDetailView = false;
+      $rootScope.justifyCenterRightBar = false;
     }
 
-    // Profile
-    if (toState.url === '/profile') {
-      $rootScope.topPadding = true;
+    // Dark Background Left Bar
+    if (toState.url === '/challenge/create/detail' ||
+        toState.url === '/challenge/create/payment' ||
+        toState.url === '/profile')
+    {
+      $rootScope.darkThemeLeftBar = true;
     } else {
-      $rootScope.topPadding = false;
+      $rootScope.darkThemeLeftBar = false;
+    }
+
+    // Dark Background Right Bar
+    if (toState.url === '/' ||
+      toState.url === 'challenge/detail/:id')
+    {
+      $rootScope.darkThemeRightBar = true;
+    } else {
+      $rootScope.darkThemeRightBar = false;
     }
 
     // Menu Bar Light and Dark Style
-    if (toState.url === '/profile' || toState.url === '/challenge/create/charity' || toState.url === '/challenge/create/detail' || toState.url === '/challenge/create/payment' || toState.url === '/challenge/create/detail/:id') {
+    if (toState.url === '/profile' ||
+        toState.url === '/challenge/create/charity' ||
+        toState.url === '/challenge/create/detail' ||
+        toState.url === '/challenge/create/payment' ||
+        toState.url === '/challenge/create/detail/:id') 
+    {
       $rootScope.lightStyle = true;
     } else {
       $rootScope.lightStyle = false;
@@ -266,10 +286,14 @@ angular.module('App', [
     }
 
     // On Refresh of steps of creating a challenge or being in the detail view of a challenge, go back home
-    if (toState.url === '/challenge/create/detail' && fromState.abstract === true || toState.url === 'challenge/create/charity' && fromState.abstract === true || toState.url === 'challenge/create/payment' && fromState.abstract === true || toState.url === '/challenge/:id' && fromState.abstract === true || toState.url === '/challenge/detail/:id' && fromState.abstract === true) {
+    if (toState.url === '/challenge/create/detail' && fromState.abstract === true || 
+        toState.url === '/challenge/create/charity' && fromState.abstract === true || 
+        toState.url === '/challenge/create/payment' && fromState.abstract === true || 
+        toState.url === '/challenge/:id' && fromState.abstract === true ||
+        toState.url === '/challenge/detail/:id' && fromState.abstract === true) 
+    {
       $state.go('home');
       event.preventDefault();
-      $rootScope.leftDetailView = false;
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {
