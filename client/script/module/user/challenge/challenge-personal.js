@@ -48,7 +48,7 @@ angular.module('App.personalChallenge', [])
         challengeFactory.readMyChallenges()
           .then(function (myChallenges) {
             self.myChallenges = myChallenges;
-            self.getMyChallengeTimer = $timeout(tick, 5000);
+            self.getMyChallengeTimer = $timeout(tick, 1000);
           })
           .catch(function (err) {
             console.log('error getting myChallenges for current user');
@@ -63,7 +63,7 @@ angular.module('App.personalChallenge', [])
         challengeFactory.readImposedChallenges()
           .then(function (imposedChallenges) {
             self.imposedChallenges = imposedChallenges;
-            self.getImposedChallangeTimer = $timeout(tick, 5000);
+            self.getImposedChallangeTimer = $timeout(tick, 1000);
           })
           .catch(function (err) {
             console.log('error getting imposedChallenges for current user');
