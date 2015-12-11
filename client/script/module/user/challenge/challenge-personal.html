@@ -13,7 +13,7 @@ loads all challenge related to the user
       <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="myChallengesSearch">
     </div>
 
-    <p class="mk" ng-show="personalChallengeC.myChallenges.length === 0">Currently, no challenges to complete</p>
+    <p class="mk" ng-show="!challenge.notCompleted && !challenge.completed">Currently, no challenges to complete</p>
 
     <div class="challenge" ng-repeat="challenge in personalChallengeC.myChallenges | filter : myChallengesSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notCompleted && !challenge.completed">
 
@@ -55,12 +55,12 @@ loads all challenge related to the user
       <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="imposedChallengeSearch">
     </div>
 
-    <p class="mk" ng-show="personalChallengeC.imposedChallenges.length === 0">You haven't challenged anyone lately...
+    <p class="mk" ng-show="!challenge.notCompleted && !challenge.completed">You haven't challenged anyone lately...
     </p>
 
     <button ng-if="personalChallengeC.imposedChallenges.length === 0" class="mk center marginTop3" ui-sref="newChallenge">Challenge Someone</button>
 
-    <div class="challenge" ng-repeat="challenge in personalChallengeC.imposedChallenges | filter : imposedChallengeSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+    <div class="challenge" ng-repeat="challenge in personalChallengeC.imposedChallenges | filter : imposedChallengeSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notCompleted && !challenge.completed">
 
       <div class="challenge--heading">
         <div class="type">
