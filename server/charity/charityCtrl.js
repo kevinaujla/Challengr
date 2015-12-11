@@ -1,6 +1,6 @@
 /*
 
-server.js
+charityCtrl.js
 configuring routes for charityRouter
 
 */

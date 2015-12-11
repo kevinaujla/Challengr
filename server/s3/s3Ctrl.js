@@ -9,9 +9,11 @@ var aws = require('aws-sdk');
 
 module.exports = function (db) {
   return {
+    /***
+    Getting signed AWS request for AWS
+    ***/
     signRequest: function (req, res) {
-      // console log
-      console.log('/sign_s3 signing s3 request : ', req.query);
+      // console.log('/sign_s3 signing s3 request : ', req.query);
       // set config variables
       aws.config.update({
         accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -37,7 +39,6 @@ module.exports = function (db) {
             signedRequest: data,
             url: 'https://' + process.env.S3_BUCKET + '.s3-website-us-west-2.amazonaws.com/' + req.query.file_name
           };
-          // respond to client
           res.json(returnData);
         }
       });
@@ -47,21 +48,22 @@ module.exports = function (db) {
       Uploading images to AWS S3
     ***/
     upload: function (req, res) {
-      
-      // console.log('Upload AWS Images : ', req.body);
-      
       aws.config.update({
         accessKeyId: process.env.AWS_ACCESS_KEY,
         secretAccessKey: process.env.AWS_SECRET_KEY
       });
-      aws.config.update({ region: process.env.AWS_REGION });
+      aws.config.update({
+        region: process.env.AWS_REGION
+      });
       // Define AWS S3 Bucket
-      var s3Bucket = new aws.S3({ params: { Bucket: process.env.S3_BUCKET } });
+      var s3Bucket = new aws.S3({
+        params: {
+          Bucket: process.env.S3_BUCKET
+        }
+      });
       // Create Buffer
       var imageBuffer = new Buffer(req.body.imageData.replace(/^data:image\/\w+;base64,/, ''), 'base64');
-
-      // user
-      var userURL = 'profileImages/' + req.user.firstName + '/profileImg.png';  
+      var userURL = 'profileImages/' + req.body.imgName + '/profileImg.png';
 
       // Define Upload Params
       var data = {
@@ -71,20 +73,16 @@ module.exports = function (db) {
         ContentType: 'image/png'
       };
 
-      // // S3 Bucket Upload
+      // S3 Bucket Upload
       s3Bucket.upload(data, function (err, data) {
         if (err) {
           console.log('ERROR : ', err);
-          // Propogate Error to Client
-          // res.status(403).send({
-          //   error: err.message
-          // });
         } else {
-          // Console Log
-          console.log('S3 image url : ', data.Location);
+          // console.log('S3 image url : ', data.Location);
           var location = data.Location;
-          // Propogate Success to Client
-          res.json({ imageURL : location });
+          res.json({
+            imageURL: location
+          });
         }
       });
     }
