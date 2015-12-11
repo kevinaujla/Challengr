@@ -7,16 +7,12 @@ var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
 var autoprefixer = require('gulp-autoprefixer');
 var sequence = require('run-sequence');
+var stripDebug = require('gulp-strip-debug');
 
 // the paths to our app files
 var paths = {
   scripts: ['client/**/*.js', 'server/**/*.js', 'database/**/*.js', '!client/lib/**/*.js']
 };
-
-// deployment build
-gulp.task('build', function (cb) {
-  sequence('scripts', 'sass', 'autoprefixer');
-});
 
 // JS Hinting
 gulp.task('jshint', function () {
@@ -29,6 +25,14 @@ gulp.task('jshint', function () {
 gulp.task('scripts', function () {
   gulp.src(['./client/app.js', './client/script/**/*.js'])
     .pipe(concat('scripts.js'))
+    .pipe(gulp.dest('./client/'))
+});
+
+gulp.task('deployScripts', function () {
+  gulp.src(['./client/app.js', './client/script/**/*.js'])
+    .pipe(stripDebug())
+    .pipe(concat('scripts.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('./client/'))
 });
 
@@ -64,6 +68,11 @@ gulp.task('watcher', function () {
   gulp.watch('./client/styles/**/*.scss', ['sass', 'autoprefixer']);
   gulp.watch('./client/script/**/*.js', ['scripts']);
   gulp.watch('./client/app.js', ['scripts']);
+});
+
+// deployment build
+gulp.task('build', function (cb) {
+  sequence('deployScripts', 'sass', 'autoprefixer');
 });
 
 // Run this command while developing
