@@ -16,9 +16,7 @@ Newsfeed in main view
 <p class="mk" ng-show="newsfeedCtrl.challenges.length === 0" ng-if="globalLeftDetailView">Currently, no challenges have been made</p>
 
 <!-- Challenges -->
-<challenge 
-  ng-if="globalLeftDetailView", 
-  ng-repeat="challenge in newsfeedCtrl.challenges | filter : challengeSearch",
+<challenge ng-if="globalLeftDetailView" ng-repeat="challenge in newsfeedCtrl.challenges | filter : challengeSearch" class="animation"
   challengeid = 'challenge.id',
   challengechallenged = 'challenge.Challenged',
   challengechallenger = 'challenge.Challenger',

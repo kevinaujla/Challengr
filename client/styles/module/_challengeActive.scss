@@ -222,3 +222,17 @@ challenge {
   color: $green !important;
 }
 
+.animation.ng-enter {
+  -webkit-transition: .2s ease-out;
+  margin-left: -30%;
+  opacity: 0;
+}
+
+.animation.ng-enter-stagger {
+  transition-delay: 0.1s;
+}
+
+.animation.ng-enter.ng-enter-active {
+  opacity: 1;
+  margin-left: 0;
+}
