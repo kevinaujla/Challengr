@@ -15,7 +15,7 @@ loads all challenge related to the user
 
     <p class="mk" ng-show="personalChallengeC.myChallenges.length === 0">Currently, no challenges to complete</p>
 
-    <div class="challenge" ng-repeat="challenge in personalChallengeC.myChallenges | filter : myChallengesSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notcompleted&&!challenge.completed">
+    <div class="challenge" ng-repeat="challenge in personalChallengeC.myChallenges | filter : myChallengesSearch" ng-click="personalChallengeC.showDetail(challenge, $event)" ng-if="!challenge.notCompleted && !challenge.completed">
 
       <div class="challenge--heading">
         <div class="type">
@@ -37,7 +37,7 @@ loads all challenge related to the user
         </div>
         <div>
           <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
-            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challenge.likes}}
+            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange mk"></i> {{challenge.likes}}
           </a>
           <a class="noViewChange">
             {{challenge.charityAmount*100}}<span class="linkBlue"> &#162</span>
@@ -83,7 +83,7 @@ loads all challenge related to the user
         </div>
         <div>
           <a class="noViewChange" ng-click="personalChallengeC.increaseLike(challenge)">
-            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challenge.likes}}
+            <i ng-class=" challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange mk"></i> {{challenge.likes}}
           </a>
           <a class="noViewChange">
             {{challenge.charityAmount*100}}<span class="linkBlue"> &#162</span>

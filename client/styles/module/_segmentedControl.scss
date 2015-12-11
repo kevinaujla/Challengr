@@ -40,12 +40,13 @@ ul.nav.nav-tabs {
   border-bottom: none;
   margin-right: 0px;
   color: white;
-}
-
-.nav-tabs > li > a:hover {
-  background-color: rgba(51, 122, 183, 0.8);
-  border-radius: 0;
-  border: 0px solid $blue;
-  color: white;
-  margin-bottom: 1px;
+  transition: 0.3s;
+  border: 0px solid transparent !important;
+  &:hover{
+    background-color: $blue;
+    border-radius: 0;
+    border: 0px solid $blue;
+    color: white;
+    margin-bottom: 0px;
+  }
 }

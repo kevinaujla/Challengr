@@ -12,6 +12,7 @@
   background: rgba(26, 34, 39, 0.65);
   border-radius: 50%;
   opacity: 0;
+  transition: 0.3s;
 } 
 #profile{
   position: relative;
@@ -79,8 +80,9 @@ div.darkContainer{
   max-height: 250px;
   max-width: 250px;
   border-color: #EFF0F2;
-  border: 2px solid #DDDDDD;
+  border: 2px solid #053854;
   border-radius: 50%;
+  box-shadow: 0px 10px 40px black;
   &:hover{
     background-color: black !important;
   }

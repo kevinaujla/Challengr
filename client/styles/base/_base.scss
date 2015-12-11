@@ -31,6 +31,8 @@ body {
 }
 
 // GLOBAL
+.blue{ color: $blue !important; }
+.fullHeight{ height: 100vh !important; }
 .dark{
   background-color: $darkBG;
 }
