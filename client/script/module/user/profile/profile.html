@@ -5,8 +5,7 @@ manage payments, signout, manage user information
 
 -->
 
-<div ng-init="profileCtrl.getUser()">
-
+<div ng-init="profileCtrl.getUser()" class="flexContainer darkContainer wow fadeIn">
   <h1 class="mk marginTop">{{profileCtrl.firstName | capitalize}} {{profileCtrl.lastName | capitalize}}</h1>
 
   <label class="mk marginTop">{{profileCtrl.email}}</label>
@@ -26,5 +25,4 @@ manage payments, signout, manage user information
   </div>
 
   <button class="mk center hoverShadow marginTop4" ng-click="profileCtrl.signout()">Sign Out</button>
-
 </div>

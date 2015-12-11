@@ -9,6 +9,7 @@ angular.module('App', [
   'ui.router',
   'ui.bootstrap',
   'ngMessages',
+  'ngAnimate',
   'angularMoment',
   'App.auth',
   'App.socket',
