@@ -34,7 +34,8 @@ view large details of single challenge
       </span>
 
       <div class="time">
-        <i class="mk icon-budicon-58"></i>
+
+        <i class="mk icon-budicon-58" ng-class="{ failedClock : challengeViewCtrl.challenge.notCompleted, completedClock : challengeViewCtrl.challenge.completed }"></i>
         <span am-time-ago="challengeViewCtrl.challenge.issuedDate"></span>
       </div>
     </div>
@@ -62,7 +63,7 @@ view large details of single challenge
     </div>
   </div>
 
-  <button ng-if="challengeViewCtrl.isCurrentUserChallenge" ui-sref="home" class="mk-complete hoverShadow" ng-click="challengeViewCtrl.completed()">
+  <button ng-if="challengeViewCtrl.isCurrentUserChallenge" ng-click="challengeViewCtrl.homeSetDetail()" class="mk-complete hoverShadow" ng-click="challengeViewCtrl.completed()">
     Completed ?
   </button> 
 

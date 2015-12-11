@@ -27,13 +27,13 @@ angular.module('App.challengeView', [])
    }
  };
 
- // Set Globals back to true
- self.homeSetDetail = function(){
-  $rootScope.globalLeftDetailView = true;
-  $rootScope.globalRightDetailView = true;
-  $rootScope.leftDetailViewRoute = false;
-  $state.transitionTo('home');
- };
+  // Set Globals back to true
+  self.homeSetDetail = function(){
+   $rootScope.globalLeftDetailView = true;
+   $rootScope.globalRightDetailView = true;
+   $rootScope.leftDetailViewRoute = false;
+   $state.transitionTo('home');
+  };
 
  self.increaseLike = function () {
    var updateObj = {
