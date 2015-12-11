@@ -5,7 +5,14 @@ Newsfeed in main view
 
 -->
 
+<<<<<<< 02f02468bce9ba6fbe869797cf4a647f8833792f
 <label class="mk bottomPadding centerTxt marginTop4" ng-if="globalLeftDetailView" id="top">Challenge Feed</label>  
+=======
+
+
+
+<label class="mk bottomPadding centerTxt marginTop4">All Challenges</label>  
+>>>>>>> [feat] : add fadein animation to signin view
 
 <!-- Search Bar -->
 <div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding" ng-if="globalLeftDetailView">
@@ -16,7 +23,12 @@ Newsfeed in main view
 <p class="mk" ng-show="newsfeedCtrl.challenges.length === 0" ng-if="globalLeftDetailView">Currently, no challenges have been made</p>
 
 <!-- Challenges -->
+<<<<<<< 02f02468bce9ba6fbe869797cf4a647f8833792f
 <challenge ng-if="globalLeftDetailView" ng-repeat="challenge in newsfeedCtrl.challenges | filter : challengeSearch"
+=======
+<div class="wow bounceInLeft">
+<challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
+>>>>>>> [feat] : add fadein animation to signin view
   challengeid = 'challenge.id',
   challengechallenged = 'challenge.Challenged',
   challengechallenger = 'challenge.Challenger',
