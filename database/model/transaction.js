@@ -18,11 +18,11 @@ module.exports = function (sequelize, DataTypes) {
     },
     created: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     last4: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     imgUrl: {
       type: DataTypes.STRING

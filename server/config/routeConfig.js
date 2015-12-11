@@ -9,12 +9,8 @@ module.exports = function (app, express, db) {
   // serving static files from client folder
   app.use(express.static(__dirname + '/../../client'));
 
-  // logging requests to the server
-  // var morgan = require('morgan');
-  // set development mode for morgan regarding logging format
-  // app.use(morgan('dev'));
-
   var authCtrl = require(__dirname + '/../auth/authCtrl.js')(db);
+
   // handling all authentication (signup, signin, route protection)
   var authRouter = express.Router();
   require(__dirname + '/../auth/authRouter.js')(authRouter, db, app);
@@ -30,35 +26,31 @@ module.exports = function (app, express, db) {
   // require(__dirname + '/../twtAuth/twtAuthRouter.js')(twtAuthRouter, db, app);
   // app.use('/auth/twitter', twtAuthRouter);
 
-  // handling all braintree payment routes
   var braintreeRouter = express.Router();
+  braintreeRouter.use(authCtrl.authenticate);
   require(__dirname + '/../braintree/braintreeRouter.js')(braintreeRouter, db);
   app.use('/api/braintree', braintreeRouter);
 
-  // handling all challenge related operations (create, retrieveAll, update)
+  // handling all challenge related operations (create, retrieveAll, update, ...)
   var challengeRouter = express.Router();
-  // protect challenge routes
   challengeRouter.use(authCtrl.authenticate);
   require(__dirname + '/../challenge/challengeRouter.js')(challengeRouter, db);
   app.use('/api/challenge', challengeRouter);
 
-  // handling all user related routes (retrieveAll, update, retrieve specific)
+  // handling all user related routes (retrieveAll, update, retrieve specific, ...)
   var userRouter = express.Router();
-  // protect user routes
   userRouter.use(authCtrl.authenticate);
   require(__dirname + '/../user/userRouter.js')(userRouter, db);
   app.use('/api/user', userRouter);
 
   // handling all charity related routes (retrieveAll)
   var charityRouter = express.Router();
-  // protect charity routes
   charityRouter.use(authCtrl.authenticate);
   require(__dirname + '/../charity/charityRouter.js')(charityRouter, db);
   app.use('/api/charity', charityRouter);
 
   // handling all s3 routes for storing images
   var s3Router = express.Router();
-  // protect charity routes
   s3Router.use(authCtrl.authenticate);
   require(__dirname + '/../s3/s3Router.js')(s3Router, db);
   app.use('/api/s3', s3Router);

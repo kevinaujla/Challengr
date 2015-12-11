@@ -11,15 +11,14 @@ module.exports = function (app, db) {
   
   var braintreeController = require(__dirname + '/braintreeController.js')(db);
 
-  app.get('/searchCustomer', authCtrl.authenticate, braintreeController.searchCustomer);
-  app.get('/transactions', authCtrl.authenticate, braintreeController.transactions);
+  app.get('/searchCustomer',braintreeController.searchCustomer);
+  app.get('/transactions', braintreeController.transactions);
   app.get('/customersAll', braintreeController.searchAllBraintreeCustomers);
   
   app.post('/customerDelete', braintreeController.deleteBraintreeCustomer);
   app.post('/checkout', braintreeController.checkout);
-  app.post('/clientToken', authCtrl.authenticate, braintreeController.generateToken);
-  app.post('/createCustomer', authCtrl.authenticate, braintreeController.createCustomer);
-  app.post('/updateCustomer', authCtrl.authenticate, braintreeController.updateCustomer);
-  app.post('/transaction', authCtrl.authenticate, braintreeController.transaction);
+  app.post('/clientToken', braintreeController.generateToken);
+  app.post('/createCustomer', braintreeController.createCustomer);
+  app.post('/transaction', braintreeController.transaction);
 
 };
