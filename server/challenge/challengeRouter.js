@@ -20,6 +20,6 @@ module.exports = function (app, db) {
   app.get('/my', challengeCtrl.getMyChallenges);
   // getting all imposed challenges for currently logged in user
   app.get('/imposed', challengeCtrl.getImposedChallenges);
-  // getting the challenges for user specified in query parameters
+  // getting the specified by the id
   app.get('/id', challengeCtrl.getChallengeByID);
 };
