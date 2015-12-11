@@ -30,14 +30,10 @@ body {
   font-family: $font;
 }
 
-
-
 // GLOBAL
-
 .dark{
-  background-color: #192227;
+  background-color: $darkBG;
 }
-
 .centerTxt{ text-align: center; }
 .noCenterTxt{ text-align: initial !important; }
 
@@ -91,10 +87,6 @@ a.noDecoration{
 
 .circle{
   border-radius: 50%;
-}
-
-.dark{
-  background-color: #182227 !important;
 }
 
 .column{ flex-direction: column; }

@@ -178,7 +178,8 @@ angular.module('App', [
           controller: 'personalChallengeCtrl',
           controllerAs: 'personalChallengeC',
           data : { 
-            showUserChallenges : true
+            globalDetailView: true,
+            showUserChallenges : false
           }
         }, 
       },
@@ -192,6 +193,9 @@ angular.module('App', [
             templateUrl: 'script/module/challenge/challenge-view.html',
             controller: 'challengeViewCtrl',
             controllerAs: 'challengeViewCtrl', 
+            data: {
+              showUserChallenges : true
+            }
           }
         },
         data: { authenticate: true }
@@ -233,6 +237,11 @@ angular.module('App', [
   if (authFactory.isAuth()) {
     socket.configureSocket();
   }
+
+  // Initial Value 
+  $rootScope.globalLeftDetailView = true;
+  $rootScope.globalRightDetailView = true;
+
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     // Justify Content Center Left Bar
@@ -303,12 +312,12 @@ angular.module('App', [
     }
 
     if (toState.url === '/challenge/' || toState.url === '/'){
-      console.log('TO STATE : ', toState);
-      console.log('TO STATE VIEWS : ', toState.views);
-      console.log('FROM STATE : ', fromState);
-      console.log('TO Params : ', toParams);
-      console.log('From Params : ', fromParams);
-      console.log('Event : ', event);
+      // console.log('TO STATE : ', toState);
+      // console.log('TO STATE VIEWS : ', toState.views);
+      // console.log('FROM STATE : ', fromState);
+      // console.log('TO Params : ', toParams);
+      // console.log('From Params : ', fromParams);
+      // console.log('Event : ', event);
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {

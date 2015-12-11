@@ -5,7 +5,7 @@ loads all challenge related to the user
 
 -->
 
-<uib-tabset id="seg" class="marginTop3">
+<uib-tabset id="seg" class="marginTop3" ng-if="globalRightDetailView">
   <uib-tab heading="Challenges Received" class="white" active="challengeNC.tabs[1]" ng-init="personalChallengeC.readMyChallenges()">
 
     <div id="searchBar">

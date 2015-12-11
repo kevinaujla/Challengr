@@ -5,7 +5,16 @@
 
     <div class="column">
       <label class="mk">Type</label>
-      <input class="mk" ng-class="{ active: focus }" ng-focus="focus = true" ng-blur="focus = false" type="text" ng-model="challengeNC.info.type" required>
+
+      <div class="btn-group">
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Education'">Education</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Sports'">Sports</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Work'">Work</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Family'">Family</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Personal Improvement'">Personal</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Fun'">Fun</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Social Benefit'">Social  Benefit</label>
+      </div>
     </div>
 
     <div class="column">
