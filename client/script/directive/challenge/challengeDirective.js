@@ -7,7 +7,7 @@ challengeDirective.js
 
 angular.module('App.challengeDirective', [])
 
-.directive('challenge', ['challengeFactory', '$state', '$rootScope', function (challengeFactory, $state, $rootScope) {
+.directive('challenge', ['challengeFactory', '$state', '$rootScope', '$location', '$anchorScroll', function (challengeFactory, $state, $rootScope, $location, $anchorScroll) {
 
   var controller = ['$scope', '$timeout', function ($scope, $timeout) {
 
@@ -93,6 +93,11 @@ angular.module('App.challengeDirective', [])
       element.on('click', function (event) {
         if (event.toElement.classList[0] !== 'noViewChange') {
           $rootScope.globalRightDetailView = false;
+
+          // scroll to top
+          $location.hash('top');
+          $anchorScroll();
+
           // open the detail view of the challenge...
           $state.go('home.viewChallenge', {
             id: scope.challengeid
