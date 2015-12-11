@@ -18,6 +18,7 @@ angular.module('App', [
   'App.challengeView',
   'App.challengeDirective',
   'App.challengeService',
+  'App.header',
   'App.newsfeed',
   'App.authFactory',
   'App.userFactory',
@@ -255,7 +256,8 @@ angular.module('App', [
     }
 
     // Justify Content Center Right Bar
-    if (toState.url === '/challenge/create/payment'){
+    if (toState.url === '/challenge/create/payment' ||
+        toState.url === '/challenge/:id'){
       $rootScope.justifyCenterRightBar = true;
     } else {
       $rootScope.justifyCenterRightBar = false;
@@ -311,13 +313,8 @@ angular.module('App', [
       event.preventDefault();
     }
 
-    if (toState.url === '/challenge/' || toState.url === '/'){
-      // console.log('TO STATE : ', toState);
-      // console.log('TO STATE VIEWS : ', toState.views);
-      // console.log('FROM STATE : ', fromState);
-      // console.log('TO Params : ', toParams);
-      // console.log('From Params : ', fromParams);
-      // console.log('Event : ', event);
+    if (toState.url === '/challenge/:id'){
+      console.log('CHALLENGE DETAIL...')
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {

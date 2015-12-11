@@ -11,7 +11,7 @@ manage payments, signout, manage user information
 
   <label class="mk marginTop">{{profileCtrl.email}}</label>
 
-  <div class="control-group center marginTop">
+  <div class="control-group center marginTop2">
     <div class="controls">
       <div id="profile" ng-init="profileCtrl.getUserInfo()">
         <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
@@ -25,6 +25,6 @@ manage payments, signout, manage user information
     </div>
   </div>
 
-  <button class="mk center" ng-click="profileCtrl.signout()">Sign Out</button>
+  <button class="mk center hoverShadow marginTop4" ng-click="profileCtrl.signout()">Sign Out</button>
 
 </div>

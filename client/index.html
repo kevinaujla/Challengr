@@ -18,7 +18,7 @@
 <script src="lib/socket.io-client/socket.io.js"></script>
 <body>
 
-  <header ng-if="!signupOrLoginPage">
+  <header ng-if="!signupOrLoginPage" ng-controller="headerCtrl as header">
 
     <ul id="dropDownMenu">
       <li class="drop">
@@ -30,15 +30,16 @@
             <div class="triangle"></div>
             <ul id="innerDropDown">
               <li ui-sref="newChallenge">
-                <i class="smaller icon-budicon-48 smallMargin"></i>
+                <i class="smaller icon-budicon-48 smallMargin blue"></i>
                 Create
               </li>
-              <li ui-sref="home">
-                <i class="smaller icon-home smallMargin"></i>
+
+              <li ng-click="header.homeSetDetail()">
+                <i class="smaller icon-home smallMargin blue"></i>
                 Home
               </li>
               <li ui-sref="profile">
-                <i class="smaller icon-budicon-20 smallMargin"></i>
+                <i class="smaller icon-budicon-20 smallMargin blue"></i>
                 Profile
               </li>
             </ul>
