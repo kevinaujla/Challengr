@@ -1,6 +1,7 @@
 div.friendToChallenge {
   display: flex;
   align-items: center;
+  justify-content: center;
   img {
     width: 20%;
     height: 20%;
@@ -20,8 +21,4 @@ div.friendToChallenge {
   flex: 1;
   justify-content: space-around;
   
-}
-
-#reviewDetail{
-
 }

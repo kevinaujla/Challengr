@@ -7,7 +7,7 @@ personalChallenge.js
 
 angular.module('App.personalChallenge', [])
 
-.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', '$timeout', 'authFactory', function (challengeFactory, userFactory, $scope, $state, $timeout, authFactory) {
+.controller('personalChallengeCtrl', ['challengeFactory', 'userFactory', '$scope', '$state', '$rootScope', '$timeout', 'authFactory', '$anchorScroll', '$location', function (challengeFactory, userFactory, $scope, $state, $rootScope, $timeout, authFactory, $anchorScroll, $location) {
 
   var self = this;
 
@@ -30,7 +30,13 @@ angular.module('App.personalChallenge', [])
 
   self.showDetail = function (challenge, event) {
     if (event.toElement.classList[0] !== 'noViewChange') {
-      $state.go('viewChallengePersonal', {
+
+      // scroll to top
+      $location.hash('seg');
+      $anchorScroll();
+
+      $rootScope.globalLeftDetailView = false;
+      $state.go('home.viewChallengePersonal', {
         id: challenge.id
       });
     }

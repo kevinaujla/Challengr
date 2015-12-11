@@ -5,7 +5,7 @@
 
 <label class="mk centerTxt marginTop4">Challenge</label>  
 
-<div class="friendToChallenge" ng-init="challengeNC.loadFromServiceObj()">
+<div class="friendToChallenge marginTop4" ng-init="challengeNC.loadFromServiceObj()">
 
   <img ng-src="{{challengeNC.info.challenged.photoURL}}">
 
@@ -15,11 +15,11 @@
 
 </div>
 
-<p class="mk">{{challengeNC.info.info.type | capitalize}} - {{challengeNC.info.info.title | capitalize}}</p>
+<p class="mk marginTop3">{{challengeNC.info.info.type | capitalize}} - {{challengeNC.info.info.title | capitalize}}</p>
 <p class="mk">{{challengeNC.info.info.description | capitalize}}</p>
 
-<label class="mk">Donating to</label>
+<label class="mk marginTop3">Donating to</label>
 <p class="mk">{{challengeNC.info.charity.name}}</p>
 <span class="column alignCenter">
-  <img class="circle" src="image/uwba.jpg" width="10%">  
+  <img class="circle" src="image/uwba.jpg" width="15%">  
 </span>

@@ -7,7 +7,7 @@ challengeDirective.js
 
 angular.module('App.challengeDirective', [])
 
-.directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
+.directive('challenge', ['challengeFactory', '$state', '$rootScope', '$location', '$anchorScroll', function (challengeFactory, $state, $rootScope, $location, $anchorScroll) {
 
   var controller = ['$scope', '$timeout', function ($scope, $timeout) {
 
@@ -59,7 +59,8 @@ angular.module('App.challengeDirective', [])
         } else {
           var minutes = counter.minutes();
           minutes = minutes < 10 ? '0' + minutes : minutes;
-          $scope.remaining = counter.hours() + ' h ' + minutes + ' m remaining';
+          // $scope.remaining = counter.hours() + ' h ' + minutes + ' m remaining';
+          $scope.remaining = counter.hours() + 'h ' + minutes + ' m';
           countdownTimeout = $timeout(tick, 60000);
         }
       })();
@@ -91,8 +92,14 @@ angular.module('App.challengeDirective', [])
     link: function (scope, element, attrs) {
       element.on('click', function (event) {
         if (event.toElement.classList[0] !== 'noViewChange') {
+          $rootScope.globalRightDetailView = false;
+
+          // scroll to top
+          $location.hash('top');
+          $anchorScroll();
+
           // open the detail view of the challenge...
-          $state.go('viewChallenge', {
+          $state.go('home.viewChallenge', {
             id: scope.challengeid
           });
         }

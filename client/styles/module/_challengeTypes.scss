@@ -4,64 +4,24 @@
 
 ***/
 
-div.challengeTypes {
-  text-align: center;
-  background-color: #323133;
-  border-radius: 4px;
-  padding-bottom: $padding;
-  .badge {
-    background-color: #555457;
-    color: #B3B3B3;
-    border: 0px solid white;
-    padding: 15px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    margin: 5px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  label {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  input,
-  textarea {
-    margin-top: $padding;
-  }
-  h1 {
-    color: white;
-    padding: 15px 0;
-  }
-  .challengeTypes input {}
-  label.active {
-    background-color: $unique;
-    color: white;
-  }
-  .btn-primary:active:hover,
-  .btn-primary.active:hover,
-  .open > .dropdown-toggle.btn-primary:hover,
-  .btn-primary:active:focus,
-  .btn-primary.active:focus,
-  .open > .dropdown-toggle.btn-primary:focus,
-  .btn-primary:active.focus,
-  .btn-primary.active.focus,
-  .open > .dropdown-toggle.btn-primary.focus {
-    background-color: #A0CECB;
+label.badge {
+  background-color: $blue;
+  color: white;
+  border: 0px solid white;
+  padding: 15px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  margin: 5px;
+  &:hover {
+    cursor: pointer;
   }
 }
-
-ul.challengeTypes {
-  li {
-    display: inline-block;
-    span {
-      padding: $padding;
-      border-radius: 50px;
-    }
-    .badge--active {
-      background-color: #A0CECB;
-    }
+label {
+  &:hover {
+    cursor: pointer;
   }
 }
-
+.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: #204d74;
+}

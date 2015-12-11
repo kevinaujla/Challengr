@@ -26,37 +26,23 @@ angular.module('App.profile', [])
     self.photoURL = localStorage.getItem('com.challengr.photoURL');
   };
 
-  // Update user information
-  // self.updateUser = function(){
-
-  // };
-
   $scope.changeProfileImg = function (element) {
 
     $scope.$apply(function (scope) {
       var reader = new FileReader();
       var file = element.files[0];
       reader.readAsDataURL(element.files[0]);
-
       reader.onload = function (e) {
 
-        // s3Factory.getSignedRequest(file)
-        //   .then(function(data){
-        //     console.log('success : ', data);
-        //   })
-        //   .catch(function(err){
-        //     console.log('error : ', err);
-        //   });
-
-        var name = localStorage.getItem('com.challengr.firstName');
-
-        s3Factory.updatePicture(reader.result, name)
+        s3Factory.updatePicture(reader.result)
           .then(function (data) {
             userFactory.updateProfilePhoto(data.imageURL)
               .then(function () {
-                // console.log('successfully update profile image');
+                // Add the location to the user
                 localStorage.setItem('com.challengr.photoURL', data.imageURL);
                 alertService.addAlert('success', 'updated profile image', 'icon-checkbox');
+                self.photoURL = data.imageURL;
+                self.getUserInfo();
               })
               .catch(function (err) {
                 console.log('error updating profile image: ', err);
@@ -73,7 +59,7 @@ angular.module('App.profile', [])
   self.getBilling = function () {
     braintreeFactory.getTransactions()
       .then(function (data) {
-        // console.log('users billing transactions : ', data.transactions);
+        console.log('users billing transactions : ', data);
         self.transactions = data.transactions;
       })
       .catch(function (err) {

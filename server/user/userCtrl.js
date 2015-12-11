@@ -23,15 +23,16 @@ module.exports = function (db) {
       });
     },
     update: function (req, res) {
-      // console.log('updating user profile img');
       // pull out data
-      var id = req.body.id;
+      var id = req.user.id;
       var updateModel = {
         photoURL: req.body.photoURL
       };
       // query for specific user
       db.User.find({
-        id: id
+        where: {
+          id: id
+        }
       }).then(function (user) {
         user.update(updateModel)
           .then(function (user) {

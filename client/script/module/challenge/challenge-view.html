@@ -4,46 +4,71 @@ challenge-read.html
 view large details of single challenge
 
 -->
-<div id="challengeDetail" class="panel panel-default" ng-init="challengeViewCtrl.readChallenge()">
-  <div class="panel-heading">
-    <div>
-      <img class="challengerImg" ng-src="{{challengeViewCtrl.challenge.Challenger.photoURL}}">
-      <img class="challengedImg" ng-src="{{challengeViewCtrl.challenge.Challenged.photoURL}}">
+
+<!-- <div ng-class="{ flexContainer dark fullHeight : leftDetailViewRoute, flexContainer fullHeight : rightDetailViewRoute }"> -->
+<div class="flexContainer fullHeight" ng-class="{ dark : leftDetailViewRoute }">
+
+  <div id="challengeDetail" class="panel panel-default" ng-init="challengeViewCtrl.readChallenge()">
+    <div class="panel-heading">
+      <div>
+        <img class="challengerImg" ng-src="{{challengeViewCtrl.challenge.Challenger.photoURL}}">
+        <img class="challengedImg" ng-src="{{challengeViewCtrl.challenge.Challenged.photoURL}}">
+      </div>
+
+      <!-- {{challengeViewCtrl.challenge}} -->
+      <!-- Active -->
+      <span class="panel-title" ng-show="{{!challengeViewCtrl.challenge.completed && !challengeViewCtrl.challenge.notCompleted}}">
+        {{challengeViewCtrl.challenge.Challenger.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenger.lastName | capitalize}} challenged {{challengeViewCtrl.challenge.Challenged.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenged.lastName | capitalize}}
+      </span>
+
+      <!-- Not Completed -->
+      <span class="panel-title" ng-show="challengeViewCtrl.challenge.notCompleted">
+        <i class="icon-budicon-57 xmark"></i>
+        {{challengeViewCtrl.challenge.Challenger.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenger.lastName | capitalize}} failed {{challengeViewCtrl.challenge.Challenged.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenged.lastName | capitalize}}'s challenge
+      </span>
+
+      <!-- Completed -->
+      <span class="panel-title" ng-show="challengeViewCtrl.challenge.completed">
+        <i class="icon-checkbox xmarkCheck"></i>
+        {{challengeViewCtrl.challenge.Challenger.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenger.lastName | capitalize}} completed {{challengeViewCtrl.challenge.Challenged.firstName | capitalize}} {{challengeViewCtrl.challenge.Challenged.lastName | capitalize}}'s challenge
+      </span>
+
+      <div class="time">
+
+        <i class="mk icon-budicon-58" ng-class="{ failedClock : challengeViewCtrl.challenge.notCompleted, completedClock : challengeViewCtrl.challenge.completed }"></i>
+        <span am-time-ago="challengeViewCtrl.challenge.issuedDate"></span>
+      </div>
     </div>
-    <span class="panel-title">{{challengeViewCtrl.challenge.Challenger.firstName}} {{challengeViewCtrl.challenge.Challenger.lastName}} challenged {{challengeViewCtrl.challenge.Challenged.firstName}} {{challengeViewCtrl.challenge.Challenged.lastName}}</span>
-    <div class="time">
-      <i class="mk icon-budicon-58"></i>
-      <span am-time-ago="challengeViewCtrl.challenge.issuedDate"></span>
+    <div class="panel-body">
+
+      <div class="social">
+        <div class="socialLeft">
+          {{challengeViewCtrl.challenge.type | capitalize}}
+        </div>
+        <div class="socialRight">
+          <a href="" ng-click="challengeViewCtrl.increaseLike()">
+            <i ng-class=" challengeViewCtrl.challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="noViewChange mk"></i> {{challengeViewCtrl.challenge.likes}}
+          </a>
+          <a href="">
+            {{challengeViewCtrl.challenge.charityAmount*100}}<span class="linkBlue"> &#162</span> 
+          </a>
+        </div>
+      </div>
+
+      <div class="type">
+        <span>{{challengeViewCtrl.challenge.title | capitalize}}</span>
+      </div>
+      <span class="description">{{challengeViewCtrl.challenge.description | capitalize}}</span>
+
     </div>
   </div>
-  <div class="panel-body">
 
-    <div class="social">
-      <div class="socialLeft">
-        {{challengeViewCtrl.challenge.type}}
-      </div>
-      <div class="socialRight">
-        <a href="" ng-click="challengeViewCtrl.increaseLike()">
-          <i ng-class=" challengeViewCtrl.challenge.likes > 0 ? 'icon-heart-1' : 'icon-heart-empty' " class="mk noViewChange"></i> {{challengeViewCtrl.challenge.likes}}
-        </a>
-        <a href="">
-          {{challengeViewCtrl.challenge.charityAmount*100}}<span class="linkBlue"> &#162</span> 
-        </a>
-      </div>
-    </div>
+  <button ng-if="challengeViewCtrl.isCurrentUserChallenge" ng-click="challengeViewCtrl.homeSetDetail()" class="mk-complete hoverShadow" ng-click="challengeViewCtrl.completed()">
+    Completed ?
+  </button> 
 
-    <div class="type">
-      <span>{{challengeViewCtrl.challenge.title}}</span>
-    </div>
-    <span class="description">{{challengeViewCtrl.challenge.description}}</span>
+  <button class="mk hoverShadow" ng-click="challengeViewCtrl.homeSetDetail()">
+    View All
+  </button>
 
-  </div>
 </div>
-
-<button ng-if="challengeViewCtrl.isCurrentUserChallenge" class="mk-complete" ng-click="challengeViewCtrl.completed()">
-  Completed ?
-</button> 
-
-<button class="mk" ui-sref="home">
-  View All
-</button>

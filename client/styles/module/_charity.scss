@@ -4,7 +4,16 @@
 
 ***/
 
-#charityBG1{
+label.absolute {
+  position: absolute;
+  top: 26px;
+  color: white !important;
+  left: 50%;
+  z-index: 9999;
+  margin-left: -122px;
+}
+
+#charityBG1 {
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url("https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/onStreet.jpg") no-repeat;
   width: 100%;
   height: 100vh;
@@ -14,27 +23,32 @@
   // border: 1px solid red;
   display: flex;
   align-items: center;
-  &:hover{
-    transition: 3s;
+  &:hover {
     background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/onStreet.jpg") no-repeat;
     cursor: pointer !important;
-    a{ text-decoration: none; }
-    label, p, a {
+    background-size: cover;
+    a {
+      text-decoration: none;
+    }
+    label,
+    p,
+    a {
       text-shadow: 1px 1px 1px black;
     }
   }
-  p{
+  p {
     padding: 1em 0;
   }
-  a{
-    &:hover{text-decoration: none;}
+  a {
+    &:hover {
+      text-decoration: none;
+    }
     font-size: 18px;
   }
 }
 
-#charityBG2{
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url("  
-https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/charity2.jpg") no-repeat;
+#charityBG2 {
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url("https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/charity2.jpg") no-repeat;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -42,28 +56,30 @@ https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/charity2.jpg") no
   padding: 2em 2em 0 2em;
   display: flex;
   align-items: center;
-  transition: 3s;
-  &:hover{
-    transition: 3s;
+  &:hover {
     cursor: pointer !important;
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("  
-https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/charity2.jpg") no-repeat;
-    a{ text-decoration: none; }
-    label, p, a {
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/charity2.jpg") no-repeat;
+    background-size: cover;
+    a {
+      text-decoration: none;
+    }
+    label,
+    p,
+    a {
       text-shadow: 1px 1px 1px black;
     }
   }
-  p{
+  p {
     padding: 1em 0;
-    &:hover{
+    &:hover {
       text-decoration: none !important;
-
     }
   }
-  a{
-    &:hover{text-decoration: none;}
+  a {
+    &:hover {
+      text-decoration: none;
+    }
     font-size: 18px;
-
   }
 }
 
@@ -145,12 +161,14 @@ https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/charity2.jpg") no
   box-shadow: 0px 2px 0px #EAEEF1, 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   transition: 0.3s;
-  &:hover{
+  &:hover {
     box-shadow: 0px 2px 0px #EAEEF1, 1px 2px 4px rgba(0, 0, 0, 0.7);
   }
 }
 
-li.selectedCharity div, li.selectedCharity img{
+li.selectedCharity div,
+li.selectedCharity img {
   transition: 0.3s;
   box-shadow: 0px 2px 0px #EAEEF1, 0px 2px 4px rgba(0, 0, 0, 1);
 }
+

@@ -34,11 +34,11 @@ angular.module('App.s3Factory', [])
     });
   };
 
-  var updatePicture = function (imageData, description) {
+  var updatePicture = function (imageData) {
     return $http({
       method: 'POST',
       url: '/api/s3/upload',
-      data : ({ imgName : description, imageData: imageData }),
+      data : ({ imageData: imageData }),
     }).then(function (resp) {
       return resp.data;
     });

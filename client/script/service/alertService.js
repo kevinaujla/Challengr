@@ -28,7 +28,7 @@ angular.module('App.alertService', [])
         return function () {
           self.closeAlert(index);
         };
-      })(this.alerts.length - 1), 8000);
+      })(this.alerts.length - 1), 80000);
     }
   };
 

@@ -5,24 +5,26 @@ manage payments, signout, manage user information
 
 -->
 
-<div ng-init="profileCtrl.getUser()" class="flexContainer darkContainer">
+<div ng-init="profileCtrl.getUser()">
 
   <h1 class="mk marginTop">{{profileCtrl.firstName | capitalize}} {{profileCtrl.lastName | capitalize}}</h1>
 
   <label class="mk marginTop">{{profileCtrl.email}}</label>
 
-  <div class="control-group center marginTop">
+  <div class="control-group center marginTop2">
     <div class="controls">
-      <div ng-controller="profileCtrl as profileCtrl" ng-init="profileCtrl.getUserInfo()">
+      <div id="profile" ng-init="profileCtrl.getUserInfo()">
         <img id="profilePic" ng-src="{{profileCtrl.photoURL}}">
-        <span class="bar"></span>
+        <label class="overlay white" for="photoUpload">
+          <i class="icon-budicon-50"></i>
+        </label>
       </div>
       <br>
       <input class="hidden" id="photoUpload" ng-model="photo" onchange="angular.element(this).scope().changeProfileImg(this)" type="file" accept="image/*" />
-      <label class="white" for="photoUpload" >Upload a new picture</label>
+      
     </div>
   </div>
 
-  <button class="mk" ng-click="profileCtrl.signout()">Sign Out</button>
+  <button class="mk center hoverShadow marginTop4" ng-click="profileCtrl.signout()">Sign Out</button>
 
 </div>

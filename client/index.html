@@ -11,35 +11,35 @@
   <!-- Font -->
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,700'>
-  
-<!--   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700' rel='stylesheet' type='text/css'> -->
+
   <!-- Font Icons -->
   <link rel="stylesheet" href="https://file.myfontastic.com/YfFMzw2YZywiXrAN4mSf8h/icons.css">
 </head>
 <script src="lib/socket.io-client/socket.io.js"></script>
 <body>
 
-  <header ng-if="!signupOrLoginPage">
+  <header ng-if="!signupOrLoginPage" ng-controller="headerCtrl as header">
 
     <ul id="dropDownMenu">
       <li class="drop">
         <a href="#" ng-class=" lightStyle ? 'white' : '' ">
-          <i class="300 icon-budicon-14"></i>
+          <i class="300 icon-navicon-round"></i>
         </a>
         <div class="dropdownContain">
           <div class="dropOut">
             <div class="triangle"></div>
             <ul id="innerDropDown">
               <li ui-sref="newChallenge">
-                <i class="smaller icon-budicon-48 smallMargin"></i>
+                <i class="smaller icon-budicon-48 smallMargin blue"></i>
                 Create
               </li>
-              <li ui-sref="home">
-                <i class="smaller icon-home"></i>
+              <li ng-click="header.homeSetDetail()">
+                <i class="smaller icon-home smallMargin blue"></i>
+                Home
               </li>
               <li ui-sref="profile">
-                <i class="smaller icon-budicon-20"></i>
+                <i class="smaller icon-budicon-20 smallMargin blue"></i>
+                Profile
               </li>
             </ul>
           </div>
@@ -54,8 +54,9 @@
   <div id="rightBarFront" class="above" ng-if="signupOrLoginPage" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
 
   <!-- For Rest of Application -->
-  <div id="leftBar" class="above" ng-if="!signupOrLoginPage" ng-class=" leftDetailView ? 'dark justifyCenter alignCenter' : '' " ui-view="leftPane"></div>
-  <div id="rightBar" class="above" ng-if="!signupOrLoginPage" ng-class=" rightDetailView ? 'dark justifyCenter' : 'grayBG' " ui-view="rightPane"></div>
+  <div id="leftBar" class="above" ng-if="!signupOrLoginPage" ng-class="{ flexContainer : justifyCenterLeftBar, darkContainer : darkThemeLeftBar }" ui-view="leftPane"></div>
+  
+  <div id="rightBar" class="above" ng-if="!signupOrLoginPage" ng-class="{ flexContainer : justifyCenterRightBar, darkContainer : darkThemeRightBar }" ui-view="rightPane"></div>
 
   <!-- Spinner -->
   <div ng-controller="loadingController as loadingController">

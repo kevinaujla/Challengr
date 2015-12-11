@@ -1,32 +1,41 @@
-
-<label class="mk centerTxt marginTop4">Challenge Details</label>  
+<h1 class="mk centerTxt marginTop4">Challenge Details</h1>  
 
 <div id="challengeDetailStep">
   <form class="mk" name="challengeForm" ng-submit="challengeNC.submitChallengeDetail()">
 
     <div class="column">
       <label class="mk">Type</label>
-      <input class="mk active" type="text" ng-model="challengeNC.info.type" required>
+
+      <div class="btn-group">
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Education'">Education</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Sports'">Sports</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Work'">Work</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Family'">Family</label>
+        <br>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Personal Improvement'">Personal</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Fun'">Fun</label>
+        <label class="badge btn-primary" ng-model="challengeNC.info.type" uib-btn-radio="'Social Benefit'">Social  Benefit</label>
+      </div>
     </div>
 
     <div class="column">
       <label class="mk">Title</label>
-      <input class="mk" type="text" ng-model="challengeNC.info.title" required>
+      <input class="mk" ng-class="{ active: focus1 }" ng-focus="focus1 = true" ng-blur="focus1 = false" type="text" ng-model="challengeNC.info.title" required>
     </div>
 
     <div class="column">
       <label class="mk">Description</label>
-      <input class="mk" type="text" ng-model="challengeNC.info.description" required>
+      <input class="mk" ng-class="{ active: focus2 }" ng-focus="focus2 = true" ng-blur="focus2 = false" type="text" ng-model="challengeNC.info.description" required>
     </div>
 
     <div class="column marginTop2">
-      <button class="mk" type="submit">Next</button>  
+      <button class="mk hoverShadow2" type="submit">Next</button>  
     </div>
 
   </form>
 
   <span class="mk column alignCenter">
     Choose a different friend to challenge? 
-    <button class="mk-complete2 marginTop" ui-sref="newChallenge">Back</button>
+    <button class="mk-complete2 marginTop hoverShadow2" ui-sref="newChallenge">Back</button>
   </span>
 </div>

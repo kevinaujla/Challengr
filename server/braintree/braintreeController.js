@@ -116,7 +116,7 @@ module.exports = function (db) {
             res.status(404).end(err);
           }
           console.log('this message should appear once, braintree customer found, : ', customer.firstName);
-          res.json({ braintreeUser: customer }).end();
+          res.json({ braintreeUser: customer });
         });
 
       });
