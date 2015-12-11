@@ -5,6 +5,9 @@ Newsfeed in main view
 
 -->
 
+
+
+
 <label class="mk bottomPadding centerTxt marginTop4">All Challenges</label>  
 
 <!-- Search Bar -->
@@ -14,6 +17,7 @@ Newsfeed in main view
 </div>
 
 <!-- Challenges -->
+<div class="wow bounceInLeft">
 <challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : search"
   challengeid = 'challenge.id',
   challengechallenged = 'challenge.Challenged',
@@ -29,6 +33,7 @@ Newsfeed in main view
   notcompleted = 'challenge.notCompleted',
   type = 'challenge.type'>
 </challenge>
+</div>
 
 <!-- Braintree Management -->
 <!-- <div ng-init="homeCtrl.getBraintreeCustomers()"></div> -->
