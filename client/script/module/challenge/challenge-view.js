@@ -31,6 +31,7 @@ angular.module('App.challengeView', [])
  self.homeSetDetail = function(){
   $rootScope.globalLeftDetailView = true;
   $rootScope.globalRightDetailView = true;
+  $rootScope.leftDetailViewRoute = false;
   $state.transitionTo('home');
  };
 
