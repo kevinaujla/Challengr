@@ -72,12 +72,13 @@ ul#dropDownMenu > li {
     display: flex;
     flex: 1;
     align-items: center;
-    transition: background .1s ease-out;
+    transition: 0.3s ease-out;
   }
 }
 
 .dropOut ul#innerDropDown li:hover {
   background: #f6f6f6 ;
+  color: $blue;
 }
 
 ul#dropDownMenu li:hover a { color: #777; }

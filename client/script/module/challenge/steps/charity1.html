@@ -1,24 +1,18 @@
+<label class="mk absolute">Choose Charity</label>
 <div id="charityBG1">
   <a ng-click="challengeNC.chooseCharity(challengeNC.charities[0])">
     <div class="column" ng-init="challengeNC.getCharity()">
-      
       <label class="mk marginTop4">{{challengeNC.charities[0].name}}</label>
-
       <p class="mk">{{challengeNC.charities[0].description}}</p>
-          
       <a class="mk white" target="_blank" href="{{challengeNC.charities[0].link}}">
         {{challengeNC.charities[0].link}}
-      </a>    
-
+      </a>
       <span class="column alignCenter">
         <img class="circle" src="{{challengeNC.charities[0].imgUrl}}" width="10%">  
       </span>
-      
-
     </div>
   </a>
-
-<!--   <span class="mk column alignCenter white">
+  <!--   <span class="mk column alignCenter white">
     Edit Challenge? 
     <button class="mk-complete2 marginTop" ui-sref="createChallengeDetail">Back</button>
   </span> -->
