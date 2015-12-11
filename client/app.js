@@ -306,15 +306,16 @@ angular.module('App', [
     if (toState.url === '/challenge/create/detail' && fromState.abstract === true || 
         toState.url === '/challenge/create/charity' && fromState.abstract === true || 
         toState.url === '/challenge/create/payment' && fromState.abstract === true || 
-        toState.url === '/challenge/:id' && fromState.abstract === true ||
-        toState.url === '/challenge/detail/:id' && fromState.abstract === true) 
+        toState.url === 'challenge/:id' && fromState.abstract === true ||
+        toState.url === 'challenge/detail/:id' && fromState.abstract === true) 
     {
       $state.go('home');
       event.preventDefault();
     }
 
-    if (toState.url === '/challenge/:id'){
-      console.log('CHALLENGE DETAIL...')
+    // Right Detail View of Challenge
+    if (toState.url === 'challenge/:id'){
+      $rootScope.leftDetailViewRoute = true;
     }
 
     if (toState.data.authenticate && !authFactory.isAuth()) {

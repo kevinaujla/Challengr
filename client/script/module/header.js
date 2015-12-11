@@ -15,6 +15,7 @@ angular.module('App.header', [])
   self.homeSetDetail = function(){
    $rootScope.globalLeftDetailView = true;
    $rootScope.globalRightDetailView = true;
+   $rootScope.leftDetailViewRoute = false;
    $state.transitionTo('home');
   };
 
