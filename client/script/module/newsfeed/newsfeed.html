@@ -5,18 +5,18 @@ Newsfeed in main view
 
 -->
 
-<label class="mk bottomPadding centerTxt marginTop4">Challenge Feed</label>  
+<label class="mk bottomPadding centerTxt marginTop4" ng-if="globalLeftDetailView">Challenge Feed</label>  
 
 <!-- Search Bar -->
-<div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding">
+<div ng-init="newsfeedCtrl.read()" id="searchBar" class="marginTop leftSidePadding" ng-if="globalLeftDetailView">
   <i class="mk icon-budicon-44"></i>  
   <input type="text" id="searchInput" class="form-control" placeholder="Search..." ng-model="challengeSearch">
 </div>
 
-<p class="mk" ng-show="newsfeedCtrl.challenges.length === 0">Currently, no challenges have been made</p>
+<p class="mk" ng-show="newsfeedCtrl.challenges.length === 0" ng-if="globalLeftDetailView">Currently, no challenges have been made</p>
 
 <!-- Challenges -->
-<challenge ng-repeat="challenge in newsfeedCtrl.challenges | filter : challengeSearch"
+<challenge ng-if="globalLeftDetailView" ng-repeat="challenge in newsfeedCtrl.challenges | filter : challengeSearch"
   challengeid = 'challenge.id',
   challengechallenged = 'challenge.Challenged',
   challengechallenger = 'challenge.Challenger',

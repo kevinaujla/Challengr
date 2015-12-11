@@ -7,7 +7,7 @@ challengeDirective.js
 
 angular.module('App.challengeDirective', [])
 
-.directive('challenge', ['challengeFactory', '$state', function (challengeFactory, $state) {
+.directive('challenge', ['challengeFactory', '$state', '$rootScope', function (challengeFactory, $state, $rootScope) {
 
   var controller = ['$scope', '$timeout', function ($scope, $timeout) {
 
@@ -92,6 +92,7 @@ angular.module('App.challengeDirective', [])
     link: function (scope, element, attrs) {
       element.on('click', function (event) {
         if (event.toElement.classList[0] !== 'noViewChange') {
+          $rootScope.globalRightDetailView = false;
           // open the detail view of the challenge...
           $state.go('home.viewChallenge', {
             id: scope.challengeid

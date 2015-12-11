@@ -7,7 +7,7 @@ Challenges in newsfeed view
 
 angular.module('App.challengeView', [])
 
-.controller('challengeViewCtrl', ['challengeFactory', '$stateParams', 'challengeService', 'alertService', function (challengeFactory, $stateParams, challengeService, alertService) {
+.controller('challengeViewCtrl', ['challengeFactory', '$stateParams', '$state', 'challengeService', 'alertService', '$rootScope', function (challengeFactory, $stateParams, $state, challengeService, alertService, $rootScope) {
   
  var self = this;
  self.challenge = null;
@@ -25,6 +25,13 @@ angular.module('App.challengeView', [])
        return;
      }
    }
+ };
+
+ // Set Globals back to true
+ self.homeSetDetail = function(){
+  $rootScope.globalLeftDetailView = true;
+  $rootScope.globalRightDetailView = true;
+  $state.transitionTo('home');
  };
 
  self.increaseLike = function () {
