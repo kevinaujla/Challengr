@@ -9,6 +9,7 @@ angular.module('App', [
   'ui.router',
   'ui.bootstrap',
   'ngMessages',
+  'ngAnimate',
   'angularMoment',
   'App.auth',
   'App.socket',
@@ -242,7 +243,7 @@ angular.module('App', [
   // Initial Value 
   $rootScope.globalLeftDetailView = true;
   $rootScope.globalRightDetailView = true;
-
+  
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     // Justify Content Center Left Bar
