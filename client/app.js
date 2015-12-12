@@ -243,6 +243,7 @@ angular.module('App', [
   // Initial Value 
   $rootScope.globalLeftDetailView = true;
   $rootScope.globalRightDetailView = true;
+  
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
     // Justify Content Center Left Bar
