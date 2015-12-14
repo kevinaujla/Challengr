@@ -20,4 +20,4 @@ database/data/db.sqlite
 client/styles/main.css
 client/main.css
 
-client/.DS_Store
+.DS_Store
