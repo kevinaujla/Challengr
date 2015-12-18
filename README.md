@@ -5,7 +5,6 @@
 
   ![](screenshots/example.png)
   ![](https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/challengrArch.jpg)
-  ![](https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/challengrMobileLG.png)
   ![](https://s3-us-west-2.amazonaws.com/challengrimages/placeholder/challengrMobileSM.jpg)
 
 ##Specifics
